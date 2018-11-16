@@ -1,6 +1,7 @@
 var express = require('express');
 var http = require('http');
 var app = express();
+var usercontroller = require('./controller/usercontroller')
 var server = app.listen(3000, function(){
     console.log("Express server has started on port 3000")
 });
@@ -11,25 +12,16 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
+/* ----------- GET ----------- */
 app.get('/', function(req, res){
-    res.send('Hello Worldaabbb');
-});
-/*
-app.get('/main', function(req, res){
         res.render('main.html');
 });
-app.get('/userprofile', function(req, res){
-        res.render('user.html');
+app.get('/login', function(req, res){
+        res.render('login.html');
+});
+app.get('/signup', function(req, res){
+        res.render('signup.html');
 });
 
-app.post('/main', function(req, res) {
-        var req_mem_id = req.body.id;
-        var req_mem_pw = req.body.pw;
-
-        controller.login(req_mem_id, req_mem_pw, function(result) {
-                res.json({
-                        "RESULT" : result
-                });
-        });
-});*/
-
+/* ----------- POST ----------- */
+app.post('/login', usercontroller.login);
