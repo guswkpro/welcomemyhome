@@ -15,6 +15,7 @@ app.use(session({
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/views'));
+app.use(express.logger('dev'));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
