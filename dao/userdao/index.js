@@ -1,17 +1,36 @@
 var mysql = require('mysql');
+var dto = require('../../dto/userdto');
+
 var client = mysql.createConnection({
     host: 'stweb.ccmxaq6oosug.ap-northeast-2.rds.amazonaws.com'
     , port: 3306
     , user: 'stweb'
     , password: 'stwebstweb'
-    , database: 'ridingEveryone'
+    , database: 'stweb'
 });
 
-exports.login = function(id, pw, callback){
-	client.query('SELECT * FROM ridingEveryone.users_table where user_id = ? AND user_pw = ?', [id, pw], function(error, result, fields){
-		console.log(result);
-		callback(error, result);
-	});
+/********************
+        GET
+********************/
+exports.getuseridauth = function (id, callback) {
+    client.query('SELECT * FROM stweb.stweb_users where user_id = ?', [id], function (error, result, fields) {
+        callback(error, result);
+    })
 };
 
-exports.getuseridauth = function ()
+/********************
+        POST
+********************/
+
+/********************
+        PUT
+********************/
+exports.edituserconnectdate = function(user_idx, date, callback){
+    client.query('UPDATE stweb.stweb_users set user_recent_date = ? where user_idx = ?', [date, user_idx], function(error, result, fields){
+        callback(error);
+    });
+};
+
+/********************
+       DELETE
+********************/
