@@ -16,6 +16,7 @@ app.use(session({
         saveUninitialized: true
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/views'));
 
 app.set('views', __dirname + '/views');
