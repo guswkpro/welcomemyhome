@@ -21,6 +21,9 @@ exports.getuseridauth = function (id, callback) {
 /********************
         POST
 ********************/
+exports.signup = function(user, callback){
+
+};
 
 /********************
         PUT
