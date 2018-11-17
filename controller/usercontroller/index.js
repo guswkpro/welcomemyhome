@@ -7,6 +7,10 @@ var mkdirp = require('mkdirp');
 /********************
         GET
 ********************/
+
+/********************
+        POST
+********************/
 exports.login = function (request, response) {
 	var req_user_id = request.body.id;
 	var req_user_pw = request.body.pw;
@@ -45,9 +49,6 @@ exports.login = function (request, response) {
 	});
 };
 
-/********************
-        POST
-********************/
 exports.signup = function (request, response){
 	var req_user_id = request.body.id;
 	var req_user_pw = request.body.pw;
