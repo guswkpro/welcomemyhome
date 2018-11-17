@@ -66,7 +66,7 @@ exports.signup = function (request, response){
 		}, function(url, nextCallback){
 			async.waterfall([
 				function (nextCallback){
-					dto.user(req_user_id, req_user_pw, req_user_nickname, date, date, user_subscription, user_auth, nextCallback)
+					dto.user(req_user_id, req_user_pw, req_user_nickname, date, user_subscription, user_auth, nextCallback)
 				}, function(userdata, nextCallback){
 					dao.signup(userdata, nextCallback);
 				}
