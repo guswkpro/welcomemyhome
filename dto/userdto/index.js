@@ -4,7 +4,6 @@ exports.user = function (id, pw, nickname, join_date, recent_date, subscription,
     user.pw = pw;
     user.nickname = nickname;
     user.join_date = join_date;
-    user.recent_date = recent_date;
     user.subscription = subscription;
     user.auth = auth;
     callback(null, user);
