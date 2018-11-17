@@ -3,7 +3,6 @@ var dto = require('../../dto/userdto');
 var async = require('async');
 var session = require('express-session');
 var mkdirp = require('mkdirp');
-var bodyParser = require('body-parser');
 require('date-utils');
 
 /********************
