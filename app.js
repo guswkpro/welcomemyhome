@@ -37,6 +37,6 @@ app.get('/signup', function (req, res) {
 app.post('/login', usercontroller.login);
 app.post('/signup', function(request, response){
         var req_user_id = request.body.id;
-        var req_user_pw = requset.body.pw;
+        var req_user_pw = request.body.pw;
         console.log(req_user_id + req_user_pw);
 });
