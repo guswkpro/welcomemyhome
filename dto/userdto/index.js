@@ -1,4 +1,4 @@
-exports.user = function (id, pw, nickname, join_date, recent_date, subscription, auth, callback) {
+exports.user = function (id, pw, nickname, join_date, subscription, auth, callback) {
     var user = {};
     user.id = id;
     user.pw = pw;
