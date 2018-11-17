@@ -40,6 +40,6 @@ app.post('/signup', function(request, response){
         var req_user_pw = request.body.pw;
         console.log(req_user_id + req_user_pw);
         res.json({
-                "RESULT" : result
+                "RESULT" : 1
         });
 });
