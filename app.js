@@ -7,7 +7,9 @@ var server = app.listen(3000, function () {
 });
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var logger = require('morgan');
 
+app.use(logger);
 app.use(session({
         secret: '##@%SWJHWJ#%&&!',
         resave: false,
