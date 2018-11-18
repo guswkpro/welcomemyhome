@@ -1,29 +1,29 @@
 var app = angular.module('user', []);
 
-app.controller('loginController', function($scope, $http) {
-	$http.post('/login').then(function(res) {
+app.controller('loginController', function ($scope, $http) {
+	$http.post('/login').then(function (res) {
 		$scope.user = res.data.memlist[0].mem_id;
 	});
-}); 
+});
 
-app.controller('signupController', function($scope, $http){
+app.controller('signupController', function ($scope, $http) {
 	console.log('aaa');
-	$scope.pushData = function(){
+	$scope.pushData = function () {
 		console.log('aaaa');
 		$http({
-			method : 'POST',
-			url : '/test',
-			headers:{
-				'Content-Type' : 'application/json'
+			method: 'POST',
+			url: '/test',
+			headers: {
+				'Content-Type': 'application/json'
 			},
-			data: $.param({
-				'id' : 'sw1',
-				'pw' : '1234',
-				'nickname' : 'mongo1'
+			data: ({
+				'id': 'sw1',
+				'pw': '1234',
+				'nickname': 'mongo1'
 			})
-		}).success(function (response){
+		}).success(function (response) {
 			console.log(response);
-		}).finally(function(){
+		}).finally(function () {
 			console.log('complete');
 		});
 	}
