@@ -30,12 +30,9 @@ exports.login = function (request, response) {
 				nextCallback(undefined, data);
 			}
 		}, function (data, nextCallback) {
-			console.log('aaab');
 			if (data[0].user_pw == req_user_pw) {
-				console.log('aaac');
 				session.user_idx = data[0].user_idx;
 				session.user_auth = data[0].user_auth;
-				console.log(date +'aaad');
 				dao.edituserconnectdate(date, data[0].user_idx, nextCallback);
 			} else {
 				nextCallback("WRONG PW", null, 3);
@@ -47,7 +44,6 @@ exports.login = function (request, response) {
 				RESULT : fail
 			});
 		} else {
-			console.log('aaares');
 			response.json({
 				RESULT : "1"
 			});
