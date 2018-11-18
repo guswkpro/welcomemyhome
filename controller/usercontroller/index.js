@@ -30,6 +30,7 @@ exports.login = function (request, response) {
 				nextCallback(null, data);
 			}
 		}, function (data, nextCallback) {
+			console.log('aaa');
 			if (data[0].user_pw == req_user_pw) {
 				console.log('aaa');
 				session.user_idx = data[0].user_idx;
