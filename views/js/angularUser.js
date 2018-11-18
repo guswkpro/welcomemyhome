@@ -16,12 +16,10 @@ app.controller('signupController', function ($scope, $http) {
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			data: $.param({
-				json: JSON.stringity({
-					id: 'sw1',
-					pw: '1234',
-					nickname: 'mongo1'
-				})
+			data: ({
+				id: 'sw1',
+				pw: '1234',
+				nickname: 'mongo1'
 			})
 		}).success(function (response) {
 			console.log(response);
