@@ -13,6 +13,7 @@ app.controller('loginController', function ($scope, $http, $window) {
 				pw: $scope.pw,
 			})
 		}).success(function (response){
+			console.log(response.RESULT);
 			if(response.RESULT == "1"){
 				$window.location.href = '/';
 			} else if(response.RESULT =="2"){
