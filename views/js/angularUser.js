@@ -23,10 +23,12 @@ app.controller('signupController', function ($scope, $http) {
 			})
 		}).success(function (response) {
 			if(response.RESULT == 1){
-				$window.alert("회원가입에 성공하셨습니다. 로그인 후 이용하시기 바랍니다.");
+				var msg = "회원가입에 성공하셨습니다. 로그인 후 이용하시기 바랍니다.";
+				$window.alert(msg);
 				$window.location.href = '/login';
 			} else {
-				$window.alert("알수없는 오류로 회원가입에 실패하였습니다.");
+				var msg = "알수없는 오류로 회원가입에 실패하였습니다.";
+				$window.alert(msg);
 			}
 		}).finally(function () {
 			console.log('complete');
