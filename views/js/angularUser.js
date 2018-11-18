@@ -6,7 +6,7 @@ app.controller('loginController', function ($scope, $http) {
 	});
 });
 
-app.controller('signupController', function ($scope, $http) {
+app.controller('signupController', function ($scope, $http, $window) {
 	console.log('aaa');
 	$scope.pushData = function () {
 		console.log('aaaa');
@@ -30,8 +30,6 @@ app.controller('signupController', function ($scope, $http) {
 				var msg = "알수없는 오류로 회원가입에 실패하였습니다.";
 				$window.alert(msg);
 			}
-		}).finally(function () {
-			console.log('complete');
 		});
 	}
 });
