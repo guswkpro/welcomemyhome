@@ -22,7 +22,7 @@ app.controller('signupController', function ($scope, $http, $window) {
 				nickname: 'mongo1'
 			})
 		}).success(function (response) {
-			if(response.RESULT == 1){
+			if(response.RESULT == "1"){
 				var msg = "회원가입에 성공하셨습니다. 로그인 후 이용하시기 바랍니다.";
 				$window.alert(msg);
 				$window.location.href = '/login';
