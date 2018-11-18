@@ -32,6 +32,8 @@ exports.signup = function (user, callback) {
 ********************/
 exports.edituserconnectdate = function (user_idx, date, callback) {
     client.query('UPDATE stweb.stweb_users set user_recent_date = ? where user_idx = ?', [date, user_idx], function (error, result, fields) {
+        console.log(error);
+        console.log(result);
         callback(error);
     });
 };
