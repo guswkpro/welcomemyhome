@@ -22,7 +22,7 @@
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
-        <a class="navbar-brand" href="#">WMH</a>
+        <a class="navbar-brand" href="#" onclick="location.href = 'http://13.124.196.226:3000/'">WMH</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -59,7 +59,8 @@
         <div class="card-body" ng-controller="signupController">
             <form class="form-signup" name="userInfo" method="POST">
                 <label for="inputid" class="sr-only">아이디입력</label>
-                <input type="text" id="input_id" placeholder="아이디입력" class="form-control2" required autofocus style="padding-right:48.3px;" ng-model="id">
+                <input type="text" id="input_id" placeholder="아이디입력" class="form-control2" required autofocus style="padding-right:48.3px;"
+                    ng-model="id">
                 <label for="checkid" class="sr-only"></label>
                 <button id="id_confirm" type="button" name="idconfirm" class="btn btn-sm">중복확인</button>
                 <input type="hidden" id="check" value="no" />
