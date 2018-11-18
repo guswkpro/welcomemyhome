@@ -36,12 +36,4 @@ app.get('/signup', function (req, res) {
 
 /* ----------- POST ----------- */
 app.post('/login', usercontroller.login);
-app.post('/signup', function(request, response){
-        var req_user_id = request.body.id;
-        var req_user_pw = request.body.pw;
-        console.log(request.body);
-        console.log(req_user_id + req_user_pw);
-        response.json({
-                "RESULT" : 1
-        });
-});
+app.post('/signup', usercontroller.signup);

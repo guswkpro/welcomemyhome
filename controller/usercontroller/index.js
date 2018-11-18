@@ -51,6 +51,7 @@ exports.login = function (request, response) {
 };
 
 exports.signup = function (request, response){
+	console.log(request.body);
 	var req_user_id = request.body.id;
 	var req_user_pw = request.body.pw;
 	console.log(req_user_id + 'aaa');
