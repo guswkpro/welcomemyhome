@@ -90,7 +90,6 @@ exports.signup = function (request, response){
 	});
 };
 
-// exports.test = function (request, response){
-// 	session = request.
-// 	session.userid = 'sw';
-// };
+exports.test = function (request, response){
+	console.log(request.body);
+};

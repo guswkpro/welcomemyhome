@@ -1,4 +1,4 @@
-var app = angular.module('userController', []);
+var app = angular.module('user', []);
 
 app.controller('loginController', function($scope, $http) {
 	$http.post('/login').then(function(res) {
@@ -7,5 +7,20 @@ app.controller('loginController', function($scope, $http) {
 }); 
 
 app.controller('signupController', function($scope, $http){
-    $http.post('/signup').then
-})
+    $http({
+		method : 'POST',
+		url : '/tet',
+		data: $.param({
+			id : 'sw1',
+			pw : '1234',
+			nickname : 'mongo1'
+		}),
+		headers:{
+			'Content-Type' : 'application/json'
+		}
+	}).success(function (response){
+		console.log(response);
+	}).finally(function(){
+		console.log('complete');
+	});
+});
