@@ -6,6 +6,17 @@
   .navbutton {
       margin : 2px;
   }
+	.confirmbutton{
+				function change1(obj){
+						obj.style.background = 'skyblue';
+						obj.style.color = 'white';
+				}
+
+				function change2(obj){
+						obj.style.background = 'white';
+						obj.style.color = 'black';
+
+	}
 
 	body {
 	    width:100%;
