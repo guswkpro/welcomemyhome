@@ -47,6 +47,7 @@ exports.login = function (request, response) {
 				RESULT : fail
 			});
 		} else {
+			console.log('aaares');
 			response.json({
 				RESULT : "1"
 			});
