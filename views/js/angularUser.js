@@ -13,14 +13,14 @@ app.controller('signupController', function($scope, $http){
 		$http({
 			method : 'POST',
 			url : '/test',
+			headers:{
+				'Content-Type' : 'application/json'
+			},
 			data: $.param({
 				'id' : 'sw1',
 				'pw' : '1234',
 				'nickname' : 'mongo1'
-			}),
-			headers:{
-				'Content-Type' : 'application/json'
-			}
+			})
 		}).success(function (response){
 			console.log(response);
 		}).finally(function(){
