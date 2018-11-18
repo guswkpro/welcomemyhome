@@ -7,6 +7,7 @@ app.controller('loginController', function($scope, $http) {
 }); 
 
 app.controller('signupController', function($scope, $http){
+	console.log('aaa');
     $http({
 		method : 'POST',
 		url : '/test',
