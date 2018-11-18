@@ -20,6 +20,9 @@ app.controller('signupController', function($scope, $http){
 		}
 	}).success(function (response){
 		console.log(response);
+		$scope.pushData = function(){
+			console.log('aaaa');
+		}
 	}).finally(function(){
 		console.log('complete');
 	});
