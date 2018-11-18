@@ -91,7 +91,7 @@ exports.signup = function (request, response){
 };
 
 exports.test = function (request, response){
-	console.log(request.body);
+	console.log(request.body.test);
 	response.json({
 		RESULT : 1
 	});
