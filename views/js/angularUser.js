@@ -28,6 +28,7 @@ app.controller('signupController', function ($scope, $http) {
 		// });
 
 		$http.post('/test', {'test' : 'test'}).success(function (response){
+			console.log('caaaaaaaaaaaaaaaaaaaaaaaaa');
 			console.log(response);
 		}).finally(function(){
 			console.log('complete');
