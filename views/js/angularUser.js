@@ -1,9 +1,32 @@
 var app = angular.module('user', []);
 
-app.controller('loginController', function ($scope, $http) {
-	$http.post('/login').then(function (res) {
-		$scope.user = res.data.memlist[0].mem_id;
-	});
+app.controller('loginController', function ($scope, $http, $window) {
+	$scope.clickLogin = function(){
+		$http({
+			method: 'POST',
+			url: '/login',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			data: ({
+				id: $scope.id,
+				pw: $scope.pw,
+			})
+		}).success(function (response){
+			if(response.RESULT == "1"){
+				$window.location.href = '/';
+			} else if(response.RESULT =="2"){
+				var msg = "존재하지 않는 아이디 입니다.";
+				$window.alert(msg);
+			} else if(response.RESULT =="3"){
+				var msg = "비밀번호가 틀립니다.";
+				$window.alert(msg);
+			} else if(response.RESULT =="4"){
+				var msg = "탈퇴한 회원입니다.";
+				$window.alert(msg);
+			}
+		})
+	}
 });
 
 app.controller('signupController', function ($scope, $http, $window) {
