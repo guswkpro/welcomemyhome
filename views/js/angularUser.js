@@ -11,9 +11,9 @@ app.controller('signupController', function($scope, $http){
 		method : 'POST',
 		url : '/tet',
 		data: $.param({
-			id : 'sw1',
-			pw : '1234',
-			nickname : 'mongo1'
+			'id' : 'sw1',
+			'pw' : '1234',
+			'nickname' : 'mongo1'
 		}),
 		headers:{
 			'Content-Type' : 'application/json'
