@@ -12,7 +12,7 @@ app.controller('signupController', function ($scope, $http) {
 		console.log('aaaa');
 		$http({
 			method: 'POST',
-			url: '/test',
+			url: '/signup',
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -22,16 +22,14 @@ app.controller('signupController', function ($scope, $http) {
 				nickname: 'mongo1'
 			})
 		}).success(function (response) {
-			console.log(response);
+			if(response.RESULT == 1){
+				$window.alert("회원가입에 성공하셨습니다. 로그인 후 이용하시기 바랍니다.");
+				$window.location.href = '/login';
+			} else {
+				$window.alert("알수없는 오류로 회원가입에 실패하였습니다.");
+			}
 		}).finally(function () {
 			console.log('complete');
 		});
-
-		// $http.post('/test', {'test' : 'test'}).success(function (response){
-		// 	console.log('caaaaaaaaaaaaaaaaaaaaaaaaa');
-		// 	console.log(response);
-		// }).finally(function(){
-		// 	console.log('complete');
-		// });
 	}
 });
