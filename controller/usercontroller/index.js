@@ -15,7 +15,7 @@ require('date-utils');
 exports.login = function (request, response) {
 	var req_user_id = request.body.id;
 	var req_user_pw = request.body.pw;
-	var data = new Date();
+	var date = new Date();
 	date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
 	session = request.session;
 	async.waterfall([
