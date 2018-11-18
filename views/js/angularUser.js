@@ -9,7 +9,7 @@ app.controller('loginController', function($scope, $http) {
 app.controller('signupController', function($scope, $http){
     $http({
 		method : 'POST',
-		url : '/tet',
+		url : '/test',
 		data: $.param({
 			'id' : 'sw1',
 			'pw' : '1234',
