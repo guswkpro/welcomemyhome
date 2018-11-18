@@ -22,7 +22,7 @@ exports.getuseridauth = function (id, callback) {
         POST
 ********************/
 exports.signup = function (user, callback) {
-    client.query('INSERT INTO stweb.stweb_users (user_id, user_pw, user_nickname, user_join_date, user_subscription, user_auth VALUES (?, ?, ?, ?, ?, ?)', [user.id, user.pw, user.nickname, user.join_date, user.subscription, user.auth], function (error, result) {
+    client.query('INSERT INTO stweb.stweb_users (user_id, user_pw, user_nickname, user_join_date, user_subscription, user_auth) VALUES (?, ?, ?, ?, ?, ?)', [user.id, user.pw, user.nickname, user.join_date, user.subscription, user.auth], function (error, result) {
         callback(error, result);
     });
 };
