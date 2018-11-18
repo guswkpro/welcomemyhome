@@ -27,15 +27,15 @@ exports.login = function (request, response) {
 			} else if (data[0].user_subscription == 0) {
 				nextCallback("LEAVE", null, 4);
 			} else {
-				nextCallback(null, data);
+				nextCallback(undefined, data);
 			}
 		}, function (data, nextCallback) {
-			console.log('aaa');
+			console.log('aaab');
 			if (data[0].user_pw == req_user_pw) {
-				console.log('aaa');
+				console.log('aaac');
 				session.user_idx = data[0].user_idx;
 				session.user_auth = data[0].user_auth;
-				console.log('aaa');
+				console.log('aaad');
 				dao.edituserconnectdate(date, data[0].user_idx, nextCallback);
 			} else {
 				nextCallback("WRONG PW", null, 3);
