@@ -17,9 +17,9 @@ app.controller('signupController', function ($scope, $http, $window) {
 				'Content-Type': 'application/json'
 			},
 			data: ({
-				id: 'sw1',
-				pw: '1234',
-				nickname: 'mongo1'
+				id: $scope.id,
+				pw: $scope.pw,
+				nickname: $scope.nickname
 			})
 		}).success(function (response) {
 			if(response.RESULT == "1"){

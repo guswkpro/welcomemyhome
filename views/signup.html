@@ -61,24 +61,25 @@
                 <h5 class="form-signup-heading"></h5>
 
                 <label for="inputid" class="sr-only">아이디입력</label>
-                <input type="text" id="input_id" placeholder="아이디입력" class="form-control2" required autofocus style="padding-right:25px;">
+                <input type="text" id="input_id" placeholder="아이디입력" class="form-control2" required autofocus style="padding-right:25px;"
+                    ng-model="id">
                 <label for="checkid" class="sr-only"></label>
                 <button id="id_confirm" type="button" name="idconfirm" class="btn btn-sm">중복확인</button>
                 <input type="hidden" id="check" value="no" />
 
                 <label for="inputPassword" class="sr-only">패스워드입력</label>
-                <input type="password" id="user_password" class="form-control" placeholder="패스워드" required><br>
+                <input type="password" id="user_password" class="form-control" placeholder="패스워드" required ng-model="pw"><br>
                 <label for="inputPassword" class="sr-only">패스워드확인</label>
                 <input type="password" id="user_password" class="form-control" placeholder="패스워드확인" required><br>
 
                 <label for="inputnickname" class="sr-only">닉네임</label>
-                <input type="text" id="user_nickname" class="form-control2" placeholder="닉네임입력" style="padding-right:25px;"
-                    required>
+                <input type="text" id="user_nickname" class="form-control2" placeholder="닉네임입력" style="padding-right:25px;" ng-model="nickname">
                 <label for="checknickname" class="sr-only"></label>
                 <button id="nickname_confirm" type="button" name="nicknameconfirm" class="btn btn-sm">중복확인</button>
                 <input type="hidden" id="check" value="no" /> <br>
 
-                <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" ng-click="pushData()">회 원 가 입</button>
+                <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" ng-click="pushData()">회 원 가
+                    입</button>
 
 
             </form>
