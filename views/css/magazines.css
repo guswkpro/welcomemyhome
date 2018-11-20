@@ -1,0 +1,18 @@
+.sliderImg
+{
+    position: relative;
+    width:100%;
+    display: inline-block;
+}
+
+.imgWrap
+{
+    height: 460px;
+}
+
+.slider
+{
+    position: absolute; 
+    overflow: hidden;
+    width: 100%;
+}
