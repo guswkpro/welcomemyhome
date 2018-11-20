@@ -33,7 +33,9 @@ app.get('/login', function (req, res) {
 app.get('/signup', function (req, res) {
         res.render('signup.html');
 });
-
+app.get('/talks', function (req, res) {
+        res.render('talks.html');
+});
 /* ----------- POST ----------- */
 app.post('/login', usercontroller.login);
 app.post('/signup', usercontroller.signup);
