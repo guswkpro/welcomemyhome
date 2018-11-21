@@ -246,7 +246,7 @@ exports.addmagazinecomment = function (request, response) {
     date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
     async.waterfall([
         function (nextCallback) {
-            dto.magazinecomment(req_user_idx, req_magazine_idx, req_comment_content, date, nextCallback);
+            dto.magazinecomment(req_user_idx, req_mag_idx, req_comment_content, date, nextCallback);
         }, function (comment, nextCallback) {
             magazinedao.addmagazinecomment(comment, nextCallback);
         }, function (nextCallback) {
