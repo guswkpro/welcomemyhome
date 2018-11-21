@@ -47,7 +47,7 @@ exports.addmagazinelike = function (like, date, callback) {
     });
 };
 exports.addmagazinecomment = function (comment, callback) {
-    client.query('INSERT INTO stweb.stweb_magazine_comments (comment, comment_post_date, user_idx, magazine_idx) VALUES(?, ?, ?, ?)', [comment.comment_content, comment.comment_post_date, comment.user_idx, comment.magazine_idx], function (error) {
+    client.query('INSERT INTO stweb.stweb_magazine_comments (comment_content, comment_post_date, user_idx, magazine_idx) VALUES(?, ?, ?, ?)', [comment.comment_content, comment.comment_post_date, comment.user_idx, comment.magazine_idx], function (error) {
         callback(error);
     });
 };
