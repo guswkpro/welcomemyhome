@@ -52,6 +52,10 @@ app.get('/getmagazinelist', magazinecontroller.getmagazinelist);
 app.get('/getmagazinedetail', magazinecontroller.getmagazinedetail);
 app.get('/getmagazinecomment', magazinecontroller.getmagazinecomment);
 
+app.get('/estimate', function(req, res){
+        res.render('estimate.html');
+});
+
 /* ----------- POST ----------- */
 app.post('/login', usercontroller.login);
 app.post('/signup', usercontroller.signup);
