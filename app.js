@@ -39,9 +39,16 @@ app.get('/talks', function (req, res) {
 app.get('/magazines', function (req, res) {
         res.render('magazines.html');
 });
+app.get('/getmagazinelist', magazinecontroller.getmagazinelist);
+app.get('/getmagazinedetail', magazinecontroller.getmagazinedetail);
+
 /* ----------- POST ----------- */
 app.post('/login', usercontroller.login);
 app.post('/signup', usercontroller.signup);
+app.post('/addmagazinelike', magazinecontroller.addmagazinelike);
+app.post('/addmagazinecomment', magazinecontroller.addmagazinecomment);
+app.post('/deletemagazinelike', magazinecontroller.deletemagazinelike);
+app.post('/deletemagazinecomment', magazinecontroller.deletemagazinecomment);
 
 /* ----------- TEST ----------- */
 app.get('/test', usercontroller.test);

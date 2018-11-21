@@ -13,7 +13,12 @@ var client = mysql.createConnection({
         GET
 ********************/
 exports.getuseridauth = function (id, callback) {
-    client.query('SELECT * FROM stweb.stweb_users where user_id = ?', [id], function (error, result, fields) {
+    client.query('SELECT * FROM stweb.stweb_users where user_id = ?', [id], function (error, result) {
+        callback(error, result);
+    });
+};
+exports.getuserinformation = function (useridx, callback) {
+    client.query('SELECT * FROM stweb.stweb_users where user_idx = ?', [useridx], function (error, result) {
         callback(error, result);
     });
 };
@@ -31,7 +36,7 @@ exports.signup = function (user, callback) {
         PUT
 ********************/
 exports.edituserconnectdate = function (date, user_idx, callback) {
-    client.query('UPDATE stweb.stweb_users set user_recent_date = ? where user_idx = ?', [date, user_idx], function (error, result, fields) {
+    client.query('UPDATE stweb.stweb_users set user_recent_date = ? where user_idx = ?', [date, user_idx], function (error) {
         callback(error);
     });
 };
