@@ -14,6 +14,9 @@ app.use(session({
         secret: '##@%SWJHWJ#%&&!',
         resave: false,
         saveUninitialized: true
+        cookie: {
+          maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
+        }
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
