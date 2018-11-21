@@ -10,7 +10,7 @@ require('date-utils');
         GET
 ********************/
 exports.logincheck = function (request, response) {
-	console.log(request.cookie);
+	console.log(request.cookies);
 	console.log(request.session);
 };
 
