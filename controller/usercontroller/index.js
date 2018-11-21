@@ -32,6 +32,7 @@ exports.login = function (request, response) {
 			if (data[0].user_pw == req_user_pw) {
 				request.session.user_idx = data[0].user_idx;
 				request.session.user_auth = data[0].user_auth;
+				console.log('asdfadfasdfsadfsf');
 				dao.edituserconnectdate(date, data[0].user_idx, nextCallback);
 			} else {
 				nextCallback("WRONG PW", null, 3);
