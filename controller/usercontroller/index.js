@@ -8,6 +8,10 @@ require('date-utils');
 /********************
         GET
 ********************/
+exports.logincheck = function(request, response){
+	console.log(request.cookie);
+	console.log(request.session);
+};
 
 /********************
         POST
@@ -30,6 +34,10 @@ exports.login = function (request, response) {
 			}
 		}, function (data, nextCallback) {
 			if (data[0].user_pw == req_user_pw) {
+				var tmp = data[0].user_idx + request.sessionID;
+				res.cookie('token', tmp, {
+					maxAge: 60000 * 60 * 24
+				});
 				request.session.user_idx = data[0].user_idx;
 				request.session.user_auth = data[0].user_auth;
 				dao.edituserconnectdate(date, data[0].user_idx, nextCallback);

@@ -267,6 +267,9 @@ exports.addmagazinecomment = function (request, response) {
     });
 };
 
+/********************
+       DELETE
+********************/
 exports.deletemagazinelike = function (request, response) {
     var req_user_idx = request.session.user_idx;
     var req_mag_idx = request.body.magazine_idx;

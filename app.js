@@ -8,6 +8,7 @@ var server = app.listen(3000, function () {
 });
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 app.use(logger('dev'));
@@ -34,9 +35,12 @@ app.get('/login', function (req, res) {
 app.get('/signup', function (req, res) {
         res.render('signup.html');
 });
+app.get('/logincheck', usercontroller.logincheck);
+
 app.get('/talks', function (req, res) {
         res.render('talks.html');
 });
+
 app.get('/magazines', function (req, res) {
         res.render('magazines.html');
 });
@@ -45,14 +49,17 @@ app.get('/magazinedetail', function (req, res) {
 });
 app.get('/getmagazinelist', magazinecontroller.getmagazinelist);
 app.get('/getmagazinedetail', magazinecontroller.getmagazinedetail);
+app.get('/getmagazinecomment', magazinecontroller.getmagazinecomment);
 
 /* ----------- POST ----------- */
 app.post('/login', usercontroller.login);
 app.post('/signup', usercontroller.signup);
 app.post('/addmagazinelike', magazinecontroller.addmagazinelike);
 app.post('/addmagazinecomment', magazinecontroller.addmagazinecomment);
-app.post('/deletemagazinelike', magazinecontroller.deletemagazinelike);
-app.post('/deletemagazinecomment', magazinecontroller.deletemagazinecomment);
+
+/* ---------- DELETE ---------- */
+app.delete('/deletemagazinelike', magazinecontroller.deletemagazinelike);
+app.delete('/deletemagazinecomment', magazinecontroller.deletemagazinecomment);
 
 /* ----------- TEST ----------- */
 app.get('/test', usercontroller.test);
