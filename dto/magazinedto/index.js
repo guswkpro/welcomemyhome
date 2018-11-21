@@ -3,7 +3,7 @@ exports.magazinecomment = function (user_idx, magazine_idx, content, date, callb
     comment.user_idx = user_idx;
     comment.magazine_idx = magazine_idx;
     comment.comment_content = content;
-    comment.post_date = date;
+    comment.comment_post_date = date;
     callback(null, comment);
 };
 
