@@ -17,7 +17,6 @@ exports.login = function (request, response) {
 	var req_user_pw = request.body.pw;
 	var date = new Date();
 	date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
-	session = request.session;
 	async.waterfall([
 		function (nextCallback) {
 			dao.getuseridauth(req_user_id, nextCallback);
@@ -31,8 +30,8 @@ exports.login = function (request, response) {
 			}
 		}, function (data, nextCallback) {
 			if (data[0].user_pw == req_user_pw) {
-				session.user_idx = data[0].user_idx;
-				session.user_auth = data[0].user_auth;
+				request.session.user_idx = data[0].user_idx;
+				request.session.user_auth = data[0].user_auth;
 				dao.edituserconnectdate(date, data[0].user_idx, nextCallback);
 			} else {
 				nextCallback("WRONG PW", null, 3);
