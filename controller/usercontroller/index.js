@@ -35,7 +35,7 @@ exports.login = function (request, response) {
 		}, function (data, nextCallback) {
 			if (data[0].user_pw == req_user_pw) {
 				var tmp = data[0].user_idx + request.sessionID;
-				res.cookie('token', tmp, {
+				response.cookie('token', tmp, {
 					maxAge: 60000 * 60 * 24
 				});
 				request.session.user_idx = data[0].user_idx;
