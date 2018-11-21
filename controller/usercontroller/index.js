@@ -93,7 +93,7 @@ exports.signup = function (request, response){
 
 exports.test = function (request, response){
 	console.log('aaaaa');
-	console.log(request.body);
+	console.log(request.session);
 	response.json({
 		RESULT : 1
 	});
