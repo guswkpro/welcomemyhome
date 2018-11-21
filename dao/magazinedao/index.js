@@ -42,7 +42,7 @@ exports.getmagazinecommentcheck = function (magazine_idx, user_idx, callback) {
         POST
 ********************/
 exports.addmagazinelike = function (like, date, callback) {
-    client.query('INSERT INTO stweb.stweb_magazine_likes (like_date, magazine_idx, user_idx) VALUES (?, ?, ?)', [date, like.object_idx, like.user_idx], function (error, result, fields) {
+    client.query('INSERT INTO stweb.stweb_magazine_likes (like_date, magazine_idx, user_idx) VALUES (?, ?, ?)', [date, like.magazine_idx, like.user_idx], function (error) {
         callback(error);
     });
 };
