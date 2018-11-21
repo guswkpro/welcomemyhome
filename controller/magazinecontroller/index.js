@@ -216,7 +216,7 @@ exports.addmagazinelike = function (request, response) {
     date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
     async.waterfall([
         function (nextCallback) {
-            dto.magazinelike(req_user_idx, req_mag_idx, nextCallback);
+            dto.magazinelike(req_user_idx, req_mag_idx, date, nextCallback);
         }, function (like, nextCallback) {
             magazinedao.addmagazinelike(like, date, nextCallback);
         }, function (nextCallback) {
