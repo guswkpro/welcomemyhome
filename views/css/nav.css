@@ -1,3 +1,4 @@
+/* WMH 로고 */
 .nav-logo{
   font-weight: bolder;
   color : black;
@@ -8,6 +9,8 @@
   color : black;
 }
 
+
+/* login, signup 버튼*/
 .nav-button {
   margin-right : 2px;
   padding: 5px 10px;
@@ -16,6 +19,7 @@
 	border-radius: 3px;
 }
 
+/* nav menu 간격*/
 .nav-ul {
   margin-left : auto;
 }
@@ -25,6 +29,13 @@
   width : 70px;
 }
 
+/* nav 바 상단 고정 */
+.navFixed {
+  position: fixed;
+  top: 0px;
+}
+
+/* nav menu 선택 시 밑줄 */
 .nav-a-text3 {
   display: block;
   font-weight: bold;
