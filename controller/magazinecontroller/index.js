@@ -274,7 +274,7 @@ exports.deletemagazinelike = function (request, response) {
         function (nextCallback) {
             magazinedao.deletemagazinelike(req_mag_idx, req_user_idx, nextCallback);
         }, function (nextCallback) {
-            magazinedao.editmagazinecommentcount(req_mag_idx, -1, nextCallback);
+            magazinedao.editmagazinelikecount(req_mag_idx, -1, nextCallback);
         }
     ], function (error) {
         if (error) {
