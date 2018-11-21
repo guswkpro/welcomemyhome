@@ -2,13 +2,14 @@ var dao = require('../../dao/userdao');
 var dto = require('../../dto/userdto');
 var async = require('async');
 var session = require('express-session');
+var cookieParser = require('cookie-parser');
 var mkdirp = require('mkdirp');
 require('date-utils');
 
 /********************
         GET
 ********************/
-exports.logincheck = function(request, response){
+exports.logincheck = function (request, response) {
 	console.log(request.cookie);
 	console.log(request.session);
 };
@@ -34,7 +35,7 @@ exports.login = function (request, response) {
 			}
 		}, function (data, nextCallback) {
 			if (data[0].user_pw == req_user_pw) {
-				var tmp = data[0].user_idx + request.sessionID;
+				var tmp = data[0].user_idx + ',' + request.sessionID;
 				response.cookie('token', tmp, {
 					maxAge: 60000 * 60 * 24
 				});
@@ -48,17 +49,17 @@ exports.login = function (request, response) {
 	], function (error, result, fail) {
 		if (error) {
 			response.json({
-				RESULT : fail
+				RESULT: fail
 			});
 		} else {
 			response.json({
-				RESULT : "1"
+				RESULT: "1"
 			});
 		}
 	});
 };
 
-exports.signup = function (request, response){
+exports.signup = function (request, response) {
 	console.log(request.body);
 	var req_user_id = request.body.id;
 	var req_user_pw = request.body.pw;
@@ -71,40 +72,40 @@ exports.signup = function (request, response){
 	var dir = './public/' + req_user_nickname;
 
 	async.waterfall([
-		function(nextCallback){
+		function (nextCallback) {
 			mkdirp(dir, nextCallback);
-		}, function(url, nextCallback){
+		}, function (url, nextCallback) {
 			async.waterfall([
-				function (nextCallback){
+				function (nextCallback) {
 					dto.user(req_user_id, req_user_pw, req_user_nickname, date, user_subscription, user_auth, nextCallback)
-				}, function(userdata, nextCallback){
+				}, function (userdata, nextCallback) {
 					dao.signup(userdata, nextCallback);
 				}
-			], function(error){
-				if(error){
+			], function (error) {
+				if (error) {
 					console.log(error);
 					response.json({
-						RESULT : "0"
+						RESULT: "0"
 					});
 				} else {
 					nextCallback(null);
 				}
 			});
 		}
-	], function(error){
+	], function (error) {
 		response.json({
-			RESULT : "1"
+			RESULT: "1"
 		});
 	});
 };
 
-exports.test = function (request, response){
+exports.test = function (request, response) {
 	console.log('aaaaa');
 	console.log(request.session.user_idx);
 	console.log(request.session.user_auth);
 	console.log(request.sessionID);
 	console.log(request.session.cookie.sessionID);
 	response.json({
-		RESULT : 1
+		RESULT: 1
 	});
 };
