@@ -96,7 +96,7 @@ exports.test = function (request, response){
 	console.log(request.session.user_idx);
 	console.log(request.session.user_auth);
 	console.log(request.sessionID);
-	console.log(request.session);
+	console.log(request.session.cookie.sessionID);
 	response.json({
 		RESULT : 1
 	});
