@@ -1,5 +1,6 @@
 .nav {
   position:absolute;
+  padding-bottom: : 70px;
 }
 
 /* WMH 로고 */
@@ -26,7 +27,7 @@
 
 .nav-button-login {
   position:relative;
-  margin : 0 0 0 240px;
+  margin : 0 0 0 375px;
   padding: 5px 10px;
 	font-size: 12px;
 	line-height: 1.5;
@@ -37,7 +38,7 @@
 /* nav menu 간격*/
 .nav-ul {
   position:relative;
-  margin-left : 190px;
+  margin-left : 310px;
 }
 
 .nav-li {
