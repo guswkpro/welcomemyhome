@@ -239,7 +239,7 @@ exports.addmagazinelike = function (request, response) {
 };
 
 exports.addmagazinecomment = function (request, response) {
-    var req_user_idx = reuqest.session.user_idx;
+    var req_user_idx = request.session.user_idx;
     var req_mag_idx = request.body.magazine_idx;
     var req_comment_content = request.body.content;
     var date = new Date();
