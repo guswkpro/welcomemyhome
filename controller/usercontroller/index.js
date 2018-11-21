@@ -10,8 +10,17 @@ require('date-utils');
         GET
 ********************/
 exports.logincheck = function (request, response) {
-	console.log(request.cookies);
-	console.log(request.session);
+	var req_user_idx = request.cookies.token.substring(0, 2);
+	var cookie_sessionID = request.cookies.token.substring(2);
+	if(req_user_idx == request.session.user_idx && cookie_sessionID == request.sessionID){
+		response.json({
+			RESULT: "1"
+		});
+	} else {
+		response.json({
+			RESULT: "0"
+		});
+	}
 };
 
 /********************
