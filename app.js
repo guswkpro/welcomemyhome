@@ -44,4 +44,4 @@ app.post('/login', usercontroller.login);
 app.post('/signup', usercontroller.signup);
 
 /* ----------- TEST ----------- */
-app.post('/test', usercontroller.test);
+app.get('/test', usercontroller.test);
