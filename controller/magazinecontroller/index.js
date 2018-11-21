@@ -290,6 +290,7 @@ exports.deletemagazinelike = function (request, response) {
 };
 
 exports.deletemagazinecomment = function (request, response) {
+    var req_mag_idx = request.body.magazine_idx;
     var req_com_idx = request.body.comment_idx;
     async.waterfall([
         function (nextCallback) {
