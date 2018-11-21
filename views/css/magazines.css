@@ -4,7 +4,7 @@ body {
 
 @media (min-width: 992px) {
   body {
-    padding-top: 56px;
+    padding-top: 10px;
   }
 }
 
@@ -12,9 +12,6 @@ body {
   margin-bottom: 30px;
 }
 
-.pagination {
-  margin-bottom: 30px;
-}
 .like-content {
     display: inline-block;
     width: 100%;
