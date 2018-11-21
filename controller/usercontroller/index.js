@@ -10,9 +10,8 @@ require('date-utils');
         GET
 ********************/
 exports.logincheck = function (request, response) {
-	var req_user_idx = request.cookies.token.substring(0, 2);
-	var cookie_sessionID = request.cookies.token.substring(2);
-	if(req_user_idx == request.session.user_idx && cookie_sessionID == request.sessionID){
+	var checkData = request.cookies.token.split('/');
+	if (checkData[0] == request.session.user_idx && checkData[2] == request.sessionID) {
 		response.json({
 			RESULT: "1"
 		});
@@ -44,7 +43,7 @@ exports.login = function (request, response) {
 			}
 		}, function (data, nextCallback) {
 			if (data[0].user_pw == req_user_pw) {
-				var tmp = data[0].user_idx + request.sessionID;
+				var tmp = data[0].user_idx + '/' + data[0].user_auth + '/' + request.sessionID;
 				response.cookie('token', tmp, {
 					maxAge: 60000 * 60 * 24
 				});
