@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('http');
 var app = express();
 var usercontroller = require('./controller/usercontroller')
+var magazinecontroller = require('./controller/magazinecontroller');
 var server = app.listen(3000, function () {
         console.log("Express server has started on port 3000")
 });
