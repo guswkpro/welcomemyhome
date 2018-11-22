@@ -56,7 +56,7 @@ exports.login = function (request, response) {
 				request.session.user_idx = data[0].user_idx;
 				request.session.user_nickname = data[0].user_nickname;
 				request.session.user_auth = data[0].user_auth;
-				request.check_status = 1;
+				request.session.check_status = 1;
 				dao.edituserconnectdate(date, data[0].user_idx, nextCallback);
 			} else {
 				nextCallback("WRONG PW", null, 3);
