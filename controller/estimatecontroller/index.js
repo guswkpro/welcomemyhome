@@ -80,7 +80,7 @@ exports.getestimatedetail = function (request, response) {
         }
     });
 };
-exports.getestimateanswerlist = function (request, respon) {
+exports.getestimateanswerlist = function (request, response) {
     var req_estimate_idx = request.param('estimate_idx');
     var info = [];
     async.waterfall([
@@ -90,13 +90,10 @@ exports.getestimateanswerlist = function (request, respon) {
             var encodedimage = [];
             var count = 0;
             async.whilst(function () {
-                console.log('aaa');
                 answerdata[count].answer_picture_path = answerdata[count].answer_picture_path.split(',');
                 return count < (answerdata[count].answer_picture_path.length - 1);
             }, function (callback) {
                 fs.readFile(answerdata[count].answer_picture_path[count], function (error, data) {
-                    console.log(answerdata[count].answer_picture_path.length);
-                    console.log(answerdata[count].answer_picture_path);
                     encodedimage.push(new Buffer(data).toString('base64'));
                     answerdata[count].answer_date = answerdata[count].answer_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                     answerdata[count].encodedimage = encodedimage;
