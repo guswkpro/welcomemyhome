@@ -8,6 +8,34 @@ require('date-utils');
 /********************
         GET
 ********************/
+exports.getestimatelist = function (request, response) {
+    var req_user_idx = request.session.user_idx;
+    var req_offset = request.param('offset');
+    var info = [];
+    async.waterfall([
+        function (nextCallback) {
+            estimatedao.getestimatelist(req_offset, nextCallback);
+        }
+    ], function (error, result) {
+        if (error) {
+            console.log(error);
+            response.json({
+                RESULT: "0"
+            });
+        } else {
+            response.json({
+                RESULT: "1"
+                , INFO: result
+            });
+        }
+    });
+};
+exports.getestimatedetail = function (request, response) {
+
+};
+exports.getestimateanswerlist = function (request, respon) {
+
+};
 exports.getmagazinelist = function (request, response) {
     var req_user_idx = request.session.user_idx;
     var req_offset = request.param('offset');
@@ -87,6 +115,7 @@ exports.getmagazinelist = function (request, response) {
 exports.addestimate = function (request, response) {
     var req_user_idx = request.session.user_idx;
     var req_user_nickname = request.session.user_nickname;
+    var req_estimate_title = request.body.title;
     var req_estimate_content = request.body.content;
     var req_estimate_image = request.body.image;
     var date = new Date();
@@ -120,13 +149,13 @@ exports.addestimate = function (request, response) {
                         RESULT: "0"
                     });
                 } else {
-                    estimatedto.estimate(req_user_idx, req_estimate_content, date, imagepath, nextCallback);
+                    estimatedto.estimate(req_user_idx, req_estimate_title, req_estimate_content, date, imagepath, 0, nextCallback);
                 }
             });
-        }, function(estimate, nextCallback){
+        }, function (estimate, nextCallback) {
             estimatedao.addestimate(estimate, nextCallback);
         }
-    ], function(error){
+    ], function (error) {
         if (error) {
             console.log(error);
             response.json({
@@ -181,161 +210,19 @@ exports.addestimateanswer = function (request, response) {
                     estimatedto.estimateanswer(req_user_idx, req_estimate_idx, req_estimate_content, date, imagepath, nextCallback);
                 }
             });
-        }, function(estimate, nextCallback){
+        }, function (estimate, nextCallback) {
             estimatedao.addestimateanswer(estimate, nextCallback);
-        }
-    ], function(error){
-        if (error) {
-            console.log(error);
-            response.json({
-                RESULT: "0"
-            });
-        }
-        else {
-            response.json({
-                RESULT: "1"
-            });
-        }
-    });
-};
-
-/********************
-        PUT
-********************/
-exports.addestimatecomment = function (request, response) {
-    var req_usr_idx = request.body.useridx;
-    var req_estimate_idx = request.body.estimateidx;
-    var req_comment_content = request.body.content;
-    var req_estimate_comment_count = request.body.count;
-    var date = new Date();
-    date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
-    async.waterfall([
-        function (nextCallback) {
-            dao.editcommentcount(req_usr_idx, 1, nextCallback);
         }, function (nextCallback) {
-            dto.comment(req_usr_idx, req_estimate_idx, req_comment_content, date, null, nextCallback);
-        }, function (comment, nextCallback) {
-            dao.addestimatecomment(comment, nextCallback)
-        }, function (nextCallback) {
-            dao.editestimatecommentcount(req_estimate_idx, req_estimate_comment_count, nextCallback);
+            estimatedao.editanswercount(req_estimate_idx);
         }
     ], function (error) {
         if (error) {
-            response.json({
-                RESULT: "0"
-            });
-        }
-        else {
-            response.json({
-                RESULT: "1"
-            });
-        }
-    });
-};
-
-exports.addestimatelike = function (request, response) {
-    var req_usr_idx = request.body.useridx;
-    var req_estimate_idx = request.body.estimateidx;
-    var req_estimate_like_count = request.body.count;
-    var date = new Date();
-    date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
-    async.waterfall([
-        function (nextCallback) {
-            dao.editpincount(req_usr_idx, 1, nextCallback);
-        }, function (nextCallback) {
-            dto.foreignkey(req_usr_idx, req_estimate_idx, nextCallback);
-        }, function (like, nextCallback) {
-            dao.addestimatelike(like, date, nextCallback);
-        }, function (nextCallback) {
-            dao.editestimatelikecount(req_estimate_idx, req_estimate_like_count, nextCallback);
-        }
-    ], function (error, result) {
-        if (error) {
             console.log(error);
             response.json({
                 RESULT: "0"
             });
         }
         else {
-            response.json({
-                RESULT: "1"
-            });
-        }
-    });
-};
-exports.deleteestimatelike = function (request, response) {
-    var req_usr_idx = request.body.useridx;
-    var req_estimate_idx = request.body.estimateidx;
-    var req_estimate_like_count = request.body.count;
-    async.waterfall([
-        function (nextCallback) {
-            dao.editpincount(req_usr_idx, -1, nextCallback);
-        }, function (nextCallback) {
-            dto.foreignkey(req_usr_idx, req_estimate_idx, nextCallback);
-        }, function (like, nextCallback) {
-            dao.deleteestimatelike(like, nextCallback);
-        }, function (nextCallback) {
-            dao.editestimatelikecount(req_estimate_idx, req_estimate_like_count, nextCallback);
-        }
-    ], function (error, result) {
-        if (error) {
-            response.json({
-                RESULT: "0"
-            });
-        } else {
-            response.json({
-                RESULT: "1"
-            });
-        }
-    });
-};
-
-exports.deleteestimatecomment = function (request, response) {
-    var req_usr_idx = request.body.user_idx;
-    var req_comment_idx = request.body.commentidx;
-    var req_estimate_idx = request.body.estimateidx;
-    var req_estimate_comment_count = request.body.count;
-    async.waterfall([
-        function (nextCallback) {
-            dao.editcommentcount(req_usr_idx, -1, nextCallback);
-        }, function (nextCallback) {
-            dao.deleteestimatecomment(req_comment_idx, nextCallback);
-        }, function (nextCallback) {
-            dao.editestimatecommentcount(req_estimate_idx, req_estimate_comment_count, nextCallback);
-        }
-    ], function (error, result) {
-        if (error) {
-            response.json({
-                RESULT: "0"
-            });
-        } else {
-            response.json({
-                RESULT: "1"
-            });
-        }
-    })
-};
-
-exports.deleteestimate = function (request, response) {
-    var req_estimate_idx = request.body.estimateidx;
-    async.waterfall([
-        function (nextCallback) {
-            dao.editpostcount(req_usr_idx, -1, nextCallback);
-        }, function (nextCallback) {
-            dao.deleteestimateallcomment(req_estimate_idx, nextCallback);
-        }, function (nextCallback) {
-            dao.deleteestimatealllike(req_estimate_idx, nextCallback);
-        }, function (nextCallback) {
-            dao.deleteallshare(req_estimate_idx, nextCallback);
-        }, function (nextCallback) {
-            dao.deleteestimate(req_estimate_idx, nextCallback);
-        }
-    ], function (error, result) {
-        if (error) {
-            response.json({
-                RESULT: "0"
-            });
-        } else {
             response.json({
                 RESULT: "1"
             });

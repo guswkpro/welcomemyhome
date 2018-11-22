@@ -1,5 +1,4 @@
 var mysql = require('mysql');
-var dto = require('../../dto/magazinedto');
 
 var client = mysql.createConnection({
     host: 'stweb.ccmxaq6oosug.ap-northeast-2.rds.amazonaws.com'

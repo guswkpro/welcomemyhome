@@ -11,28 +11,28 @@ var client = mysql.createConnection({
 /********************
         GET
 ********************/
-exports.getmagazinelist = function (offset, callback) {
-    client.query('SELECT * FROM stweb.stweb_magazines order by magazine_idx DESC limit ?, 6', [Number(offset)], function (error, result) {
+exports.getestimatelist = function (offset, callback) {
+    client.query('SELECT * FROM stweb.stweb_estimates order by estimate_idx DESC limit ?, 5', [Number(offset)], function (error, result) {
         callback(error, result);
     });
 };
-exports.getmagazinedetail = function (magazine_idx, callback) {
-    client.query('SELECT * FROM stweb.stweb_magazines where magazine_idx = ?', [magazine_idx], function (error, result) {
+exports.getestimatedetail = function (estimate_idx, callback) {
+    client.query('SELECT * FROM stweb.stweb_estimates where estimate_idx = ?', [estimate_idx], function (error, result) {
         callback(error, result);
     });
 };
-exports.getmagazinecomment = function (magazine_idx, callback) {
-    client.query('SELECT * FROM stweb.stweb_magazine_comments where magazine_idx = ?', [magazine_idx], function (error, result) {
+exports.getestimatecomment = function (estimate_idx, callback) {
+    client.query('SELECT * FROM stweb.stweb_estimate_comments where estimate_idx = ?', [estimate_idx], function (error, result) {
         callback(error, result);
     });
 };
-exports.getmagazinelikecheck = function (magazine_idx, user_idx, callback) {
-    client.query('SELECT * FROM stweb.stweb_magazines_likes where magazine_idx = ? AND user_idx = ?', [magazine_idx, user_idx], function (error, result) {
+exports.getestimatelikecheck = function (estimate_idx, user_idx, callback) {
+    client.query('SELECT * FROM stweb.stweb_estimates_likes where estimate_idx = ? AND user_idx = ?', [estimate_idx, user_idx], function (error, result) {
         callback(error, result);
     });
 };
-exports.getmagazinecommentcheck = function (magazine_idx, user_idx, callback) {
-    client.query('SELECT * FROM stweb.stweb_magazines_comments where magazine_idx = ? AND user_idx = ?', [magazine_idx, user_idx], function (error, result) {
+exports.getestimatecommentcheck = function (estimate_idx, user_idx, callback) {
+    client.query('SELECT * FROM stweb.stweb_estimates_comments where estimate_idx = ? AND user_idx = ?', [estimate_idx, user_idx], function (error, result) {
         callback(error, result);
     });
 };
@@ -41,7 +41,7 @@ exports.getmagazinecommentcheck = function (magazine_idx, user_idx, callback) {
         POST
 ********************/
 exports.addestimate = function (estimate, callback) {
-    client.query('INSERT INTO stweb.stweb_estimates (estimate_picture_path, estimate_content, estimate_date, user_idx) VALUES (?, ?, ?, ?)', [estimate.estimate_picture_path, estimate.estimate_content, estimate.estimate_date, estimate.user_idx], function (error) {
+    client.query('INSERT INTO stweb.stweb_estimates (estimate_title, estimate_picture_path, estimate_content, estimate_date, estimate_answer_count, user_idx) VALUES (?, ?, ?, ?, ?, ?)', [estimate.estimate_title, estimate.estimate_picture_path, estimate.estimate_content, estimate.estimate_date, Number(estimate.estimate_answer_count), estimate.user_idx], function (error) {
         callback(error);
     });
 };
@@ -54,8 +54,8 @@ exports.addestimateanswer = function (estimateanswer, callback) {
 /********************
         PUT
 ********************/
-exports.editmagazinehitcount = function (magazine_idx, callback) {
-    client.query('UPDATE stweb.stweb_magazines set magazine_hit_count = magazine_hit_count + 1 where magazine_idx = ?', [magazine_idx], function (error) {
+exports.editanswercount = function (estimate_idx, callback) {
+    client.query('UPDATE stweb.stweb_estimates set estimate_answer_count = estimate_answer_count + 1 where estimate_idx = ?', [estimate_idx], function (error) {
         callback(error);
     });
 };

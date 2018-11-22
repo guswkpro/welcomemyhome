@@ -1,9 +1,11 @@
-exports.estimate = function(user_idx, content, date, imagepath, callback){
+exports.estimate = function(user_idx, title, content, date, imagepath, count, callback){
     var estimate = {};
     estimate.user_idx = user_idx;
+    estimate.estimate_title = title;
     estimate.estimate_content = content;
     estimate.estimate_date = date;
     estimate.estimate_picture_path = imagepath;
+    estimate.estimate_answer_count = count;
     callback(null, estimate);
 };
 
