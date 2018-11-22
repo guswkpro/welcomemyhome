@@ -59,7 +59,7 @@ exports.getestimatedetail = function (request, response) {
                         RESULT: "0"
                     });
                 } else {
-                    estimatedata[0].estimate_post_date = estimatedata[0].estimate_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+                    estimatedata[0].estimate_post_date = estimatedata[0].estimate_post_date.Format('YYYY-MM-DD HH24:MI:SS');
                     estimatedata[0].encodedimage = encodedimage;
                     info = estimatedata[0];
                     nextCallback();
