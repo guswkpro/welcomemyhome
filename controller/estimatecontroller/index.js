@@ -93,28 +93,26 @@ exports.getestimateanswerlist = function (request, response) {
                 return count < (answerdata.length);
             }, function (callback) {
                 answerdata[count].answer_picture_path = answerdata[count].answer_picture_path.split(',');
+                answerdata[count].answer_date = answerdata[count].answer_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                 var count2 = 0;
-                async.whilst(function(){
+                async.whilst(function () {
                     return count2 < (answerdata[count].answer_picture_path.length - 1);
-                }, function(callback){
+                }, function (callback) {
                     fs.readFile(answerdata[count].answer_picture_path[count], function (error, data) {
                         encodedimage.push(new Buffer(data).toString('base64'));
-                        console.log(count2);
-                        answerdata[count].answer_date = answerdata[count].answer_date.toFormat('YYYY-MM-DD HH24:MI:SS');
-                        console.log(answerdata[count].answer_date + 'aaaa');
-                        answerdata[count].encodedimage = encodedimage;
-                        encodedimage = [];
-                        info.push(answerdata[count]);
                         count2++;
                         callback();
                     });
-                }, function(error){
+                }, function (error) {
                     if (error) {
                         console.log(error);
                         response.json({
                             RESULT: "0"
                         });
                     } else {
+                        answerdata[count].encodedimage = encodedimage;
+                        encodedimage = [];
+                        info.push(answerdata[count]);
                         count++;
                         callback();
                     }
