@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', []);
 
-  myApp.controller('logincheckCtrl', function($scope, $http) {
+  myApp.controller('logincheckCtrl', function($scope, $http, $window) {
     $http.get('/logincheck').success(function(response) {
       if (response.RESULT == "1") {
         $scope.showHide_login = !$scope.showHide_login;
