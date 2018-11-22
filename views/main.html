@@ -48,14 +48,14 @@
       </ul>
     </div>
     <form class="form-inline my-lg-0 nav-form">
-      <!-- <button id="login_button" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
+      <button id="login_button" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
                   type="button"ng-show="showHide_logout">로그인</button>
       <button id="signup_button" class="btn btn-secondary my-sm-0 nav-button-signup" onclick="location.href = 'http://13.124.196.226:3000/signup'"
-                  type="button" ng-show="showHide_logout">회원가입</button> -->
+                  type="button" ng-show="showHide_logout">회원가입</button>
       <button id="signup_button" class="btn btn-secondary my-sm-0 nav-button-mypage" onclick="location.href = 'http://13.124.196.226:3000/mypage'"
-                  type="button" >마이페이지</button>
+                  type="button" ng-show="showHide_login">마이페이지</button>
       <button id="signup_button" class="btn btn-secondary my-sm-0 nav-button-logout" onclick="location.href = 'http://13.124.196.226:3000/'"
-                  type="button" >로그아웃</button>
+                  type="button" ng-show="showHide_login">로그아웃</button>
     </form>
   </nav>
 </body>
