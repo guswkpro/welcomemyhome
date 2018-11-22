@@ -10,22 +10,26 @@ require('date-utils');
         GET
 ********************/
 exports.logincheck = function (request, response) {
-	if(typeof request.cookies.token != 'undefined'){
-			var checkData = request.cookies.token.split('/');
-	if (typeof request.session.check_status == 'undefined') {
+	if (typeof request.cookies.token != 'undefined') {
+		var checkData = request.cookies.token.split('/');
+		if (typeof request.session.check_status == 'undefined') {
+			response.json({
+				RESULT: "2"
+			});
+		} else if (checkData[0] == request.session.user_idx && checkData[2] == request.sessionID) {
+			response.json({
+				RESULT: "1"
+			});
+		} else {
+			response.json({
+				RESULT: "0"
+			});
+		}
+	} else {
 		response.json({
 			RESULT: "2"
 		});
-	} else if(checkData[0] == request.session.user_idx && checkData[2] == request.sessionID){
-		response.json({
-			RESULT: "1"
-		});
-	} else {
-		response.json({
-			RESULT: "0"
-		});
 	}
-}
 };
 
 /********************
