@@ -16,6 +16,11 @@ exports.getestimatelist = function (offset, callback) {
         callback(error, result);
     });
 };
+exports.getestimatelist = function (offset, user_idx, callback) {
+    client.query('SELECT * FROM stweb.stweb_estimates order by estimate_idx DESC limit ?, 5 where user_idx = ?', [Number(offset), user_idx], function (error, result) {
+        callback(error, result);
+    });
+};
 exports.getestimatedetail = function (estimate_idx, callback) {
     client.query('SELECT * FROM stweb.stweb_estimates where estimate_idx = ?', [estimate_idx], function (error, result) {
         callback(error, result);
