@@ -46,7 +46,7 @@ exports.addestimate = function (estimate, callback) {
     });
 };
 exports.addestimateanswer = function (estimateanswer, callback) {
-    client.query('INSERT INTO stweb.stweb_estimates (estimate_picture_path, estimate_content, estimate_date,  estimate_idx, user_idx) VALUES (?, ?, ?, ?, ?)', [estimateanswer.answer_picture_path, estimateanswer.answer_content, estimateanswer.answer_post_date, estimateanswer.estimate_idx, estimateanswer.user_idx], function (error) {
+    client.query('INSERT INTO stweb.stweb_estimate_answers (estimate_picture_path, estimate_content, estimate_date,  estimate_idx, user_idx) VALUES (?, ?, ?, ?, ?)', [estimateanswer.answer_picture_path, estimateanswer.answer_content, estimateanswer.answer_post_date, estimateanswer.estimate_idx, estimateanswer.user_idx], function (error) {
         callback(error);
     });
 };
