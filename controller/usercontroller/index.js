@@ -10,7 +10,8 @@ require('date-utils');
         GET
 ********************/
 exports.logincheck = function (request, response) {
-	var checkData = request.cookies.token.split('/');
+	if(typeof request.cookies.token != 'undefined'){
+			var checkData = request.cookies.token.split('/');
 	if (typeof request.session.check_status == 'undefined') {
 		response.json({
 			RESULT: "2"
@@ -24,6 +25,7 @@ exports.logincheck = function (request, response) {
 			RESULT: "0"
 		});
 	}
+}
 };
 
 /********************
