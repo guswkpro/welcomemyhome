@@ -35,67 +35,33 @@ exports.getestimatelist = function (request, response) {
     });
 };
 exports.getestimatedetail = function (request, response) {
-
-};
-exports.getestimateanswerlist = function (request, respon) {
-
-};
-exports.getmagazinelist = function (request, response) {
-    var req_user_idx = request.session.user_idx;
-    var req_offset = request.param('offset');
-    var info = [];
+    var req_estimate_idx = request.param('estimate_idx');
+    var info = {};
     async.waterfall([
         function (nextCallback) {
-            magazinedao.getmagazinelist(req_offset, nextCallback);
-        }, function (magazinelist, nextCallback) {
+            estimatedao.getestimatedetail(req_estimate_idx, nextCallback);
+        }, function (estimatedata, nextCallback) {
+            var encodedimage = [];
             var count = 0;
+            estimatedata[0].estimate_picture_path = estimatedata[0].estimate_picture_path.split(',');
             async.whilst(function () {
-                return count < magazinelist.length;
+                return count < (estimatedata[0].estimate_picture_path.length - 1);
             }, function (callback) {
-                async.waterfall([
-                    function (secondNextCallback) {
-                        magazinelist[count].magazine_post_date = magazinelist[count].magazine_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
-                        fs.readFile(magazinelist[count].magazine_thumbnail_path, function (error, data) {
-                            magazinelist[count].encodedimage = new Buffer(data).toString('base64');
-                            secondNextCallback(error);
-                        });
-                    }, function (secondNextCallback) {
-                        magazinelist[count].likecheck = 0;
-                        magazinelist[count].commentcheck = 0;
-                        magazinedao.getmagazinelikecheck(magazinelist[count].magazine_idx, req_user_idx, secondNextCallback);
-                    }, function (checkdata, nextCallback) {
-                        if (checkdata.length == 0) {
-                            magazinelist[count].likecheck = 0;
-                            nextCallback(null);
-                        } else {
-                            magazinelist[count].likecheck = 1;
-                            nextCallback(null);
-                        }
-                    }, function (nextCallback) {
-                        magazinedao.getmagazinecommentcheck(magazinelist[count].magazine_idx, req_user_idx, nextCallback);
-                    }, function (checkdata, nextCallback) {
-                        if (checkdata.length == 0) {
-                            magazinelist[count].commentcheck = 0;
-                            nextCallback(null);
-                        } else {
-                            magazinelist[count].commentcheck = 1;
-                            nextCallback(null);
-                        }
-                    }
-                ], function (error) {
-                    if (error) {
-                        console.log(error);
-                        response.json({
-                            RESULT: "0"
-                        });
-                    } else {
-                        info.push(magazinelist[count]);
-                        count++;
-                        callback();
-                    }
+                fs.readFile(estimatedata[0].estimate_picture_path[count], function (error, data) {
+                    encodedimage.push(new Buffer(data).toString('base64'));
+                    count++;
+                    callback();
                 });
             }, function (error) {
-                nextCallback();
+                if (error) {
+                    console.log(error);
+                    response.json({
+                        RESULT: "0"
+                    });
+                } else {
+                    info = magazinedata[0];
+                    nextCallback();
+                }
             });
         }
     ], function (error) {
@@ -111,6 +77,9 @@ exports.getmagazinelist = function (request, response) {
             });
         }
     });
+};
+exports.getestimateanswerlist = function (request, respon) {
+
 };
 
 /********************
