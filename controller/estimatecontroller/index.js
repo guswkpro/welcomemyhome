@@ -59,7 +59,6 @@ exports.getestimatedetail = function (request, response) {
                         RESULT: "0"
                     });
                 } else {
-                    estimatedata[0].estimate_post_date = estimatedata[0].estimate_post_date.Format('YYYY-MM-DD HH24:MI:SS');
                     estimatedata[0].encodedimage = encodedimage;
                     info = estimatedata[0];
                     nextCallback();
@@ -95,7 +94,6 @@ exports.getestimateanswerlist = function (request, respon) {
                 estimatedata[count].estimate_picture_path = estimatedata[count].estimate_picture_path.split(',');
                 fs.readFile(estimatedata[count].estimate_picture_path[count], function (error, data) {
                     encodedimage.push(new Buffer(data).toString('base64'));
-                    estimatedata[count].estimate_post_date = estimatedata[count].estimate_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                     estimatedata[count].encodedimage = encodedimage;
                     info.push(estimatedata[count]);
                     count++;
