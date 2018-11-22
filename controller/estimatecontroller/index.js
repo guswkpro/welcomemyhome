@@ -14,7 +14,7 @@ exports.getestimatelist = function (request, response) {
     var info = [];
     async.waterfall([
         function (nextCallback) {
-            if (typeof req_user_check != undefined) {
+            if (req_user_check == "1") {
                 estimatedao.getestimatelistforuser(req_offset, request.session.user_idx, nextCallback);
             } else {
                 estimatedao.getestimatelist(req_offset, nextCallback);
