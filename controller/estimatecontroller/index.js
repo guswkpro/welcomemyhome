@@ -59,6 +59,7 @@ exports.getestimatedetail = function (request, response) {
                         RESULT: "0"
                     });
                 } else {
+                    estimatedata[0].encodedimage = encodedimage;
                     info = estimatedata[0];
                     nextCallback();
                 }
