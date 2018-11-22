@@ -2,6 +2,7 @@ var myApp = angular.module('myApp', []);
 
 myApp.controller('logincheckCtrl', function($scope, $http, $window) {
   $scope.load = function() {
+    console.log('aaaa');
     $http.get('/logincheck').success(function(response) {
       console.log(response.RESULT);
       if (response.RESULT == "1") {
@@ -14,5 +15,5 @@ myApp.controller('logincheckCtrl', function($scope, $http, $window) {
         $scope.showHide_logout = true;
       }
     });
-  }
+  };
 });
