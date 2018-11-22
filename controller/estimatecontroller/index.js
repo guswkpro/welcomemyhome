@@ -87,6 +87,8 @@ exports.getmagazinelist = function (request, response) {
 exports.addestimate = function (request, response) {
     var req_user_idx = request.session.user_idx;
     var req_user_nickname = request.session.user_nickname;
+    console.log(req_user_nickname + "bbbb");
+    console.log(request.session.user_nickname);
     var req_estimate_content = request.body.content;
     var req_estimate_image = request.body.image;
     var date = new Date();
