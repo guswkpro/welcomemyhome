@@ -94,7 +94,9 @@ exports.getestimateanswerlist = function (request, response) {
             }, function (callback) {
                 if(count == 0){
                     answerdata[count].answer_picture_path = answerdata[count].answer_picture_path.split(',');
+                    console.log(count + 'aaa');
                 }
+                console.log(count + 'bbb');
                 fs.readFile(answerdata[count].answer_picture_path[count], function (error, data) {
                     encodedimage.push(new Buffer(data).toString('base64'));
                     answerdata[count].answer_date = answerdata[count].answer_date.toFormat('YYYY-MM-DD HH24:MI:SS');
@@ -203,7 +205,7 @@ exports.addestimateanswer = function (request, response) {
     dirdate = dirdate.toFormat("YYYYMMDDHH24MISS");
     var imagepath = '';
     var thumbnailpath = '';
-    var dirname = "./public/" + req_user_nickname + "/estimate";
+    var dirname = "./public/" + req_user_nickname + "/estimateanswer";
     var newPath;
     async.waterfall([
         function (nextCallback) {
