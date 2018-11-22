@@ -26,18 +26,8 @@ exports.getestimatedetail = function (estimate_idx, callback) {
         callback(error, result);
     });
 };
-exports.getestimatecomment = function (estimate_idx, callback) {
-    client.query('SELECT * FROM stweb.stweb_estimate_comments where estimate_idx = ?', [estimate_idx], function (error, result) {
-        callback(error, result);
-    });
-};
-exports.getestimatelikecheck = function (estimate_idx, user_idx, callback) {
-    client.query('SELECT * FROM stweb.stweb_estimates_likes where estimate_idx = ? AND user_idx = ?', [estimate_idx, user_idx], function (error, result) {
-        callback(error, result);
-    });
-};
-exports.getestimatecommentcheck = function (estimate_idx, user_idx, callback) {
-    client.query('SELECT * FROM stweb.stweb_estimates_comments where estimate_idx = ? AND user_idx = ?', [estimate_idx, user_idx], function (error, result) {
+exports.getestimateanswer = function (estimate_idx, callback) {
+    client.query('SELECT * FROM stweb.stweb_estimate_answers where estimate_idx = ?', [estimate_idx], function (error, result) {
         callback(error, result);
     });
 };
@@ -46,7 +36,7 @@ exports.getestimatecommentcheck = function (estimate_idx, user_idx, callback) {
         POST
 ********************/
 exports.addestimate = function (estimate, callback) {
-    client.query('INSERT INTO stweb.stweb_estimates (estimate_title, estimate_picture_path, estimate_content, estimate_date, estimate_answer_count, user_idx) VALUES (?, ?, ?, ?, ?, ?)', [estimate.estimate_title, estimate.estimate_picture_path, estimate.estimate_content, estimate.estimate_date, Number(estimate.estimate_answer_count), estimate.user_idx], function (error) {
+    client.query('INSERT INTO stweb.stweb_estimates (estimate_title, estimate_picture_path, estimate_content, estimate_date, estimate_address, estimate_answer_count, user_idx) VALUES (?, ?, ?, ?, ?, ?, ?)', [estimate.estimate_title, estimate.estimate_picture_path, estimate.estimate_content, estimate.estimate_date, estimate.estimate_address, Number(estimate.estimate_answer_count), estimate.user_idx], function (error) {
         callback(error);
     });
 };

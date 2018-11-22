@@ -59,6 +59,7 @@ exports.getestimatedetail = function (request, response) {
                         RESULT: "0"
                     });
                 } else {
+                    estimatedata[0].estimate_post_date = estimatedata[0].estimate_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                     estimatedata[0].encodedimage = encodedimage;
                     info = estimatedata[0];
                     nextCallback();
@@ -80,7 +81,50 @@ exports.getestimatedetail = function (request, response) {
     });
 };
 exports.getestimateanswerlist = function (request, respon) {
-
+    var req_estimate_idx = request.param('estimate_idx');
+    var info = [];
+    async.waterfall([
+        function (nextCallback) {
+            estimatedao.getestimatedetail(req_estimate_idx, nextCallback);
+        }, function (estimatedata, nextCallback) {
+            var encodedimage = [];
+            var count = 0;
+            async.whilst(function () {
+                return count < (estimatedata[count].estimate_picture_path.length - 1);
+            }, function (callback) {
+                estimatedata[count].estimate_picture_path = estimatedata[count].estimate_picture_path.split(',');
+                fs.readFile(estimatedata[count].estimate_picture_path[count], function (error, data) {
+                    encodedimage.push(new Buffer(data).toString('base64'));
+                    estimatedata[count].estimate_post_date = estimatedata[count].estimate_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+                    estimatedata[count].encodedimage = encodedimage;
+                    info.push(estimatedata[count]);
+                    count++;
+                    callback();
+                });
+            }, function (error) {
+                if (error) {
+                    console.log(error);
+                    response.json({
+                        RESULT: "0"
+                    });
+                } else {
+                    nextCallback();
+                }
+            });
+        }
+    ], function (error) {
+        if (error) {
+            console.log(error);
+            response.json({
+                RESULT: "0"
+            });
+        } else {
+            response.json({
+                RESULT: "1"
+                , INFO: info
+            });
+        }
+    });
 };
 
 /********************
@@ -92,6 +136,7 @@ exports.addestimate = function (request, response) {
     var req_estimate_title = request.body.title;
     var req_estimate_content = request.body.content;
     var req_estimate_image = request.body.image;
+    var req_estimate_address = request.body.address;
     var date = new Date();
     date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
     var dirdate = new Date();
@@ -123,7 +168,7 @@ exports.addestimate = function (request, response) {
                         RESULT: "0"
                     });
                 } else {
-                    estimatedto.estimate(req_user_idx, req_estimate_title, req_estimate_content, date, imagepath, 0, nextCallback);
+                    estimatedto.estimate(req_user_idx, req_estimate_title, req_estimate_content, date, imagepath, req_estimate_address, 0, nextCallback);
                 }
             });
         }, function (estimate, nextCallback) {
