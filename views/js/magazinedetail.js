@@ -1,11 +1,3 @@
-$(function(){
-	$(document).one('click', '.like-review', function(e) {
-		$(this).html('<i class="fa fa-heart" aria-hidden="true"></i> 좋아요♡');
-		$(this).children('.fa-heart').addClass('animate-like');
-	});
-});
-
-
 $(function() {
 
   $(".heart").on("click", function() {
@@ -13,3 +5,21 @@ $(function() {
     $(this).toggleClass("heart-blast");
   });
 });
+
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+    showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1;}
+    if (n < 1) {slideIndex = x.length;}
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    x[slideIndex-1].style.display = "block";
+}
