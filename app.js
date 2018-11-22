@@ -17,6 +17,7 @@ app.use(session({
         resave: false,
         saveUninitialized: true
 }));
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/views'));
@@ -50,6 +51,10 @@ app.get('/magazinedetail', function (req, res) {
 app.get('/getmagazinelist', magazinecontroller.getmagazinelist);
 app.get('/getmagazinedetail', magazinecontroller.getmagazinedetail);
 app.get('/getmagazinecomment', magazinecontroller.getmagazinecomment);
+
+app.get('/estimate', function(req, res){
+        res.render('estimate.html');
+});
 
 /* ----------- POST ----------- */
 app.post('/login', usercontroller.login);

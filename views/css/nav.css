@@ -1,92 +1,86 @@
-.nav {
-  position:absolute;
-  padding-bottom: : 70px;
-}
 
-/* WMH 로고 */
-.nav-logo{
-  font-weight: bolder;
-  color : black;
-  padding : 20px 20px;
-}
+  .nav {
+    position: fixed;
+    top: 0px;
+    margin-top: 15px;
+  }
 
-.nav-logo:hover{
-  color : black;
-}
+  .nav-logo {
+    font-weight: bolder;
+    color: black;
+  }
 
+  .nav-logo:hover {
+    font-weight: bolder;
+    color: black;
+  }
 
-/* login, signup 버튼*/
-.nav-button-signup {
-  position:relative;
-  margin : 0 0 0 2px;
-  padding: 5px 10px;
-	font-size: 12px;
-	line-height: 1.5;
-	border-radius: 3px;
-}
+  .nav-form{
 
-.nav-button-login {
-  position:relative;
-  margin : 0 0 0 375px;
-  padding: 5px 10px;
-	font-size: 12px;
-	line-height: 1.5;
-	border-radius: 3px;
-}
+  }
 
+  .nav-button-signup {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+  }
 
-/* nav menu 간격*/
-.nav-ul {
-  position:relative;
-  margin-left : 310px;
-}
+  .nav-button-login {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    margin-right: 5px;
+  }
 
-.nav-li {
-  position: relative;
-  margin-left: 70px;
-  width : 70px;
-}
+  /* nav menu 간격*/
+  #navdiv {
+    text-align: center;
+  }
 
-/* nav 바 상단 고정 */
-.navFixed {
-  position: fixed;
-  top: 0px;
-}
+  .nav-ul {
+    display: inline-block;
+    width: 1280px;
+  }
 
+  .nav-li {
+    display: inline-block;
+    margin-left: 70px;
+  }
 
-/* nav menu 선택 시 밑줄 */
-.nav-a-text3 {
-  display: block;
-  font-weight: bold;
-  color : black;
-  text-decoration: none;
-}
+  .nav-a-text3 {
+    display: block;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+  }
 
-.nav-a-text4 {
-  display: block;
-  font-weight: bold;
-  color : black;
-  text-decoration: none;
-}
+  .nav-a-text4 {
+    display: block;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+  }
 
-.nav-a-text3:hover {
-  text-decoration: none;
-  color : #dcdcdc;
-  content :"";
-  display : block;
-  width : 50px;
-  border-bottom : 1px solid #bcbcbc;
-}
+  .nav-a-text3:hover {
+    text-decoration: none;
+    color: #dcdcdc;
+    content: "";
+    display: block;
+    width: 50px;
+    border-bottom: 1px solid #bcbcbc;
+  }
 
-.nav-a-text4:hover {
-  text-decoration: none;
-  color : #dcdcdc;
-  content :"";
-  display : block;
-  width : 64px;
-  border-bottom : 1px solid #bcbcbc;
-}
+  .nav-a-text4:hover {
+    text-decoration: none;
+    color: #dcdcdc;
+    content: "";
+    display: block;
+    width: 64px;
+    border-bottom: 1px solid #bcbcbc;
+  }
 
-.jbContent {
-  height: 2000px;
-}
+  .jbContent {
+    height: 2000px;
+  }
