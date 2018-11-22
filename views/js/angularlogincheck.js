@@ -12,7 +12,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
         $window.location.href = '/';
       } else {
         $scope.div_login = {
-          "width" :  "12%"
+          "width" :  "20%"
         };
         $scope.showHide_logout = true;
       }
