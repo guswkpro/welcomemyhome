@@ -1,8 +1,7 @@
-var myApp = angular.module('myApp', []);
+var app = angular.module('Main', []);
 
-myApp.controller('logincheckCtrl', function($scope, $http, $window) {
+app.controller('logincheckCtrl', function($scope, $http, $window) {
   $scope.load = function() {
-    console.log('aaaa');
     $http.get('/logincheck').success(function(response) {
       console.log(response.RESULT);
       if (response.RESULT == "1") {
@@ -12,6 +11,9 @@ myApp.controller('logincheckCtrl', function($scope, $http, $window) {
         $window.alert(msg);
         $window.location.href = '/';
       } else {
+        $scope.div_login = {
+          "width" :  "12%"
+        };
         $scope.showHide_logout = true;
       }
     });

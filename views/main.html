@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" ng-app="myApp">
+<html lang="ko" ng-app="Main">
 
 <head>
   <meta charset="utf-8">
@@ -20,8 +20,7 @@
   <script src="js/angularlogincheck.js"></script>
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
 
   <title>놀러와 마이홈</title>
@@ -48,16 +47,18 @@
         </li>
       </ul>
     </div>
-    <form class="form-inline my-lg-0 nav-form" ng-init="load()">
-      <button ng-show="showHide_logout" id="login_button" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
-        type="button">로그인</button>
-      <button ng-show="showHide_logout" id="signup_button" class="btn btn-secondary my-sm-0 nav-button-signup" onclick="location.href = 'http://13.124.196.226:3000/signup'"
-        type="button">회원가입</button>
-      <button ng-show="showHide_login" id="signup_button" class="btn btn-secondary my-sm-0 nav-button-mypage" onclick="location.href = 'http://13.124.196.226:3000/mypage'"
-        type="button">마이페이지</button>
-      <button ng-show="showHide_login" id="signup_button" class="btn btn-secondary my-sm-0 nav-button-logout" onclick="location.href = 'http://13.124.196.226:3000/'"
-        type="button">로그아웃</button>
-    </form>
+    <div class = "nav-div-form" ng-init="load()" ng-style="div_login">
+      <form>
+        <button ng-show="showHide_logout" id="login_button" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
+          type="button">로그인</button>
+        <button ng-show="showHide_logout" id="signup_button" class="btn btn-secondary my-sm-0 nav-button-signup" onclick="location.href = 'http://13.124.196.226:3000/signup'"
+          type="button">회원가입</button>
+        <button ng-show="showHide_login" id="signup_button" class="btn btn-secondary my-sm-0 nav-button-mypage" onclick="location.href = 'http://13.124.196.226:3000/mypage'"
+          type="button">마이페이지</button>
+        <button ng-show="showHide_login" id="signup_button" class="btn btn-secondary my-sm-0 nav-button-logout" onclick="location.href = 'http://13.124.196.226:3000/'"
+          type="button">로그아웃</button>
+      </form>
+    </div>
   </nav>
 </body>
 
