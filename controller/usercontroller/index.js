@@ -49,7 +49,7 @@ exports.login = function (request, response) {
 				});
 				request.session.user_idx = data[0].user_idx;
 				request.session.user_nickname = data[0].user_nickname;
-				console.log(request.seesion.user_nickname + "aaaaa");
+				console.log(request.session.user_nickname + "aaaaa");
 				request.session.user_auth = data[0].user_auth;
 				dao.edituserconnectdate(date, data[0].user_idx, nextCallback);
 			} else {
