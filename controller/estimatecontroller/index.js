@@ -232,7 +232,7 @@ exports.addestimateanswer = function (request, response) {
         }, function (estimate, nextCallback) {
             estimatedao.addestimateanswer(estimate, nextCallback);
         }, function (nextCallback) {
-            estimatedao.editanswercount(req_estimate_idx);
+            estimatedao.editanswercount(req_estimate_idx, nextCallback);
         }
     ], function (error) {
         if (error) {
