@@ -11,7 +11,7 @@ body {
 .portfolio-item {
   margin-bottom: 30px;
 }
-
+/* 하트 */
 .heart {
   width: 100px;
   height: 100px;
@@ -21,17 +21,17 @@ body {
   transform: translate(-50%, -50%);
   background: url(heart.png) no-repeat;
   cursor: pointer;
-
 }
+
 .heart-blast {
   background-position: -2800px 0;
   transition: background 1s steps(28);
 }
 
-
+/* 좋아요 한글표시-*/
 .like-content {
     display: inline-block;
-    width: 100%;
+    width: 50%;
     margin: 0px 0 0;
     padding: 0px 0 0;
     font-size: 11px;
@@ -48,8 +48,8 @@ body {
     text-align: center;
     background: #ed2553;
     border-radius: 3px;
-    box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
-    padding: 10px 17px;
+
+    padding: 10px 10px;
     font-size: 11px;
     cursor: pointer;
     border: none;
@@ -63,7 +63,7 @@ body {
 	  transform: translateY(-3px);
 }
 .like-content .btn-secondary .fa {
-	  margin-right: 5px;
+	  margin-right: 0px;
 }
 .animate-like {
 	animation-name: likeAnimation;
