@@ -47,7 +47,7 @@
         </li>
       </ul>
     </div>
-    <form class="form-inline my-lg-0 nav-form">
+    <form class="form-inline my-lg-0 nav-form" ng-init="load()">
       <button id="login_button" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
                   type="button"ng-show="showHide_logout">로그인</button>
       <button id="signup_button" class="btn btn-secondary my-sm-0 nav-button-signup" onclick="location.href = 'http://13.124.196.226:3000/signup'"
