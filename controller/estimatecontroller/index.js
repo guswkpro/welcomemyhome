@@ -2,6 +2,7 @@ var estimatedao = require('../../dao/magazinedao');
 var estimatedto = require('../../dto/estimatedto');
 var async = require('async');
 var fs = require('fs');
+var mkdirp = require('mkdirp');
 require('date-utils');
 
 /********************
