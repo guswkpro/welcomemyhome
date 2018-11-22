@@ -1,4 +1,4 @@
-var estimatedao = require('../../dao/magazinedao');
+var estimatedao = require('../../dao/estimatedao');
 var estimatedto = require('../../dto/estimatedto');
 var async = require('async');
 var fs = require('fs');
