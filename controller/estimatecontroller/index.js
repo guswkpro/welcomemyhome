@@ -59,7 +59,7 @@ exports.getestimatedetail = function (request, response) {
                         RESULT: "0"
                     });
                 } else {
-                    estimatedata[0].estimate_post_date = estimatedata[0].estimate_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+                    estimatedata[0].estimate_date = estimatedata[0].estimate_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                     estimatedata[0].encodedimage = encodedimage;
                     info = estimatedata[0];
                     nextCallback();
@@ -85,19 +85,19 @@ exports.getestimateanswerlist = function (request, respon) {
     var info = [];
     async.waterfall([
         function (nextCallback) {
-            estimatedao.getestimatedetail(req_estimate_idx, nextCallback);
-        }, function (estimatedata, nextCallback) {
+            estimatedao.getestimateanswer(req_estimate_idx, nextCallback);
+        }, function (answerdata, nextCallback) {
             var encodedimage = [];
             var count = 0;
             async.whilst(function () {
-                return count < (estimatedata[count].estimate_picture_path.length - 1);
+                return count < (answerdata[count].answer_picture_path.length - 1);
             }, function (callback) {
-                estimatedata[count].estimate_picture_path = estimatedata[count].estimate_picture_path.split(',');
-                fs.readFile(estimatedata[count].estimate_picture_path[count], function (error, data) {
+                answerdata[count].answer_picture_path = answerdata[count].answer_picture_path.split(',');
+                fs.readFile(answerdata[count].answer_picture_path[count], function (error, data) {
                     encodedimage.push(new Buffer(data).toString('base64'));
-                    estimatedata[count].estimate_post_date = estimatedata[count].estimate_date.toFormat('YYYY-MM-DD HH24:MI:SS');
-                    estimatedata[count].encodedimage = encodedimage;
-                    info.push(estimatedata[count]);
+                    answerdata[count].answer_date = answerdata[count].answer_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+                    answerdata[count].encodedimage = encodedimage;
+                    info.push(answerdata[count]);
                     count++;
                     callback();
                 });
