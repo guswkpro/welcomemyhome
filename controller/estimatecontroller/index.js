@@ -94,7 +94,7 @@ exports.getestimateanswerlist = function (request, respon) {
             }, function (callback) {
                 answerdata[count].answer_picture_path = answerdata[count].answer_picture_path.split(',');
                 fs.readFile(answerdata[count].answer_picture_path[count], function (error, data) {
-                    console.log(count);
+                    console.log(answerdata[count].answer_picture_path.length);
                     encodedimage.push(new Buffer(data).toString('base64'));
                     answerdata[count].answer_date = answerdata[count].answer_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                     answerdata[count].encodedimage = encodedimage;
