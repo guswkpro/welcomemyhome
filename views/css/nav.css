@@ -76,7 +76,6 @@
   color: #dcdcdc;
   content: "";
   display: block;
-  width: 50px;
   border-bottom: 1px solid #bcbcbc;
 }
 
@@ -85,10 +84,5 @@
   color: #dcdcdc;
   content: "";
   display: block;
-  width: 64px;
   border-bottom: 1px solid #bcbcbc;
-}
-
-.jbContent {
-  height: 2000px;
 }
