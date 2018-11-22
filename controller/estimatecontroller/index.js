@@ -99,7 +99,6 @@ exports.getestimateanswerlist = function (request, response) {
                     return count2 < (answerdata[count].answer_picture_path.length - 1);
                 }, function (callback) {
                     fs.readFile(answerdata[count].answer_picture_path[count2], function (error, data) {
-                        console.log(count + " " + count2 + "aaaaaaaaaaaaaaaaa");
                         encodedimage.push(new Buffer(data).toString('base64'));
                         count2++;
                         callback();
