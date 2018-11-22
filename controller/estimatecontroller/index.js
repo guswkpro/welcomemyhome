@@ -107,6 +107,7 @@ exports.addestimate = function (request, response) {
             async.whilst(function () {
                 return count < req_estimate_image.length;
             }, function (callback) {
+                console.log(req_estimate_image[count].image);
                 var bitmap = new Buffer(req_estimate_image[count].image, 'base64');
                 newPath = dirname + "/" + dirdate + "_" + count + ".png";
                 imagepath = imagepath + newPath + ',';
