@@ -11,13 +11,14 @@ body {
 .portfolio-item {
   margin-bottom: 30px;
 }
+
 /* 하트 */
 .heart {
   width: 100px;
   height: 100px;
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 90%;
+  top: 85%;
   transform: translate(-50%, -50%);
   background: url(../img/heart.png) no-repeat;
   cursor: pointer;
@@ -26,52 +27,4 @@ body {
 .heart-blast {
   background-position: -2800px 0;
   transition: background 1s steps(28);
-}
-
-/* 좋아요 한글표시-*/
-.like-content {
-    display: inline-block;
-    width: 50%;
-    margin: 0px 0 0;
-    padding: 0px 0 0;
-    font-size: 11px;
-
-    text-align: center;
-}
-.like-content span {
-	color: #9d9da4;
-	font-family: monospace;
-}
-.like-content .btn-secondary {
-	  display: block;
-	  margin: 0px auto 0px;
-    text-align: center;
-    background: #ed2553;
-    border-radius: 3px;
-
-    padding: 10px 10px;
-    font-size: 11px;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    color: #ffffff;
-    text-decoration: none;
-    -webkit-transition: 0.3s ease;
-    transition: 0.3s ease;
-}
-.like-content .btn-secondary:hover {
-	  transform: translateY(-3px);
-}
-.like-content .btn-secondary .fa {
-	  margin-right: 0px;
-}
-.animate-like {
-	animation-name: likeAnimation;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
-	animation-duration: 0.65s;
-}
-@keyframes likeAnimation {
-  0%   { transform: scale(30); }
-  100% { transform: scale(1); }
 }

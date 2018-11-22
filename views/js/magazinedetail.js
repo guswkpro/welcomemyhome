@@ -9,6 +9,7 @@ $(function(){
 $(function() {
 
   $(".heart").on("click", function() {
+    console.log('aaa');
     $(this).toggleClass("heart-blast");
   });
 });

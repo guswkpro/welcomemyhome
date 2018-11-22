@@ -1,5 +1,3 @@
-
-
 var app = angular.module('user', []);
 
 app.controller('loginController', function ($scope, $http, $window) {
