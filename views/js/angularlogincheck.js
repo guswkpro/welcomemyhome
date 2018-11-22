@@ -12,3 +12,4 @@ myApp.controller('logincheckCtrl', function($scope, $http, $window) {
     }
   });
 });
+  
