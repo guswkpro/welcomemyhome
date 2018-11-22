@@ -40,13 +40,13 @@ exports.getmagazinecommentcheck = function (magazine_idx, user_idx, callback) {
 /********************
         POST
 ********************/
-exports.addmagazinelike = function (like, date, callback) {
-    client.query('INSERT INTO stweb.stweb_magazine_likes (like_date, magazine_idx, user_idx) VALUES (?, ?, ?)', [date, like.magazine_idx, like.user_idx], function (error) {
+exports.addestimate = function (estimate, callback) {
+    client.query('INSERT INTO stweb.stweb_estimates (estimate_picture_path, estimate_content, estimate_date, user_idx) VALUES (?, ?, ?, ?)', [estimate.estimate_picture_path, estimate.estimate_content, estimate.estimate_date, estimate.user_idx], function (error) {
         callback(error);
     });
 };
-exports.addmagazinecomment = function (comment, callback) {
-    client.query('INSERT INTO stweb.stweb_magazine_comments (comment_content, comment_post_date, user_idx, magazine_idx) VALUES(?, ?, ?, ?)', [comment.comment_content, comment.comment_post_date, comment.user_idx, comment.magazine_idx], function (error) {
+exports.addestimateanswer = function (estimateanswer, callback) {
+    client.query('INSERT INTO stweb.stweb_estimates (estimate_picture_path, estimate_content, estimate_date,  estimate_idx, user_idx) VALUES (?, ?, ?, ?, ?)', [estimateanswer.estimateanswer_picture_path, estimateanswer.estimateanswer_content, estimateanswer.estimateanswer_date, estimateanswer.estimate_idx, estimateanswer.user_idx], function (error) {
         callback(error);
     });
 };

@@ -3,6 +3,7 @@ var http = require('http');
 var app = express();
 var usercontroller = require('./controller/usercontroller')
 var magazinecontroller = require('./controller/magazinecontroller');
+var estimatecontroller = require('./controller/magazinecontroller');
 var server = app.listen(3000, function () {
         console.log("Express server has started on port 3000")
 });
@@ -61,6 +62,7 @@ app.post('/login', usercontroller.login);
 app.post('/signup', usercontroller.signup);
 app.post('/addmagazinelike', magazinecontroller.addmagazinelike);
 app.post('/addmagazinecomment', magazinecontroller.addmagazinecomment);
+app.post('/addestimate', estimatecontroller.addestimate);
 
 /* ---------- DELETE ---------- */
 app.delete('/deletemagazinelike', magazinecontroller.deletemagazinelike);
