@@ -63,6 +63,7 @@ app.post('/signup', usercontroller.signup);
 app.post('/addmagazinelike', magazinecontroller.addmagazinelike);
 app.post('/addmagazinecomment', magazinecontroller.addmagazinecomment);
 app.post('/addestimate', estimatecontroller.addestimate);
+app.post('/addestimateanswer', estimatecontroller.addestimateanswer);
 
 /* ---------- DELETE ---------- */
 app.delete('/deletemagazinelike', magazinecontroller.deletemagazinelike);
