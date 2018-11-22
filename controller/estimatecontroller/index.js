@@ -59,7 +59,7 @@ exports.getestimatedetail = function (request, response) {
                         RESULT: "0"
                     });
                 } else {
-                    info = magazinedata[0];
+                    info = estimatedata[0];
                     nextCallback();
                 }
             });
