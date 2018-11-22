@@ -12,7 +12,7 @@ require('date-utils');
 exports.logincheck = function (request, response) {
 	var checkData = request.cookies.token.split('/');
 	console.log(request.session.check_status);
-	if (request.session.check_status == 'undefined') {
+	if (typeof request.session.check_status == 'undefined') {
 		console.log("aaa");
 		response.json({
 			RESULT: "2"
