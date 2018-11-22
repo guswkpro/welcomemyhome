@@ -90,9 +90,11 @@ exports.getestimateanswerlist = function (request, response) {
             var encodedimage = [];
             var count = 0;
             async.whilst(function () {
-                answerdata[count].answer_picture_path = answerdata[count].answer_picture_path.split(',');
                 return count < (answerdata.length);
             }, function (callback) {
+                if(count == 0){
+                    answerdata[count].answer_picture_path = answerdata[count].answer_picture_path.split(',');
+                }
                 fs.readFile(answerdata[count].answer_picture_path[count], function (error, data) {
                     encodedimage.push(new Buffer(data).toString('base64'));
                     answerdata[count].answer_date = answerdata[count].answer_date.toFormat('YYYY-MM-DD HH24:MI:SS');
