@@ -90,7 +90,7 @@ exports.getestimateanswerlist = function (request, respon) {
             var encodedimage = [];
             var count = 0;
             async.whilst(function () {
-                return count < (answerdata[count].answer_picture_path.length - 1);
+                return count < (answerdata[count].answer_picture_path.length - 2);
             }, function (callback) {
                 answerdata[count].answer_picture_path = answerdata[count].answer_picture_path.split(',');
                 fs.readFile(answerdata[count].answer_picture_path[count], function (error, data) {
