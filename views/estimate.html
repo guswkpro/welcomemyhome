@@ -9,6 +9,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="css/nav.css" />
+  <link rel="stylesheet" type="text/css" href="css/estimate.css" />
+
   <!-- jQuery -->
   <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
 
@@ -21,7 +25,6 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="css/nav.css" />
 
   <title>놀러와 마이홈</title>
 </head>
@@ -47,7 +50,7 @@
         </li>
       </ul>
     </div>
-    <div class = "nav-div-form" ng-init="load()" ng-style="div_login">
+    <div class="nav-div-form" ng-init="load()" ng-style="div_login">
       <form>
         <button ng-show="showHide_logout" id="login_button" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
           type="button">로그인</button>
@@ -60,6 +63,38 @@
       </form>
     </div>
   </nav>
+  <div class="container nav-occupy estimate-div">
+    <table class="table table-bordered">
+      <tbody>
+        <form>
+          <tr>
+            <th>제목: </th>
+            <td><input type="text" placeholder="제목을 입력하세요. " name="subject" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>주소: </th>
+            <td><input type="text" placeholder="제목을 입력하세요. " name="subject" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>첨부파일: </th>
+            <td>
+              <input type="text" placeholder="파일을 선택하세요. " name="filename" class="form-control"/>
+              <input type="button" value="찾아보기" class="pull-right estimate-float-right" onclick=""/>
+            </td>
+          </tr>
+          <tr>
+            <th>내용: </th>
+            <td><textarea cols="10" rows="10" placeholder="내용을 입력하세요. " name="content" class="form-control"></textarea></td>
+          </tr>
+          <tr >
+            <td colspan="2">
+              <input type="button" value="취소" class="pull-right estimate-float-right" onclick=""/>
+              <input type="button" value="등록" class="pull-right estimate-float-right" onclick=""/>
+            </td>
+          </tr>
+        </form>
+      </tbody>
+    </table>
+  </div>
 </body>
-
 </html>

@@ -108,7 +108,7 @@
   border-bottom: 1px solid #bcbcbc;
 }
 
-.login_info{
-  font-size: 12px;
-  width : 100%;
+.nav-occupy{
+  position: relative;
+  margin-top : 5%;
 }
