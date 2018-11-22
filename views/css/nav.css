@@ -1,86 +1,94 @@
+.nav {
+  position: fixed;
+  top: 0px;
+  width : 100%;
+  margin-top: 15px;
+  padding:0;
+}
 
-  .nav {
-    position: fixed;
-    top: 0px;
-    margin-top: 15px;
-  }
+.nav-logo {
+  width:10%;
+  margin-left : 2%;
+}
 
-  .nav-logo {
-    font-weight: bolder;
-    color: black;
-  }
+.nav-logo>a {
+  font-weight: bolder;
+  color: black;
+}
 
-  .nav-logo:hover {
-    font-weight: bolder;
-    color: black;
-  }
+.nav-logo>a:hover {
+  font-weight: bolder;
+  color: black;
+  text-decoration: none;
+}
 
-  .nav-form{
+.nav-form {
+  width:10%;
+}
 
-  }
+.nav-button-signup {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
 
-  .nav-button-signup {
-    padding: 5px 10px;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 3px;
-  }
+.nav-button-login {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  margin-right: 5%;
+}
 
-  .nav-button-login {
-    padding: 5px 10px;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 3px;
-    margin-right: 5px;
-  }
+/* nav menu 간격*/
+.nav-menu {
+  text-align: center;
+  width:80%;
+}
 
-  /* nav menu 간격*/
-  #navdiv {
-    text-align: center;
-  }
+.nav-ul {
+  display: inline-block;
+  width:100%;
+}
 
-  .nav-ul {
-    display: inline-block;
-    width: 1280px;
-  }
+.nav-li {
+  display: inline-block;
+  margin-left: 7%;
+}
 
-  .nav-li {
-    display: inline-block;
-    margin-left: 70px;
-  }
+.nav-a-text3 {
+  display: block;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
 
-  .nav-a-text3 {
-    display: block;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-  }
+.nav-a-text4 {
+  display: block;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
 
-  .nav-a-text4 {
-    display: block;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-  }
+.nav-a-text3:hover {
+  text-decoration: none;
+  color: #dcdcdc;
+  content: "";
+  display: block;
+  width: 50px;
+  border-bottom: 1px solid #bcbcbc;
+}
 
-  .nav-a-text3:hover {
-    text-decoration: none;
-    color: #dcdcdc;
-    content: "";
-    display: block;
-    width: 50px;
-    border-bottom: 1px solid #bcbcbc;
-  }
+.nav-a-text4:hover {
+  text-decoration: none;
+  color: #dcdcdc;
+  content: "";
+  display: block;
+  width: 64px;
+  border-bottom: 1px solid #bcbcbc;
+}
 
-  .nav-a-text4:hover {
-    text-decoration: none;
-    color: #dcdcdc;
-    content: "";
-    display: block;
-    width: 64px;
-    border-bottom: 1px solid #bcbcbc;
-  }
-
-  .jbContent {
-    height: 2000px;
-  }
+.jbContent {
+  height: 2000px;
+}
