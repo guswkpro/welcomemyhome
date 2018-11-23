@@ -19,9 +19,6 @@
   <!-- jQuery -->
   <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
 
-  <!-- Js -->
-  <link rel="stylesheet" type="text/css" href="js/nav.js" />
-
   <!-- Angular js -->
   <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
   <script src="js/angularlogincheck.js"></script>
@@ -63,33 +60,32 @@
       </form>
     </div>
   </nav>
-  <div class="container nav-occupy estimate-div">
+  <div class="container nav-occupy estimate-div" ng-controller="estimateCtrl">
     <table class="table table-bordered">
       <tbody>
         <form>
           <tr>
             <th>제목: </th>
-            <td><input type="text" placeholder="제목을 입력하세요. " name="subject" class="form-control"/></td>
+            <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control" ng-model="title"/></td>
           </tr>
           <tr>
             <th>주소: </th>
-            <td><input type="text" placeholder="제목을 입력하세요. " name="subject" class="form-control"/></td>
+            <td><input type="text" placeholder="제목을 입력하세요. " name="address" class="form-control" ng-model="address"/></td>
           </tr>
           <tr>
             <th>첨부파일: </th>
             <td>
-              <input type="text" placeholder="파일을 선택하세요. " name="filename" class="form-control"/>
-              <input type="button" value="찾아보기" class="pull-right estimate-float-right" onclick=""/>
+              <input type="file" placeholder="파일을 선택하세요. " name="filename"/>
             </td>
           </tr>
           <tr>
             <th>내용: </th>
-            <td><textarea cols="10" rows="10" placeholder="내용을 입력하세요. " name="content" class="form-control"></textarea></td>
+            <td><textarea cols="10" rows="10" placeholder="내용을 입력하세요." name="content" class="form-control" ng-model="content"></textarea></td>
           </tr>
           <tr >
             <td colspan="2">
-              <input type="button" value="취소" class="pull-right estimate-float-right" onclick=""/>
-              <input type="button" value="등록" class="pull-right estimate-float-right" onclick=""/>
+              <input type="button" value="취소" class="estimate-float-right" ng-click="cancelEstimate()"/>
+              <input type="submit" ng-click="pushData()" value="등록" class="estimate-float-right" ng-click="pushData()"/>
             </td>
           </tr>
         </form>
