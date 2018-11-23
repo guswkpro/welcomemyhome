@@ -1,6 +1,6 @@
 var app = angular.module('user', []);
 
-app.controller('loginController', function ($scope, $http, $window) {
+app.controller('magazineController', function ($scope, $http, $window) {
 	$scope.clickLogin = function(){
 		$http({
 			method: 'POST',
@@ -30,7 +30,7 @@ app.controller('loginController', function ($scope, $http, $window) {
 	}
 });
 
-app.controller('signupController', function ($scope, $http, $window) {
+app.controller('magazinedetailController', function ($scope, $http, $window) {
 	$scope.pushData = function () {
 		$http({
 			method: 'POST',
@@ -55,3 +55,5 @@ app.controller('signupController', function ($scope, $http, $window) {
 		});
 	}
 });
+
+app.get('/')

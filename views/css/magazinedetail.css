@@ -1,3 +1,4 @@
+/*
 body {
   padding-top: 54px;
 }
@@ -12,7 +13,7 @@ body {
   padding: 0;
 }
 
-.slide{
+.card-slide{
   width: 1000px;
   height: 600px;
   overflow : hidden;
@@ -44,3 +45,135 @@ body {
   cursor: pointer;;
   z-index: 1;
 }
+
+/* 댓글, 좋아요*/
+/*
+.card-userReact{
+  width: 1000px;
+  height: 50px;
+  position: relative;
+  margin: : 0 auto;
+}
+
+.writeComment{
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+    padding: 5px;
+    font-size: 12px;
+    float : left;
+}
+
+.heart {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: url(../img/heart.png) no-repeat;
+  cursor: pointer;
+  float : right;
+}
+
+.heart-blast {
+  background-position: -2800px 0;
+  transition: background 1s steps(28);
+}
+*/
+@import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+
+	html {
+		height: 100%;
+	}
+	.button {
+	    margin : 2px;
+	}
+
+	body {
+	    width:100%;
+	    height:100%;
+	    margin: 0;
+  		padding-top: 0px;
+  		padding-bottom: 40px;
+  		font-family: "Nanum Gothic", arial, helvetica, sans-serif;
+  		background-repeat: no-repeat;
+  		background:linear-gradient(to bottom right, );
+	}
+
+    .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				margin-top: 70px;
+	}
+  .card-userReact{
+    width: 1000px;
+    height: 50px;
+    position: relative;
+    margin: : 0 auto;
+  }
+
+  .writeComment{
+      position: relative;
+      height: auto;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+           box-sizing: border-box;
+      padding: 5px;
+      font-size: 12px;
+      float : left;
+  }
+
+    .heart {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: url(../img/heart.png) no-repeat;
+    cursor: pointer;
+    float : right;
+  }
+
+    .heart-blast {
+    background-position: -2800px 0;
+    transition: background 1s steps(28);
+  }
+
+  .card-slide{
+    width: 1158px;
+    height: 600px;
+    overflow : hidden;
+    position : relative;
+    margin: : 0 auto;
+  }
+
+  .slide ul{
+    width: 5000px
+    position : absolute;
+    top: 0;
+    left: 0;
+    font-size: 0;
+  }
+  .slide ul li{
+    display: inline-block;
+  }
+  #back{
+    position: absolute;
+    top: 250px;
+    left: 0;
+    cursor: pointer;;
+    z-index: 1;
+  }
+  #next{
+    position: absolute;
+    top: 250px;
+    left: 0;
+    cursor: pointer;;
+    z-index: 1;
+  }
