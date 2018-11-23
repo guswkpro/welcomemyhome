@@ -41,11 +41,11 @@
           <a class="nav-a-text4" href='http://13.124.196.226:3000/'>사전전검</a>
         </li>
         <li class="nav-item nav-li">
-          <a class="nav-a-text4" href='http://13.124.196.226:3000/estimate'>견적요청</a>
+          <a class="nav-a-text4" href='http://13.124.196.226:3000/estimate' ng-click="checkauth()">견적요청</a>
         </li>
       </ul>
     </div>
-    <div class = "nav-div-form" ng-init="load()" ng-style="div_login">
+    <div class="nav-div-form" ng-init="load()" ng-style="div_login">
       <form>
         <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
           type="button">로그인</button>
@@ -58,7 +58,7 @@
       </form>
     </div>
   </nav>
-  <div class="container nav-occupy estimateList-div ">
+  <div class="container nav-occupy estimateList-div" ng-controller="estimateListCtrl">
     <table class="table table-hover">
       <thead>
         <tr>
@@ -80,14 +80,14 @@
       </tbody>
     </table>
 
-    <hr/>
+    <hr />
     <input type="button" value="작성" class="estimateList-float-right estimate-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimate'"/>
 
     <div class="pagenation">
-      <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+      <button ng-disabled="checkzero" ng-click="checkcurrentPage()">
           Previous
       </button>
-      {{currentPage+1}}/{{numberOfPages()}}
+      {{currentPage}}/{{numberOfPages()}}
       <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
           Next
       </button>

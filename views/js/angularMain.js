@@ -2,10 +2,12 @@ var app = angular.module('Main', []);
 
 // 화면 전환 시 login check 기능
 app.controller('logincheckCtrl', function($scope, $http, $window) {
+  var auth;
   $scope.load = function() {
     $http.get('/logincheck').success(function(response) {
       console.log(response.RESULT);
       if (response.RESULT == "1") {
+        auth = response.auth;
         $scope.div_login = {
           "width" :  "12%"
         };
@@ -18,6 +20,11 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
         $scope.showHide_logout = true;
       }
     });
+  };
+  $scope.checkauth = function() {
+    if(auth == "1"){
+
+    }
   };
 });
 
@@ -62,7 +69,19 @@ app.controller('estimateCtrl', function($scope, $window) {
 //Estimate 리스트 pagenation
 app.controller('estimateListCtrl', function($scope, $http, $routeParams, $window){
   $scope.currentPage=0;
-  $scope.pageSize = 5;
+  $scope.pageSize = 10;
+  $scope.numberOfPages=function() {
+    return Math.ceil($scope.data.length/$scope.pageSize);
+  };
+  $scope.checkcurrentPage=function() {
+    if($scope.currentPage == 0){
+      $scope.checkzero = true;
+    }
+    else{
+      $scope.checkzero = false;
+      $scope.currentPage = $scope.currentPage-1;
+    }
+  };
   $scope.load = function() {
     $http.get('/getestimatelist', {
       params : {
@@ -79,8 +98,5 @@ app.controller('estimateListCtrl', function($scope, $http, $routeParams, $window
         $window.location.href = '/estimate';
       }
     });
-  };
-  $scope.numberOfPages=function(){
-    return Math.ceil($scope.data.length/$scope.pageSize);
   };
 });
