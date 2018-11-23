@@ -68,6 +68,7 @@ app.controller('estimateCtrl', function($scope, $window) {
 //
 app.controller('estimateListCtrl', function($scope, $http, $routeParams, $window) {
   $scope.load = function() {
+    var url = '/getestimatelist?'
     $http.get('/getestimatelist', {
       params: {
         user_idx: $routeParams.id,
@@ -90,9 +91,7 @@ app.controller('estimatePageNationCtrl', function($scope, $window) {
   console.log("aaaaaa");
   $scope.currentPage = 0;
   $scope.pageSize = 10;
-  $scope.numberOfPages = function() {
-    return Math.ceil($scope.data.length / $scope.pageSize);
-  };
+  $scope.numberOfPages = Number($scope.data.length) / Number($scope.pageSize));
   $scope.checkcurrentPage = function() {
     if ($scope.currentPage == 0) {
       $scope.checkzero = true;
