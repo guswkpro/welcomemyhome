@@ -1,26 +1,44 @@
+
+//좋아요 효과
 $(function() {
 
   $(".heart").on("click", function() {
-    console.log('aaa');
     $(this).toggleClass("heart-blast");
   });
 });
-/*
-var slideIndex = 1;
-showDivs(slideIndex);
 
-function plusDivs(n) {
-    showDivs(slideIndex += n);
-}
 
-function showDivs(n) {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    if (n > x.length) {slideIndex = 1;}
-    if (n < 1) {slideIndex = x.length;}
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+//사진슬라이드쇼
+$(document).ready(function(){
+  var imgs;
+  var img_count;
+  var img_position = 1;
+
+  imgs = $(".slide ul");
+  img_count = imgs.children().length;
+
+  //버튼클릭시 함수실행
+  $('#back').click(function(){
+    back();
+  });
+  $('#next').click(function(){
+    next();
+  });
+
+  function back() {
+    if(1<img_position){
+      imgs.animate({
+        left:'-=1000px'
+      });
+      imgs_position--;
     }
-    x[slideIndex-1].style.display = "block";
-}
-*/
+  }
+  function next() {
+    if(1<img_position){
+      imgs.animate({
+        left:'+=1000px'
+      });
+      imgs_position++;
+    }
+  }
+});

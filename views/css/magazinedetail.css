@@ -7,3 +7,40 @@ body {
     padding-top: 56px;
   }
 }
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.slide{
+  width: 1000px;
+  height: 600px;
+  overflow : hidden;
+  position : relative;
+  margin: : 0 auto;
+}
+
+.slide ul{
+  width: 5000px
+  position : absolute;
+  top: 0;
+  left: 0;
+  font-size: 0;
+}
+.slide ul li{
+  display: inline-block;
+}
+#back{
+  position: absolute;
+  top: 250px;
+  left: 0;
+  cursor: pointer;;
+  z-index: 1;
+}
+#next{
+  position: absolute;
+  top: 250px;
+  left: 0;
+  cursor: pointer;;
+  z-index: 1;
+}
