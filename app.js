@@ -62,7 +62,7 @@ app.get('/estimatedetail', function(req, res){
 app.get('/estimatelist', function(req, res){
         res.render('estimatelist.html');
 });
-app.get('/
+
 app.get('/getestimatelist', estimatecontroller.getestimatelist);
 app.get('/getestimatedetail', estimatecontroller.getestimatedetail);
 app.get('/getestimateanswerlist', estimatecontroller.getestimateanswerlist);
