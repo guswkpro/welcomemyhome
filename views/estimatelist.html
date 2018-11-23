@@ -58,7 +58,7 @@
       </form>
     </div>
   </nav>
-  <div class="container nav-occupy estimateList-div" ng-controller="estimateListCtrl">
+  <div class="container nav-occupy estimateList-div">
     <table class="table table-hover">
       <thead>
         <tr>
@@ -83,11 +83,11 @@
     <hr />
     <input type="button" value="작성" class="estimateList-float-right estimate-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimate'"/>
 
-    <div class="pagenation">
-      <button ng-disabled="checkzero" ng-click="checkcurrentPage()">
+    <div class="pagenation" ng-controller="estimatePageNationCtrl">
+      <button ng-disabled="currentPage==0" ng-click="currentPage=currentPage-1">
           Previous
       </button>
-      {{currentPage}}/{{numberOfPages()}}
+      {{currentPage}} / {{numberOfPages()}}
       <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
           Next
       </button>
