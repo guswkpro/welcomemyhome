@@ -91,7 +91,7 @@ app.controller('estimatePageNationCtrl', function($scope, $window) {
   console.log("aaaaaa");
   $scope.currentPage = 0;
   $scope.pageSize = 10;
-  $scope.numberOfPages = Number($scope.data.length) / Number($scope.pageSize));
+  $scope.numberOfPages = Number($scope.data.length) / Number($scope.pageSize);
   $scope.checkcurrentPage = function() {
     if ($scope.currentPage == 0) {
       $scope.checkzero = true;
