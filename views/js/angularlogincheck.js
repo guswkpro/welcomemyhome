@@ -34,6 +34,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         title: $scope.title,
         content: $scope.content,
         address: $scope.address,
+        picture : $scope.picture
       })
     }).success(function (response) {
       if (response.RESULT == "1") {
@@ -54,6 +55,30 @@ app.controller('estimateCtrl', function($scope, $window) {
   $scope.cancelEstimate = function () {
     var msg = "작성을 취소하여 리스트 페이지로 이동합니다.";
     $window.alert(msg);
-    $window.location.href = '/getestimatelist';
+    $window.location.href = '/estimatelist';
+  };
+});
+
+//Estimate 리스트 pagenation
+app.controller('estimateListCtrl', function($scope, $http, $routeParams){
+  $scope.currentPage=0;
+  $scope.pageSize = 5;
+
+  $http.get('/getestimatelist', {
+    params : {
+      user_idx : $routeParams.id,
+      offset : $routeParams.offset
+    }
+  }).success(function(response) {
+    if(response.RESULT == "1") {
+      $scope.data = response.INFO;
+    }
+    else {
+
+    }
+  });
+
+  $scope.numberOfPages=function(){
+    return Math.ceil($scope.data.length/$scope.pageSize);
   };
 });

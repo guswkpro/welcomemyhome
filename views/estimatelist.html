@@ -9,19 +9,17 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-  <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="css/nav.css" />
-  <link rel="stylesheet" type="text/css" href="css/estimate.css" />
-
   <!-- jQuery -->
   <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
 
   <!-- Angular js -->
   <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
   <script src="js/angularlogincheck.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/nav.css" />
+  <link rel="stylesheet" type="text/css" href="css/estimateList.css" />
 
   <title>놀러와 마이홈</title>
 </head>
@@ -60,37 +58,41 @@
       </form>
     </div>
   </nav>
-  <div class="container nav-occupy estimate-div" ng-controller="estimateCtrl">
-    <table class="table table-bordered">
+  <div class="container nav-occupy estimateList-div ">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>날짜</th>
+          <th>답변수</th>
+        </tr>
+      </thead>
       <tbody>
-        <form>
-          <tr>
-            <th>제목: </th>
-            <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control" ng-model="title"/></td>
-          </tr>
-          <tr>
-            <th>주소: </th>
-            <td><input type="text" placeholder="주소를 입력하세요. " name="address" class="form-control" ng-model="address"/></td>
-          </tr>
-          <tr>
-            <th>첨부파일: </th>
-            <td>
-              <input type="file" placeholder="파일을 선택하세요. " name="filename" ng-model="picture"/>
-            </td>
-          </tr>
-          <tr>
-            <th>내용: </th>
-            <td><textarea cols="10" rows="10" placeholder="내용을 입력하세요." name="content" class="form-control" ng-model="content"></textarea></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <input type="button" value="취소" class="estimate-float-right" ng-click="cancelEstimate()"/>
-              <input type="submit" value="등록" class="estimate-float-right" ng-click="pushEstimateData()"/>
-            </td>
-          </tr>
-        </form>
+        <tr ng-repeat="data in records">
+          <td>{{data.estimate_idx}}</td>
+          <td>{{data.estimate_title}}</td>
+          <td>{{data.user_nickname}}</td>
+          <td>{{data.estimate_date}}</td>
+          <td>{{data.estimate_answer_count}}</td>
+        </tr>
       </tbody>
     </table>
+
+    <hr/>
+    <input type="button" value="작성" class="estimateList-float-right estimate-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimate'"/>
+
+    <div class="pagenation">
+      <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+          Previous
+      </button>
+      {{currentPage+1}}/{{numberOfPages()}}
+      <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+          Next
+      </button>
+    </div>
   </div>
 </body>
+
 </html>
