@@ -19,7 +19,7 @@ exports.logincheck = function (request, response) {
 		} else if (checkData[0] == request.session.user_idx && checkData[2] == request.sessionID) {
 			response.json({
 				RESULT: "1",
-				auth : request.session.user_auth;
+				auth : request.session.user_auth
 			});
 		} else {
 			response.json({
