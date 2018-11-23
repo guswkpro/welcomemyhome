@@ -7,7 +7,9 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
     $http.get('/logincheck').success(function(response) {
       console.log(response.RESULT);
       if (response.RESULT == "1") {
+        console.log(response.auth);
         auth = response.auth;
+        console.log("aaaa"+auth);
         $scope.div_login = {
           "width" :  "12%"
         };
