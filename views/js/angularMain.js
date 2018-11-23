@@ -60,24 +60,26 @@ app.controller('estimateCtrl', function($scope, $window) {
 });
 
 //Estimate 리스트 pagenation
-app.controller('estimateListCtrl', function($scope, $http, $routeParams){
+app.controller('estimateListCtrl', function($scope, $http, $routeParams, $window){
   $scope.currentPage=0;
   $scope.pageSize = 5;
-
-  $http.get('/getestimatelist', {
-    params : {
-      user_idx : $routeParams.id,
-      offset : $routeParams.offset
-    }
-  }).success(function(response) {
-    if(response.RESULT == "1") {
-      $scope.data = response.INFO;
-    }
-    else {
-
-    }
-  });
-
+  $scope.load = function() {
+    $http.get('/getestimatelist', {
+      params : {
+        user_idx : $routeParams.id,
+        offset : $routeParams.offset
+      }
+    }).success(function(response) {
+      if(response.RESULT == "1") {
+        $scope.data = response.INFO;
+      }
+      else {
+        var msg = "알 수 없는 오류로 리스트를 불러올 수 없습니다.";
+        $window.alert(msg);
+        $window.location.href = '/estimate';
+      }
+    });
+  };
   $scope.numberOfPages=function(){
     return Math.ceil($scope.data.length/$scope.pageSize);
   };
