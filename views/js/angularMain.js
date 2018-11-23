@@ -69,12 +69,7 @@ app.controller('estimateCtrl', function($scope, $window) {
 app.controller('estimateListCtrl', function($scope, $http, $routeParams, $window) {
   $scope.load = function() {
     var url = '/getestimatelist?'
-    $http.get('/getestimatelist', {
-      params: {
-        user_idx: $routeParams.id,
-        offset: $routeParams.offset
-      }
-    }).success(function(response) {
+    $http.get('/getestimatelist?user_idx=77&offset=0').success(function(response) {
       if (response.RESULT == "1") {
         $scope.data = response.INFO;
       } else {
