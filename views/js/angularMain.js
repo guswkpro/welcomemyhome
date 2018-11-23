@@ -86,7 +86,7 @@ app.controller('estimateListCtrl', function($scope, $http, $routeParams, $window
 });
 
 //Estimate 리스트 pagenation
-app.controller('estimatePageNationCtrl', function($scope, $http, $routeParams, $window) {
+app.controller('estimatePageNationCtrl', function($scope, $window) {
   console.log("aaaaaa");
   $scope.currentPage = 0;
   $scope.pageSize = 10;
