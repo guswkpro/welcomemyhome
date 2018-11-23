@@ -21,7 +21,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
     });
   };
   $scope.checkauth = function() {
-    if (scope.auth == "1") {
+    if ($scope.auth == "1") {
 
     }
   };
