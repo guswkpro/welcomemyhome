@@ -14,7 +14,7 @@
 
   <!-- Angular js -->
   <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
-  <script src="js/angularlogincheck.js"></script>
+  <script src="js/angularMain.js"></script>
   <script src="js/magazinedetail.js"></script>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -40,7 +40,7 @@
           <a class="nav-a-text4" href='http://13.124.196.226:3000/'>사전전검</a>
         </li>
         <li class="nav-item nav-li">
-          <a class="nav-a-text4" href='http://13.124.196.226:3000/estimate'>견적요청</a>
+          <a class="nav-a-text4" href='http://13.124.196.226:3000/estimate' ng-click="checkauth()">견적요청</a>
         </li>
       </ul>
     </div>
@@ -62,7 +62,7 @@
       <div class="card-title" style="margin-top:15px;"></div>
 
       <div class="card-body align-middle" ng-controller="">
-        <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+        <div id="carousel-example-2" class="carousel slide carousel-fade" >
           <!--Indicators-->
           <ol class="carousel-indicators">
               <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
@@ -100,11 +100,11 @@
           <!--Controls-->
           <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
+              <span class="sr-only">이전</span>
           </a>
           <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
+              <span class="sr-only">다음</span>
           </a>
           <!--/.Controls-->
       </div>
@@ -119,8 +119,6 @@
       </div>
       </div>
   </div>
-
-
 </body>
 
 </html>
