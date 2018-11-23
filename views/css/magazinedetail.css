@@ -110,40 +110,6 @@ body {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				margin-top: 70px;
 	}
-  .card-userReact{
-    width: 1000px;
-    height: 50px;
-    position: relative;
-    margin: : 0 auto;
-  }
-
-  .writeComment{
-      position: relative;
-      height: auto;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-           box-sizing: border-box;
-      padding: 5px;
-      font-size: 12px;
-      float : left;
-  }
-
-    .heart {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: url(../img/heart.png) no-repeat;
-    cursor: pointer;
-    float : right;
-  }
-
-    .heart-blast {
-    background-position: -2800px 0;
-    transition: background 1s steps(28);
-  }
 
   .card-slide{
     width: 1158px;
@@ -176,4 +142,39 @@ body {
     left: 0;
     cursor: pointer;;
     z-index: 1;
+  }
+
+  .card-userReact{
+    width: 1100px;
+    height: 50px;
+    position: relative;
+    margin: : 0 auto;
+  }
+
+  .writeComment{
+      position: relative;
+      height: auto;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+           box-sizing: border-box;
+      padding: 5px;
+      font-size: 12px;
+      float : left;
+  }
+
+    .heart {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: url(../img/heart.png) no-repeat;
+    cursor: pointer;
+    float : right;
+  }
+
+    .heart-blast {
+    background-position: -2800px 0;
+    transition: background 1s steps(28);
   }

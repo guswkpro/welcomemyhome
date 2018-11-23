@@ -62,23 +62,64 @@
       <div class="card-title" style="margin-top:15px;"></div>
 
       <div class="card-body align-middle" ng-controller="">
-        <div class="card-slide" style="margin-bottom:30px;">
-        <img id="back" src="" width="100" />
-        <img id="next" src="" width="100" />
+        <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+          <!--Indicators-->
+          <ol class="carousel-indicators">
+              <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-2" data-slide-to="1"></li>
+              <li data-target="#carousel-example-2" data-slide-to="2"></li>
+          </ol>
+          <!--/.Indicators-->
+          <!--Slides-->
+          <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                  <div class="view">
+                      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
+                      <div class="mask rgba-black-light"></div>
+                  </div>
 
-          <img src = "/img/19-2018-11-05/1.jpg" width="1100" height="600" align="center"/>
+              </div>
+              <div class="carousel-item">
+                  <!--Mask color-->
+                  <div class="view">
+                      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
+                      <div class="mask rgba-black-strong"></div>
+                  </div>
 
+              </div>
+              <div class="carousel-item">
+                  <!--Mask color-->
+                  <div class="view">
+                      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" alt="Third slide">
+                      <div class="mask rgba-black-slight"></div>
+                  </div>
+
+              </div>
+          </div>
+          <!--/.Slides-->
+          <!--Controls-->
+          <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+          </a>
+          <!--/.Controls-->
       </div>
       <div class="card-userReact" ng-controller="userReactController">
               <form class="writeComment" method="POST" align = "center">
               <label for="comment" class="sr-only">댓글작성</label>
               <input type="text" id="user_comment" class="form-control" placeholder="인테리어는 어땠나요?" ng-model="comment">
+
               </form>
+                <button id="btn-magazine-comment" class="btn btn-sm btn-primary" type="submit"  ng-click="clickMagazineComment()">등록</button>
             <div class="heart"></div>
       </div>
-
       </div>
   </div>
+
 
 </body>
 
