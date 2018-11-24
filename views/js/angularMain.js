@@ -1,7 +1,7 @@
 var app = angular.module('Main', []);
 
 app.factory('getuserauth', function($http) {
-  var userauth;
+  var userauth = "1";
   $http.get('/logincheck').success(function(response) {
     console.log("1");
     if (response.RESULT == "1") {
@@ -14,6 +14,7 @@ app.factory('getuserauth', function($http) {
   }).error(function(response){
     console.log("실패함");
   });
+  return userauth;
 });
 
 // 화면 전환 시 login check 기능
