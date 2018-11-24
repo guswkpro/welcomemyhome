@@ -142,10 +142,14 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     return Math.ceil(total / $scope.pageSize);
   };
   $scope.viewUserWrite = function() {
+    console.log(data_user,"user");
+    console.log(total_user,"total");
     $scope.data = data_user;
     total = total_user;
   };
   $scope.viewMyWrite = function() {
+    console.log(data_my,"user2");
+    console.log(total_my,"total2");
     $scope.data = data_my;
     total = total_my;
   };
