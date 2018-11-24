@@ -42,6 +42,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
       };
       $http(request)
         .success(function(response) {
+          console.log(response,"test");
           if (response.RESULT == "1") {
             console.log(response.RESULT);
             var msg = "견적 작성에 성공하셨습니다.";
