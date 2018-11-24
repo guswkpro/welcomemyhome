@@ -122,10 +122,10 @@ app.controller('estimateListCtrl', function($scope, $http, $window, getuserauth)
       $window.alert(msg);
       $window.location.href = '/';
     }
-  };
-  $scope.currentPage = 1;
-  $scope.pageSize = 5;
-  $scope.numberOfPages = function() {
-    return Math.ceil($scope.data.length / $scope.pageSize);
+    $scope.currentPage = 1;
+    $scope.pageSize = 5;
+    $scope.numberOfPages = function() {
+      return Math.ceil($scope.data.length / $scope.pageSize);
+    };
   };
 });
