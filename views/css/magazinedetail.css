@@ -110,7 +110,7 @@ body {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				margin-top: 5%;
 	}
-
+/*
   .card-slide{
     width: 1158px;
     height: 600px;
@@ -143,7 +143,7 @@ body {
     cursor: pointer;;
     z-index: 1;
   }
-
+*/
   .card-userReact{
     width: 1100px;
     height: 50px;
@@ -178,4 +178,32 @@ body {
     background-position: -2800px 0;
     transition: background 1s steps(28);
   }
-  
+
+  .thumbnail {
+    padding:0px;
+}
+.panel {
+	position:relative;
+}
+.panel>.panel-heading:after,.panel>.panel-heading:before{
+	position:absolute;
+	top:11px;left:-16px;
+	right:100%;
+	width:0;
+	height:0;
+	display:block;
+	content:" ";
+	border-color:transparent;
+	border-style:solid solid outset;
+	pointer-events:none;
+}
+.panel>.panel-heading:after{
+	border-width:7px;
+	border-right-color:#f7f7f7;
+	margin-top:1px;
+	margin-left:2px;
+}
+.panel>.panel-heading:before{
+	border-right-color:#ddd;
+	border-width:8px;
+}
