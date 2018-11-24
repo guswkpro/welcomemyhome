@@ -1,4 +1,4 @@
-var app = angular.module('Main', []);
+var app = angular.module('Main', [$cookieStoreProvider]);
 
 app.factory('getuserauth', function($http) {
   var userauth = "1";
