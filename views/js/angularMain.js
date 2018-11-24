@@ -6,6 +6,7 @@ app.factory('getuserauth', function($http) {
     console.log("1");
     if (response.RESULT == "1") {
       console.log("2");
+      console.log(response);
       userauth = response.INFO.auth;
       console.log("3");
       console.log(userauth);
