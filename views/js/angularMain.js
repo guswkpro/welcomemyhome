@@ -47,7 +47,11 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         $window.alert(msg);
       }
     }).error(function(){
-      console.log("error");
+      /*
+      const reader = new FileReader();
+      reader.readAsDataURL($scope.image);
+      */
+      console.log("$scope.image");
     });
   };
   //estimate 작성 취소
