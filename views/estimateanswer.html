@@ -27,6 +27,34 @@
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
+  <div class="container estimate-div" ng-controller="estimateAnswerCtrl">
+    <table class="table table-bordered">
+      <tbody>
+        <form>
+          <tr>
+            <th>제목: </th>
+            <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control" ng-model="title"/></td>
+          </tr>
+          <tr>
+            <th>첨부파일: </th>
+            <td>
+              <input type="file" placeholder="파일을 선택하세요. " name="filename" ng-model="picture"/>
+            </td>
+          </tr>
+          <tr>
+            <th>내용: </th>
+            <td><textarea cols="10" rows="10" placeholder="내용을 입력하세요." name="content" class="form-control" ng-model="content"></textarea></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="button" value="취소" class="estimate-float-right" ng-click="cancelEstimateAnswer()"/>
+              <input type="submit" value="등록" class="estimate-float-right" ng-click="pushEstimateData()"/>
+            </td>
+          </tr>
+        </form>
+      </tbody>
+    </table>
+  </div>
   <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
     <div class="nav-logo">
       <a class="navbar-bran" href='http://13.124.196.226:3000/'>WMH</a>
@@ -60,33 +88,5 @@
       </form>
     </div>
   </nav>
-  <div class="container estimate-div" ng-controller="estimateAnswerCtrl">
-    <table class="table table-bordered">
-      <tbody>
-        <form>
-          <tr>
-            <th>제목: </th>
-            <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control" ng-model="title"/></td>
-          </tr>
-          <tr>
-            <th>첨부파일: </th>
-            <td>
-              <input type="file" placeholder="파일을 선택하세요. " name="filename" ng-model="picture"/>
-            </td>
-          </tr>
-          <tr>
-            <th>내용: </th>
-            <td><textarea cols="10" rows="10" placeholder="내용을 입력하세요." name="content" class="form-control" ng-model="content"></textarea></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <input type="button" value="취소" class="estimate-float-right" ng-click="cancelEstimateAnswer()"/>
-              <input type="submit" value="등록" class="estimate-float-right" ng-click="pushEstimateData()"/>
-            </td>
-          </tr>
-        </form>
-      </tbody>
-    </table>
-  </div>
 </body>
 </html>
