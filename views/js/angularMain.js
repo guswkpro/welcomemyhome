@@ -24,35 +24,32 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 // estimate 제출 시 정보 서버로 보내는 기능
 app.controller('estimateCtrl', function($scope, $http, $window) {
   $scope.pushEstimateData = function() {
-    var formdata = new FormData();
-    $scope.getFiles = function($files) {
-      angular.forEach($files, function(value, key) {
-        formdata.append(key, value);
-      });
-    };
-    var request = {
-      method: "POST",
-      url: "/addestimate",
-      data: formdata,
+    $http({
+      method: 'POST',
+      url: '/login',
       headers: {
-        "Content-Type": undefined
+        'Content-Type': 'application/json'
+      },
+      data: ({
+        title: "$scope.title",
+        address: "$scope.address",
+        content: "$scope.content",
+        image: "iVBORw0KGgoAAAANSUhEUgAAACoAAAAYCAYAAACMcW/9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAA4SURBVFhH7c6xCQAgEAAx9x9Y5BtdIo1wRfqsfeb+oKhWVCuqFdWKakW1olpRrahWVCuqfRKd+wApwF5yhMzamAAAAABJRU5ErkJggg=="
+      })
+    }).success(function(response) {
+      console.log(response, "test");
+      if (response.RESULT == "1") {
+        console.log(response.RESULT);
+        var msg = "견적 작성에 성공하셨습니다.";
+        $window.alert(msg);
+        $window.location.href = '/estimatelist';
+      } else {
+        var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
+        $window.alert(msg);
       }
-    };
-    $http(request)
-      .success(function(response) {
-        console.log(response, "test");
-        if (response.RESULT == "1") {
-          console.log(response.RESULT);
-          var msg = "견적 작성에 성공하셨습니다.";
-          $window.alert(msg);
-          $window.location.href = '/estimatelist';
-        } else {
-          var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
-          $window.alert(msg);
-        }
-      }).error(function() {
-        console.log("error");
-      });
+    }).error(function() {
+      console.log("error");
+    });
   };
   //estimate 작성 취소
   $scope.cancelEstimate = function() {
