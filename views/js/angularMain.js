@@ -102,7 +102,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
       }
     }).success(function(response) {
       if (response.RESULT == 1) {
-        console.log(response.INFO ,"InFO");
+        console.log(response ,"InFO");
         $scope.data = response.INFO;
         console.log(response);
       } else {
