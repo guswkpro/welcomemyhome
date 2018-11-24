@@ -30,32 +30,29 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         formdata.append(key, value);
       });
     };
-
-    $scope.uploadFiles = function() {
-      var request = {
-        method: "POST",
-        url: "/addestimate",
-        data: formdata,
-        headers: {
-          "Content-Type": undefined
-        }
-      };
-      $http(request)
-        .success(function(response) {
-          console.log(response,"test");
-          if (response.RESULT == "1") {
-            console.log(response.RESULT);
-            var msg = "견적 작성에 성공하셨습니다.";
-            $window.alert(msg);
-            $window.location.href = '/estimatelist';
-          } else {
-            var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
-            $window.alert(msg);
-          }
-        }).error(function() {
-          console.log("error");
-        });
+    var request = {
+      method: "POST",
+      url: "/addestimate",
+      data: formdata,
+      headers: {
+        "Content-Type": undefined
+      }
     };
+    $http(request)
+      .success(function(response) {
+        console.log(response, "test");
+        if (response.RESULT == "1") {
+          console.log(response.RESULT);
+          var msg = "견적 작성에 성공하셨습니다.";
+          $window.alert(msg);
+          $window.location.href = '/estimatelist';
+        } else {
+          var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
+          $window.alert(msg);
+        }
+      }).error(function() {
+        console.log("error");
+      });
   };
   //estimate 작성 취소
   $scope.cancelEstimate = function() {
