@@ -90,7 +90,8 @@ app.controller('estimateAnswerCtrl', function($scope, $window) {
 // Estimate list 출력
 app.controller('estimateListCtrl', function($scope, $http, $window) {
   console.log(document.cookie);
-  var auth = document.cookie.split("/")[1];
+  var cookie = document.cookie.split("/");
+  var auth = cookie[1];
   console.log(auth + "auth");
   // auth(사용자, 사업자)에 따른 list 변화
   if (getuserauth == "0") { // 사용자
