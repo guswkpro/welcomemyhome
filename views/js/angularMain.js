@@ -85,8 +85,9 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
       }
     }).success(function(response) {
       if (response.RESULT == 1) {
-        console.log(response.INFO + "InFO");
-        $scope.data = response.INFO;
+        console.log(response.INFO[0] + "InFO");
+
+        $scope.data = response.INFO[0];
       } else {
         var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
