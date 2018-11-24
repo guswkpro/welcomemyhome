@@ -85,7 +85,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
       }
     }).success(function(response) {
       if (response.RESULT == 1) {
-        console.log(response.INFO[0] + "InFO");
+        console.log(response.INFO[0].estimate_idx + "InFO");
 
         $scope.data = response.INFO[0];
       } else {
