@@ -75,6 +75,7 @@ app.controller('estimateAnswerCtrl', function($scope, $window) {
 // Estimate list 출력
 app.controller('estimateListCtrl', function($scope, $http, $window) {
   $scope.currentPage = 1;
+  console.log(currentPage + " page");
   $scope.pageSize = 5;
   var cookie_auth = document.cookie.split("%2F");
   var cookie_user = document.cookie.substring(0,8).split("=");
