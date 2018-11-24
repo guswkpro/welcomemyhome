@@ -83,7 +83,7 @@ app.controller('estimateAnswerCtrl', function($scope, $window) {
 // Estimate list 출력
 app.controller('estimateListCtrl', function($scope, $http, $window, getuserauth) {
   // auth(사용자, 사업자)에 따른 list 변화
-  if (getuserauth.userauth == "0") {
+  if (getuserauth == "0") {  // 사용자
     $http.get('/getestimatelist', {
       params: {
         user_idx: 77,
@@ -98,7 +98,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, getuserauth)
         $window.location.href = '/';
       }
     });
-  } else if (getuserauth.userauth == "1") { // 사업자
+  } else if (getuserauth == "1") { // 사업자
     $scope.answercount = true;
     $http.get('/getestimateanswerlist', {
       params: {
