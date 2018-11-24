@@ -82,7 +82,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
   if (auth == "0") { // 사용자
     $http.get('/getestimatelist', {
       params: {
-        user_idx: 77,
+        user_idx: usercheck,
         offset: 0
       }
     }).success(function(response) {
