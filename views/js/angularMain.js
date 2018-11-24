@@ -26,7 +26,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
   $scope.pushEstimateData = function() {
     $http({
       method: 'POST',
-      url: '/login',
+      url: '/addestimate',
       headers: {
         'Content-Type': 'application/json'
       },
