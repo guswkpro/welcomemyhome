@@ -5,10 +5,10 @@ app.factory('getuserauth', function($http) {
   $http.get('/logincheck').success(function(response) {
     if (response.RESULT == "1") {
       userauth = response.INFO.auth;
+      console.log(userauth);
+      return userauth;
     }
   });
-  console.log(userauth);
-  return userauth;
 });
 
 // 화면 전환 시 login check 기능
