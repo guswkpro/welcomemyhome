@@ -9,7 +9,7 @@ require('date-utils');
         GET
 ********************/
 exports.getestimatelist = function (request, response) {
-    var req_user_check = request.body.check;
+    var req_user_check = request.params("user_idx");
     var req_offset = request.param('offset');
     var info = [];
     async.waterfall([
