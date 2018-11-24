@@ -7,6 +7,10 @@
   float : right;
 }
 
+.estimateList-float-left {
+  float : left;
+}
+
 .pagenation {
   text-align: center;
 }

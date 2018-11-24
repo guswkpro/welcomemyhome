@@ -71,7 +71,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="d in data">
+        <tr ng-repeat="d in data" onClick="location.href='http://13.124.196.226:3000/estimatedetail'">
           <td>{{d.estimate_idx}}</td>
           <td>{{d.estimate_title}}</td>
           <td>{{d.user_idx}}</td>
@@ -82,9 +82,11 @@
     </table>
 
     <hr />
-    <input type="button" value="작성" class="estimateList-float-right estimate-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimate'"/>
+    <input type="button" value="작성" class="estimateList-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimate'"/>
 
     <div class="pagenation">
+      <input type="button" value="사용자 글" class="estimateList-float-left" ng-click="viewUserWrite"/>
+      <input type="button" value="내 글보기" class="estimateList-float-left" ng-click="viewMyWrite"/>
       <button ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1">
           Previous
       </button>

@@ -7,8 +7,8 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
       console.log(response.RESULT);
       if (response.RESULT == "1") {
         auth = response.auth;
-        console.log(auth+"auth");
-        console.log(response.auth+"respnse");
+        console.log(auth + "auth");
+        console.log(response.auth + "respnse");
         $scope.div_login = {
           "width": "12%"
         };
@@ -78,11 +78,15 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
   console.log(currentPage + " page");
   $scope.pageSize = 5;
   var cookie_auth = document.cookie.split("%2F");
-  var cookie_user = document.cookie.substring(0,8).split("=");
+  var cookie_user = document.cookie.substring(0, 8).split("=");
   var auth = cookie_auth[1];
   var usercheck = cookie_user[1];
-  var offset = (currentPage-1)*5;
+  var offset = (currentPage - 1) * 5;
   var total;
+  var total_user;
+  var total_my;
+  var data_user;
+  var data_my;
   // auth(사용자, 사업자)에 따른 list 변화
   if (auth == "0") { // 사용자
     $http.get('/getestimatelist', {
@@ -92,7 +96,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     }).success(function(response) {
       if (response.RESULT == 1) {
         $scope.data = response.INFO;
-        total = 10; // respnse.total;
+        total = 10; // response.total;
       } else {
         var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
@@ -107,9 +111,26 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
       }
     }).success(function(response) {
       if (response.RESULT == 1) {
-        $scope.data = response.INFO;
-        total = 10; // respnse.total;
+        data_user = response.INFO;
+        $scope.data = data_user;
+        total_user = 10; // response.total_user;
+        total = total_user;
         console.log(response);
+      } else {
+        var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
+        $window.alert(msg);
+        $window.location.href = '/';
+      }
+    });
+    $http.get('/getestimateanswerlist', {
+      params: {
+        offset: offset
+      }
+    }).success(function(response) {
+      if (response.RESULT == 1) {
+        data_my = response.INFO;
+        total_my = 10; // response.total_my
+        total = total_my;
       } else {
         var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
@@ -123,5 +144,13 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
   }
   $scope.numberOfPages = function() {
     return Math.ceil(total / $scope.pageSize);
+  };
+  $scope.viewUserWrite = function() {
+    $scope.data = data_user;
+    total = total_user;
+  };
+  $scope.viewMyWrite = function() {
+    $scope.data = data_my;
+    total = total_my;
   };
 });
