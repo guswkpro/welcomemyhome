@@ -7,6 +7,7 @@ app.factory('getuserauth', function($http) {
       userauth = response.INFO.auth;
     }
   });
+  console.log(userauth);
   return userauth;
 });
 
