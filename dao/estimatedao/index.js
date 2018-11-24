@@ -17,7 +17,7 @@ exports.getestimatelist = function (offset, callback) {
     });
 };
 exports.getestimatelistforuser = function (offset, user_idx, callback) {
-    client.query('SELECT * FROM stweb.stweb_estimates order by estimate_idx DESC limit ?, 5 where user_idx = ?', [Number(offset), user_idx], function (error, result) {
+    client.query('SELECT * FROM stweb.stweb_estimates where user_idx = ? order by estimate_idx DESC limit ?, 5', [user_idx, Number(offset)], function (error, result) {
         callback(error, result);
     });
 };
