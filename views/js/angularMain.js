@@ -7,7 +7,7 @@ app.factory('getuserauth', function($http) {
     if (response.RESULT == "1") {
       console.log("2");
       console.log(response);
-      userauth = response.INFO.auth;
+      userauth = response.auth;
       console.log("3");
       console.log(userauth);
       return userauth;
@@ -15,7 +15,6 @@ app.factory('getuserauth', function($http) {
   }).error(function(response){
     console.log("실패함");
   });
-  return userauth;
 });
 
 // 화면 전환 시 login check 기능
