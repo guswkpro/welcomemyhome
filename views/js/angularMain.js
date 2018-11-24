@@ -24,6 +24,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 // estimate 제출 시 정보 서버로 보내는 기능
 app.controller('estimateCtrl', function($scope, $http, $window) {
   $scope.pushEstimateData = function() {
+    console.log("success");
     $http({
       method: 'POST',
       url: '/addestimate',
