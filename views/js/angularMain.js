@@ -74,22 +74,24 @@ app.controller('estimateAnswerCtrl', function($scope, $window) {
 
 // Estimate list 출력
 app.controller('estimateListCtrl', function($scope, $http, $window) {
+  $scope.currentPage = 1;
+  $scope.pageSize = 5;
   var cookie_auth = document.cookie.split("%2F");
   var cookie_user = document.cookie.substring(0,8).split("=");
   var auth = cookie_auth[1];
-  var usercheck =cookie_user[1];
+  var usercheck = cookie_user[1];
+  var offset = currentPage-1+5;
+  var total;
   // auth(사용자, 사업자)에 따른 list 변화
   if (auth == "0") { // 사용자
     $http.get('/getestimatelist', {
       params: {
-        user_idx: usercheck,
-        offset: 0
+        offset: offset
       }
     }).success(function(response) {
       if (response.RESULT == 1) {
-        console.log(response.INFO[0].estimate_idx + "InFO");
-
         $scope.data = response.INFO;
+        total = 10; // respnse.total;
       } else {
         var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
@@ -98,15 +100,14 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     });
   } else if (auth == "1") { // 사업자
     $scope.answercount = true;
-    $http.get('/getestimateanswerlist', {
+    $http.get('/getestimatelist', {
       params: {
-        user_idx: 77,
-        offset: 0
+        offset: offset
       }
     }).success(function(response) {
       if (response.RESULT == 1) {
-        console.log(response ,"InFO");
         $scope.data = response.INFO;
+        total = 10; // respnse.total;
         console.log(response);
       } else {
         var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
@@ -119,9 +120,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     $window.alert(msg);
     $window.location.href = '/';
   }
-  $scope.currentPage = 1;
-  $scope.pageSize = 5;
   $scope.numberOfPages = function() {
-    return Math.ceil($scope.data.length / $scope.pageSize);
+    return Math.ceil(total / $scope.pageSize);
   };
 });

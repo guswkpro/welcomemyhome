@@ -9,12 +9,12 @@ require('date-utils');
         GET
 ********************/
 exports.getestimatelist = function (request, response) {
-    var req_user_check = request.param("user_idx");
+    var req_user_check = request.session.user_auth;
     var req_offset = request.param('offset');
     var info = [];
     async.waterfall([
         function (nextCallback) {
-            if (req_user_check == "1") {
+            if (req_user_check == "0") {
                 estimatedao.getestimatelistforuser(req_offset, request.session.user_idx, nextCallback);
             } else {
                 estimatedao.getestimatelist(req_offset, nextCallback);
