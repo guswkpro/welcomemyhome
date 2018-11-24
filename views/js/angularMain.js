@@ -109,6 +109,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     }).success(function(response) {
       if (response.RESULT == 1) {
         data_user = response.INFO;
+        console.log(data_user,"user");
         $scope.data = data_user;
         total_user = 10; // response.total_user;
         total = total_user;
@@ -125,6 +126,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     }).success(function(response) {
       if (response.RESULT == 1) {
         data_my = response.INFO;
+        console.log(data_my,"user1");
         total_my = 15; // response.total_my
         total = total_my;
       } else {
