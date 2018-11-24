@@ -24,45 +24,37 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 // estimate 제출 시 정보 서버로 보내는 기능
 app.controller('estimateCtrl', function($scope, $http, $window) {
   $scope.pushEstimateData = function() {
-    var formData = new FormData();
+    var formdata = new FormData();
+    $scope.getFiles = function($files) {
+      angular.forEach($files, function(value, key) {
+        formdata.append(key, value);
+      });
+    };
 
-    for (var key in formGroup.value) {
-      if (formGroup.value.hasOwnProperty(key)) {
-        formData.append(key, formGroup.value[key]);
-      }
-    }
-
-    if (files) {
-      files
-        .filter(function(file) {
-          file.name != null && file.file != null;
-        })
-        .forEach()(function(file) {
-          formData.append(file.name, file.file);
-        });
-    }
-    var headers = new Headers({'enctype': 'multipart/form-data'});
-    $http.post('/addestimate', formData, {headers})
-    .success(function(response) {
-      if (response.RESULT == "1") {
-        console.log(response.RESULT);
-        var msg = "견적 작성에 성공하셨습니다.";
-        $window.alert(msg);
-        $window.location.href = '/estimatelist';
-      } else {
-        var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
-        $window.alert(msg);
-      }
-    }).error(function() {
-
-      var reader = new FileReader();
-      reader.readAsDataURL($scope.image);
-      reader.onload = function() {
-        console.log(reader.result);
+    $scope.uploadFiles = function() {
+      var request = {
+        method: "POST",
+        url: "/addestimate",
+        data: formdata,
+        headers: {
+          "Content-Type": undefined
+        }
       };
-
-      console.log("$scope.image");
-    });
+      $http(request)
+        .success(function(response) {
+          if (response.RESULT == "1") {
+            console.log(response.RESULT);
+            var msg = "견적 작성에 성공하셨습니다.";
+            $window.alert(msg);
+            $window.location.href = '/estimatelist';
+          } else {
+            var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
+            $window.alert(msg);
+          }
+        }).error(function() {
+          console.log("error");
+        });
+    };
   };
   //estimate 작성 취소
   $scope.cancelEstimate = function() {
