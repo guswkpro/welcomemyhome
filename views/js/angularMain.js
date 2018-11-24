@@ -82,45 +82,47 @@ app.controller('estimateAnswerCtrl', function($scope, $window) {
 
 // Estimate list 출력
 app.controller('estimateListCtrl', function($scope, $http, $window, getuserauth) {
-  // auth(사용자, 사업자)에 따른 list 변화
-  if( getuserauth.userauth == "0") {
-    $http.get('/getestimatelist', {
-      params : {
-        user_idx : 77,
-        offset : 0
-      }
-    }).success(function(response){
-      if(response.RESULT == 1) {
-        $scope.data = response.INFO;
-      }
-      else{
-        var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
-        $window.alert(msg);
-        $window.location.href = '/';
-      }
-    });
-  } else if (getuserauth.userauth == "1") { // 사업자
-    $scope.answercount = true;
-    $http.get('/getestimateanswerlist', {
-      params : {
-        user_idx : 77,
-        offset : 0
-      }
-    }).success(function(response){
-      if(response.RESULT == 1) {
-        $scope.data = response.INFO;
-      }
-      else{
-        var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
-        $window.alert(msg);
-        $window.location.href = '/';
-      }
-    });
-  } else { //로그인 안 했을 시
-    var msg = "User 정보가 명확치 않습니다. 로그인을 해주세요";
-    $window.alert(msg);
-    $window.location.href = '/';
-  }
+  $scope.load = function() {
+    // auth(사용자, 사업자)에 따른 list 변화
+    if( getuserauth.userauth == "0") {
+      $http.get('/getestimatelist', {
+        params : {
+          user_idx : 77,
+          offset : 0
+        }
+      }).success(function(response){
+        if(response.RESULT == 1) {
+          $scope.data = response.INFO;
+        }
+        else{
+          var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
+          $window.alert(msg);
+          $window.location.href = '/';
+        }
+      });
+    } else if (getuserauth.userauth == "1") { // 사업자
+      $scope.answercount = true;
+      $http.get('/getestimateanswerlist', {
+        params : {
+          user_idx : 77,
+          offset : 0
+        }
+      }).success(function(response){
+        if(response.RESULT == 1) {
+          $scope.data = response.INFO;
+        }
+        else{
+          var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
+          $window.alert(msg);
+          $window.location.href = '/';
+        }
+      });
+    } else { //로그인 안 했을 시
+      var msg = "User 정보가 명확치 않습니다. 로그인을 해주세요";
+      $window.alert(msg);
+      $window.location.href = '/';
+    }
+  };
   $scope.currentPage = 1;
   $scope.pageSize = 5;
   $scope.numberOfPages = function() {
