@@ -77,7 +77,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
   var cookie_auth = document.cookie.split("%2F");
   var cookie_user = document.cookie.substring(0,7).split("=");
   var auth = cookie_auth[1];
-  var usercheck =cookie_user[0];
+  var usercheck =cookie_user[1];
   // auth(사용자, 사업자)에 따른 list 변화
   if (auth == "0") { // 사용자
     $http.get('/getestimatelist', {
