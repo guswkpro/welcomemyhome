@@ -24,19 +24,26 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 // estimate 제출 시 정보 서버로 보내는 기능
 app.controller('estimateCtrl', function($scope, $http, $window) {
   $scope.pushEstimateData = function() {
-    $http({
-      method: 'POST',
-      url: '/addestimate',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: ({
-        title: $scope.title,
-        content: $scope.content,
-        address: $scope.address,
-        image: $scope.image
-      })
-    }).success(function(response) {
+    var formData = new FormData();
+
+    for (var key in formGroup.value) {
+      if (formGroup.value.hasOwnProperty(key)) {
+        formData.append(key, formGroup.value[key]);
+      }
+    }
+
+    if (files) {
+      files
+        .filter(function(file) {
+          file.name != null && file.file != null;
+        })
+        .forEach()(function(file) {
+          formData.append(file.name, file.file);
+        });
+    }
+    var headers = new Headers({'enctype': 'multipart/form-data'});
+    $http.post('/addestimate', formData, {headers})
+    .success(function(response) {
       if (response.RESULT == "1") {
         console.log(response.RESULT);
         var msg = "견적 작성에 성공하셨습니다.";
@@ -46,7 +53,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
         $window.alert(msg);
       }
-    }).error(function(){
+    }).error(function() {
 
       var reader = new FileReader();
       reader.readAsDataURL($scope.image);
@@ -115,7 +122,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     }).success(function(response) {
       if (response.RESULT == 1) {
         data_user = response.INFO;
-        console.log(data_user,"user");
+        console.log(data_user, "user");
         $scope.data = data_user;
         total_user = 10; // response.total_user;
         total = total_user;
@@ -132,7 +139,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     }).success(function(response) {
       if (response.RESULT == 1) {
         data_my = response.INFO;
-        console.log(data_my,"user1");
+        console.log(data_my, "user1");
         total_my = 15; // response.total_my
         total = total_my;
       } else {
@@ -150,22 +157,22 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     return Math.ceil(total / $scope.pageSize);
   };
   $scope.viewUserWrite = function() {
-    console.log(data_user,"user");
-    console.log(total_user,"total");
+    console.log(data_user, "user");
+    console.log(total_user, "total");
     $scope.data = data_user;
     total = total_user;
   };
   $scope.viewMyWrite = function() {
-    console.log(data_my,"user2");
-    console.log(total_my,"total2");
+    console.log(data_my, "user2");
+    console.log(total_my, "total2");
     $scope.data = data_my;
     total = total_my;
   };
   $scope.check = function() {
     //if() {
-      $window.location.href="/estimateanswer";
-  //  } else if() {
-      $window.location.href="/estimatedetail";
+    $window.location.href = "/estimateanswer";
+    //  } else if() {
+    $window.location.href = "/estimatedetail";
     //}
   };
 });
