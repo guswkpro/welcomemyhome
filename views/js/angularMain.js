@@ -51,16 +51,14 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
       console.log("error");
     });
   };
-});
-
-// Estimate 작성 취소
-app.controller('estimateCtrl', function($scope, $window) {
   $scope.cancelEstimate = function() {
     var msg = "작성을 취소하여 리스트 페이지로 이동합니다.";
     $window.alert(msg);
     $window.location.href = '/estimatelist';
   };
 });
+
+// Estimate 작성 취소
 
 // Estimate answer 작성 취소
 app.controller('estimateAnswerCtrl', function($scope, $window) {
