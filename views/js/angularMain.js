@@ -118,6 +118,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, getuserauth)
   } else { //로그인 안 했을 시
     var msg = "User 정보가 명확치 않습니다. 로그인을 해주세요";
     $window.alert(msg);
+    console.log(getuserauth);
     $window.location.href = '/';
   }
   $scope.currentPage = 1;
