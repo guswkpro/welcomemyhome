@@ -2,7 +2,7 @@ var app = angular.module('Main', []);
 
 app.factory('getuserauth', function($http) {
   var userauth;
-  $http.get('/logincheck').success(function(response) {
+  $http.get('/logincheck').then(function(response) {
     console.log("1");
     if (response.RESULT == "1") {
       console.log("2");
@@ -11,6 +11,8 @@ app.factory('getuserauth', function($http) {
       console.log(userauth);
       return userauth;
     }
+  }).catch(function(response){
+    console.log("실패함");
   });
 });
 
