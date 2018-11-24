@@ -60,17 +60,13 @@
       </form>
     </div>
   </nav>
-  <div class="container nav-occupy estimate-div" ng-controller="estimateCtrl">
+  <div class="container nav-occupy estimate-div" ng-controller="estimateAnswerCtrl">
     <table class="table table-bordered">
       <tbody>
         <form>
           <tr>
             <th>제목: </th>
             <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control" ng-model="title"/></td>
-          </tr>
-          <tr>
-            <th>주소: </th>
-            <td><input type="text" placeholder="주소를 입력하세요. " name="address" class="form-control" ng-model="address"/></td>
           </tr>
           <tr>
             <th>첨부파일: </th>
@@ -84,7 +80,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <input type="button" value="취소" class="estimate-float-right" ng-click="cancelEstimate()"/>
+              <input type="button" value="취소" class="estimate-float-right" ng-click="cancelEstimateAnswer()"/>
               <input type="submit" value="등록" class="estimate-float-right" ng-click="pushEstimateData()"/>
             </td>
           </tr>

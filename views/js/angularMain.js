@@ -1,5 +1,15 @@
 var app = angular.module('Main', []);
 
+app.factory('getuserauth', function($http) {
+  var userauth;
+  $http.get('/logincheck').success(function(response) {
+    if(response.RESULT == "1") {
+      userauth = response.INFO.auth;
+    }
+  });
+  return userauth;
+});
+
 // 화면 전환 시 login check 기능
 app.controller('logincheckCtrl', function($scope, $http, $window) {
   $scope.load = function() {
@@ -19,11 +29,6 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
         $scope.showHide_logout = true;
       }
     });
-  };
-  $scope.checkauth = function() {
-    if ($scope.auth == "1") {
-
-    }
   };
 });
 
@@ -65,33 +70,61 @@ app.controller('estimateCtrl', function($scope, $window) {
   };
 });
 
-//
-app.controller('estimateListCtrl', function($scope, $http, $routeParams, $window) {
-  $scope.load = function() {
-    var url = '/getestimatelist?'
-    $http.get('/getestimatelist?user_idx=77&offset=0').success(function(response) {
-      if (response.RESULT == "1") {
-        $scope.data = response.INFO;
-      } else {
-        var msg = "알 수 없는 오류로 리스트를 불러올 수 없습니다.";
-        $window.alert(msg);
-        $window.location.href = '/estimate';
-      }
-    });
+// Estimate answet 작성 취소
+app.controller('estimateAnswerCtrl', function($scope, $window) {
+  $scope.cancelEstimateAnswer = function() {
+    var msg = "작성을 취소하여 리스트 페이지로 이동합니다.";
+    $window.alert(msg);
+    $window.location.href = '/estimatelist';
   };
 });
 
-//Estimate 리스트 pagenation
-app.controller('estimatePageNationCtrl', function($scope, $window) {
-  console.log("aaaaaa");
-  $scope.currentPage = 0;
-  $scope.pageSize = 10;
-  $scope.numberOfPages = Number($scope.data.length) / Number($scope.pageSize);
-  $scope.checkcurrentPage = function() {
-    if ($scope.currentPage == 0) {
-      $scope.checkzero = true;
-    } else {
-      $scope.checkzero = false;
-    }
+
+// Estimate list 출력
+app.controller('estimateListCtrl', function($scope, $http, $window, getuserauth) {
+  // auth(사용자, 사업자)에 따른 list 변화
+  if( getuserauth.userauth == "0") {
+    $http.get('/getestimatelist', {
+      params : {
+        user_idx : 77,
+        offset : 0
+      }
+    }).success(function(response){
+      if(response.RESULT == 1) {
+        $scope.data = response.INFO;
+      }
+      else{
+        var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
+        $window.alert(msg);
+        $window.location.href = '/';
+      }
+    });
+  } else if (getuserauth.userauth == "1") { // 사업자
+    $scope.answercount = true;
+    $http.get('/getestimateanswerlist', {
+      params : {
+        user_idx : 77,
+        offset : 0
+      }
+    }).success(function(response){
+      if(response.RESULT == 1) {
+        $scope.data = response.INFO;
+      }
+      else{
+        var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
+        $window.alert(msg);
+        $window.location.href = '/';
+      }
+    });
+  } else {
+    var msg = "User 정보가 명확치 않습니다.";
+    $window.alert(msg);
+    $window.location.href = '/';
+  }
+
+  $scope.currentPage = 1;
+  $scope.pageSize = 5;
+  $scope.numberOfPages = function() {
+    return Math.ceil($scope.data.length / $scope.pageSize);
   };
 });
