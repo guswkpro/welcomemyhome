@@ -27,6 +27,7 @@ exports.getestimatelist = function (request, response) {
                 RESULT: "0"
             });
         } else {
+            console.log(result);
             response.json({
                 RESULT: "1"
                 , INFO: result
