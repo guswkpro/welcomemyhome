@@ -47,10 +47,13 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         $window.alert(msg);
       }
     }).error(function(){
-      /*
-      const reader = new FileReader();
+
+      var reader = new FileReader();
       reader.readAsDataURL($scope.image);
-      */
+      reader.onload = function() {
+        console.log(reader.result);
+      };
+
       console.log("$scope.image");
     });
   };
