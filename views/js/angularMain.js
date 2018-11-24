@@ -34,10 +34,11 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         title: "$scope.title",
         address: "$scope.address",
         content: "$scope.content",
-        image: "iVBORw0KGgoAAAANSUhEUgAAACoAAAAYCAYAAACMcW/9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAA4SURBVFhH7c6xCQAgEAAx9x9Y5BtdIo1wRfqsfeb+oKhWVCuqFdWKakW1olpRrahWVCuqfRKd+wApwF5yhMzamAAAAABJRU5ErkJggg=="
+        image: [
+		{"image" : "iVBORw0KGgoAAAANSUhEUgAAACoAAAAYCAYAAACMcW/9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAA4SURBVFhH7c6xCQAgEAAx9x9Y5BtdIo1wRfqsfeb+oKhWVCuqFdWKakW1olpRrahWVCuqfRKd+wApwF5yhMzamAAAAABJRU5ErkJggg=="},
+		]
       })
     }).success(function(response) {
-      console.log(response, "test");
       if (response.RESULT == "1") {
         console.log(response.RESULT);
         var msg = "견적 작성에 성공하셨습니다.";
