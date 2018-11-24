@@ -125,7 +125,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     }).success(function(response) {
       if (response.RESULT == 1) {
         data_my = response.INFO;
-        total_my = 10; // response.total_my
+        total_my = 15; // response.total_my
         total = total_my;
       } else {
         var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
