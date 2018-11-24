@@ -46,6 +46,8 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
         $window.alert(msg);
       }
+    }).error(function(){
+      console.log("error");
     });
   };
 });
