@@ -1,4 +1,4 @@
-var app = angular.module('Main', [$cookieStoreProvider]);
+var app = angular.module('Main', ['ngCookies']);
 
 app.factory('getuserauth', function($http) {
   var userauth = "1";
@@ -88,7 +88,7 @@ app.controller('estimateAnswerCtrl', function($scope, $window) {
 
 
 // Estimate list 출력
-app.controller('estimateListCtrl', function($scope, $http, $window, $cookieStore) {
+app.controller('estimateListCtrl', function($scope, $http, $window, $cookies) {
   console.log($cookieStore.token);
   // auth(사용자, 사업자)에 따른 list 변화
   if (getuserauth == "0") { // 사용자
