@@ -170,6 +170,7 @@ exports.addestimate = function (request, response) {
         }, function (url, nextCallback) {
             count = 0;
             async.whilst(function () {
+              console.log(req_estimate_image);
                 return count < req_estimate_image.length;
             }, function (callback) {
                 var bitmap = new Buffer(req_estimate_image[count].image, 'base64');
