@@ -1,20 +1,5 @@
 var app = angular.module('Main', []);
 
-app.factory('getuserauth', function($http) {
-  var userauth = "1";
-
-  return $http.get('/logincheck').success(function(response) {
-    console.log("2");
-    console.log(response);
-    userauth = response.auth;
-    console.log("3");
-    console.log(userauth);
-    return userauth;
-  }).error(function(response) {
-    console.log("실패함");
-  });
-});
-
 // 화면 전환 시 login check 기능
 app.controller('logincheckCtrl', function($scope, $http, $window) {
   $scope.load = function() {
@@ -100,6 +85,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
       }
     }).success(function(response) {
       if (response.RESULT == 1) {
+        console.log(response.INFO + "InFO");
         $scope.data = response.INFO;
       } else {
         var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
@@ -116,6 +102,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
       }
     }).success(function(response) {
       if (response.RESULT == 1) {
+        console.log(response.INFO + "InFO");
         $scope.data = response.INFO;
         console.log(response);
       } else {
