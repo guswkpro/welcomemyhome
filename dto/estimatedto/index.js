@@ -5,7 +5,7 @@ exports.estimate = function(user_idx, title, content, date, imagepath, address, 
     estimate.estimate_content = content;
     estimate.estimate_date = date;
     estimate.estimate_picture_path = imagepath;
-    estimare.estimate_address = address;
+    estimate.estimate_address = address;
     estimate.estimate_answer_count = count;
     callback(null, estimate);
 };
@@ -18,4 +18,4 @@ exports.estimateanswer = function (user_idx, estimate_idx, content, date, imagep
     answer.answer_post_date = date;
     answer.answer_picture_path = imagepath;
     callback(null, answer);
-}; 
+};
