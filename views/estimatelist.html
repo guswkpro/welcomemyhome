@@ -37,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="d in data" onClick="location.href='http://13.124.196.226:3000/estimatedetail'">
+        <tr ng-repeat="d in data" ng-click="check">
           <td>{{d.estimate_idx}}</td>
           <td>{{d.estimate_title}}</td>
           <td ng-hide="HideUser">{{d.user_idx}}</td>

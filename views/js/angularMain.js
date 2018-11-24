@@ -59,7 +59,7 @@ app.controller('estimateCtrl', function($scope, $window) {
   };
 });
 
-// Estimate answet 작성 취소
+// Estimate answer 작성 취소
 app.controller('estimateAnswerCtrl', function($scope, $window) {
   $scope.cancelEstimateAnswer = function() {
     var msg = "작성을 취소하여 리스트 페이지로 이동합니다.";
@@ -154,5 +154,12 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     console.log(total_my,"total2");
     $scope.data = data_my;
     total = total_my;
+  };
+  $scope.check = function() {
+    //if() {
+      $window.location.href="/estimateanswer";
+  //  } else if() {
+      $window.location.href="/estimatedetail";
+    //}
   };
 });
