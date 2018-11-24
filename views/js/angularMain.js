@@ -3,16 +3,13 @@ var app = angular.module('Main', []);
 app.factory('getuserauth', function($http) {
   var userauth = "1";
   $http.get('/logincheck').success(function(response) {
-    console.log("1");
-    if (response.RESULT == "1") {
-      console.log("2");
-      console.log(response);
-      userauth = response.INFO.auth;
-      console.log("3");
-      console.log(userauth);
-      return userauth;
-    }
-  }).error(function(response){
+    console.log("2");
+    console.log(response);
+    userauth = response.INFO.auth;
+    console.log("3");
+    console.log(userauth);
+    return userauth;
+  }).error(function(response) {
     console.log("실패함");
   });
 });
@@ -90,7 +87,7 @@ app.controller('estimateAnswerCtrl', function($scope, $window) {
 // Estimate list 출력
 app.controller('estimateListCtrl', function($scope, $http, $window, getuserauth) {
   // auth(사용자, 사업자)에 따른 list 변화
-  if (getuserauth == "0") {  // 사용자
+  if (getuserauth == "0") { // 사용자
     $http.get('/getestimatelist', {
       params: {
         user_idx: 77,
@@ -124,7 +121,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, getuserauth)
     });
   } else { //로그인 안 했을 시
     var msg = "User 정보가 명확치 않습니다. 로그인을 해주세요";
-    console.log("aaaa"+getuserauth);
+    console.log("aaaa" + getuserauth);
     $window.alert(msg);
     $window.location.href = '/';
   }
