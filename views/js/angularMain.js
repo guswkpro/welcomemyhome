@@ -88,6 +88,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
   var data_my;
   // auth(사용자, 사업자)에 따른 list 변화
   if (auth == "0") { // 사용자
+    $scope.HideUser = true;
     $http.get('/getestimatelist', {
       params: {
         offset: offset
@@ -114,7 +115,6 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
         $scope.data = data_user;
         total_user = 10; // response.total_user;
         total = total_user;
-        console.log(response);
       } else {
         var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
