@@ -22,7 +22,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 app.controller('magazinetitle', function($scope, $http) {
   $http.get('/getmagazinedetail', {
     params: {
-      magazine_idx: 15,16,17
+      magazine_idx: 15
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
