@@ -94,6 +94,7 @@ exports.getmagazinedetail = function (request, response) {
         }, function (magazinedata, nextCallback) {
             var encodedimage = [];
             var count = 0;
+            console.log(magazinedata);
             magazinedata[0].magazine_picture_path = magazinedata[0].magazine_picture_path.split(',');
             async.whilst(function () {
                 return count < (magazinedata[0].magazine_picture_path.length);
