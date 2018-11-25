@@ -174,7 +174,7 @@ exports.addestimate = function (request, response) {
                 return count < req_estimate_image.length;
             }, function (callback) {
                 var bitmap = new Buffer(req_estimate_image[count].image, 'base64');
-                newPath = dirname + "/" + dirdate + "_" + count + ".png";
+                newPath = dirname + "/" + dirdate + "_" + count + ".jpg";
                 imagepath = imagepath + newPath + ',';
                 count++;
                 fs.writeFile(newPath, bitmap, 'base64', callback);
@@ -232,7 +232,7 @@ exports.addestimateanswer = function (request, response) {
                 return count < req_estimate_image.length;
             }, function (callback) {
                 var bitmap = new Buffer(req_estimate_image[count].image, 'base64');
-                newPath = dirname + "/" + dirdate + "_" + count + ".png";
+                newPath = dirname + "/" + dirdate + "_" + count + ".jpg";
                 imagepath = imagepath + newPath + ',';
                 count++;
                 fs.writeFile(newPath, bitmap, 'base64', callback);
