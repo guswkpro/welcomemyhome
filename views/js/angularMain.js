@@ -28,10 +28,10 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
     var input = document.getElementById('fileselector');
     var images = [];
     //    var files = input.files;
-
+    let flag = true;
     for (var i = 0; i < input.files.length; i++) {
       let fr = new FileReader();
-      let flag = true;
+
       fr.readAsDataURL(input.files[i]);
       fr.onload = function() {
         let str = fr.result.split(',')[1];
@@ -46,6 +46,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
           console.log(images);
           console.log(JSON.stringify(images));
 
+/*
           $http({
             method: 'POST',
             url: '/addestimate',
@@ -70,7 +71,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
           }).error(function() {
             console.log("error");
           });
-
+*/
         }
       }
     }
