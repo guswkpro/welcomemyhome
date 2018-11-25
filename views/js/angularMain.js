@@ -38,10 +38,10 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
           image: str
         };
         images.push(image);
-        console.log(JSON.stringify(images));
       };
 
       if(i == input.files.length - 1){
+        let imagestr = JSON.stringify(images);
         $http({
           method: 'POST',
           url: '/addestimate',
@@ -52,7 +52,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
             title: $scope.title,
             address: $scope.address,
             content: $scope.content,
-            image: images
+            image: imagestr
           })
         }).success(function(response) {
           if (response.RESULT == "1") {
