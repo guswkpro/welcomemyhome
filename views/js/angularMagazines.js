@@ -19,3 +19,17 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
     });
   };
 });
+
+app.controller('magazinetitle', function($scope, $http) {
+  $scope.load = function() {
+    $http.get('/getmagazinedetail', {
+      params: {
+        offset: 15
+      }
+    }).success(function(response) {
+			if(response.RESULT == 1) {
+				$scope.magazinetitle = response.INFO.magazine_title;
+			}
+		})
+  };
+});
