@@ -37,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="d in data" ng-click="$window.location.href = "/estimatedetail";">
+        <tr ng-repeat="d in data" ng-click="userClickEstimate()">
           <td>{{d.estimate_idx}}</td>
           <td>{{d.estimate_title}}</td>
           <td ng-hide="HideUser">{{d.user_idx}}</td>
