@@ -52,7 +52,14 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
             title: $scope.title,
             address: $scope.address,
             content: $scope.content,
-            image: imagestr
+            image: [
+              {
+                image: "dddddddddddddddddddddddddd="
+              },
+              {
+                image: "DddDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD="
+              }
+            ]
           })
         }).success(function(response) {
           if (response.RESULT == "1") {
