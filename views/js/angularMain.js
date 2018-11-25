@@ -129,7 +129,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
       if (response.RESULT == 1) {
         data_user = response.INFO;
         $scope.data = data_user;
-        total_user = 10; // response.total_user;
+        total_user = 15; // response.total_user;
         total = total_user;
       } else {
         var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
@@ -260,7 +260,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     }
   };
 
-  //
+  // 사용자가 자기 게시글 클릭
   $scope.userClickEstimate = function() {
     $window.location.href = "/estimatedetail";
   };
