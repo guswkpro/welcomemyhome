@@ -32,9 +32,9 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         'Content-Type': 'application/json'
       },
       data: ({
-        title: "$scope.title",
-        address: "$scope.address",
-        content: "$scope.content",
+        title: $scope.title,
+        address: $scope.address,
+        content: $scope.content,
         image: [
 		        {"image" : "$scope.image"},
 		        ]
