@@ -100,11 +100,17 @@ exports.getmagazinedetail = function (request, response) {
                 return count < (magazinedata[0].magazine_picture_path.length);
             }, function (callback) {
                 fs.readFile(magazinedata[0].magazine_picture_path[count], function (error, data) {
-                    console.log(data);
-                    console.log(count);
-                    encodedimage.push(new Buffer(data).toString('base64'));
-                    count++;
-                    callback();
+                    if (error) {
+                        response.json({
+                            RESULT: "0"
+                        });
+                    } else {
+                        console.log(data);
+                        console.log(count);
+                        encodedimage.push(new Buffer(data).toString('base64'));
+                        count++;
+                        callback();
+                    }
                 });
             }, function (err) {
                 magazinedata[0].likecheck = 0;
