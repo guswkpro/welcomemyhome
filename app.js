@@ -49,9 +49,6 @@ app.get('/magazines', function (req, res) {
 app.get('/magazinedetail', function (req, res) {
         res.render('magazinedetail.html');
 });
-app.get('/talks', function (req, res) {
-        res.render('magazinedetail.html');
-});
 app.get('/getmagazinelist', magazinecontroller.getmagazinelist);
 app.get('/getmagazinedetail', magazinecontroller.getmagazinedetail);
 app.get('/getmagazinecomment', magazinecontroller.getmagazinecomment);
