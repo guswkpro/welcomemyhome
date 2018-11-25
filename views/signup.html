@@ -1,107 +1,103 @@
 <!DOCTYPE html>
-<html lang="ko" ng-app="Main">
+<html lang="ko" ng-app="user">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <!-- jQuery -->
-  <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/signup.css" />
 
-  <!-- Angular js -->
-  <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
-  <script src="js/angularMain.js"></script>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="css/nav.css" />
-  <link rel="stylesheet" type="text/css" href="css/signup.css" />
-  <title>놀러와 마이홈</title>
+    <title>놀러와 마이홈 - 회원가입</title>
+    <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
+    <script src="/js/angularUser.js"></script>
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
-  <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
-    <div class="nav-logo">
-      <a class="navbar-bran" href='http://13.124.196.226:3000/'>WMH</a>
-    </div>
-    <div class="collapse navbar-collapse nav-menu">
-      <ul class="navbar-nav mr-auto nav-ul">
-        <li class="nav-item nav-li-magazine">
-          <a class="nav-a-text3" href='http://13.124.196.226:3000/magazines'>매거진</a>
-        </li>
-        <li class="nav-item nav-li">
-          <a class="nav-a-text4" href='http://13.124.196.226:3000/talks'>커뮤니티</a>
-        </li>
-        <li class="nav-item nav-li">
-          <a class="nav-a-text4" href='http://13.124.196.226:3000/'>사전전검</a>
-        </li>
-        <li class="nav-item nav-li">
-          <a class="nav-a-text4" href='http://13.124.196.226:3000/estimatelist'>견적요청</a>
-        </li>
-      </ul>
-    </div>
-    <div class = "nav-div-form" ng-init="load()" ng-style="div_login">
-      <form>
-        <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
-          type="button">로그인</button>
-        <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-signup" onclick="location.href = 'http://13.124.196.226:3000/signup'"
-          type="button">회원가입</button>
-        <button ng-show="showHide_login" class="btn btn-secondary my-sm-0 nav-button-mypage" onclick="location.href = 'http://13.124.196.226:3000/mypage'"
-          type="button">마이페이지</button>
-        <button ng-show="showHide_login" class="btn btn-secondary my-sm-0 nav-button-logout" onclick="location.href = 'http://13.124.196.226:3000/'"
-          type="button">로그아웃</button>
-      </form>
-    </div>
-  </nav>
 
-  <div class="card align-middle" style="width:20rem; height:27rem; border-radius:20px;">
-      <div class="card-title" style="margin-top:30px;">
-          <h2 class="card-title text-center" style="color:#113366;">놀러와마이홈</h2>
-      </div>
-      <div class="card-body" ng-controller="signupController">
-          <form class="form-signup" name="userInfo" method="POST">
-              <label for="inputid" class="sr-only">아이디입력</label>
-              <input type="text" id="input_id" placeholder="아이디입력" class="form-control2" required autofocus style="padding-right:48.3px;"
-                  ng-model="id">
-              <label for="checkid" class="sr-only"></label>
-              <button id="id_confirm" type="button" name="idconfirm" class="btn btn-outline-primary btn-sm confirmbutton">중복확인</button>
-              <input type="hidden" id="id_check" value="no" />
-              <div>
-                  <br />
-              </div>
-              <label for="inputPassword" class="sr-only">패스워드입력</label>
-              <input type="password" id="user_password" class="form-control2" placeholder="패스워드" style="padding-right:125px;"
-                  required ng-model="pw">
-              <br />
-              <div>
-                  <br />
-              </div>
-              <label for="inputPasswordCheck" class="sr-only">패스워드확인</label>
-              <input type="password" id="user_password_check" class="form-control2" placeholder="패스워드확인" style="padding-right:125px;"
-                  required>
-              <div>
-                  <br />
-              </div>
-              <label for="inputnickname" class="sr-only">닉네임</label>
-              <input type="text" id="user_nickname" class="form-control2" placeholder="닉네임입력" style="padding-right:48.3px;"
-                  required ng-model="nickname">
-              <label for="checknickname" class="sr-only"></label>
-              <button id="nickname_confirm" type="button" name="nicknameconfirm" class="btn btn-outline-primary btn-sm confirmbutton">중복확인</button>
-              <input type="hidden" id="nickname_check" value="no" /> <br>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+        <a class="navbar-brand" onclick="location.href = 'http://13.124.196.226:3000/'">WMH</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-              <div>
-                  <br />
-                  <br />
-              </div>
-              <button id="btn-Yes" class="btn btn-primary btn-block" type="submit" ng-click="pushData()"> 회 원 가 입</button>
-          </form>
-      </div>
-  </div>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav navbar-right mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="">매거진</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">커뮤니티</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">사전전검</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">견적요청</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-secondary my-2 my-sm-0 navbutton" onclick="location.href = 'http://13.124.196.226:3000/login'"
+                    type="button">로그인</button>
+                <button class="btn btn-secondary my-2 my-sm-0 navbutton" onclick="location.href = 'http://13.124.196.226:3000/signup'"
+                    type="button">회원가입</button>
+            </form>
+        </div>
+    </nav>
 
+    <div class="card align-middle" style="width:20rem; height:27rem; border-radius:20px;">
+        <div class="card-title" style="margin-top:30px;">
+            <h2 class="card-title text-center" style="color:#113366;">놀러와마이홈</h2>
+        </div>
+        <div class="card-body" ng-controller="signupController">
+            <form class="form-signup" name="userInfo" method="POST">
+                <label for="inputid" class="sr-only">아이디입력</label>
+                <input type="text" id="input_id" placeholder="아이디입력" class="form-control2" required autofocus style="padding-right:48.3px;"
+                    ng-model="id">
+                <label for="checkid" class="sr-only"></label>
+                <button id="id_confirm" type="button" name="idconfirm" class="btn btn-outline-primary btn-sm confirmbutton">중복확인</button>
+                <input type="hidden" id="id_check" value="no" />
+                <div>
+                    <br />
+                </div>
+                <label for="inputPassword" class="sr-only">패스워드입력</label>
+                <input type="password" id="user_password" class="form-control2" placeholder="패스워드" style="padding-right:125px;"
+                    required ng-model="pw">
+                <br />
+                <div>
+                    <br />
+                </div>
+                <label for="inputPasswordCheck" class="sr-only">패스워드확인</label>
+                <input type="password" id="user_password_check" class="form-control2" placeholder="패스워드확인" style="padding-right:125px;"
+                    required>
+                <div>
+                    <br />
+                </div>
+                <label for="inputnickname" class="sr-only">닉네임</label>
+                <input type="text" id="user_nickname" class="form-control2" placeholder="닉네임입력" style="padding-right:48.3px;"
+                    required ng-model="nickname">
+                <label for="checknickname" class="sr-only"></label>
+                <button id="nickname_confirm" type="button" name="nicknameconfirm" class="btn btn-outline-primary btn-sm confirmbutton">중복확인</button>
+                <input type="hidden" id="nickname_check" value="no" /> <br>
+
+                <div>
+                    <br />
+                    <br />
+                </div>
+                <button id="btn-Yes" class="btn btn-primary btn-block" type="submit" ng-click="pushData()"> 회 원 가 입</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal">
+    </div>
 </body>
 
 </html>
