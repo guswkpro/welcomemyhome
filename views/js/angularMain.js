@@ -46,7 +46,6 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
           console.log(images);
           console.log(JSON.stringify(images));
 
-/*
           $http({
             method: 'POST',
             url: '/addestimate',
@@ -71,7 +70,6 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
           }).error(function() {
             console.log("error");
           });
-*/
         }
       }
     }
