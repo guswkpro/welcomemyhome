@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" ng-app="Main">
+<html lang="ko" ng-app="magazinedetail">
 
 <head>
   <meta charset="utf-8">
@@ -29,7 +29,8 @@
 
 
   <div class="card card-body align-middle vh-100" style="width:60%; border-radius:20px;">
-    <div class="card-title" style="margin-top:15px;">사업자1
+    <div class="card-title" style="margin-top:15px;" ng-controller="magazinetitle">
+      {{magazinetitle}}
       <div class="heart"></div>
     </div>
 
@@ -74,7 +75,7 @@
                           <form>
                             <h3 class="pull-left">댓글 쓰기</h3>
                             <button type="submit" class="btn btn-normal pull-right">등록</button>
-                            <fieldset position="absolute">
+                            <fieldset >
                               <div class="row">
                                 <div class="col-sm-3 col-lg-2 hidden-xs">
                                   <img class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
