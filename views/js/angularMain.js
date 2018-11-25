@@ -166,7 +166,8 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
   };
 });
 
-app.controller('estimateCtrl', function($scope, $http, $window) {
+app.controller('estimatedetailCtrl', function($scope, $http, $window) {
+  console.log("")
   var encodedimage;
   var decodedimage;
   $http.get('/getestimatedetail', {
