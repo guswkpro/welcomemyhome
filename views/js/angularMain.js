@@ -174,6 +174,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
       estimate_idx : "28"
     }
   }).success(function(response) {
+    console.log(response.RESULT, "success");
     if (response.RESULT == 1) {
       $scope.title = response.INFO.estimate_title;
       $scope.date = response.INFO.estimate_date;
