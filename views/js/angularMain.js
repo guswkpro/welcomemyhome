@@ -27,12 +27,16 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
 
     var input = document.getElementById('fileselector');
     let fr = new FileReader();
-    var images = new JSONObject();
+    var images = [];
 
     for(file in input.files){
       fr.readAsDataURL(file);
       fr.onload = function(){
-        images.put("image", fr.result.split(',')[1]);
+        let str = fr.result.split(',')[1];
+        let image = {
+          image: str
+        }
+        images.append(image);
         console.log(images);
       }
     }
