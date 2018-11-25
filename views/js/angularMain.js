@@ -189,5 +189,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
       $window.alert(msg);
       $window.location.href = '/estimatelist';
     }
+  }).error(function() {
+    console.log("error");
   });
 });
