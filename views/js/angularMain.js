@@ -167,9 +167,6 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
 });
 
 app.controller('estimatedetailCtrl', function($scope, $http, $window) {
-  console.log("")
-  var encodedimage;
-  var decodedimage;
   $http.get('/getestimatedetail', {
     params: {
       estimate_idx : "28"
@@ -181,10 +178,8 @@ app.controller('estimatedetailCtrl', function($scope, $http, $window) {
       $scope.date = response.INFO.estimate_date;
       $scope.address = response.INFO.estimate_address;
       $scope.content = response.INFO.estimate_content;
-      encodedimage = response.INFO.estimate_encodedimage;
-      var blob = new Blob([encodedimage], {type: 'image/png'});
-      decodedimage = new File([blob], 'imageFileName.png');
-      $scope.image = decodedimage;
+      $scope.image= response.INFO.estimate_encodedimage;
+
     } else {
       var msg = "알 수 없는 에러로 detail 페이지를 불러 올 수 없습니다.";
       $window.alert(msg);
