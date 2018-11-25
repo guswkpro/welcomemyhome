@@ -190,7 +190,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
         }
       }).success(function(response) {
         if (response.RESULT == 1) {
-          data_my = response.INFO;
+          $scope.data = response.INFO;
           total_my = 15; // response.total_my
           total = total_my;
         } else {
@@ -206,8 +206,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
         }
       }).success(function(response) {
         if (response.RESULT == 1) {
-          data_user = response.INFO;
-          $scope.data = data_user;
+          $scope.data=response.INFO;
           total_user = 10; // response.total_user;
           total = total_user;
         } else {
@@ -230,7 +229,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
         }
       }).success(function(response) {
         if (response.RESULT == 1) {
-          data_my = response.INFO;
+          $scope.data = response.INFO;
           total_my = 15; // response.total_my
           total = total_my;
         } else {
@@ -246,8 +245,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
         }
       }).success(function(response) {
         if (response.RESULT == 1) {
-          data_user = response.INFO;
-          $scope.data = data_user;
+          $scope.data = response.INFO;
           total_user = 10; // response.total_user;
           total = total_user;
         } else {
