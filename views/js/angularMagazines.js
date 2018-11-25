@@ -3,7 +3,6 @@ var app = angular.module('magazines', []);
 app.controller('logincheckCtrl', function($scope, $http, $window) {
   $scope.load = function() {
     $http.get('/logincheck').success(function(response) {
-      console.log(response.RESULT);
       if (response.RESULT == "1") {
         $scope.div_login = {
           "width": "12%"
@@ -21,7 +20,6 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 });
 
 app.controller('magazinetitle', function($scope, $http) {
-  console.log("check");
   $http.get('/getmagazinedetail', {
     params: {
       magazine_idx: 15
@@ -36,4 +34,14 @@ app.controller('magazinetitle', function($scope, $http) {
   }).error(function() {
     console.log(error);
   });
+});
+
+magazines = {
+	'$index':'magazine_idx',
+	'$first':'magazine_title',
+	'$middle':'magazine_comment_count',
+	'$last':'magazine_like_count'
+};
+forEach(magazines,function(key,value){
+	console.log(magazines[value]);
 });
