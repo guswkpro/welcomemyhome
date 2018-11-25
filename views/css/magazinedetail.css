@@ -54,6 +54,13 @@
   transition: background 1s steps(28);
 }
 
+	.newcommentheader{
+		height: 10%;
+		position: relative;
+	}
+	.newcommentbody{
+		position: relative;
+	}
 
   .newcomment {
     height: 100%;
@@ -64,7 +71,7 @@
   .content-item {
       width: 100%;
       height: auto;
-      padding:30px 0;
+      padding:0 0;
   	background-color:#FFFFFF;
   }
 
