@@ -28,12 +28,11 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
     var input = document.getElementById('fileselector');
 
     let file = input.files[0];
-    let fr = new FileReader();
-    fr.readAsBinaryString(file);
+    console.log(file.readAsArrayBuffer())
 
-    console.log($scope.image, "check");
-    var encodedimage = $window.btoa(unescape(encodeURIComponent(fr)));
-    console.log(encodedimage, "string");
+//    console.log($scope.image, "check");
+//    var encodedimage = $window.btoa(unescape(encodeURIComponent(fr)));
+//    console.log(encodedimage, "string");
 //    fr = JSON.stringify(encodedimage);
     $http({
       method: 'POST',
