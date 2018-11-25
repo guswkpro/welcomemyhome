@@ -28,11 +28,53 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
     var input = document.getElementById('fileselector');
     var images = [];
     //    var files = input.files;
-    let flag = true;
-    for (var i = 0; i < input.files.length; i++) {
-      let fr = new FileReader();
+//    let flag = true;
 
-      fr.readAsDataURL(input.files[i]);
+    var recourcive = function(index, files){
+      let fr = new FileReader();
+      fr.readAsDataURL(files[index]);
+      fr.onload = function() {
+        let str = fr.result.split(',')[1];
+        let image = {
+          image: str
+        };
+        images.push(image);
+      }
+
+      if(index == files.length){
+        $http({
+          method: 'POST',
+          url: '/addestimate',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: ({
+            title: $scope.title,
+            address: $scope.address,
+            content: $scope.content,
+            image: images
+          })
+        }).success(function(response) {
+          if (response.RESULT == "1") {
+            var msg = "견적 작성에 성공하셨습니다.";
+            $window.alert(msg);
+            $window.location.href = '/estimatelist';
+          } else {
+            var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
+            $window.alert(msg);
+          }
+        }).error(function() {
+          console.log("error");
+        });
+      } else {
+        recourcive(index+1, files);
+      }
+    }
+
+    recourcive(0, input.files);
+    /*
+    for (var i = 0; i < input.files.length; i++) {
+
       fr.onload = function() {
         let str = fr.result.split(',')[1];
         let image = {
@@ -72,7 +114,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
           });
         }
       }
-    }
+    }*/
     //    fr = JSON.stringify(encodedimage);
   }
   //estimate 작성 취소
