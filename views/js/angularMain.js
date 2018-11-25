@@ -38,7 +38,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
           image: str
         };
         images.push(image);
-        console.log(JSON.stringify(images);
+        console.log(JSON.stringify(images));
       };
     }
 //    fr = JSON.stringify(encodedimage);
