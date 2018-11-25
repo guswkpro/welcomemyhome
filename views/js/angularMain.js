@@ -24,7 +24,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 // estimate 제출 시 정보 서버로 보내는 기능
 app.controller('estimateCtrl', function($scope, $http, $window) {
   $scope.pushEstimateData = function() {
-
+    console.log($scope.image, "check");
     var encodedimage = $window.btoa(unescape(encodeURIComponent($scope.image)));
     console.log(encodedimage, "string");
     $scope.image = JSON.stringify(encodedimage);
