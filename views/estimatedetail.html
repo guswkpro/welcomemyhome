@@ -27,27 +27,27 @@
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
-  <div class="container estimate-div" ng-controller="">
+  <div class="container estimate-div" ng-controller="estimatedetailCtrl">
     <table class="table table-bordered">
       <tbody>
         <form>
           <tr>
-            <th>제목: </th>
-            <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control" ng-model="title"/></td>
+            <th>제목 </th>
+            <td><div>{{title}}</div></td>
           </tr>
           <tr>
-            <th>사진</th>
-            <td><img src="{{}}" width="50" height="50"></td>
+            <th>주소 </th>
+            <td><div>{{address}}</div></td>
           </tr>
           <tr>
-            <th>내용: </th>
-            <td><textarea cols="10" rows="10" placeholder="내용을 입력하세요." name="content" class="form-control" ng-model="content"></textarea></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <input type="button" value="취소" class="estimate-float-right" ng-click="cancelEstimate()"/>
-              <input type="submit" value="등록" class="estimate-float-right" ng-click="pushEstimateData()"/>
+            <th>사진 </th>
+            <td>
+              <div ng-repeat= "e in image"><img src="{{e}}" alt="이미지 없음"></div>
             </td>
+          </tr>
+          <tr>
+            <th>내용 </th>
+            <td><div>{{content}}</div></td>
           </tr>
         </form>
       </tbody>

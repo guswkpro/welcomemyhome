@@ -35,7 +35,9 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         title: $scope.title,
         address: $scope.address,
         content: $scope.content,
-        image: [$scope.image]
+        image: [
+		        {"image" : "$scope.image"}
+		        ]
       })
     }).success(function(response) {
       if (response.RESULT == "1") {
@@ -162,4 +164,29 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     $window.location.href = "/estimatedetail";
     //}
   };
+});
+
+app.controller('estimateCtrl', function($scope, $http, $window) {
+  var encodedimage;
+  var decodedimage;
+  $http.get('/getestimatedetail', {
+    params: {
+      estimate_idx : "28"
+    }
+  }).success(function(response) {
+    if (response.RESULT == 1) {
+      $scope.title = response.INFO.estimate_title;
+      $scope.date = response.INFO.estimate_date;
+      $scope.address = response.INFO.estimate_address;
+      $scope.content = response.INFO.estimate_content;
+      encodedimage = response.INFO.estimate_encodedimage;
+      var blob = new Blob([encodedimage], {type: 'image/png'});
+      decodedimage = new File([blob], 'imageFileName.png');
+      $scope.image = decodedimage;
+    } else {
+      var msg = "알 수 없는 에러로 detail 페이지를 불러 올 수 없습니다.";
+      $window.alert(msg);
+      $window.location.href = '/estimatelist';
+    }
+  });
 });
