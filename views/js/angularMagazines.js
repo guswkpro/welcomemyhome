@@ -21,22 +21,19 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 });
 
 app.controller('magazinetitle', function($scope, $http) {
-	console.log("check");
-  $scope.load = function() {
-    $http.get('/getmagazinedetail', {
-      params: {
-        offset: 15
-      }
-    }).success(function(response) {
-      if (response.RESULT == 1) {
-        console.log(response, "success");
-        $scope.magazinetitle = response.INFO.magazine_title;
-      }
-			else{
-				console.log(response, "falt");
-			}
-    }).error(function() {
-      console.log(error);
-    });
-  };
+  console.log("check");
+  $http.get('/getmagazinedetail', {
+    params: {
+      offset: 15
+    }
+  }).success(function(response) {
+    if (response.RESULT == 1) {
+      console.log(response, "success");
+      $scope.magazinetitle = response.INFO.magazine_title;
+    } else {
+      console.log(response, "falt");
+    }
+  }).error(function() {
+    console.log(error);
+  });
 });
