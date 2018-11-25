@@ -44,7 +44,6 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         console.log(index, input.files.length);
         if(index == input.files.length - 1){
           console.log(JSON.stringify(images));
-          /*
           $http({
             method: 'POST',
             url: '/addestimate',
@@ -69,7 +68,6 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
           }).error(function() {
             console.log("error");
           });
-          */
         } else {
           recourcive(index+1);
         }
