@@ -221,7 +221,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
 
   // 리스트 다음 값으로 갱신
   $scope.listNext = function(){
-    console.log("check");
+    console.log($scope.currentPage,token_man,"check");
     $scope.currentPage = $scope.currentPage + 1;
     if(token_man == 1){ // 사업자
       $http.get('/getestimateanswerlist', {
