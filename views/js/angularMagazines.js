@@ -28,10 +28,10 @@ app.controller('magazinetitle', function($scope, $http) {
     if (response.RESULT == 1) {
       console.log(response, "success");
 
-
+			$scope.thumbnail = response.INFO.magazine_thumbnail_path;
       $scope.magazinetitle = response.INFO.magazine_title;
 			$scope.commentcount = response.INFO.magazine_comment_count;
-
+			$scope.encodedimage = response.INFO.encodedimage;
     } else {
       console.log(response, "falt");
     }
