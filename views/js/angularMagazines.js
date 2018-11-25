@@ -31,6 +31,9 @@ app.controller('magazinetitle', function($scope, $http) {
         console.log(response, "success");
         $scope.magazinetitle = response.INFO.magazine_title;
       }
+			else{
+				console.log(response, "falt");
+			}
     }).error(function() {
       console.log(error);
     });
