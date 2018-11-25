@@ -28,28 +28,6 @@ app.controller('magazinetitle', function($scope, $http) {
       params: {
         offset: offset
       }
-    })
+    });
   };
 });
-
-
-  $http.get('/getestimateanswerlist', {
-    params: {
-      offset: offset
-    }
-   }).success(function(response) {
-          if (response.RESULT == 1) {
-            data_my = response.INFO;
-            console.log(data_my, "user1");
-            total_my = 15; // response.total_my
-            total = total_my;
-          } else {
-            var msg = "알 수 없는 에러로 리스트를 불러 올 수 없습니다.";
-            $window.alert(msg);
-            $window.location.href = '/';
-          }
-        else { //로그인 안 했을 시
-        var msg = "로그인을 해주세요";
-        $window.alert(msg);
-        $window.location.href = '/';
-      });
