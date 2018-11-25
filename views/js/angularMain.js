@@ -32,8 +32,8 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
     console.log(fr.readAsBinaryString(file));
 
 //    console.log($scope.image, "check");
-//    var encodedimage = $window.btoa(unescape(encodeURIComponent(fr)));
-//    console.log(encodedimage, "string");
+    var encodedimage = $window.btoa(unescape(encodeURIComponent(fr)));
+    console.log(encodedimage, "string");
 //    fr = JSON.stringify(encodedimage);
     $http({
       method: 'POST',
