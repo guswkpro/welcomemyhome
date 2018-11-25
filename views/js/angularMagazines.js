@@ -1,4 +1,4 @@
-var app = angular.module('magazines', []);
+var app = angular.module('user', []);
 
 app.controller('magazineController', function ($scope, $http, $window) {
 	$scope.clickLogin = function(){
