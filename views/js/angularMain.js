@@ -30,11 +30,11 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
     //    var files = input.files;
 
     for (var i = 0; i < input.files.length; i++) {
-      var fr = new FileReader();
+      let fr = new FileReader();
       fr.readAsDataURL(input.files[i]);
       fr.onload = function() {
-        var str = fr.result.split(',')[1];
-        var image = {
+        let str = fr.result.split(',')[1];
+        let image = {
           image: str
         };
         images.push(image);
