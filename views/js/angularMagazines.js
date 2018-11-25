@@ -24,7 +24,7 @@ app.controller('magazinetitle', function($scope, $http) {
   console.log("check");
   $http.get('/getmagazinedetail', {
     params: {
-      offset: 15
+      magazine_idx: 15
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
