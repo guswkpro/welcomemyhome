@@ -29,7 +29,7 @@ app.controller('magazinelist', function($scope, $http) {
       console.log(response, "success");
 
 			$scope.magazine_list = response.INFO
-
+			console.log(response.INFO, $scope.magazine_list);
     } else {
       console.log(response, "falt");
     }
