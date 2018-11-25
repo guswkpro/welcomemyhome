@@ -40,34 +40,35 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         images.push(image);
         console.log(JSON.stringify(images));
       };
+
+      if(i == input.files.length - 1){
+        $http({
+          method: 'POST',
+          url: '/addestimate',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: ({
+            title: $scope.title,
+            address: $scope.address,
+            content: $scope.content,
+            image: images
+          })
+        }).success(function(response) {
+          if (response.RESULT == "1") {
+            var msg = "견적 작성에 성공하셨습니다.";
+            $window.alert(msg);
+            $window.location.href = '/estimatelist';
+          } else {
+            var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
+            $window.alert(msg);
+          }
+        }).error(function() {
+          console.log("error");
+        });
+      }
     }
 //    fr = JSON.stringify(encodedimage);
-    $http({
-      method: 'POST',
-      url: '/addestimate',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: ({
-        title: $scope.title,
-        address: $scope.address,
-        content: $scope.content,
-        image: [
-		        {"image" : "images"}
-		        ]
-      })
-    }).success(function(response) {
-      if (response.RESULT == "1") {
-        var msg = "견적 작성에 성공하셨습니다.";
-        $window.alert(msg);
-        $window.location.href = '/estimatelist';
-      } else {
-        var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
-        $window.alert(msg);
-      }
-    }).error(function() {
-      console.log("error");
-    });
   };
   //estimate 작성 취소
   $scope.cancelEstimate = function() {
