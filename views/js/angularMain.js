@@ -100,7 +100,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
   var total_my;
   var data_user;
   var data_my;
-  var token_man;
+  var token_man = false;
   // auth(사용자, 사업자)에 따른 list 변화
   if (auth == "0") { // 사용자
     $scope.HideUser = true;
@@ -158,25 +158,29 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     $window.alert(msg);
     $window.location.href = '/';
   }
+
+  // 페이지 수 계산
   $scope.numberOfPages = function() {
     return Math.ceil(total / $scope.pageSize);
   };
+
+  // 사용자 글 보기로 바꾸기
   $scope.viewUserWrite = function() {
     token_man = false;
     $scope.currentPage = 1;
-    console.log(data_user, "user");
-    console.log(total_user, "total");
     $scope.data = data_user;
     total = total_user;
   };
+
+  // 사업자가 쓴 답변 보기로 바꾸기
   $scope.viewMyWrite = function() {
     token_man = true;
     $scope.currentPage = 1;
-    console.log(data_my, "user2");
-    console.log(total_my, "total2");
     $scope.data = data_my;
     total = total_my;
   };
+
+  // 리스트 이전 값으로 갱신
   $scope.listPre = function(){
     $scope.currentPage = $scope.currentPage - 1;
     if(token_man == 1){ // 사업자
@@ -214,7 +218,10 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
       });
     }
   };
+
+  // 리스트 다음 값으로 갱신
   $scope.listNext = function(){
+    console.log("check");
     $scope.currentPage = $scope.currentPage + 1;
     if(token_man == 1){ // 사업자
       $http.get('/getestimateanswerlist', {
