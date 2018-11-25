@@ -259,13 +259,10 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
       });
     }
   };
-  
-  $scope.check = function() {
-    //if() {
-    //$window.location.href = "/estimateanswer";
-    //} else if(auth == 1 ) {
+
+  //
+  $scope.userClickEstimate = function() {
     $window.location.href = "/estimatedetail";
-    //}
   };
 });
 
