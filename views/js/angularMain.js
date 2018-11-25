@@ -94,7 +94,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
   var cookie_user = document.cookie.substring(0, 8).split("=");
   var auth = cookie_auth[1];
   var usercheck = cookie_user[1];
-  var offset = ($scope.currentPage - 1) * 5;
+  var offset = 0;
   var total;
   var total_user;
   var total_my;
@@ -184,6 +184,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
   $scope.listPre = function(){
     $scope.currentPage = $scope.currentPage - 1;
     if(token_man == 1){ // 사업자
+      offset = ($scope.currentPage - 1) * 5;
       $http.get('/getestimateanswerlist', {
         params: {
           offset: offset
@@ -200,6 +201,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
         }
       });
     } else if(token_man == 0){  // 사용자
+      offset = ($scope.currentPage - 1) * 5;
       $http.get('/getestimatelist', {
         params: {
           offset: offset
@@ -223,6 +225,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     console.log($scope.currentPage,token_man,"check");
     $scope.currentPage = $scope.currentPage + 1;
     if(token_man == 1){ // 사업자
+      offset = ($scope.currentPage - 1) * 5;
       $http.get('/getestimateanswerlist', {
         params: {
           offset: offset
@@ -239,6 +242,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
         }
       });
     } else if(token_man == 0){  // 사용자
+      offset = ($scope.currentPage - 1) * 5;
       $http.get('/getestimatelist', {
         params: {
           offset: offset
