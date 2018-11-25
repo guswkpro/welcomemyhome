@@ -28,7 +28,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
     var input = document.getElementById('fileselector');
 
     let file = input.files[0];
-    console.log(file.readAsArrayBuffer())
+    console.log(file.readAsDataURL())
 
 //    console.log($scope.image, "check");
 //    var encodedimage = $window.btoa(unescape(encodeURIComponent(fr)));
