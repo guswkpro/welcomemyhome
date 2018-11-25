@@ -198,3 +198,9 @@ app.controller('estimatedetailCtrl', function($scope, $http, $window) {
     console.log("error");
   });
 });
+
+app.controller('test', function ($scope, $http, $window) {
+	$scope.test = function () {
+		console.log($scope.myfile);
+	}
+});
