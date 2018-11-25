@@ -15,6 +15,7 @@
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
   <link rel="stylesheet" type="text/css" href="css/estimate.css" />
+  <link rel="stylesheet" type="text/css" href="css/estimateList.css" />
 
   <!-- jQuery -->
   <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
@@ -76,8 +77,6 @@
     </table>
 
     <hr />
-    <input type="button" ng-hide="answercount" value="작성" class="estimateList-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimate'"/>
-
     <div class="pagenation">
       <input type="button" value="사용자 글" ng-hide="HideUser" class="estimateList-float-left" ng-click="viewUserWrite()"/>
       <input type="button" value="내 글보기" ng-hide="HideUser" class="estimateList-float-left" ng-click="viewMyWrite()"/>
