@@ -193,7 +193,7 @@ app.controller('estimatedetailCtrl', function($scope, $http, $window) {
       $scope.date = response.INFO.estimate_date;
       $scope.address = response.INFO.estimate_address;
       $scope.content = response.INFO.estimate_content;
-      [$scope.image]= response.INFO.encodedimage;
+      [$scope.image] = response.INFO.encodedimage;
       console.log(response.INFO.encodedimage, "encodedimage");
       console.log($scope.image, "image");
     } else {
