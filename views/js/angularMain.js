@@ -24,6 +24,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 // estimate 제출 시 정보 서버로 보내는 기능
 app.controller('estimateCtrl', function($scope, $http, $window) {
   $scope.pushEstimateData = function() {
+    $scope.image = $window.dtoa($scope.image);
     $http({
       method: 'POST',
       url: '/addestimate',
@@ -35,7 +36,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         address: "$scope.address",
         content: "$scope.content",
         image: [
-		{"image" : "iVBORw0KGgoAAAANSUhEUgAAACoAAAAYCAYAAACMcW/9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAA4SURBVFhH7c6xCQAgEAAx9x9Y5BtdIo1wRfqsfeb+oKhWVCuqFdWKakW1olpRrahWVCuqfRKd+wApwF5yhMzamAAAAABJRU5ErkJggg=="},
+		{"image" : "$scope.image"},
 		]
       })
     }).success(function(response) {
@@ -158,8 +159,8 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
   };
   $scope.check = function() {
     //if() {
-    $window.location.href = "/estimateanswer";
-    //  } else if() {
+    //$window.location.href = "/estimateanswer";
+  //} else if(auth == 1 ) {
     $window.location.href = "/estimatedetail";
     //}
   };
