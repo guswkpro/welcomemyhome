@@ -75,3 +75,10 @@ app.controller('signupController', function ($scope, $http, $window) {
 		});
 	}
 });
+
+app.controller('test', function ($scope, $http, $window) {
+	$scope.test = function () {
+		console.log($scope.myfile);
+	}
+});
+
