@@ -27,22 +27,23 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
 
     var input = document.getElementById('fileselector');
     var images = [];
-//    var files = input.files;
+    //    var files = input.files;
 
-    for(var i = 0; i < input.files.length; i++){
+    for (var i = 0; i < input.files.length; i++) {
       var fr = new FileReader();
       fr.readAsDataURL(input.files[i]);
-      fr.onload = function(){
+      fr.onload = function() {
         var str = fr.result.split(',')[1];
         var image = {
           image: str
         };
         images.push(image);
 
-        if(i == input.files.length - 1){
+        console.log("heooooo");
+        if (i == input.files.length - 1) {
           console.log(images);
           console.log(JSON.stringify(images));
-
+/*
           $http({
             method: 'POST',
             url: '/addestimate',
@@ -67,11 +68,12 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
           }).error(function() {
             console.log("error");
           });
+          */
         }
-      };
+      }
     }
-//    fr = JSON.stringify(encodedimage);
-  };
+    //    fr = JSON.stringify(encodedimage);
+  }
   //estimate 작성 취소
   $scope.cancelEstimate = function() {
     var msg = "작성을 취소하여 리스트 페이지로 이동합니다.";
@@ -177,7 +179,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
   $scope.check = function() {
     //if() {
     //$window.location.href = "/estimateanswer";
-  //} else if(auth == 1 ) {
+    //} else if(auth == 1 ) {
     $window.location.href = "/estimatedetail";
     //}
   };
@@ -186,7 +188,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
 app.controller('estimatedetailCtrl', function($scope, $http, $window) {
   $http.get('/getestimatedetail', {
     params: {
-      estimate_idx : "48"
+      estimate_idx: "48"
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
