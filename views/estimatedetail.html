@@ -76,15 +76,16 @@
     </table>
 
     <hr />
+    <input type="button" ng-hide="answercount" value="작성" class="estimateList-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimate'"/>
 
     <div class="pagenation">
       <input type="button" value="사용자 글" ng-hide="HideUser" class="estimateList-float-left" ng-click="viewUserWrite()"/>
       <input type="button" value="내 글보기" ng-hide="HideUser" class="estimateList-float-left" ng-click="viewMyWrite()"/>
-      <button ng-disabled="currentPage==1" ng-click="currentPage=currentPage-1">
+      <button ng-disabled="currentPage==1" ng-click="listPre()">
           Previous
       </button>
       {{currentPage}}/{{numberOfPages()}}
-      <button ng-disabled="currentPage >= numberOfPages()" ng-click="currentPage=currentPage+1">
+      <button ng-disabled="currentPage >= numberOfPages()" ng-click="listNext()">
           Next
       </button>
     </div>
