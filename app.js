@@ -83,4 +83,6 @@ app.delete('/deletemagazinelike', magazinecontroller.deletemagazinelike);
 app.delete('/deletemagazinecomment', magazinecontroller.deletemagazinecomment);
 
 /* ----------- TEST ----------- */
-app.get('/test', usercontroller.test);
+app.get('/test', function(req, res){
+        res.render('test.html');
+});
