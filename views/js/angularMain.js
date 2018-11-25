@@ -53,12 +53,11 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         address: $scope.address,
         content: $scope.content,
         image: [
-		        {"image" : "$scope.image"}
+		        {"image" : "images"}
 		        ]
       })
     }).success(function(response) {
       if (response.RESULT == "1") {
-        console.log(response.RESULT);
         var msg = "견적 작성에 성공하셨습니다.";
         $window.alert(msg);
         $window.location.href = '/estimatelist';
