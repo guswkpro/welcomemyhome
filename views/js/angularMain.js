@@ -29,8 +29,10 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
 
     let file = input.files[0];
     let fr = new FileReader();
-    console.log(fr.readAsBinaryString(file));
-
+    fr.readAsDataURL(file);
+    fr.onload = function(){
+      console.log(fr.result);
+    }
 //    console.log($scope.image, "check");
     var encodedimage = $window.btoa(unescape(encodeURIComponent(fr)));
     console.log(encodedimage, "string");
