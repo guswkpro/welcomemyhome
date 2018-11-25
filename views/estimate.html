@@ -42,7 +42,8 @@
           <tr>
             <th>사진 </th>
             <td>
-              <input type="file" placeholder="파일을 선택하세요." accept="image/*" ng-model="image" multiple/>
+              <input type="file" id="uploadInput" name="uploadInput" onchange="javascript:getRealPath(this);" placeholder="파일을 선택하세요." accept="image/*" multiple/>
+              <input type="hidden" id="real_path" name="real_path" value="" ng-model="image"/>
             </td>
           </tr>
           <tr>
