@@ -169,7 +169,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
 app.controller('estimatedetailCtrl', function($scope, $http, $window) {
   $http.get('/getestimatedetail', {
     params: {
-      estimate_idx : "28"
+      estimate_idx : "29"
     }
   }).success(function(response) {
     console.log(response.RESULT, "success");
