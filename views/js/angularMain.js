@@ -38,7 +38,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
           image: str
         };
         images.push(image);
-        console.log(JSON.stringify(images));
+        //console.log(JSON.stringify(images));
       };
 
       if(i == input.files.length - 1){
@@ -184,7 +184,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
 app.controller('estimatedetailCtrl', function($scope, $http, $window) {
   $http.get('/getestimatedetail', {
     params: {
-      estimate_idx : "46"
+      estimate_idx : "48"
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
