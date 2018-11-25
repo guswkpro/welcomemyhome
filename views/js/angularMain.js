@@ -35,9 +35,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         title: $scope.title,
         address: $scope.address,
         content: $scope.content,
-        image: [
-		        {"image" : "$scope.image"}
-		        ]
+        image: $scope.image
       })
     }).success(function(response) {
       if (response.RESULT == "1") {
