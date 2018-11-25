@@ -237,7 +237,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
 app.controller('estimatedetailCtrl', function($scope, $http, $window) {
   $http.get('/getestimatedetail', {
     params: {
-      estimate_idx: "55"
+      estimate_idx: "57"
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
