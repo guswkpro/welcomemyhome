@@ -21,6 +21,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 });
 
 app.controller('magazinetitle', function($scope, $http) {
+	console.log("check");
   $scope.load = function() {
     $http.get('/getmagazinedetail', {
       params: {
