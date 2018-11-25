@@ -27,12 +27,12 @@ app.controller('magazinetitle', function($scope, $http) {
         offset: 15
       }
     }).success(function(response) {
-			if(response.RESULT == 1) {
-				console.log(response,"success");
-				$scope.magazinetitle = response.INFO.magazine_title;
-			}
-		}).error(function() {
-			console.log(error);
-		})
+      if (response.RESULT == 1) {
+        console.log(response, "success");
+        $scope.magazinetitle = response.INFO.magazine_title;
+      }
+    }).error(function() {
+      console.log(error);
+    });
   };
 });
