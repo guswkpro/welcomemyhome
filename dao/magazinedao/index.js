@@ -32,7 +32,7 @@ exports.getmagazinelikecheck = function (magazine_idx, user_idx, callback) {
     });
 };
 exports.getmagazinecommentcheck = function (magazine_idx, user_idx, callback) {
-    client.query('SELECT * FROM stweb.stweb_magazines_comments where magazine_idx = ? AND user_idx = ?', [magazine_idx, user_idx], function (error, result) {
+    client.query('SELECT * FROM stweb.stweb_magazine_comments where magazine_idx = ? AND user_idx = ?', [magazine_idx, user_idx], function (error, result) {
         callback(error, result);
     });
 };
