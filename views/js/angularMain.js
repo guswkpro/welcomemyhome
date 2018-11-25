@@ -179,7 +179,8 @@ app.controller('estimatedetailCtrl', function($scope, $http, $window) {
       $scope.address = response.INFO.estimate_address;
       $scope.content = response.INFO.estimate_content;
       $scope.image= response.INFO.estimate_encodedimage;
-
+      console.log(response.INFO.estimate_encodedimage, "encodedimage");
+      console.log($scope.image, "image");
     } else {
       var msg = "알 수 없는 에러로 detail 페이지를 불러 올 수 없습니다.";
       $window.alert(msg);
