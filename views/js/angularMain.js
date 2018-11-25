@@ -26,16 +26,16 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
   $scope.pushEstimateData = function() {
 
     var input = document.getElementById('fileselector');
-
-    let file = input.files[0];
     let fr = new FileReader();
-    fr.readAsDataURL(file);
-    fr.onload = function(){
-      console.log(fr.result);
+    var images = new JSONObject();
+
+    for(file in input.files){
+      fr.readAsDataURL(file);
+      fr.onload = function(){
+        images.put("image", fr.result.split(',')[1]);
+        console.log(images);
+      }
     }
-//    console.log($scope.image, "check");
-    var encodedimage = $window.btoa(unescape(encodeURIComponent(fr)));
-    console.log(encodedimage, "string");
 //    fr = JSON.stringify(encodedimage);
     $http({
       method: 'POST',
