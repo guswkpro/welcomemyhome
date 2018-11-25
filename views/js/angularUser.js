@@ -76,7 +76,8 @@ app.controller('signupController', function ($scope, $http, $window) {
 	}
 });
 
-app.controller('test', function ($scope, $http, $window) {
+app.controller('testctr', function ($scope) {
+	console.log('aaa');
 	$scope.test = function () {
 		console.log($scope.myfile);
 	}
