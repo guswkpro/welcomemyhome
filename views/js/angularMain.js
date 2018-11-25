@@ -42,7 +42,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
         images.push(image);
 
         console.log(index, input.files.length);
-        if(index == input.files.length){
+        if(index == input.files.length - 1){
           console.log(JSON.stringify(images));
           /*
           $http({
