@@ -22,26 +22,27 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 app.controller('magazinetitle', function($scope, $http) {
   $http.get('/getmagazinedetail', {
     params: {
-      magazine_idx: 15
+      magazine_idx: $index
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
       console.log(response, "success");
+
+			magazines = {
+				'$index':'magazine_idx',
+				'$first':'magazine_title',
+				'$middle':'magazine_comment_count',
+			};
+			forEach(magazines,function(key,value){
+				console.log(magazines[value]);
+			});
       $scope.magazinetitle = response.INFO.magazine_title;
+			$scope.commentcount = response.INFO.magazine_comment_count;
+
     } else {
       console.log(response, "falt");
     }
   }).error(function() {
     console.log(error);
   });
-});
-
-magazines = {
-	'$index':'magazine_idx',
-	'$first':'magazine_title',
-	'$middle':'magazine_comment_count',
-	'$last':'magazine_like_count'
-};
-forEach(magazines,function(key,value){
-	console.log(magazines[value]);
 });
