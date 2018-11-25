@@ -18,8 +18,6 @@ exports.getmagazinelist = function (offset, callback) {
 };
 exports.getmagazinedetail = function (magazine_idx, callback) {
     client.query('SELECT * FROM stweb.stweb_magazines where magazine_idx = ?', [magazine_idx], function (error, result) {
-      console.log(result);
-      console.log(magazine_idx);
         callback(error, result);
     });
 };
