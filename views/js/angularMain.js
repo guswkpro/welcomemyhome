@@ -42,6 +42,14 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
 
       if(i == input.files.length - 1){
         let imagestr = JSON.stringify(images);
+        let test = [
+          {
+            image: "dddddddddddddddddddddddddd="
+          },
+          {
+            image: "DddDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD="
+          }
+        ];
         $http({
           method: 'POST',
           url: '/addestimate',
@@ -52,14 +60,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
             title: $scope.title,
             address: $scope.address,
             content: $scope.content,
-            image: [
-              {
-                image: "dddddddddddddddddddddddddd="
-              },
-              {
-                image: "DddDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD="
-              }
-            ]
+            image: test
           })
         }).success(function(response) {
           if (response.RESULT == "1") {
