@@ -19,7 +19,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
   };
 });
 
-app.controller('magazinetitle', function($scope, $http) {
+app.controller('magazinelist', function($scope, $http) {
   $http.get('/getmagazinedetail', {
     params: {
       magazine_idx: 15
@@ -28,10 +28,8 @@ app.controller('magazinetitle', function($scope, $http) {
     if (response.RESULT == 1) {
       console.log(response, "success");
 
-			$scope.thumbnail = response.INFO.magazine_thumbnail_path;
-      $scope.magazinetitle = response.INFO.magazine_title;
-			$scope.commentcount = response.INFO.magazine_comment_count;
-			[$scope.encodedimage] = response.INFO.encodedimage;
+			$scope.magazine_list = response.INFO
+
     } else {
       console.log(response, "falt");
     }

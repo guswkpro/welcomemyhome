@@ -1,10 +1,8 @@
 var app = angular.module('magazinedetail', []);
 
-//우진이 네비바 로그인 체크
 app.controller('logincheckCtrl', function($scope, $http, $window) {
   $scope.load = function() {
     $http.get('/logincheck').success(function(response) {
-      console.log(response.RESULT);
       if (response.RESULT == "1") {
         $scope.div_login = {
           "width": "12%"
@@ -21,13 +19,24 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
   };
 });
 
-
 app.controller('magazinetitle', function($scope, $http) {
-  $scope.load = function() {
-    $http.get('/getmagazinedetail', {
-      params: {
-        offset: offset
-      }
-    });
-  };
+  $http.get('/getmagazinedetail', {
+    params: {
+      magazine_idx: 15
+    }
+  }).success(function(response) {
+    if (response.RESULT == 1) {
+      console.log(response, "success");
+
+			$scope.thumbnail = response.INFO.magazine_thumbnail_path;
+      $scope.magazinetitle = response.INFO.magazine_title;
+			$scope.commentcount = response.INFO.magazine_comment_count;
+			[$scope.encodedimage] = response.INFO.encodedimage;
+
+    } else {
+      console.log(response, "falt");
+    }
+  }).error(function() {
+    console.log(error);
+  });
 });
