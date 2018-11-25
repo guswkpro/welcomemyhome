@@ -28,3 +28,12 @@ body {
   background-position: -2800px 0;
   transition: background 1s steps(28);
 }
+
+.comment-a-text4 {
+  display: block;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  position: relative;
+
+}
