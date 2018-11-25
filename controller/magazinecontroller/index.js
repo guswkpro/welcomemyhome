@@ -95,13 +95,13 @@ exports.getmagazinedetail = function (request, response) {
             var encodedimage = [];
             var count = 0;
             magazinedata[0].magazine_picture_path = magazinedata[0].magazine_picture_path.split(',');
-            console.log(magazinedata[0]);
             console.log(magazinedata[0].magazine_picture_path[0]);
             async.whilst(function () {
                 return count < (magazinedata[0].magazine_picture_path.length);
             }, function (callback) {
                 fs.readFile(magazinedata[0].magazine_picture_path[count], function (error, data) {
-                  console.log(data);
+                    console.log(data);
+                    console.log(count);
                     encodedimage.push(new Buffer(data).toString('base64'));
                     count++;
                     callback();
