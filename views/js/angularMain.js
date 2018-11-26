@@ -31,7 +31,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
   $scope.pushEstimateData = function() {
     var images = [];
 
-    var recourcive = function(index) {
+    var recourcive2 = function(index) {
       var input = document.getElementById('fileselector');
       var fr = new FileReader();
       fr.readAsDataURL(input.files[index]);
