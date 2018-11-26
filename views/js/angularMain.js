@@ -1,9 +1,9 @@
 var app = angular.module('Main', []);
 
-app.run(function($rootScope) {
+/*app.run(function($rootScope) {
   $rootScope.cookie_auth = document.cookie.split("%2F");
   $rootScope.auth = $rootScope.cookie_auth[1];
-});
+});*/
 
 // 화면 전환 시 login check 기능
 app.controller('logincheckCtrl', function($scope, $http, $window) {
