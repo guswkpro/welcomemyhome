@@ -20,13 +20,10 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 });
 
 app.controller('magazinedetailcard', function($scope, $http) {
-  $scope.load = function(){
-      
-  }
-  $scope.getmagazinedetail = function(idx) {
+  $scope.load = function() {
     $http.get('/getmagazinedetail', {
       params: {
-        magazine_idx: idx
+        magazine_idx: 15
       }
     }).success(function(response) {
       if (response.RESULT == 1) {
@@ -35,7 +32,14 @@ app.controller('magazinedetailcard', function($scope, $http) {
         $scope.magazinetitle = response.INFO.magazine_title;
         $scope.encodedimage = response.INFO.encodedimage;
         $scope.comment = response.INFO.magazine_comment_content;
-
+/*
+        var ol = document.getElementById('ol_indicators');
+        for(var i = 0; i < response.INFO.encodedimage.length; i++){
+          //<li data-target="#Indicators" data-slide-to="0" class="active">
+          var li = document.createElement('li');
+          li.setAttribute
+        }
+*/
 
       } else {
         console.log(response, "falt");
