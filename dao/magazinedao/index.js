@@ -12,7 +12,7 @@ var client = mysql.createConnection({
         GET
 ********************/
 exports.getmagazinelist = function (offset, callback) {
-    client.query('SELECT * FROM stweb.stweb_magazines order by magazine_idx DESC limit ?, 6', [Number(offset)], function (error, result) {
+    client.query('SELECT * FROM stweb.stweb_magazines order by magazine_idx DESC limit ?, 15', [Number(offset)], function (error, result) {
         callback(error, result);
     });
 };
