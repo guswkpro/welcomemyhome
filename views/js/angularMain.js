@@ -63,6 +63,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
             } else {
               var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
               $window.alert(msg);
+              $window.location.href='/estimatelist'
             }
           }).error(function() {
             console.log("error");
@@ -85,20 +86,20 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
 // Estimate answer 작성 취소
 app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
   $scope.pushEstimateAnswerData = function() {
-    var images = [];
+    var images2 = [];
 
-    var recourcive = function(index) {
-      var input = document.getElementById('fileselector2');
-      var fr = new FileReader();
-      fr.readAsDataURL(input.files[index]);
-      fr.onload = function() {
-        var str = fr.result.split(',')[1];
-        var image = {
-          image: str
+    var recourcive2 = function(index) {
+      var input2 = document.getElementById('fileselector2');
+      var fr2 = new FileReader();
+      fr2.readAsDataURL(input2.files[index]);
+      fr2.onload = function() {
+        var str2 = fr2.result.split(',')[1];
+        var image2 = {
+          image: str2
         };
-        images.push(image);
-        if (index == input.files.length - 1) {
-          console.log(JSON.stringify(images));
+        images2.push(image2);
+        if (index == input2.files.length - 1) {
+          console.log(JSON.stringify(images2));
           $http({
             method: 'POST',
             url: '/addestimateanswer',
@@ -118,6 +119,7 @@ app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
             } else {
               var msg = "알 수 없는 오류로 답변 작성에 실패하였습니다.";
               $window.alert(msg);
+              $window.location.href = '/estimatedetail';
             }
           }).error(function() {
             console.log("error");
@@ -127,7 +129,7 @@ app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
         }
       }
     }
-    recourcive(0);
+    recourcive2(0);
   }
   //estimate answer작성 취소
   $scope.cancelEstimateAnswer = function() {
