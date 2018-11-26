@@ -40,6 +40,8 @@ app.get('/signup', function (req, res) {
         res.render('signup.html');
 });
 app.get('/logincheck', usercontroller.logincheck);
+app.get('/idcheck', usercontroller.idcheck);
+app.get('/nicknamecheck', usercontroller.nicknamecheck);
 
 app.get('/talks', function (req, res) {
         res.render('talks.html');
