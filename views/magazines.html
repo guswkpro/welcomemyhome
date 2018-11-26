@@ -54,12 +54,28 @@
                 </tr>
               </table>
               <div class="hit-like-post">
-                <ul class="list-unstyled list-inline media-detail pull-left">
-                  <li><i class="fa fa-eye"></i>{{m.magazine_hit_count}}</li>
-                  <li><i class="fa fa-heart"></i>{{m.magazine_like_count}}</li>
-                  <li><i class="fa fa-calendar"></i>{{m.magazine_post_date}}</li>
-                </ul>
+
+                <table style="width:100%;">
+                  <tr>
+                    <td style="width: 60%;" align="left">
+                      <div>
+                        <i class="fa fa-eye"></i>{{m.magazine_hit_count}}
+                      </div>
+                    </td>
+                    <td style="width: 20%;" align="middle">
+                      <div>
+                        <i class="fa fa-heart"></i>{{m.magazine_like_count}}
+                      </div>
+                    </td>
+                    <td style="width: 20%;" align="right">
+                      <div>
+                        <i class="fa fa-calendar"></i>{{m.magazine_post_date}}
+                      </div>
+                    </td>
+                  </tr>
+                </table>
               </div>
+
           </div><!-- card-body-->
         </div>
       </div>
