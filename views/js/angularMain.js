@@ -83,7 +83,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
 });
 
 // Estimate answer 작성 취소
-app.controller('estimateAnswerCtrl', function($scope, $window) {
+app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
   $scope.pushEstimateAnswerData = function() {
     var images = [];
 
