@@ -13,7 +13,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
-  <link rel="stylesheet" type="text/css" href="css/magazines.css"/>
+  <link rel="stylesheet" type="text/css" href="css/magazines.css" />
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
@@ -21,7 +21,8 @@
   <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
 
 
-  <script src="js/angularMagazines.js" /></script>
+  <script src="js/angularMagazines.js" />
+  </script>
 
 
 
@@ -39,39 +40,42 @@
         나에게 어울리는 인테리어를 찾아보세요!
       </h1>
 
-    <div class="row" style="margin-top:30px;" >
+    <div class="row" style="margin-top:30px;">
       <div class="col-lg-4 col-sm-6 portfolio-item" ng-repeat="m in magazine_list">
         <div class="card h-100" style="height:280px; width:348px;">
           <img class="card-img-top" style="height:220px; width:100%;" ng-src="data:image/jpeg;base64,{{m.encodedimage}}"  onclick="getmagazinedetail(m.magazine_idx)">
           <div class="card-body">
-              <table style="width:100%;">
-                <tr>
-                  <td style="width: 70%;">
-                    <div>
-                      <h5>{{m.magazine_title}}</h5>
-                    </div>
-                  </td>
-                  <td style="width: 30%;" align="right">
-                    <div>
-                      <a id="showcomment" class="comment-a-text4" href="http://13.124.196.226:3000/magazinedetail">댓글({{m.magazine_comment_count}})</a>
-                    </div>
-                  </td>
-                </tr>
-              </table>
+            <table style="width:100%;">
+              <tr>
+                <td style="width: 70%;">
+                  <div>
+                    <h5>{{m.magazine_title}}</h5>
+                  </div>
+                </td>
+                <td style="width: 30%;" align="right">
+                  <div>
+                    <a id="showcomment" class="comment-a-text4" href="http://13.124.196.226:3000/magazinedetail">댓글({{m.magazine_comment_count}})</a>
+                  </div>
+                </td>
+              </tr>
+            </table>
 
-              <div class="hit-like-post" style="width: 100%;">
-                  <i class="fas fa-eye"></i>{{m.magazine_hit_count}}
-                  <i class="fas fa-heart" style="font-size:16px; color:red; width: 10%;"></i>{{m.magazine_like_count}}
-                  <i class="fas fa-calendar" style="width: 10%;"></i>{{m.magazine_post_date}}
-              </div>
-
-
-              <div class="hit-like-post" >
+            <div class="hit-like-post" style="width: 100%;">
+              <i class="fas fa-eye" style="width: 10%;"></i>
+              <p>
                 {{m.magazine_hit_count}}
-                {{m.magazine_like_count}}
-                {{m.magazine_post_date}}
-              </div>
-<!--
+              </p>
+              <i class="fas fa-heart" style="font-size:16px; color:red; width: 10%;"></i>{{m.magazine_like_count}}
+              <i class="fas fa-calendar" style="width: 10%;"></i>{{m.magazine_post_date}}
+            </div>
+
+
+            <div class="hit-like-post">
+              {{m.magazine_hit_count}}
+              {{m.magazine_like_count}}
+              {{m.magazine_post_date}}
+            </div>
+            <!--
 
               <div class="hit-like-post" style="width: 100%;">
                 <div>
@@ -115,7 +119,7 @@
         </li>
       </ul>
     </div>
-    <div class = "nav-div-form" ng-init="load()" ng-style="div_login">
+    <div class="nav-div-form" ng-init="load()" ng-style="div_login">
       <form>
         <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
           type="button">로그인</button>
