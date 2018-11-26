@@ -96,7 +96,7 @@
   text-decoration: none;
   color: #dcdcdc;
   content: "";
-  display: block;
+  display: inline;
   border-bottom: 1px solid #bcbcbc;
 }
 
@@ -104,6 +104,6 @@
   text-decoration: none;
   color: #dcdcdc;
   content: "";
-  display: block;
+  display: inline;
   border-bottom: 1px solid #bcbcbc;
 }

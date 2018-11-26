@@ -95,9 +95,8 @@ app.controller('estimateAnswerCtrl', function($scope, $window) {
 app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) {
   $scope.currentPage = 1;
   $scope.pageSize = 5;
-  var cookie_auth = document.cookie.split("%2F");
   // var cookie_user = document.cookie.substring(0, 8).split("=");
-  var auth = cookie_auth[1];
+  var auth = $rootScope.auth;
   // var usercheck = cookie_user[1];
   var offset = 0;
   var total;
@@ -107,7 +106,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
   var data_my;
   var token_man = false;
 
-  if($rootScope.auth == 1) {
+  if(auth == 1) {
     $scope.hideAnswer = true;
   }
 
@@ -278,10 +277,9 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
 
 
 //detail 컨트롤러
-app.controller('estimatedetailCtrl', function($scope, $http, $window) {
-  var cookie_auth = document.cookie.split("%2F");
+app.controller('estimatedetailCtrl', function($scope, $http, $window, $rootScope) {
   // var cookie_user = document.cookie.substring(0, 8).split("=");
-  var auth = cookie_auth[1];
+  var auth = $rootScope.auth;
   // var usercheck = cookie_user[1];
   console.log(auth,"auth1");
   if(auth == 1){  //사업자
