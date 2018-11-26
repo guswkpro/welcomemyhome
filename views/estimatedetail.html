@@ -47,7 +47,7 @@
           <tr>
             <th>사진 </th>
             <td>
-              <div ng-repeat="e in image"><img ng-src="data:image/jpg;base64,{{e}}" alt="이미지 없음"></div>
+              <div ng-repeat="e in image"><img width="500" height="500" ng-src="data:image/jpg;base64,{{e}}" alt="이미지 없음"><br/></div>
             </td>
           </tr>
           <tr>
@@ -75,7 +75,7 @@
         <tr ng-repeat="d in data" ng-click="getAnswer()">
           <td>{{d.estimate_idx}}</td>
           <td>{{d.estimate_title}}</td>
-          <td ng-hide="HideUser">{{d.user_idx}}<br/></td>
+          <td ng-hide="HideUser">{{d.user_idx}}</td>
           <td>{{d.estimate_date}}</td>
           <td ng-hide="answercount">{{d.estimate_answer_count}}</td>
         </tr>
