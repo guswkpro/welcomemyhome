@@ -109,11 +109,11 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
   if(auth == 1) {
     $scope.hideAnswer = true;
     $scope.showAnswer = false;
-    $scope.hideAnswerButton = false;
+    //$scope.hideAnswerButton = false;
   } else if(auth == 0 ){
     $scope.hideAnswer = false;
     $scope.showAnswer = true;
-    $scope.hideAnswerButton = true;
+    //$scope.hideAnswerButton = true;
   }
 
   // auth(사용자, 사업자)에 따른 list 변화
@@ -289,9 +289,11 @@ app.controller('estimatedetailCtrl', function($scope, $http, $window, $rootScope
   if(auth == 1) {
     $scope.hideAnswer = true;
     $scope.showAnswer = false;
+    $scope.hideAnswerButton = false;
   } else if(auth == 0 ){
     $scope.hideAnswer = false;
     $scope.showAnswer = true;
+    $scope.hideAnswerButton = true;
   }
 
   $http.get('/getestimatedetail', {

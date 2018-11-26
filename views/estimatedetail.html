@@ -59,6 +59,9 @@
         </form>
       </tbody>
     </table>
+    <div ng-hide="hideAnswerButton">
+        <input type="button" value="답변 달기" class="estimateList-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimateanswer'"/>
+    </div>
   </div>
   <div class="container estimateList-div" ng-hide="hideAnswer" ng-controller="estimateListCtrl">
     <table class="table table-hover">
@@ -93,9 +96,6 @@
       <button ng-disabled="currentPage >= numberOfPages()" ng-click="listNext()">
           Next
       </button>
-    </div>
-    <div ng-show="hideAnswerButton">
-        <input type="button" value="답변 달기" class="estimateList-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimateanswer'"/>
     </div>
   </div>
   <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
