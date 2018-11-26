@@ -84,6 +84,52 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
 
 // Estimate answer 작성 취소
 app.controller('estimateAnswerCtrl', function($scope, $window) {
+  $scope.pushEstimateData = function() {
+    var images = [];
+
+    var recourcive = function(index) {
+      var input = document.getElementById('fileselector');
+      let fr = new FileReader();
+      fr.readAsDataURL(input.files[index]);
+      fr.onload = function() {
+        let str = fr.result.split(',')[1];
+        let image = {
+          image: str
+        };
+        images.push(image);
+        if (index == input.files.length - 1) {
+          console.log(JSON.stringify(images));
+          $http({
+            method: 'POST',
+            url: '/addestimateanswer',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: ({
+              title: $scope.title,
+              content: $scope.content,
+              image: images
+            })
+          }).success(function(response) {
+            if (response.RESULT == "1") {
+              var msg = "답변 작성에 성공하셨습니다.";
+              $window.alert(msg);
+              $window.location.href = '/estimatelist';
+            } else {
+              var msg = "알 수 없는 오류로 답변 작성에 실패하였습니다.";
+              $window.alert(msg);
+            }
+          }).error(function() {
+            console.log("error");
+          });
+        } else {
+          recourcive(index + 1);
+        }
+      }
+    }
+    recourcive(0);
+  }
+  //estimate answer작성 취소
   $scope.cancelEstimateAnswer = function() {
     var msg = "작성을 취소하여 리스트 페이지로 이동합니다.";
     $window.alert(msg);
