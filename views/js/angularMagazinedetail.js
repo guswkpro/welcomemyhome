@@ -21,6 +21,12 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 
 app.controller('magazinedetailcard', function($scope, $http) {
   $scope.load = function() {
+    $http.get('/likecheck').success(function(response) {
+      if (response.RESULT == "1") {
+        $scope.div_login = {
+          "width": "12%"
+        };
+
     $http.get('/getmagazinedetail', {
       params: {
         magazine_idx: 15
@@ -55,10 +61,13 @@ app.controller('magazinedetailcard', function($scope, $http) {
   }
 });
 
-app.controller('magazinelist', function($scope, $http) {
+app.controller('magazinedetailcard', function($scope, $http) {
   $http.get('/getmagazinedetail', {
+
+
+
     params: {
-      offset: 0
+      magazine_idx: 0
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
@@ -72,5 +81,5 @@ app.controller('magazinelist', function($scope, $http) {
     }
   }).error(function() {
     console.log(error);
-  });
+  })
 });
