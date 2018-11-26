@@ -346,7 +346,7 @@ app.controller('estimatedetailCtrl', function($scope, $http, $window, $rootScope
 
   $http.get('/getestimatedetail', {
     params: {
-      estimate_idx: "59"
+      estimate_idx: "60"
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
