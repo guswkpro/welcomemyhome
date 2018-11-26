@@ -29,9 +29,7 @@ app.controller('magazinedetailcard', function($scope, $http) {
       if (response.RESULT == 1) {
         console.log(response, "success");
 
-        $scope.magazinetitle = response.INFO.magazine_title;
-        $scope.encodedimage = response.INFO.encodedimage;
-        $scope.comment = response.INFO.magazine_comment_content;
+        $scope.magazinedetail = response.INFO;
 /*
         var ol = document.getElementById('ol_indicators');
         for(var i = 0; i < response.INFO.encodedimage.length; i++){

@@ -41,7 +41,8 @@
     <div class="row" style="margin-top:30px;">
       <div class="col-lg-4 col-sm-6 portfolio-item" ng-repeat="m in magazine_list">
         <div class="card h-100" style="height:280px; width:348px;">
-          <img class="card-img-top" style="height:220px; width:100%;" ng-src="data:image/jpeg;base64,{{m.encodedimage}}"  onclick="getmagazinedetail(m.magazine_idx)">
+          <img class="card-img-top" style="height:220px; width:100%;" ng-src="data:image/jpeg;base64,{{m.encodedimage}}"  onclick="location.href='http://13.124.196.226:3000/magazinesdetail'">
+          <!--onclick="getmagazinedetail(m.magazine_idx)"-->
           <div class="card-body">
             <table style="width:100%;">
               <tr>
@@ -59,9 +60,15 @@
             </table>
 
             <div class="hit-like-post">
-              <i class="fa fa-eye">{{m.magazine_hit_count}}</i>
-              <i class="fa fa-heart">{{m.magazine_like_count}}</i>
-              <i class="fa fa-calendar">{{m.magazine_post_date}}</i>
+              <i class="fa fa-eye"></i> {{m.magazine_hit_count}}
+              <i class="fa fa-heart"></i> {{m.magazine_like_count}}
+              <i class="fa fa-calendar"></i> {{m.magazine_post_date}}
+            </div>
+
+            <div class="hit-like-post">
+              <i class="fa fa-eye"></i>{{m.magazine_hit_count}}
+              <i class="fa fa-heart"></i>{{m.magazine_like_count}}
+              <i class="fa fa-calendar"></i>{{m.magazine_post_date}}
             </div>
 
             <div class="hit-like-post">
