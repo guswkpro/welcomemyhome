@@ -45,7 +45,7 @@ exports.idcheck = function (request, response) {
 			response.json({
 				RESULT: "0"
 			});
-		} else if (typeof result != undefined) {
+		} else if (result.length != 0) {
 			response.json({
 				RESULT: "1"
 			});
@@ -69,7 +69,7 @@ exports.nicknamecheck = function (request, response) {
 			response.json({
 				RESULT: "0"
 			});
-		} else if (typeof result != undefined) {
+		} else if (result.length != 0) {
 			response.json({
 				RESULT: "1"
 			});
