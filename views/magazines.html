@@ -35,10 +35,6 @@
   <!-- Page Content -->
   <div class="container" style="margin-top:130px;" ng-controller="magazinelist">
 
-    <!-- Page Heading -->
-    <h1 class="my-4" >
-        나에게 어울리는 인테리어를 찾아보세요!
-      </h1>
 
     <div class="row" style="margin-top:30px;">
       <div class="col-lg-4 col-sm-6 portfolio-item" ng-repeat="m in magazine_list">
@@ -61,10 +57,7 @@
             </table>
 
             <div class="hit-like-post" style="width: 100%;">
-              <i class="fas fa-eye" style="width: 10%;"></i>
-              <p>
-                {{m.magazine_hit_count}}
-              </p>
+              <i class="fas fa-eye" style="width: 10%;"></i>{{m.magazine_hit_count}}
               <i class="fas fa-heart" style="font-size:16px; color:red; width: 10%;"></i>{{m.magazine_like_count}}
               <i class="fas fa-calendar" style="width: 10%;"></i>{{m.magazine_post_date}}
             </div>
