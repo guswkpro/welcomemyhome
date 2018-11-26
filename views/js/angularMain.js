@@ -33,11 +33,11 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
 
     var recourcive = function(index) {
       var input = document.getElementById('fileselector');
-      let fr = new FileReader();
+      var fr = new FileReader();
       fr.readAsDataURL(input.files[index]);
       fr.onload = function() {
-        let str = fr.result.split(',')[1];
-        let image = {
+        var str = fr.result.split(',')[1];
+        var image = {
           image: str
         };
         images.push(image);
@@ -89,11 +89,11 @@ app.controller('estimateAnswerCtrl', function($scope, $window) {
 
     var recourcive = function(index) {
       var input = document.getElementById('fileselector');
-      let fr = new FileReader();
+      var fr = new FileReader();
       fr.readAsDataURL(input.files[index]);
       fr.onload = function() {
-        let str = fr.result.split(',')[1];
-        let image = {
+        var str = fr.result.split(',')[1];
+        var image = {
           image: str
         };
         images.push(image);
