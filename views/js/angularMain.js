@@ -105,7 +105,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
   var data_user;
   var data_my;
   var token_man = false;
-
+  console.log(auth,"check");
   if(auth == 1) {
     $scope.hideAnswer = true;
     $scope.showAnswer = false;
