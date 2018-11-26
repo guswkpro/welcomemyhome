@@ -38,10 +38,10 @@
       </thead>
       <tbody>
         <tr ng-repeat="d in data" ng-click="userClickEstimate()">
-          <td>{{d.estimate_idx}}</td>
-          <td>{{d.estimate_title}}</td>
+          <td>{{d.estimate_idx}}{{d.answer_idx}}</td>
+          <td>{{d.estimate_title}}{{d.answer_title}}</td>
           <td ng-hide="HideUser">{{d.user_idx}}</td>
-          <td>{{d.estimate_date}}</td>
+          <td>{{d.estimate_date}}{{d.answer_date}}</td>
           <td ng-hide="answercount">{{d.estimate_answer_count}}</td>
         </tr>
       </tbody>
