@@ -19,7 +19,7 @@ exports.logincheck = function (request, response) {
 		} else if (checkData[0] == request.session.user_idx && checkData[2] == request.sessionID) {
 			response.json({
 				RESULT: "1",
-				auth : request.session.user_auth
+				auth: request.session.user_auth
 			});
 		} else {
 			response.json({
@@ -36,14 +36,18 @@ exports.logincheck = function (request, response) {
 exports.idcheck = function (request, response) {
 	var req_user_id = request.param("user_id");
 	async.waterfall([
-		function(nextCallback){
+		function (nextCallback) {
 			dao.getidcheck(req_user_id, nextCallback);
 		}
-	], function(error){
-		if(error){
+	], function (error, result) {
+		if (error) {
 			console.log(error);
 			response.json({
 				RESULT: "0"
+			});
+		} else if (result.length != 0) {
+			response.json({
+				RESULT: "1"
 			});
 		} else {
 			response.json({
@@ -56,14 +60,18 @@ exports.idcheck = function (request, response) {
 exports.nicknamecheck = function (request, response) {
 	var req_user_nickname = request.param("user_nickname");
 	async.waterfall([
-		function(nextCallback){
+		function (nextCallback) {
 			dao.getnicknamecheck(req_user_nickname, nextCallback);
 		}
-	], function(error){
-		if(error){
+	], function (error, result) {
+		if (error) {
 			console.log(error);
 			response.json({
 				RESULT: "0"
+			});
+		} else if (result.length != 0) {
+			response.json({
+				RESULT: "1"
 			});
 		} else {
 			response.json({
