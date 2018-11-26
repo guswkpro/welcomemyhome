@@ -109,7 +109,7 @@ app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
             data: ({
               title: $scope.title,
               content: $scope.content,
-              image: images
+              image: images2
             })
           }).success(function(response) {
             if (response.RESULT == "1") {
