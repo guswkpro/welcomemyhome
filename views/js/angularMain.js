@@ -108,6 +108,10 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
 
   if(auth == 1) {
     $scope.hideAnswer = true;
+    $scope.showAnswer = false;
+  } else if(auth == 0 ){
+    $scope.hideAnswer = false;
+    $scope.showAnswer = true;
   }
 
   // auth(사용자, 사업자)에 따른 list 변화
@@ -281,12 +285,16 @@ app.controller('estimatedetailCtrl', function($scope, $http, $window, $rootScope
   // var cookie_user = document.cookie.substring(0, 8).split("=");
   var auth = $rootScope.auth;
   // var usercheck = cookie_user[1];
-  console.log(auth,"auth1");
-  if(auth == 1){  //사업자
-    console.log(auth,"auth2");
-    var hideAnswer = true;
-    console.log(auth,"auth1");
+  if(auth == 1) {
+    $scope.hideAnswer = true;
+    $scope.showAnswer = false;
+    $scope.hideAnserButton = false;
+  } else if(auth == 0 ){
+    $scope.hideAnswer = false;
+    $scope.showAnswer = true;
+    $scope.hideAnserButton = true;
   }
+
   $http.get('/getestimatedetail', {
     params: {
       estimate_idx: "57"

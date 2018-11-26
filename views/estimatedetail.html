@@ -34,21 +34,27 @@
         <form>
           <tr>
             <th>제목 </th>
-            <td><div>{{title}}</div></td>
+            <td>
+              <div>{{title}}</div>
+            </td>
           </tr>
           <tr>
             <th>주소 </th>
-            <td><div>{{address}}</div></td>
+            <td>
+              <div>{{address}}</div>
+            </td>
           </tr>
           <tr>
             <th>사진 </th>
             <td>
-              <div ng-repeat= "e in image"><img ng-src="data:image/jpg;base64,{{e}}" alt="이미지 없음"></div>
+              <div ng-repeat="e in image"><img ng-src="data:image/jpg;base64,{{e}}" alt="이미지 없음"></div>
             </td>
           </tr>
           <tr>
             <th>내용 </th>
-            <td><div>{{content}}</div></td>
+            <td>
+              <div>{{content}}</div>
+            </td>
           </tr>
         </form>
       </tbody>
@@ -88,6 +94,9 @@
           Next
       </button>
     </div>
+    <div>
+        <input type="button" value="답변 달기" ng-hide="hideAnserButton" class="estimateList-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimateanswer'"/>
+    </div>
   </div>
   <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
     <div class="nav-logo">
@@ -109,7 +118,7 @@
         </li>
       </ul>
     </div>
-    <div class = "nav-div-form" ng-init="load()" ng-style="div_login">
+    <div class="nav-div-form" ng-init="load()" ng-style="div_login">
       <form>
         <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
           type="button">로그인</button>
@@ -123,4 +132,5 @@
     </div>
   </nav>
 </body>
+
 </html>
