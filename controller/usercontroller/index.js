@@ -45,13 +45,13 @@ exports.idcheck = function (request, response) {
 			response.json({
 				RESULT: "0"
 			});
-		} else if (result.length != 0) {
+		} else if (typeof result != undefined) {
 			response.json({
 				RESULT: "1"
 			});
 		} else {
 			response.json({
-				RESULT: "1"
+				RESULT: "2"
 			});
 		}
 	});
@@ -69,13 +69,13 @@ exports.nicknamecheck = function (request, response) {
 			response.json({
 				RESULT: "0"
 			});
-		} else if (result.length != 0) {
+		} else if (typeof result != undefined) {
 			response.json({
 				RESULT: "1"
 			});
 		} else {
 			response.json({
-				RESULT: "1"
+				RESULT: "2"
 			});
 		}
 	});
