@@ -38,3 +38,11 @@ app.controller('magazinelist', function($scope, $http) {
     console.log(error);
   });
 });
+
+//좋아요 효과
+$(function() {
+
+  $(".heart").on("click", function() {
+    $(this).toggleClass("heart-blast");
+  });
+});
