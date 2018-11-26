@@ -1,10 +1,5 @@
 var app = angular.module('Main', []);
 
-/*app.run(function($rootScope) {
-  $rootScope.cookie_auth = document.cookie.split("%2F");
-  $rootScope.auth = $rootScope.cookie_auth[1];
-});*/
-
 // 화면 전환 시 login check 기능
 app.controller('logincheckCtrl', function($scope, $http, $window) {
   $scope.load = function() {
@@ -24,6 +19,11 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
       }
     });
   };
+});
+
+app.run(function($rootScope) {
+  $rootScope.cookie_auth = document.cookie.split("%2F");
+  $rootScope.auth = $rootScope.cookie_auth[1];
 });
 
 // estimate 제출 시 정보 서버로 보내는 기능
