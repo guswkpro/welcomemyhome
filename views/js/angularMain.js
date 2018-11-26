@@ -108,7 +108,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
   var token_man = false;
 
   if($rootScope.auth == 1) {
-    hideAnswer = true;
+    $scope.hideAnswer = true;
   }
 
   // auth(사용자, 사업자)에 따른 list 변화
