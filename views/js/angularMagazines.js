@@ -20,15 +20,16 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 });
 
 app.controller('magazinelist', function($scope, $http) {
-  $http.get('/getmagazinedetail', {
+  $http.get('/getmagazinelist', {
     params: {
-      magazine_idx: 15
+      offset: 0
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
       console.log(response, "success");
 
 			$scope.magazine_list = response.INFO
+
 			console.log(response.INFO, $scope.magazine_list);
     } else {
       console.log(response, "falt");

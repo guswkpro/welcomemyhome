@@ -19,20 +19,52 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
   };
 });
 
-app.controller('magazinetitle', function($scope, $http) {
+app.controller('magazinedetailcard', function($scope, $http) {
+  $scope.load = function(){
+      
+  }
+  $scope.getmagazinedetail = function(idx) {
+    $http.get('/getmagazinedetail', {
+      params: {
+        magazine_idx: idx
+      }
+    }).success(function(response) {
+      if (response.RESULT == 1) {
+        console.log(response, "success");
+
+        $scope.magazinetitle = response.INFO.magazine_title;
+        $scope.encodedimage = response.INFO.encodedimage;
+        $scope.comment = response.INFO.magazine_comment_content;
+
+
+      } else {
+        console.log(response, "falt");
+      }
+    }).error(function() {
+      console.log(error);
+    });
+
+    $http.get('/getmagazinecomment', {
+      params: {
+        magazine_idx: idx
+      }
+    });
+
+  }
+});
+
+app.controller('magazinelist', function($scope, $http) {
   $http.get('/getmagazinedetail', {
     params: {
-      magazine_idx: 15
+      offset: 0
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
       console.log(response, "success");
 
-			$scope.thumbnail = response.INFO.magazine_thumbnail_path;
-      $scope.magazinetitle = response.INFO.magazine_title;
-			$scope.commentcount = response.INFO.magazine_comment_count;
-			[$scope.encodedimage] = response.INFO.encodedimage;
+			$scope.magazine_list = response.INFO
 
+			console.log(response.INFO, $scope.magazine_list);
     } else {
       console.log(response, "falt");
     }
