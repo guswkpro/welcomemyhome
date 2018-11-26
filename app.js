@@ -63,8 +63,14 @@ app.get('/getmagazinecomment', magazinecontroller.getmagazinecomment);
 app.get('/estimate', function(req, res){
         res.render('estimate.html');
 });
+app.get('/estimateanswer', function(req, res){
+        res.render('estimateanswer.html');
+});
 app.get('/estimatedetail', function(req, res){
         res.render('estimatedetail.html');
+});
+app.get('/estimateanswerdetail', function(req, res){
+        res.render('estimateanswerdetail.html');
 });
 app.get('/estimatelist', function(req, res){
         res.render('estimatelist.html');

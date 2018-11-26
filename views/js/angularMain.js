@@ -105,9 +105,15 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
   var data_user;
   var data_my;
   var token_man = false;
-
+  console.log(auth,"check");
   if(auth == 1) {
     $scope.hideAnswer = true;
+    $scope.showAnswer = false;
+    $scope.hideAnserButton = false;
+  } else if(auth == 0 ){
+    $scope.hideAnswer = false;
+    $scope.showAnswer = true;
+    $scope.hideAnserButton = true;
   }
 
   // auth(사용자, 사업자)에 따른 list 변화
@@ -155,7 +161,6 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
       if (response.RESULT == 1) {
         data_my = response.INFO;
         total_my = 15; // response.total_my
-        total = total_my;
       } else {
         var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
@@ -281,12 +286,14 @@ app.controller('estimatedetailCtrl', function($scope, $http, $window, $rootScope
   // var cookie_user = document.cookie.substring(0, 8).split("=");
   var auth = $rootScope.auth;
   // var usercheck = cookie_user[1];
-  console.log(auth,"auth1");
-  if(auth == 1){  //사업자
-    console.log(auth,"auth2");
-    var hideAnswer = true;
-    console.log(auth,"auth1");
+  if(auth == 1) {
+    $scope.hideAnswer = true;
+    $scope.showAnswer = false;
+  } else if(auth == 0 ){
+    $scope.hideAnswer = false;
+    $scope.showAnswer = true;
   }
+
   $http.get('/getestimatedetail', {
     params: {
       estimate_idx: "57"
