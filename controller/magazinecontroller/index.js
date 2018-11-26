@@ -26,7 +26,7 @@ exports.getmagazinelist = function (request, response) {
                     function (secondNextCallback) {
                         magazinelist[count].magazine_post_date = magazinelist[count].magazine_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                         fs.readFile(magazinelist[count].magazine_thumbnail_path, function (error, data) {
-                          console.log(response,"nononono");
+                          console.log(error,"nononono");
                             magazinelist[count].encodedimage = new Buffer(data).toString('base64');
                             secondNextCallback(error);
                         });
