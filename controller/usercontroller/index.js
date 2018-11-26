@@ -33,6 +33,46 @@ exports.logincheck = function (request, response) {
 	}
 };
 
+exports.idcheck = function (request, response) {
+	var req_user_id = request.param("user_id");
+	async.waterfall([
+		function(nextCallback){
+			dao.getidcheck(req_user_id, nextCallback);
+		}
+	], function(error){
+		if(error){
+			console.log(error);
+			response.json({
+				RESULT: "0"
+			});
+		} else {
+			response.json({
+				RESULT: "1"
+			});
+		}
+	});
+};
+
+exports.nicknamecheck = function (request, response) {
+	var req_user_nickname = request.param("user_nickname");
+	async.waterfall([
+		function(nextCallback){
+			dao.getnicknamecheck(req_user_nickname, nextCallback);
+		}
+	], function(error){
+		if(error){
+			console.log(error);
+			response.json({
+				RESULT: "0"
+			});
+		} else {
+			response.json({
+				RESULT: "1"
+			});
+		}
+	});
+};
+
 /********************
         POST
 ********************/

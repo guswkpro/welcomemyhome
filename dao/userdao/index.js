@@ -22,6 +22,16 @@ exports.getuserinformation = function (useridx, callback) {
         callback(error, result);
     });
 };
+exports.getidcheck = function (user_id, callback) {
+    client.query('SELECT * FROM stweb.stweb_users where user_id = ?', [user_id], function (error, result) {
+        callback(error, result);
+    });
+};
+exports.getnicknamecheck = function (user_nickname, callback) {
+    client.query('SELECT * FROM stweb.stweb_users where user_nickname = ?', [user_nickname], function (error, result) {
+        callback(error, result);
+    });
+};
 
 /********************
         POST
