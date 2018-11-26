@@ -26,11 +26,7 @@ app.controller('magazinelist', function($scope, $http) {
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
-      console.log(response, "success");
-
-			$scope.magazine_list = response.INFO
-
-			console.log(response.INFO, $scope.magazine_list);
+      $scope.magazine_list = response.INFO
     } else {
       console.log(response, "falt");
     }
