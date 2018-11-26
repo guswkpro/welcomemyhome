@@ -88,7 +88,7 @@ app.controller('estimateAnswerCtrl', function($scope, $window) {
     var images = [];
 
     var recourcive = function(index) {
-      var input = document.getElementById('fileselector');
+      var input = document.getElementById('fileselector2');
       var fr = new FileReader();
       fr.readAsDataURL(input.files[index]);
       fr.onload = function() {
