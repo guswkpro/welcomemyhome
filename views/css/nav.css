@@ -108,7 +108,16 @@
   border-bottom: 1px solid #bcbcbc;
 }
 
-.footer {
-  height : 8%;
-  margin-top:-8%;
+#footer {
+  position : fixed;
+  left : 0px;
+  bottom: 0px;
+  height : 30px;
+  width : 100%;
+  background : #999;
+}
+
+* html #footer {
+  position : absolute;
+  top: expression((0-(footer-offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scroollTop))+'px');
 }
