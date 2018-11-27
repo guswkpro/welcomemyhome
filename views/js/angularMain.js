@@ -83,8 +83,9 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
   };
 });
 
-// Estimate answer 작성 취소
+// 사업자 답변 관련 controller
 app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
+  // 답변 등록 기능
   $scope.pushEstimateAnswerData = function() {
     var images2 = [];
 
@@ -346,7 +347,7 @@ app.controller('estimatedetailCtrl', function($scope, $http, $window, $rootScope
 
   $http.get('/getestimatedetail', {
     params: {
-      estimate_idx: "61"
+      estimate_idx: "62"
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
