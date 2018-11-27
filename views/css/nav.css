@@ -120,4 +120,9 @@
 .footer-logo {
   width:8%;
   text-align: center;
+  float: left;
+}
+
+.footer-float-left{
+  float : left;
 }
