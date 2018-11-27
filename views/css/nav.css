@@ -107,3 +107,8 @@
   display: inline;
   border-bottom: 1px solid #bcbcbc;
 }
+
+.footer {
+  height : 8%;
+  margin-top:-8%;
+}
