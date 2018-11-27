@@ -183,7 +183,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
       }
     });
   } else if (auth == "1") { // 사업자
-    $scope.answercount = true;
+    $scope.answercount = true;  // 사용자 글의 답변 갯수도 보이게 (e_a_c)
     // 전체 사용자 리스트 요청
     $http.get('/getestimatelist', {
       params: {
@@ -202,8 +202,8 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
       }
     });
     // 사업자 my 글 리스트 요청
-    $http.get('/getestimateanswerlist', {
-      params: {
+    $http.get('/getestimatelist', { // 형이 구분 해줄 거임
+      params: { 
         offset: offset
       }
     }).success(function(response) {
