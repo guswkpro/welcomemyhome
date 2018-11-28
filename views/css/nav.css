@@ -123,3 +123,9 @@
   font : 12px, 굴림, 돋움;
   color : #000
 }
+
+.footer-logo { 
+  font-weight: bolder;
+  color: black;
+  font-size: 25px;
+}
