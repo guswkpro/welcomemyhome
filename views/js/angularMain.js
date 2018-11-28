@@ -85,6 +85,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
 
 // 사업자 답변 관련 controller
 app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
+  //어느 글의 답변인지 정보 가져오기
   // 답변 등록 기능
   $scope.pushEstimateAnswerData = function() {
     var images2 = [];
@@ -143,7 +144,7 @@ app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
 // Estimate list 출력
 app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) {
   $scope.currentPage = 1;
-  $scope.pageSize = 5;
+  $scope.pageSize = 5;  // var 써도 되지 않을까??
   // var cookie_user = document.cookie.substring(0, 8).split("=");
   var auth = $rootScope.auth;
   // var usercheck = cookie_user[1];
@@ -193,7 +194,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
       if (response.RESULT == 1) {
         data_user = response.INFO;
         $scope.data = data_user;
-        total_user = 10; // response.total_user;
+        total_user = 10; // data_user.total;
         total = total_user;
       } else {
         var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
@@ -209,7 +210,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
     }).success(function(response) {
       if (response.RESULT == 1) {
         data_my = response.INFO;
-        total_my = 15; // response.total_my
+        total_my = 15; // data_my.total
       } else {
         var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
@@ -236,7 +237,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
   };
 
   // 사업자가 쓴 답변 보기로 바꾸기
-  $scope.viewMyWrite = function() {
+  $scope.viewMyWrite = function() { // 형이 구분해 주는 데이터를 띄우도록 변경해야함
     token_man = true;
     $scope.currentPage = 1;
     $scope.data = data_my;
@@ -248,7 +249,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
     $scope.currentPage = $scope.currentPage - 1;
     if(token_man == 1){ // 사업자
       offset = ($scope.currentPage - 1) * 5;
-      $http.get('/getestimateanswerlist', {
+      $http.get('/getestimatelist', {
         params: {
           offset: offset
         }
@@ -288,7 +289,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
     $scope.currentPage = $scope.currentPage + 1;
     if(token_man == 1){ // 사업자
       offset = ($scope.currentPage - 1) * 5;
-      $http.get('/getestimateanswerlist', {
+      $http.get('/getestimatelist', {
         params: {
           offset: offset
         }
