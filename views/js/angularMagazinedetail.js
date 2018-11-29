@@ -65,25 +65,6 @@ app.controller('magazinedetailcard', function ($scope, $http) {
   }
 });
 
-app.controller('magazinedetailcard', function ($scope, $http) {
-  $http.get('/getmagazinedetail', {
-    params: {
-      magazine_idx: $scope.magazine_idx
-    }
-  }).success(function (response) {
-    if (response.RESULT == 1) {
-      console.log(response, "success");
-
-      $scope.magazine_list = response.INFO
-
-      console.log(response.INFO, $scope.magazine_list);
-    } else {
-      console.log(response, "falt");
-    }
-  }).error(function () {
-    console.log(error);
-  });
-});
 
 
 
