@@ -64,32 +64,32 @@
         <input type="button" value="답변 달기" class="estimateList-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimateanswer'"/>
     </div>
   </div>
-  <div class="container estimateList-div" ng-hide="hideAnswer" ng-controller="estimateListCtrl">
+  <div class="container estimateList-div" ng-controller="estimateListCtrl">
     <table class="table table-hover">
       <thead>
         <tr>
           <th>번호</th>
           <th>제목</th>
-          <th ng-hide="HideUser">작성자</th>
+          <th ng-hide="hide_for_company">작성자</th>
           <th>날짜</th>
-          <th ng-hide="answercount">답변수</th>
+          <th ng-hide="hide_for_company">답변수</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="d in data" ng-click="getAnswer()">
           <td>{{d.estimate_idx}}</td>
           <td>{{d.estimate_title}}</td>
-          <td ng-hide="HideUser">{{d.user_idx}}</td>
+          <td ng-hide="hide_for_company">{{d.user_idx}}</td>
           <td>{{d.estimate_date}}</td>
-          <td ng-hide="answercount">{{d.estimate_answer_count}}</td>
+          <td ng-hide="hide_for_company">{{d.estimate_answer_count}}</td>
         </tr>
       </tbody>
     </table>
 
     <hr />
     <div class="pagenation">
-      <input type="button" value="사용자 글" ng-hide="HideUser" class="estimateList-float-left" ng-click="viewUserWrite()"/>
-      <input type="button" value="내 글보기" ng-hide="HideUser" class="estimateList-float-left" ng-click="viewMyWrite()"/>
+      <input type="button" value="사용자 글" ng-hide="hide_for_company" class="estimateList-float-left" ng-click="viewUserWrite()"/>
+      <input type="button" value="내 글보기" ng-hide="hide_for_company" class="estimateList-float-left" ng-click="viewMyWrite()"/>
       <button ng-disabled="currentPage==1" ng-click="listPre()">
           Previous
       </button>

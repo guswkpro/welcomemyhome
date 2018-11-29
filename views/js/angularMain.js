@@ -288,7 +288,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
   $scope.listNext = function(){
     $scope.currentPage = $scope.currentPage + 1;
     if(token_man == 1){ // 사업자
-      offset = ($scope.currentPage - 1) * 5;
+      offset = ($scope.currentPage + 1) * 5;
       $http.get('/getestimatelist', {
         params: {
           offset: offset
@@ -305,7 +305,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
         }
       });
     } else if(token_man == 0){  // 사용자
-      offset = ($scope.currentPage - 1) * 5;
+      offset = ($scope.currentPage + 1) * 5;
       $http.get('/getestimatelist', {
         params: {
           offset: offset
