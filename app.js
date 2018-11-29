@@ -100,5 +100,7 @@ app.delete('/deletemagazinecomment', magazinecontroller.deletemagazinecomment);
 
 /* ----------- TEST ----------- */
 app.get('/test', function(req, res){
-        res.render('test.html');
+        res.json({
+		RESULT : "1"
+	});
 });

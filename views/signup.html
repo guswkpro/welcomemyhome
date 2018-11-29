@@ -62,8 +62,8 @@
                 <input type="text" id="input_id" placeholder="아이디입력" class="form-control2" required autofocus style="padding-right:48.3px;"
                     ng-model="id">
                 <label for="checkid" class="sr-only"></label>
-                <button id="id_confirm" type="button" name="idconfirm" class="btn btn-outline-primary btn-sm confirmbutton">중복확인</button>
-                <input type="hidden" id="id_check" value="no" />
+                <button id="id_confirm" type="button" ng-click="clickIdOverlap" name="idconfirm" class="btn btn-outline-primary btn-sm confirmbutton">중복확인</button>
+                <input type="hidden" ng-model="id_overlap"/>
                 <div>
                     <br />
                 </div>
