@@ -20,6 +20,6 @@ table tr{
 
 .floor_plan {
     position: relative;
-    padding-top:75%;
+    padding-top:100%;
     overflow: hidden;
 }
