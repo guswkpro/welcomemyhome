@@ -1,8 +1,8 @@
 var app = angular.module('magazinedetail', []);
 
-app.controller('logincheckCtrl', function($scope, $http, $window) {
-  $scope.load = function() {
-    $http.get('/logincheck').success(function(response) {
+app.controller('logincheckCtrl', function ($scope, $http, $window) {
+  $scope.load = function () {
+    $http.get('/logincheck').success(function (response) {
       if (response.RESULT == "1") {
         $scope.div_login = {
           "width": "12%"
@@ -19,67 +19,70 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
   };
 });
 
-app.controller('magazinedetailcard', function($scope, $http) {
-  $scope.load = function() {
-    $http.get('/likecheck').success(function(response) {
+app.controller('magazinedetailcard', function ($scope, $http) {
+  $scope.load = function () {
+    $http.get('/likecheck').success(function (response) {
       if (response.RESULT == "1") {
         $scope.div_login = {
           "width": "12%"
         };
 
-    $http.get('/getmagazinedetail', {
-      params: {
-        magazine_idx: 15
-      }
-    }).success(function(response) {
-      if (response.RESULT == 1) {
-        console.log(response, "success");
+        $http.get('/getmagazinedetail', {
+          params: {
+            magazine_idx: $scope.magazine_idx
+          }
+        }).success(function (response) {
+          if (response.RESULT == 1) {
+            console.log(response, "success");
 
-        $scope.magazinedetail = response.INFO;
-/*
-        var ol = document.getElementById('ol_indicators');
-        for(var i = 0; i < response.INFO.encodedimage.length; i++){
-          //<li data-target="#Indicators" data-slide-to="0" class="active">
-          var li = document.createElement('li');
-          li.setAttribute
-        }
-*/
+            $scope.magazinedetail = response.INFO;
+            /*
+                    var ol = document.getElementById('ol_indicators');
+                    for(var i = 0; i < response.INFO.encodedimage.length; i++){
+                      //<li data-target="#Indicators" data-slide-to="0" class="active">
+                      var li = document.createElement('li');
+                      li.setAttribute
+                    }
+            */
 
-      } else {
-        console.log(response, "falt");
+          } else {
+            console.log(response, "falt");
+          }
+        }).error(function () {
+          console.log(error);
+        });
+
+        $http.get('/getmagazinecomment', {
+          params: {
+            magazine_idx: idx
+          }
+        });
+
       }
-    }).error(function() {
-      console.log(error);
     });
-
-    $http.get('/getmagazinecomment', {
-      params: {
-        magazine_idx: idx
-      }
-    });
-
   }
 });
 
-app.controller('magazinedetailcard', function($scope, $http) {
+app.controller('magazinedetailcard', function ($scope, $http) {
   $http.get('/getmagazinedetail', {
-
-
-
     params: {
-      magazine_idx: 0
+      magazine_idx: $scope.magazine_idx
     }
-  }).success(function(response) {
+  }).success(function (response) {
     if (response.RESULT == 1) {
       console.log(response, "success");
 
-			$scope.magazine_list = response.INFO
+      $scope.magazine_list = response.INFO
 
-			console.log(response.INFO, $scope.magazine_list);
+      console.log(response.INFO, $scope.magazine_list);
     } else {
       console.log(response, "falt");
     }
-  }).error(function() {
+  }).error(function () {
     console.log(error);
-  })
+  });
 });
+
+
+
+
