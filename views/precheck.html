@@ -32,7 +32,7 @@
               <tr>
                 <th>도면 사진 </th>
                 <td>
-                  <div><img style='object-fit: contain' ng-model= "precheck_img" ng-src="./img/도면.JPG" alt="이미지 없음" ></div>
+                  <div><img style='object-fit: cover' ng-model= "precheck_img" ng-src="./img/도면1.JPG" alt="이미지 없음" ></div>
                 </td>
               </tr>
               <tr>
@@ -47,9 +47,6 @@
         <div>
             <input type="button" value="새 도면 등록" class="precheck-float-right" ng-click="" ng-hide="img_token"/>
         </div>
-
-      <div class="img_container"></div>
-      <input type="submit" value="등록" class="precheck-float-right" ng-click="pushEstimateData()" ng-hide="img_token"/>
   </div>
  
   <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
