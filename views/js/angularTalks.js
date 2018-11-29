@@ -325,8 +325,8 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
   };
 
   // 사용자가 자기 게시글 클릭
-  $scope.userClickEstimate = function() {
-    $window.location.href = "/estimatedetail";
+  $scope.userClickTalk = function() {
+    $window.location.href = "/talksdetail";
   };
 });
 
