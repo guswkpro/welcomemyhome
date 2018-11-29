@@ -53,8 +53,14 @@ app.get('/magazines', function (req, res) {
 app.get('/magazinedetail', function (req, res) {
         res.render('magazinedetail.html');
 });
+app.get('/talksposting', function (req, res) {
+        res.render('talksposting.html');
+});
+app.get('/talkslist', function (req, res) {
+        res.render('talkslist.html');
+});
 app.get('/talks', function (req, res) {
-        res.render('magazinedetail.html');
+        res.render('talksdetail.html');
 });
 app.get('/getmagazinelist', magazinecontroller.getmagazinelist);
 app.get('/getmagazinedetail', magazinecontroller.getmagazinedetail);
