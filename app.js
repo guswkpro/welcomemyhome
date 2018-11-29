@@ -56,10 +56,10 @@ app.get('/magazinedetail', function (req, res) {
 app.get('/talksposting', function (req, res) {
         res.render('talksposting.html');
 });
-app.get('/talkslist', function (req, res) {
-        res.render('talkslist.html');
-});
 app.get('/talks', function (req, res) {
+        res.render('talks.html');
+});
+app.get('/talksdetail', function (req, res) {
         res.render('talksdetail.html');
 });
 app.get('/getmagazinelist', magazinecontroller.getmagazinelist);
