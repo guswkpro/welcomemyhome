@@ -22,7 +22,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 app.controller('magazinelist', function($scope, $http) {
   $http.get('/getmagazinelist', {
     params: {
-      offset: 0
+      offset: "0"
     }
   }).success(function(response) {
     if (response.RESULT == 1) {
