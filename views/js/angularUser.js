@@ -49,6 +49,7 @@ app.controller('loginController', function ($scope, $http, $window) {
 		})
 	}
 	$scope.clickIdOverlap = function(){
+		console.log("come");
 		console.log($scope.id);
 		$http.get('/idcheck', {
       params: {
