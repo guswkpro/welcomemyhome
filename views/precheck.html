@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" ng-app="Main">
+<html lang="ko" ng-app="precheck">
 
 <head>
   <meta charset="utf-8">
@@ -15,9 +15,11 @@
   <!-- Angular js -->
   <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
   <script src="js/angularMain.js"></script>
+  <script src="js/angularprecheck.js"></script>
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
   <link rel="stylesheet" type="text/css" href="css/precheck.css" />
 
@@ -25,30 +27,30 @@
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
-  <div class="container precheck-div">
-      <table class="table table-bordered">
-          <tbody>
-            <form>
-              <tr>
-                <th>도면 사진 </th>
-                <td>
-                  <div class="wrapper"><img ng-model= "precheck_img" ng-src="./img/도면.JPG" alt="이미지 없음" ></div>
-                </td>
-              </tr>
-              <tr>
-                <th>사진 </th>
-                <td>
-                  <div ng-repeat="e in image"><img width="500" height="300" ng-src="data:image/jpg;base64,{{e}}" alt="이미지 없음"><br/></div>
-                </td>
-              </tr>
-            </form>
-          </tbody>
-        </table>
-        <div>
-            <input type="button" value="새 도면 등록" class="precheck-float-right" ng-click="" ng-hide="img_token"/>
-        </div>
+  <div class="container precheck-div" ng-controller="precheckCtrl">
+    <table class="table table-bordered">
+      <tbody>
+        <form>
+          <tr>
+            <th>도면 사진 </th>
+            <td>
+              <div class="wrapper"><img ng-model="precheck_img" ng-src="./img/도면.JPG" alt="이미지 없음"></div>
+            </td>
+          </tr>
+          <tr>
+            <th>사진 </th>
+            <td>
+              <div class="wrapper"><img ng-src="data:image/jpg;base64,{{image}}" alt="이미지 없음"><br /></div>
+            </td>
+          </tr>
+        </form>
+      </tbody>
+    </table>
+    <div>
+      <input type="button" value="새 도면 등록" class="precheck-float-right" onclick="location.href = 'http://13.124.196.226:3000/precheckcreate'" />
+    </div>
   </div>
- 
+
   <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
     <div class="nav-logo">
       <a class="navbar-bran" href='http://13.124.196.226:3000/'>WMH</a>
@@ -69,7 +71,7 @@
         </li>
       </ul>
     </div>
-    <div class = "nav-div-form" ng-init="load()" ng-style="div_login">
+    <div class="nav-div-form" ng-init="load()" ng-style="div_login">
       <form>
         <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
           type="button">로그인</button>
