@@ -75,7 +75,7 @@ app.controller('signupController', function ($scope, $http, $window) {
 		});
 	};
 
-	$scope.clickIdOverlap = function(){
+	$scope.clickIdOverlap = function() {
 		console.log("come");
 		console.log($scope.id);
 		$http.get('/idcheck', {
