@@ -21,8 +21,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 app.controller('magazinedetailcard', function ($scope, $http) {
   console.log("1");
-  $http.get('/likecheck').success(function (response) {
-    console.log("2");
+
     if (response.RESULT == "1") {
       $scope.div_login = {
         "width": "12%"
