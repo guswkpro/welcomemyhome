@@ -86,6 +86,10 @@ app.get('/getestimatelist', estimatecontroller.getestimatelist);
 app.get('/getestimatedetail', estimatecontroller.getestimatedetail);
 app.get('/getestimateanswerlist', estimatecontroller.getestimateanswerlist);
 
+app.get('/precheck', function(req, res){
+        res.render('precheck.html');
+});
+
 /* ----------- POST ----------- */
 app.post('/login', usercontroller.login);
 app.post('/signup', usercontroller.signup);
