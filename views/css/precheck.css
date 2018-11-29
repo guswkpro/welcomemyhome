@@ -9,3 +9,7 @@
 .img_container {
     height: 60%;
 }
+
+table tr{
+    text-align : center;
+}
