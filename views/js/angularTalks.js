@@ -27,7 +27,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 });
 
 // estimate 제출 시 정보 서버로 보내는 기능
-app.controller('estimateCtrl', function($scope, $http, $window) {
+app.controller('talksCtrl', function($scope, $http, $window) {
   $scope.pushEstimateData = function() {
     var images = [];
 
@@ -57,13 +57,13 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
             })
           }).success(function(response) {
             if (response.RESULT == "1") {
-              var msg = "견적 작성에 성공하셨습니다.";
+              var msg = "글이 등록되었습니다.";
               $window.alert(msg);
-              $window.location.href = '/estimatelist';
+              $window.location.href = '/talks';
             } else {
-              var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
+              var msg = "알 수 없는 오류로 글 작성에 실패하였습니다.";
               $window.alert(msg);
-              $window.location.href='/estimatelist'
+              $window.location.href='/talks'
             }
           }).error(function() {
             console.log("error");
@@ -79,7 +79,7 @@ app.controller('estimateCtrl', function($scope, $http, $window) {
   $scope.cancelEstimate = function() {
     var msg = "작성을 취소하여 리스트 페이지로 이동합니다.";
     $window.alert(msg);
-    $window.location.href = '/estimatelist';
+    $window.location.href = '/talks';
   };
 });
 
@@ -142,7 +142,7 @@ app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
 });
 
 // Estimate list 출력
-app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) {
+app.controller('talksCtrl', function($scope, $http, $window, $rootScope) {
   $scope.currentPage = 1;
   $scope.pageSize = 5;  // var 써도 되지 않을까??
   // var cookie_user = document.cookie.substring(0, 8).split("=");

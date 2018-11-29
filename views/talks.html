@@ -37,12 +37,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="d in data" ng-click="userClickEstimate()">
-          <td>{{d.estimate_idx}}</td>
-          <td>{{d.estimate_title}}</td>
+        <tr ng-repeat="d in data" ng-click="userClickTalk()">
+          <td>{{d.talk_idx}}</td>
+          <td>{{d.tlak_title}}</td>
           <td ng-hide="HideUser">{{d.user_idx}}</td>
-          <td>{{d.estimate_date}}</td>
-          <td ng-hide="answercount">{{d.estimate_answer_count}}</td>
+          <td>{{d.talks_date}}</td>
+          <td ng-hide="answercount">{{d.talk_answer_count}}</td>
         </tr>
       </tbody>
     </table>
