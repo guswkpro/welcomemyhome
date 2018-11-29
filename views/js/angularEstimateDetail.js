@@ -26,7 +26,7 @@ app.controller('estimatedetailCtrl', function ($scope, $http, $window) {
   // var cookie_user = document.cookie.substring(0, 8).split("=");
   // var usercheck = cookie_user[1];
   console.log(document.cookie);
-  var cookie = document.cookie.split(";")[1];
+  var cookie = document.cookie.split("/")[1];
   var cookie_estimate_idx = decodeURI("84%2F0%2F_G2gJ6AEe-eHQ-XkWnQeoQpk2sgCKQXJ");
   console.log(cookie);
   console.log(cookie_estimate_idx);
