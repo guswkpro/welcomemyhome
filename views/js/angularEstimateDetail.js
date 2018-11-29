@@ -22,20 +22,13 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 //detail 컨트롤러
-app.controller('estimatedetailCtrl', function ($scope, $http, $window, $rootScope) {
+app.controller('estimatedetailCtrl', function ($scope, $http, $window) {
   // var cookie_user = document.cookie.substring(0, 8).split("=");
   // var usercheck = cookie_user[1];
-  var auth = $rootScope.auth;
   console.log(document.cookie);
-  if (auth == 1) {
-    $scope.hideAnswer = true;
-    $scope.showAnswer = false;
-    $scope.hideAnswerButton = false;
-  } else if (auth == 0) {
-    $scope.hideAnswer = false;
-    $scope.showAnswer = true;
-    $scope.hideAnswerButton = true;
-  }
+  var cookie = document.cookie.split("=")[1];
+  var cookie_estimate_idx = 0;
+  console.log(cookie);
 
   $http.get('/getestimatedetail', {
     params: {
@@ -59,11 +52,10 @@ app.controller('estimatedetailCtrl', function ($scope, $http, $window, $rootScop
 });
 
 // Estimate list 출력
-app.controller('estimateListCtrl', function ($scope, $http, $window, $rootScope) {
+app.controller('estimateListCtrl', function ($scope, $http, $window,) {
   $scope.currentPage = 1;
   $scope.pageSize = 5;  // var 써도 되지 않을까??
   // var cookie_user = document.cookie.substring(0, 8).split("=");
-  var auth = $rootScope.auth;
   // var usercheck = cookie_user[1];
   var offset = 0;
   var total;
