@@ -19,15 +19,15 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
+  <link rel="stylesheet" type="text/css" href="css/precheck.css" />
 
   <title>놀러와 마이홈</title>
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
-  <div>
-      <div class="container"><img style='height: 100%; width: 100%; object-fit: contain' ng-model= "precheck_img" ng-src="./img/도면.JPG" alt="이미지 없음" ></div>
-      <input type="submit" value="등록" class="estimate-float-right" ng-click="pushEstimateData()" ng-hide="img_token"/>
-      버튼 어디감?
+  <div class="container">
+      <div class="img_container"><img style='height: 100%; width: 100%; object-fit: contain' ng-model= "precheck_img" ng-src="./img/도면.JPG" alt="이미지 없음" ></div>
+      <input type="submit" value="등록" class="precheck-float-right" ng-click="pushEstimateData()" ng-hide="img_token"/>
   </div>
  
   <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
