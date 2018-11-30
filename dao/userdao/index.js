@@ -9,7 +9,7 @@ var client = mysql.createConnection({
     , database: 'stweb'
 });
 
-connection.connect(function (err) {
+client.connect(function (err) {
     if (err) throw err;
 });
 
