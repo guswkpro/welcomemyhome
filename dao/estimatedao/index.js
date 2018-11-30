@@ -1,4 +1,4 @@
-var client = require("../userdao");
+var client= require('../dao.js');
 
 /********************
         GET

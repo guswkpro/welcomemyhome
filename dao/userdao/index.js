@@ -1,19 +1,4 @@
-var mysql = require('mysql');
-var dto = require('../../dto/userdto');
-
-var client = mysql.createConnection({
-    host: 'stweb.ccmxaq6oosug.ap-northeast-2.rds.amazonaws.com'
-    , port: 3306
-    , user: 'stweb'
-    , password: 'stwebstweb'
-    , database: 'stweb'
-});
-
-client.connect(function (err) {
-    if (err) throw err;
-});
-
-module.exports = client;
+var client= require('../dao.js');
 
 /********************
         GET
