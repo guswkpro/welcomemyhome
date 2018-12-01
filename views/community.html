@@ -48,7 +48,7 @@
     </div>
     <div class="posting_content" style="width:70%; height:80%; margin-top:10px; margin-bottom:10px;">
       <div>
-        <table>
+        <table style="width:100%;">
           <tr>
             <td><h4>{{c.community_title}}</h4> </td>
             <td align ="right"><div><span><i class="fa fa-user"></i></span> {{c.user_nickname}}</div></td>
@@ -57,13 +57,13 @@
 
       </div>
       
-      <p>content 미리보기</p>
+      <p>content 미리보기 {{c.community_content}}</p>
       <div class="hit-like-post">
           <table  style="width:100%;">
             <tr>  
-              <td><span><i class="fa fa-heart" style="color:red;"></i></span>{{c.community_like_count}}</td>        
-              <td><span><i class="fa fa-comment"></i></span> {{c.community_comment_count}}</td>
-              <td><span><i class="fa fa-eye"></i> </span>{{c.community_hit_count}}</td>
+              <td  style="width:10%;"><span><i class="fa fa-heart" style="color:red;"></i></span>{{c.community_like_count}}</td>        
+              <td  style="width:10%;"><span><i class="fa fa-comment"></i></span> {{c.community_comment_count}}</td>
+              <td  style="width:10%;"><span><i class="fa fa-eye"></i> </span>{{c.community_hit_count}}</td>
               <td align ="right"><span><i class="fa fa-calendar"></i> </span> {{c.community_post_date}}</td>
             </tr>
         </table>
