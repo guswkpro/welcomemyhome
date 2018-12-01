@@ -28,7 +28,6 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('precheckCtrl', function ($scope, $http, $window) {
-
     $scope.allowDrop = function(ev) {
         ev.preventDefault();
     }
@@ -43,7 +42,6 @@ app.controller('precheckCtrl', function ($scope, $http, $window) {
         ev.target.appendChild(document.getElementById(data));
         $scope.img_style = {
             "position": "relative",
-
         };
     }
 
