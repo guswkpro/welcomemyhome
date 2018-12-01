@@ -29,15 +29,15 @@
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
   <div class="container precheck-div" ng-controller="precheckCtrl">
-    <div class=""><img id="dragged_img" height="40px" weight="20px" draggable="true" ondragstart="drag(event)" ng-src="./img/pin.png" alt="이미지 없음"></div>
+    <div class=""><img id="dragged_img" height="40px" weight="20px" ng-style="img_style" draggable="true" ondragstart="drag(event)" ng-src="./img/pin.png" alt="이미지 없음"></div>
     <table class="table table-bordered">
       <tbody>
         <form>
           <tr>
             <th>도면 사진 </th>
             <td>
-              <img id="base_img" ondrop="drop(event)" ondragover="allowDrop(event)" ng-model="precheck_img" ng-src="./img/도면.JPG" alt="이미지 없음">
-              <div class="wrapper"></div>
+              <img ng-model="precheck_img" ng-src="./img/도면.JPG" alt="이미지 없음">
+              <div id="base_img"class="wrapper" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
             </td>
           </tr>
           <tr>

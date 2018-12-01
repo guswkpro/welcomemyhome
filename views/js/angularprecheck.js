@@ -4,7 +4,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
     var cookie_auth = document.cookie.split("%2F");
     var auth = cookie_auth[1];
     $scope.load = function () {
-        if(auth == 1){
+        if (auth == 1) {
             var msg = "사전점검은 사용자만 가능합니다"
             $window.alert(msg);
             $window.location.href = '/';
@@ -28,9 +28,28 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('precheckCtrl', function ($scope, $http, $window) {
+
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        $scope.img_style = {
+            "position": "relative",
+            
+        };
+    }
+
     $http.get('/getprecheck', {
         params: {
-            
+
         }
     }).success(function (response) {
         if (response.RESULT == 1) {
