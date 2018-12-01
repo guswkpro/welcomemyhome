@@ -41,12 +41,13 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     $window.dragOver = function(ev) {
         ev.preventDefault();
         ev.dataTransfer.dropEffect = "copyMove";
-        console.log(ev.pageX,ev.pageY);
+        console.log(ev.pageX, ev.pageY);
     }
 
     $window.drop =function(ev) {
         var data = ev.dataTransfer.getData("text");
         $('#div-pin').css("left", ev.pageX).css("top", ev.pageY);
+        console.log(ev.pageX, ev.pageY, "drop");
         // var pin = angular.element("#dragged_img");
         // console.log(pin.offset().top,"pin.top");
         // pin.offset({top: pin.offset().top, left: pin.offset().left})
@@ -54,11 +55,11 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     }
 
     $window.dragEnd = function(ev) {
-
-        var pin = angular.element("#dragged_img");
-        var pin_left = pin.offset().left;
-        var pin_top = pin.offset().top;
-        console.log(pin_top, "pin.top", pin_left, "pin.left");
+        console.log(ev.pageX, ev.pageY, "drag");
+        // var pin = angular.element("#dragged_img");
+        // var pin_left = pin.offset().left;
+        // var pin_top = pin.offset().top;
+        // console.log(pin_top, "pin.top", pin_left, "pin.left");
         /*
         // pin.offset({top: pin.offset().top, left:pin.offset().left});
         $scope.pin_style = {
