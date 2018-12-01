@@ -70,7 +70,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         };
 
         */
-       $('#div-pin').css("left", pin_left).css("top", pin_top)
+       $('#div-pin').css("left", ev.pageX).css("top", ev.pageY)
     }
 
     $http.get('/getpreinspection', {
