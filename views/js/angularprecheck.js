@@ -42,6 +42,7 @@ app.controller('precheckCtrl', function ($scope, $http, $window) {
         ev.target.appendChild(document.getElementById(data));
         $scope.img_style = {
             "position": "relative",
+            "z-index" : "2"
         };
     }
 

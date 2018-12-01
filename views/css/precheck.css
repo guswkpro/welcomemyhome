@@ -25,3 +25,7 @@ table tr{
 .grabbing {
    cursor: move; cursor: -moz-grabbing; cursor: -webkit-grabbing; cursor: grabbing;
 }
+
+.based-img {
+    z-index: 1;
+}
