@@ -28,6 +28,8 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
+    var mouseX = 0;
+    var mouseY = 0;
     $window.dragStart = function(ev) {
         ev.dataTransfer.effectAllowed = 'move';
         ev.dataTransfer.setData("Image", ev.target.getAttribute('id'));
@@ -43,6 +45,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     }
 
     $window.dragOver = function(ev) {
+        var eObj = $window.event? window.event : e;
+        mouseX = eObj.clientX;
+        
         ev.dataTransfer.dropEffect = "copyMove";
         console.log(ev.pageX, ev.pageY);
     }
