@@ -32,7 +32,7 @@
 
 
 <!-- Page Content -->
-<div class="container" style="width:50%; height:100%; margin-top:100px" ng-controller="communityListCtrl" >
+<div class="container" style="width:50%; height:100%; margin-top:60px" ng-controller="communityListCtrl" >
 
   <div style="width:100%; height:20px;">
     <button class="btn btn-secondary btn-sm" style="float:right;" onclick="location.href = 'http://13.124.196.226:3000/communityposting'">작성</button>
@@ -46,7 +46,7 @@
         <img class="community_post_img" style="width:100%; height:100%; " ng-src="data:image/jpeg;base64,{{c.encodedimage}}" alt="">
       </a>
     </div>
-    <div class="posting_content" style="width:70%; height:100%;">
+    <div class="posting_content" style="width:70%; height:80%;">
       <h3>{{c.community_title}}</h3>
       <p>content 미리보기</p>
       <div class="hit-like-post">
