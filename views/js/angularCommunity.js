@@ -29,6 +29,8 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
     }).success(function(response) {
       if (response.RESULT == 1) {
         $scope.community_list = response.INFO
+        console.log(respone.INFO);
+        console.log($scope.community_list);
       } else {
         console.log(response, "falt");
       }
