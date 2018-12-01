@@ -39,11 +39,7 @@ app.controller('precheckCtrl', function ($scope, $http, $window) {
     $window.drop =function(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
-        $scope.img_style = {
-            "position": "relative",
-            "z-index" : "2"
-        };
+        ev.target.append(document.getElementById(data));
     }
 
     $http.get('/getprecheck', {
