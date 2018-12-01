@@ -39,7 +39,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     }
 
     $window.dragOver = function(ev) {
-        ev.preventDefault();
         ev.dataTransfer.dropEffect = "copyMove";
         console.log(ev.pageX, ev.pageY);
     }
