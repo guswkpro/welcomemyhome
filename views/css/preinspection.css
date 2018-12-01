@@ -16,6 +16,8 @@ table tr{
 
 .wrapper {
     width: 100%;
+    background-image: url("img/도면.jpg");
+    position: absolute;
     z-index:1;
 }
 
@@ -27,9 +29,9 @@ table tr{
    cursor: move; cursor: -moz-grabbing; cursor: -webkit-grabbing; cursor: grabbing;
 }
 
-.based-img {
+/* .based-img {
     z-index: 2;
-}
+} */
 
 .pin-img {
     z-index: 3;
