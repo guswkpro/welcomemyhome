@@ -45,7 +45,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
     $window.drop =function(ev) {
         var data = ev.dataTransfer.getData("text");
-        $('#div-pin').css("left", ev.pageX).css("top", ev.pageY);
+        $('#div-pin').css("left", ev.pageX-30px).css("top", ev.pageY-40px);
         console.log(ev.pageX, ev.pageY, "drop");
         // var pin = angular.element("#dragged_img");
         // console.log(pin.offset().top,"pin.top");
