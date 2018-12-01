@@ -176,7 +176,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
     }).success(function(response) {
       if (response.RESULT == 1) {
         $scope.data = response.INFO;
-        total = 10; // response.total;
+        total = response.COUNT; // response.COUNT;
       } else {
         var msg = "알 수 없는 에러로 나의 견적 요청 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
@@ -194,7 +194,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
       if (response.RESULT == 1) {
         data_user = response.INFO;
         $scope.data = data_user;
-        total_user = 10; // data_user.total;
+        total_user = response.COUNT; // data_user.total;
         total = total_user;
       } else {
         var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
@@ -210,7 +210,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
     }).success(function(response) {
       if (response.RESULT == 1) {
         data_my = response.INFO;
-        total_my = 15; // data_my.total
+        total_my = response.COUNT; // data_my.total
       } else {
         var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
@@ -256,7 +256,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
       }).success(function(response) {
         if (response.RESULT == 1) {
           $scope.data = response.INFO;
-          total_my = 15; // response.total_my
+          total_my = response.COUNT; // response.total_my
           total = total_my;
         } else {
           var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
@@ -273,7 +273,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
       }).success(function(response) {
         if (response.RESULT == 1) {
           $scope.data=response.INFO;
-          total_user = 10; // response.total_user;
+          total_user = response.COUNT; // response.total_user;
           total = total_user;
         } else {
           var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
@@ -296,7 +296,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
       }).success(function(response) {
         if (response.RESULT == 1) {
           $scope.data = response.INFO;
-          total_my = 15; // response.total_my
+          total_my = response.COUNT; // response.total_my
           total = total_my;
         } else {
           var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
@@ -313,7 +313,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window, $rootScope) 
       }).success(function(response) {
         if (response.RESULT == 1) {
           $scope.data = response.INFO;
-          total_user = 10; // response.total_user;
+          total_user = response.COUNT; // response.total_user;
           total = total_user;
         } else {
           var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
