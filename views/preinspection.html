@@ -28,28 +28,31 @@
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
   <div class="container preinspection-div" ng-controller="preinspectionCtrl">
-    <div style="position:relative"><img id="dragged_img" class="pin-img grabbable grabbing" draggable="true" ondragstart="dragStart(event)" ondragenter="dragEnter(event)" 
+    <div id="div-pin" style="position:relative"><img id="dragged_img" class="pin-img grabbable grabbing" draggable="true" ondragstart="dragStart(event)" ondragenter="dragEnter(event)" 
       ondragend="dragEnd(event)" ng-style="pin_style" ng-src="./img/pin.png" alt="이미지 없음"></div>
-    <table class="table table-bordered">
-      <tbody>
-        <form>
-          <tr>
-            <th>도면 사진 </th>
-            <td>
-              <div id="base_img" class="wrapper" ondrop="drop(event)" ondragover="dragOver(event)">
-                <img class="based-img" ng-model="preinspection_img" ng-src="./img/도면.JPG" alt="이미지 없음">
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>사진 </th>
-            <td>
-              <div class="wrapper"><img ng-src="data:image/jpg;base64,{{image}}" alt="이미지 없음"><br /></div>
-            </td>
-          </tr>
-        </form>
-      </tbody>
-    </table>
+    <div style="position:relative">
+        <table class="table table-bordered">
+            <tbody>
+              <form>
+                <tr>
+                  <th>도면 사진 </th>
+                  <td>
+                    <div id="base_img" class="wrapper" ondrop="drop(event)" ondragover="dragOver(event)">
+                      <img class="based-img" ng-model="preinspection_img" ng-src="./img/도면.JPG" alt="이미지 없음">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>사진 </th>
+                  <td>
+                    <div class="wrapper"><img ng-src="data:image/jpg;base64,{{image}}" alt="이미지 없음"><br /></div>
+                  </td>
+                </tr>
+              </form>
+            </tbody>
+          </table>
+    </div>
+      
     <div>
       <input type="button" value="새 도면 등록" class="preinspection-float-right" onclick="location.href = 'http://13.124.196.226:3000/preinspectioncreate'" />
     </div>
