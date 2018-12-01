@@ -33,6 +33,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         ev.dataTransfer.setData("Image", ev.target.getAttribute('id'));
         ev.dataTransfer.dropEffect = "copyMove";
         ev.dataTransfer.setDragImage(ev.target,0,0);  
+        var pin_left = pin.offset().left;
+        var pin_top = pin.offset().top;
+         console.log(pin_top, "pin.top", pin_left, "pin.left");
     }
 
     $window.dragEnter = function(ev) {
@@ -57,9 +60,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         console.log(ev.pageX, ev.pageY, "drag");
         $('#div-pin').css("left", ev.pageX-88+"px").css("top", ev.pageY-70+"px");
         // var pin = angular.element("#dragged_img");
-        // var pin_left = pin.offset().left;
-        // var pin_top = pin.offset().top;
-        // console.log(pin_top, "pin.top", pin_left, "pin.left");
+        var pin_left = pin.offset().left;
+        var pin_top = pin.offset().top;
+         console.log(pin_top, "pin.top", pin_left, "pin.left");
         /*
         // pin.offset({top: pin.offset().top, left:pin.offset().left});
         $scope.pin_style = {
