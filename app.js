@@ -43,18 +43,15 @@ app.get('/logincheck', usercontroller.logincheck);
 app.get('/idcheck', usercontroller.idcheck);
 app.get('/nicknamecheck', usercontroller.nicknamecheck);
 
-/* Talk */
-app.get('/talks', function (req, res) {
-        res.render('talks.html');
+/* Community */
+app.get('/community', function (req, res) {
+        res.render('community.html');
 });
 app.get('/talksposting', function (req, res) {
-        res.render('talksposting.html');
+        res.render('communityposting.html');
 });
-app.get('/talks', function (req, res) {
-        res.render('talks.html');
-});
-app.get('/talksdetail', function (req, res) {
-        res.render('talksdetail.html');
+app.get('/communitydetail', function (req, res) {
+        res.render('communitydetail.html');
 });
 
 /* Magazine */
