@@ -26,8 +26,6 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.static(__dirname + '/views'));
 
 app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
 
 /* ----------- GET ----------- */
 app.get('/', function (req, res) {
