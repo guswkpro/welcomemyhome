@@ -24,7 +24,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
   app.controller('communityListCtrl', function($scope, $http) {
     $http.get('/getcommunitylist', {
       params: {
-        offset: "0"
+        offset: '0'
       }
     }).success(function(response) {
       if (response.RESULT == 1) {
