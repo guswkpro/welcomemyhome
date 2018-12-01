@@ -17,7 +17,7 @@ exports.getmagazinelist = function (request, response) {
     var total_count;
     async.waterfall([
         function (nextCallback) {
-            estimatedao.getestimatecount(nextCallback);
+            magazinedao.getmagazinecount(nextCallback);
         }, function (cnt, nextCallback) {
             total_count = cnt;
             magazinedao.getmagazinelist(req_offset, nextCallback);
