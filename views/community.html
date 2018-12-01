@@ -40,6 +40,7 @@
 
   <!-- Project One -->
   <div class="row" style="width:100%; height:150px; margin:0px;" ng-repeat="c in community_list">
+
     <div class="community_post_img_div" style="width:25%; height:100%; margin-right:10px; border: 4px;">
       <a href="http://13.124.196.226:3000/communitydetail">
         <img class="community_post_img" style="width:100%; height:100%; " ng-src="data:image/jpeg;base64,{{c.encodedimage}}" alt="">
@@ -49,13 +50,12 @@
       <h3>{{c.community_title}}</h3>
       <p>content 미리보기</p>
       <div class="hit-like-post">
-          <i class="fa fa-user"></i> user_nickname
+          <i class="fa fa-user"></i> {{c.user_nickname}}
           <i class="fa fa-eye"></i> ( {{c.community_hit_count}} )
           <i class="fa fa-heart" style="color:red;"></i> ( {{c.community_like_count}} )
           <i class="fa fa-calendar"></i> {{c.community_post_date}}
         </div>
     </div>
-    <div> <hr></div>
   </div>
   <!-- /.row -->
 
