@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" ng-app="precheckCreate">
+<html lang="ko" ng-app="preinspectionCreate">
 
 <head>
     <meta charset="utf-8">
@@ -15,19 +15,19 @@
     <!-- Angular js -->
     <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
     <script src="js/angularMain.js"></script>
-    <script src="js/angularprecheckCreate.js"></script>
+    <script src="js/angularpreinspectionCreate.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/nav.css" />
-    <link rel="stylesheet" type="text/css" href="css/precheckCreate.css" />
+    <link rel="stylesheet" type="text/css" href="css/preinspectionCreate.css" />
 
     <title>놀러와 마이홈</title>
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
-    <div class="container estimate-div" ng-controller="estimateCtrl">
+    <div class="container estimate-div" ng-controller="preinspectionCreateCtrl">
         <table class="table table-bordered">
             <tbody>
                 <form>
@@ -39,8 +39,8 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <input type="button" value="취소" class="estimate-float-right" ng-click="cancelPrecheckCreate()" />
-                            <input type="submit" value="등록" class="estimate-float-right" ng-click="pushPrecheckData()" />
+                            <input type="button" value="취소" class="estimate-float-right" ng-click="cancelpreinspectionCreate()" />
+                            <input type="submit" value="등록" class="estimate-float-right" ng-click="pushpreinspectionData()" />
                         </td>
                     </tr>
                 </form>
@@ -60,7 +60,7 @@
                     <a class="nav-a-text4" href='http://13.124.196.226:3000/talks'>커뮤니티</a>
                 </li>
                 <li class="nav-item nav-li">
-                    <a class="nav-a-text4" href='http://13.124.196.226:3000/precheck'>사전전검</a>
+                    <a class="nav-a-text4" href='http://13.124.196.226:3000/preinspection'>사전전검</a>
                 </li>
                 <li class="nav-item nav-li">
                     <a class="nav-a-text4" href='http://13.124.196.226:3000/estimatelist'>견적요청</a>

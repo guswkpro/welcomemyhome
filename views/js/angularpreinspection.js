@@ -1,4 +1,4 @@
-var app = angular.module('precheck', []);
+var app = angular.module('preinspection', []);
 
 app.controller('logincheckCtrl', function ($scope, $http, $window) {
     var cookie_auth = document.cookie.split("%2F");
@@ -27,7 +27,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
     };
 });
 
-app.controller('precheckCtrl', function ($scope, $http, $window) {
+app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     $window.allowDrop = function(ev) {
         ev.preventDefault();
     }
@@ -42,7 +42,7 @@ app.controller('precheckCtrl', function ($scope, $http, $window) {
         ev.target.before(document.getElementById(data));
     }
 
-    $http.get('/getprecheck', {
+    $http.get('/getpreinspection', {
         params: {
 
         }
@@ -50,7 +50,7 @@ app.controller('precheckCtrl', function ($scope, $http, $window) {
         if (response.RESULT == 1) {
             $scope.image = response.INFO.encodedimage;
         } else {
-            var msg = "알 수 없는 에러로 precheck 페이지를 불러 올 수 없습니다.";
+            var msg = "알 수 없는 에러로 preinspection 페이지를 불러 올 수 없습니다.";
             $window.alert(msg);
             $window.location.href = '/';
         }

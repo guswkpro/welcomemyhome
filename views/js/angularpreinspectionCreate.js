@@ -1,4 +1,4 @@
-var app = angular.module('precheck', []);
+var app = angular.module('preinspectionCreate', []);
 
 app.controller('logincheckCtrl', function ($scope, $http, $window) {
     $scope.load = function () {
@@ -20,16 +20,16 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
     };
 });
 
-app.controller('logincheckCtrl', function ($scope, $http, $window) {
-    // precheck 작성 취소
-    $scope.cancelPrecheckCreate = function () {
+app.controller('preinspectionCreateCtrl', function ($scope, $http, $window) {
+    // preinspection 작성 취소
+    $scope.cancelpreinspectionCreate = function () {
         var msg = "작성을 취소하여 사전 점검로 이동합니다.";
         $window.alert(msg);
-        $window.location.href = '/precheck';
+        $window.location.href = '/preinspection';
     };
 
-    // precheck 도면 등록
-    $scope.pushPrecheckData = function () {
+    // preinspection 도면 등록
+    $scope.pushpreinspectionData = function () {
         var input = document.getElementById('fileselector');
         var fr = new FileReader();
         fr.readAsDataURL(input.files[0]);
@@ -42,7 +42,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
         };
         $http({
             method: 'POST',
-            url: '/addprecheckimg',
+            url: '/addpreinspectionimg',
             headers: {
               'Content-Type': 'application/json'
             },
@@ -53,11 +53,11 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
             if (response.RESULT == "1") {
               var msg = "도면 등록에 성공하셨습니다.";
               $window.alert(msg);
-              $window.location.href = '/precheck';
+              $window.location.href = '/preinspection';
             } else {
               var msg = "알 수 없는 오류로 도면 등록에 실패하였습니다.";
               $window.alert(msg);
-              $window.location.href='/precheck'
+              $window.location.href='/preinspection'
             }
           }).error(function() {
             console.log("error");

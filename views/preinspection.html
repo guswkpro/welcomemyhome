@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" ng-app="precheck">
+<html lang="ko" ng-app="preinspection">
 
 <head>
   <meta charset="utf-8">
@@ -15,20 +15,20 @@
   <!-- Angular js -->
   <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
   <script src="js/angularMain.js"></script>
-  <script src="js/angularprecheck.js"></script>
-  <script src="js/angularprecheckDrag.js"></script>
+  <script src="js/angularpreinspection.js"></script>
+  <script src="js/angularpreinspectionDrag.js"></script>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
-  <link rel="stylesheet" type="text/css" href="css/precheck.css" />
+  <link rel="stylesheet" type="text/css" href="css/preinspection.css" />
 
   <title>놀러와 마이홈</title>
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
-  <div class="container precheck-div" ng-controller="precheckCtrl">
+  <div class="container preinspection-div" ng-controller="preinspectionCtrl">
     <div><img id="dragged_img" class="pin-img" draggable="true" ondragstart="drag(event)" ng-src="./img/pin.png" alt="이미지 없음"></div>
     <table class="table table-bordered">
       <tbody>
@@ -36,7 +36,7 @@
           <tr>
             <th>도면 사진 </th>
             <td>
-              <div id="base_img" class="wrapper"  ondrop="drop(event)" ondragover="allowDrop(event)"><img class="based-img" ng-model="precheck_img" ng-src="./img/도면.JPG" alt="이미지 없음"></div>
+              <div id="base_img" class="wrapper"  ondrop="drop(event)" ondragover="allowDrop(event)"><img class="based-img" ng-model="preinspection_img" ng-src="./img/도면.JPG" alt="이미지 없음"></div>
             </td>
           </tr>
           <tr>
@@ -49,7 +49,7 @@
       </tbody>
     </table>
     <div>
-      <input type="button" value="새 도면 등록" class="precheck-float-right" onclick="location.href = 'http://13.124.196.226:3000/precheckcreate'" />
+      <input type="button" value="새 도면 등록" class="preinspection-float-right" onclick="location.href = 'http://13.124.196.226:3000/preinspectioncreate'" />
     </div>
   </div>
 
@@ -66,7 +66,7 @@
           <a class="nav-a-text4" href='http://13.124.196.226:3000/talks'>커뮤니티</a>
         </li>
         <li class="nav-item nav-li">
-          <a class="nav-a-text4" href='http://13.124.196.226:3000/precheck'>사전전검</a>
+          <a class="nav-a-text4" href='http://13.124.196.226:3000/preinspection'>사전전검</a>
         </li>
         <li class="nav-item nav-li">
           <a class="nav-a-text4" href='http://13.124.196.226:3000/estimatelist'>견적요청</a>
