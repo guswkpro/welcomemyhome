@@ -23,7 +23,7 @@
   <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
 
 
-  <script src="js/angularMagazines.js"/></script>
+  <script src="js/angularMagazines.js"></script>
 
 
 
@@ -50,7 +50,7 @@
                     <h5>{{m.magazine_title}}</h5>
                   </div>
                 </td>
-                <td style="width: 30%;" align="right">
+                <td style="width: 30%; float:right; ">
                   <div>
                     <a id="showcomment" class="comment-a-text4" href="http://13.124.196.226:3000/magazinedetail">댓글({{m.magazine_comment_count}})</a>
                   </div>
@@ -59,6 +59,7 @@
             </table>
 
             <div class="hit-like-post">
+              <i class="fa fa-user"></i> ( {{m.magazine_hit_count}} )
               <i class="fa fa-eye"></i> ( {{m.magazine_hit_count}} )
               <i class="fa fa-heart" style="color:red;"></i> ( {{m.magazine_like_count}} )
               <i class="fa fa-calendar"></i> {{m.magazine_post_date}}

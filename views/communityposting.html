@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" ng-app="Talk">
+<html lang="ko" ng-app="community">
 
 <head>
   <meta charset="utf-8">
@@ -14,22 +14,22 @@
 
   <!-- Angular js -->
   <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
-  <script src="js/angularMain.js"></script>
+  <script src="js/angularCommunity.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
-  <link rel="stylesheet" type="text/css" href="css/estimate.css" />
-  <link rel="stylesheet" type="text/css" href="css/talks.css" />
+  <link rel="stylesheet" type="text/css" href="css/community.css" />
+  
   <title>놀러와 마이홈</title>
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
 
 
-  <div class="container estimate-div" ng-controller="estimateCtrl">
+  <div class="container community-div" ng-controller="communityPostingCtrl">
     <table class="table table-bordered">
       <tbody>
         <form>
@@ -37,10 +37,7 @@
             <th>제목 </th>
             <td><input type="text" placeholder="제목을 입력하세요. " class="form-control" ng-model="title" /></td>
           </tr>
-          <tr>
-            <th>주소 </th>
-            <td><input type="text" placeholder="주소를 입력하세요. " class="form-control" ng-model="address" /></td>
-          </tr>
+
           <tr>
             <th>사진 </th>
             <td>
@@ -53,8 +50,8 @@
           </tr>
           <tr>
             <td colspan="2">
-              <input type="button" value="취소" class="estimate-float-right" ng-click="cancelEstimate()" />
-              <input type="submit" value="등록" class="estimate-float-right" ng-click="pushEstimateData()" />
+              <input type="button" value="취소" class="community-float-right" ng-click="cancelPosting()" />
+              <input type="submit" value="등록" class="community-float-right" ng-click="pushCommunityData()" />
             </td>
           </tr>
         </form>
@@ -97,7 +94,7 @@
       </form>
     </div>
   </nav>
-  커뮤니티
+ 
 </body>
 
 </html>

@@ -54,15 +54,18 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
     $window.dragEnd = function(ev) {
         var pin = angular.element("#dragged_img");
-        var pin_left = pin.offset().left;
-        var pin_top = pin.offset().top;
+        var pin_left = pin.offset().left+"px";
+        var pin_top = pin.offset().top+"px";
         console.log(pin_top, "pin.top", pin_left, "pin.left");
         
         // pin.offset({top: pin.offset().top, left:pin.offset().left});
         $scope.pin_style = {
-            'position' : 'absolute',
-            "padding-left": "pin_left",
-            "padding-top": "pin_top"
+            "position" : "absolute",
+            "left": pin_left,
+            "top": pin_top,
+            "z-index" : "3",
+            "margin" : "0",
+            "display" : "block"
         };
     }
 

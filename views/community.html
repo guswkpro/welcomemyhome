@@ -34,6 +34,10 @@
 <!-- Page Content -->
 <div class="container" style="width:50%; height:100%; margin-top:100px" ng-controller="communityListCtrl" >
 
+  <div style="width:100%; height:20px;">
+    <button class="btn btn-secondary btn-sm" style="float:right;" onclick="location.href = 'http://13.124.196.226:3000/communityposting'">작성</button>
+  </div>
+
   <!-- Project One -->
   <div class="row" style="width:100%; height:150px; margin:0px;" ng-repeat="c in community_list">
     <div class="community_post_img_div" style="width:25%; height:100%; margin-right:10px; border: 4px;">
@@ -55,25 +59,7 @@
 
   <hr>
 
-  <div class="row" style="width:100%; height:150px; margin:0px;">
-      <div class="community_post_img_div" style="width:25%; height:100%; margin-right:10px; border: 4px;">
-        <a href="http://13.124.196.226:3000/communitydetail">
-          <img class="community_post_img" style="width:100%; height:100%; " src="http://placehold.it/700x300" alt="">
-        </a>
-      </div>
-      <div class="posting_content" style="width:70%; height:100%;">
-        <h3>{{community_title}}</h3>
-        <p>content 미리보기</p>
-        <div class="hit-like-post">
-            <i class="fa fa-eye"></i> ( {{m.community_hit_count}} )
-            <i class="fa fa-heart" style="color:red;"></i> ( {{m.community_like_count}} )
-            <i class="fa fa-calendar"></i> {{m.community_post_date}}
-          </div>
-      </div>
-    </div>
-    <!-- /.row -->
-  
-    <hr>
+
 
   <!-- Pagination -->
   <ul class="pagination justify-content-center">
