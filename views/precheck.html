@@ -36,8 +36,8 @@
           <tr>
             <th>도면 사진 </th>
             <td>
-              <img ng-model="precheck_img" ng-src="./img/도면.JPG" alt="이미지 없음">
-              <div id="base_img"class="wrapper" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+              <img id="base_img" ondrop="drop(event)" ondragover="allowDrop(event)" ng-model="precheck_img" ng-src="./img/도면.JPG" alt="이미지 없음">
+              <div class="wrapper" ></div>
             </td>
           </tr>
           <tr>
