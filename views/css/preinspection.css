@@ -16,7 +16,7 @@ table tr{
 
 .wrapper {
     width: 100%;
-    background-image: url("../img/도면.jpg");
+    background-image: url("../img/도면.JPG");
     position: absolute;
     z-index:1;
 }
