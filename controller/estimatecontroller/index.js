@@ -109,6 +109,19 @@ exports.getestimateanswerlist = function (request, response) {
         }, function (cnt, nextCallback) {
             total_count = cnt;
             estimatedao.getestimateanswer(req_offset, req_estimate_idx, nextCallback);
+        },  function (estimatelist, nextCallback) {
+            count = 0;
+            async.whilst(function () {
+                return count < estimatelist.length;
+            }, function (callback) {
+                userdao.getuserinformation(estimatelist[count].user_idx, function (error, estimateuserdata) {
+                    estimatelist[count].user_nickname = estimateuserdata[0].user_nickname;
+                    count++;
+                    callback();
+                });
+            }, function (error) {
+                nextCallback(error, estimatelist);
+            });
         }
     ], function (error, result) {
         if (error) {
