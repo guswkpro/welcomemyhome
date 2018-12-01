@@ -39,14 +39,14 @@
   </div>
 
   <!-- Project One -->
-  <div class="card portfolio-item" style="width:100%; height:150px; margin:0px;" ng-repeat="c in community_list">
+  <div class="card" style="width:100%; height:150px; margin:0px;" ng-repeat="c in community_list">
 
     <div class="community_post_img_div" style="width:25%; height:100%; margin-right:10px; border: 4px;">
       <a href="http://13.124.196.226:3000/communitydetail">
         <img class="community_post_img" style="width:100%; height:100%; border: 4px;" ng-src="data:image/jpeg;base64,{{c.encodedimage}}" alt="">
       </a>
     </div>
-    <div class="card-body" style="width:70%; height:80%; margin-top:10px; margin-bottom:10px;">
+    <div class="col-md-5" style="width:70%; height:80%; margin-top:10px; margin-bottom:10px;">
       <div>
         <table style="width:100%;">
           <tr>
