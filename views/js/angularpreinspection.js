@@ -28,61 +28,91 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
-    var mouseX = 0;
-    var mouseY = 0;
-    $window.dragStart = function(ev) {
-        ev.dataTransfer.effectAllowed = 'move';
-        ev.dataTransfer.setData("Image", ev.target.getAttribute('id'));
-        ev.dataTransfer.dropEffect = "copyMove";
-        ev.dataTransfer.setDragImage(ev.target,0,0);  
-        var pin = angular.element("#dragged_img");
-        var pin_left = pin.offset().left;
-        var pin_top = pin.offset().top;
-         console.log(pin_top, "pin.top", pin_left, "pin.left");
-    }
 
-    $window.dragEnter = function(ev) {
-    }
+    $(function() {
+        var debug = $('#debug');
+        var o = $('#my_ball');
+        var sx, sy, dx, dy, ix, iy;
+        var dragging = false;
+        $('#my_ball').on('mousedown', flunction(e) {
+            e.preventDefault();
+            sz = e.pageX;
+            sy = e.pageY;
+            ix = $(o).offset().left;
+            iy = $(o).offset().top;
+            dx=dy=0;
+            dragging = true;
+            console.log("mousedown - s:", sw, sy, "/i:", ix, iy);
+        }).on('mousemove', fucntion(e) {
+            if(dragging) {
+                dx = e.pageX -sx;
+                dy = e.pageY -sy;
+                $(o).offset({left:ix + dx, top: iy+dy});
+                $(debug).text(dx+","+dy);
+            }
+        }).on('mouseup', function(e) {
+            dx = e.pageX - sz;
+            dy = e.pageY - sy;
+            $(o).offset({left: ix + dx, top: iy+ dy});
+            dragging = false;
+            console.log("mouseup - d:", dx,dy"/i:", ix, iy);
+        });
+    });
+    // var mouseX = 0;
+    // var mouseY = 0;
+    // $window.dragStart = function(ev) {
+    //     ev.dataTransfer.effectAllowed = 'move';
+    //     ev.dataTransfer.setData("Image", ev.target.getAttribute('id'));
+    //     ev.dataTransfer.dropEffect = "copyMove";
+    //     ev.dataTransfer.setDragImage(ev.target,0,0);  
+    //     var pin = angular.element("#dragged_img");
+    //     var pin_left = pin.offset().left;
+    //     var pin_top = pin.offset().top;
+    //      console.log(pin_top, "pin.top", pin_left, "pin.left");
+    // }
 
-    $window.dragOver = function(ev) {
-        var eObj = $window.event? window.event : e;
-        mouseX = eObj.clientX;
+    // $window.dragEnter = function(ev) {
+    // }
+
+    // $window.dragOver = function(ev) {
+    //     var eObj = $window.event? window.event : e;
+    //     mouseX = eObj.clientX;
         
-        ev.dataTransfer.dropEffect = "copyMove";
-        console.log(ev.pageX, ev.pageY);
-    }
+    //     ev.dataTransfer.dropEffect = "copyMove";
+    //     console.log(ev.pageX, ev.pageY);
+    // }
 
-    $window.drop =function(ev) {
-        var data = ev.dataTransfer.getData("text");
-        $('#div-pin').css("left", ev.pageX-30+"px").css("top", ev.pageY-40+"px");
-        console.log(ev.pageX, ev.pageY, "drop");
-        // var pin = angular.element("#dragged_img");
-        // console.log(pin.offset().top,"pin.top");
-        // pin.offset({top: pin.offset().top, left: pin.offset().left})
-        // ev.target.appendchild(document.getElementById(data));
-    }
+    // $window.drop =function(ev) {
+    //     var data = ev.dataTransfer.getData("text");
+    //     $('#div-pin').css("left", ev.pageX-30+"px").css("top", ev.pageY-40+"px");
+    //     console.log(ev.pageX, ev.pageY, "drop");
+    //     // var pin = angular.element("#dragged_img");
+    //     // console.log(pin.offset().top,"pin.top");
+    //     // pin.offset({top: pin.offset().top, left: pin.offset().left})
+    //     // ev.target.appendchild(document.getElementById(data));
+    // }
 
-    $window.dragEnd = function(ev) {
-        console.log(ev.pageX, ev.pageY, "drag");
-        $('#div-pin').css("left", ev.pageX-76.828125+"px").css("top", ev.pageY-80.5+"px");
-        var pin = angular.element("#dragged_img");
-        var pin_left = pin.offset().left;
-        var pin_top = pin.offset().top;
-         console.log(pin_top, "pin.top", pin_left, "pin.left");
-        /*
-        // pin.offset({top: pin.offset().top, left:pin.offset().left});
-        $scope.pin_style = {
-            "position" : "absolute",
-            "left": pin_left,
-            "top": pin_top,
-            "z-index" : "3",
-            "margin" : "0",
-            "display" : "block"
-        };
+    // $window.dragEnd = function(ev) {
+    //     console.log(ev.pageX, ev.pageY, "drag");
+    //     $('#div-pin').css("left", ev.pageX-76.828125+"px").css("top", ev.pageY-80.5+"px");
+    //     var pin = angular.element("#dragged_img");
+    //     var pin_left = pin.offset().left;
+    //     var pin_top = pin.offset().top;
+    //      console.log(pin_top, "pin.top", pin_left, "pin.left");
+    //     /*
+    //     // pin.offset({top: pin.offset().top, left:pin.offset().left});
+    //     $scope.pin_style = {
+    //         "position" : "absolute",
+    //         "left": pin_left,
+    //         "top": pin_top,
+    //         "z-index" : "3",
+    //         "margin" : "0",
+    //         "display" : "block"
+    //     };
 
-        */
+    //     */
 
-    }
+    // }
 
     $http.get('/getpreinspection', {
         params: {
