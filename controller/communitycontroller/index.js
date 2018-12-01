@@ -17,6 +17,19 @@ exports.getcommunitylist = function (request, response) {
         function (nextCallback) {
             communitydao.getcommunitylist(req_offset, nextCallback);
         }, function (communitylist, nextCallback) {
+            count = 0;
+            async.whilst(function () {
+                return count < communitylist.length;
+            }, function (callback) {
+                userdao.getuserinformation(communitylist[count].user_idx, function (error, communityuserdata) {
+                    communitylist[count].user_nickname = communityuserdata[0].user_nickname;
+                    count++;
+                    callback();
+                });
+            }, function (error) {
+                nextCallback(error, communitylist);
+            });
+        }, function (communitylist, nextCallback) {
             var count = 0;
             async.whilst(function () {
                 return count < communitylist.length;
@@ -91,6 +104,11 @@ exports.getcommunitydetail = function (request, response) {
             communitydao.editcommunityhitcount(req_community_idx, nextCallback);
         }, function (nextCallback) {
             communitydao.getcommunitydetail(req_community_idx, nextCallback);
+        }, function (communitydata, nextCallback) {
+            userdao.getuserinformation(communitydata[0].user_idx, function (error, communityuserdata) {
+                communitydata[0].user_nickname = communityuserdata[0].user_nickname;
+                nextCallback(error, communitydata);
+            });
         }, function (communitydata, nextCallback) {
             var encodedimage = [];
             var count = 0;
@@ -231,7 +249,7 @@ exports.addcommunity = function (request, response) {
             mkdirp(dirname, nextCallback);
         }, function (url, nextCallback) {
             if (req_community_image == 'null') {
-                thumbnailpath = "./publie/community/default/" + random_number + ".jpg";
+                thumbnailpath = "./public/community/default/" + random_number + ".jpg";
                 communitydto.community(req_user_idx, req_community_title, req_community_content, date, undefined, undefined, thumbnailpath, nextCallback);
             } else {
                 count = 0;
