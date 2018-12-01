@@ -18,6 +18,11 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
       }
     });
 	};
+	$scope.clickLogout = function() {
+		var msg = "logout이 성공하였습니다.";
+		$window.alert(msg);
+    $window.location.href = '/';
+	}
 });
 
 app.controller('loginController', function ($scope, $http, $window) {
