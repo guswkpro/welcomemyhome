@@ -27,7 +27,7 @@ app.controller('magazinedetailcard', function ($scope, $http) {
       $scope.div_login = {
         "width": "12%"
       };
-      console.log(scope.magazine_idx, "3");
+      console.log( "3");
       $http.get('/getmagazinedetail', {
         params: {
           magazine_idx: $scope.magazine_idx
