@@ -38,12 +38,12 @@ exports.getcommunitycount = function (callback) {
         POST
 ********************/
 exports.addcommunity = function (community, callback) {
-    client.query('INSERT INTO stweb.stweb_communities (community_title, community_content, community_post_date, community_picture_path, community_thumbnail_path, user_idx) VALUES (?, ? ,?, ?, ?, ?)', [community.community_title, community.community_content, community.community_post_date, community.community_picture_path, community.community.community_thumbnail_path, community.user_idx], function (error) {
+    client.query('INSERT INTO stweb.stweb_communities (community_title, community_content, community_post_date, community_picture_path, community_thumbnail_path, user_idx) VALUES (?, ? ,?, ?, ?, ?)', [community.community_title, community.community_content, community.community_post_date, community.community_picture_path, community.community_thumbnail_path, community.user_idx], function (error) {
         callback(error);
     });
 };
 exports.addcommunitylike = function (like, callback) {
-    client.query('INSERT INTO stweb.stweb_community_likes (like_date, community_idx, user_idx) VALUES (?, ?, ?)', [date.like_date, like.community_idx, like.user_idx], function (error) {
+    client.query('INSERT INTO stweb.stweb_community_likes (like_date, community_idx, user_idx) VALUES (?, ?, ?)', [like.like_date, like.community_idx, like.user_idx], function (error) {
         callback(error);
     });
 };

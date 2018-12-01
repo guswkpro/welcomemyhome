@@ -129,10 +129,8 @@ exports.login = function (request, response) {
 };
 
 exports.signup = function (request, response) {
-	console.log(request.body);
 	var req_user_id = request.body.id;
 	var req_user_pw = request.body.pw;
-	console.log(req_user_id + 'aaa');
 	var req_user_nickname = request.body.nickname;
 	var date = new Date();
 	date = date.toFormat('YYYY-MM-DD HH24:MI:SS');

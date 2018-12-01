@@ -1,5 +1,6 @@
 var communitydao = require('../../dao/communitydao');
 var communitydto = require('../../dto/communitydto');
+var userdao = require('../../dao/userdao')
 var async = require('async');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
@@ -169,21 +170,20 @@ exports.getcommunitycomment = function (request, response) {
                 var communitycommentinfodetail = {};
                 userdao.getuserinformation(communitycommentdata[count].user_idx, function (error, communitycommentuserdata) {
                     communitycommentinfodetail.user_nickname = communitycommentuserdata[0].user_nickname;
-                    fs.readFile(communitycommentuserdata[0].user_picture_thumbnail_path, function (error, data) {
-                        if (communitycommentuserdata[0].user_picture_thumbnail_path != "./public/default.png") {
+                    if (communitycommentuserdata[0].user_picture_thumbnail_path + '' == "null") {
+                        communitycommentinfodetail.user_profile_image = "null";
+                    } else {
+                        fs.readFile(communitycommentuserdata[0].user_picture_thumbnail_path, function (error, data) {
                             communitycommentinfodetail.user_profile_image = new Buffer(data).toString('base64');
-                        }
-                        else {
-                            communitycommentinfodetail.user_profile_image = "null";
-                        }
-                        communitycommentinfodetail.community_comment_user_idx = communitycommentdata[count].user_idx;
-                        communitycommentinfodetail.community_comment_idx = communitycommentdata[count].comment_idx;
-                        communitycommentinfodetail.community_comment_content = communitycommentdata[count].comment;
-                        communitycommentinfodetail.community_comment_post_date = communitycommentdata[count].comment_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
-                        info.push(communitycommentinfodetail);
-                        count++;
-                        callback();
-                    });
+                        });
+                    }
+                    communitycommentinfodetail.community_comment_user_idx = communitycommentdata[count].user_idx;
+                    communitycommentinfodetail.community_comment_idx = communitycommentdata[count].comment_idx;
+                    communitycommentinfodetail.community_comment_content = communitycommentdata[count].comment;
+                    communitycommentinfodetail.community_comment_post_date = communitycommentdata[count].comment_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+                    info.push(communitycommentinfodetail);
+                    count++;
+                    callback();
                 });
             }, function (error) {
                 nextCallback(error, null);
@@ -251,7 +251,6 @@ exports.addcommunity = function (request, response) {
                         });
                     } else {
                         thumbnailpath = imagepath.split(',')[0];
-                        console.log('aaaaasdfasdff');
                         communitydto.community(req_user_idx, req_community_title, req_community_content, date, undefined, imagepath, thumbnailpath, nextCallback);
                     }
                 });
@@ -377,13 +376,13 @@ exports.deletecommunitylike = function (request, response) {
 };
 
 exports.deletecommunitycomment = function (request, response) {
-    var req_community_idx = request.body.recommunity_idx;
+    var req_community_idx = request.body.community_idx;
     var req_comment_idx = request.body.comment_idx;
     async.waterfall([
         function (nextCallback) {
-            recommunitydao.deleterecommunitycomment(req_comment_idx, nextCallback);
+            communitydao.deletecommunitycomment(req_comment_idx, nextCallback);
         }, function (nextCallback) {
-            recommunitydao.editcommunitycommentcount(req_community_idx, -1, nextCallback);
+            communitydao.editcommunitycommentcount(req_community_idx, -1, nextCallback);
         }
     ], function (error) {
         if (error) {
@@ -420,7 +419,7 @@ exports.putcommunity = function (request, response) {
         function (nextCallback) {
             if (req_community_image == 'null') {
                 thumbnailpath = "./publie/community/default/" + random_number + ".jpg";
-                communitydto.community(req_user_idx, req_community_title, req_community_content, undefined, date, undefined, thumbnailpath, nextCallback);
+                communitydto.community(undefined, req_community_title, req_community_content, undefined, date, undefined, thumbnailpath, nextCallback);
             } else {
                 count = 0;
                 async.whilst(function () {
@@ -439,8 +438,7 @@ exports.putcommunity = function (request, response) {
                         });
                     } else {
                         thumbnailpath = imagepath.split(',')[0];
-                        console.log('aaaaasdfasdff');
-                        communitydto.community(req_user_idx, req_community_title, req_community_content, undefined, date, imagepath, thumbnailpath, nextCallback);
+                        communitydto.community(undefined, req_community_title, req_community_content, undefined, date, imagepath, thumbnailpath, nextCallback);
                     }
                 });
             }
