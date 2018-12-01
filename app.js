@@ -47,7 +47,7 @@ app.get('/nicknamecheck', usercontroller.nicknamecheck);
 app.get('/community', function (req, res) {
         res.render('community.html');
 });
-app.get('/talksposting', function (req, res) {
+app.get('/communityposting', function (req, res) {
         res.render('communityposting.html');
 });
 app.get('/communitydetail', function (req, res) {
