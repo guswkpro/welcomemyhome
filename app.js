@@ -43,15 +43,9 @@ app.get('/logincheck', usercontroller.logincheck);
 app.get('/idcheck', usercontroller.idcheck);
 app.get('/nicknamecheck', usercontroller.nicknamecheck);
 
+/* Talk */
 app.get('/talks', function (req, res) {
         res.render('talks.html');
-});
-
-app.get('/magazines', function (req, res) {
-        res.render('magazines.html');
-});
-app.get('/magazinedetail', function (req, res) {
-        res.render('magazinedetail.html');
 });
 app.get('/talksposting', function (req, res) {
         res.render('talksposting.html');
@@ -62,10 +56,20 @@ app.get('/talks', function (req, res) {
 app.get('/talksdetail', function (req, res) {
         res.render('talksdetail.html');
 });
+
+/* Magazine */
+app.get('/magazines', function (req, res) {
+        res.render('magazines.html');
+});
+app.get('/magazinedetail', function (req, res) {
+        res.render('magazinedetail.html');
+});
+
 app.get('/getmagazinelist', magazinecontroller.getmagazinelist);
 app.get('/getmagazinedetail', magazinecontroller.getmagazinedetail);
 app.get('/getmagazinecomment', magazinecontroller.getmagazinecomment);
 
+/* Estimate */
 app.get('/estimate', function(req, res){
         res.render('estimate.html');
 });
@@ -87,6 +91,7 @@ app.get('/getestimatedetail', estimatecontroller.getestimatedetail);
 app.get('/getestimateanswerlist', estimatecontroller.getestimateanswerlist);
 app.get('/getestimateanswerdetail', estimatecontroller.getestimateanswerdetail);
 
+/* Preinspection */
 app.get('/precheck', function(req, res){
         res.render('precheck.html');
 });

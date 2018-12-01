@@ -1,5 +1,5 @@
-var talkdao = require('../../dao/talkdao');
-var talkdto = require('../../dto/talkdto');
+var communitydao = require('../../dao/communitydao');
+var communitydto = require('../../dto/communitydto');
 var async = require('async');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
@@ -8,7 +8,7 @@ require('date-utils');
 /********************
         GET
 ********************/
-exports.getestimatelist = function (request, response) {
+exports.getcommunitylist = function (request, response) {
     var req_user_check = request.session.user_auth;
     var req_offset = request.param('offset');
     var total_count;
