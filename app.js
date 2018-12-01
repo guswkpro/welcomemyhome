@@ -40,9 +40,11 @@ app.get('/login', function (request, response) {
 app.get('/signup', function (request, response) {
         response.render('signup.html');
 });
+
 app.get('/logincheck', usercontroller.logincheck);
 app.get('/idcheck', usercontroller.idcheck);
 app.get('/nicknamecheck', usercontroller.nicknamecheck);
+app.get('/logout', usercontroller.logout);
 
 /* Community */
 app.get('/community', function (request, response) {

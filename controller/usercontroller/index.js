@@ -81,6 +81,23 @@ exports.nicknamecheck = function (request, response) {
 	});
 };
 
+exports.logout = function (request, response) {
+	request.session.destroy(
+		function (error) {
+			if (error) {
+				console.log(error);
+				response.json({
+					RESULT: "0"
+				});
+			} else {
+				response.json({
+					RESULT: "1"
+				});
+			}
+		}
+	)
+};
+
 /********************
         POST
 ********************/

@@ -28,21 +28,42 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
-    $window.allowDrop = function(ev) {
+    $window.dragStart = function(ev) {
+        ev.dataTransfer.effectAllowed = 'move';
+        ev.dataTransfer.setData("Image", ev.target.getAttribute('id'));
+        ev.dataTransfer.dropEffect = "copyMove";
+        ev.dataTransfer.setDragImage(ev.target,10,10);
+    }
+
+    $window.dragEnter = function(ev) {
         ev.preventDefault();
     }
 
-    $window.drag = function(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
+    $window.dragOver = function(ev) {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = "copyMove";
     }
 
     $window.drop =function(ev) {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
-        var pin = angular.element("#dragged_img");
-        console.log(pin.offset().top,"pin.top");
-        pin.offset({top: pin.offset().top, left: pin.offset().left})
+        var data = ev.dataTransfer.getData("Image");
+        // var pin = angular.element("#dragged_img");
+        // console.log(pin.offset().top,"pin.top");
+        // pin.offset({top: pin.offset().top, left: pin.offset().left})
         ev.target.before(document.getElementById(data));
+    }
+
+    $window.dragEnd = function(ev) {
+        var pin = angular.element("#dragged_img");
+        var pin_left = pin.offset().left;
+        var pin_top = pin.offset().top;
+        console.log(pin_top, "pin.top", pin_left, "pin.left");
+        
+        // pin.offset({top: pin.offset().top, left:pin.offset().left});
+        $scope.pin_style = {
+            'position' : 'absolute',
+            "padding-left": "pin_left",
+            "padding-top": "pin_top"
+        };
     }
 
     $http.get('/getpreinspection', {
