@@ -56,7 +56,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
             console.log(JSON.stringify(images));
             $http({
               method: 'POST',
-              url: '/addestimate',
+              url: '/addcommunity',
               headers: {
                 'Content-Type': 'application/json'
               },
