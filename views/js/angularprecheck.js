@@ -28,15 +28,15 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('precheckCtrl', function ($scope, $http, $window) {
-    $scope.allowDrop = function(ev) {
+    $window.allowDrop = function(ev) {
         ev.preventDefault();
     }
 
-    $scope.drag = function(ev) {
+    $window.drag = function(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
     }
 
-    $scope.drop =function(ev) {
+    $window.drop =function(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         ev.target.appendChild(document.getElementById(data));
