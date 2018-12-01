@@ -32,7 +32,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         ev.dataTransfer.effectAllowed = 'move';
         ev.dataTransfer.setData("Image", ev.target.getAttribute('id'));
         ev.dataTransfer.dropEffect = "copyMove";
-        ev.dataTransfer.setDragImage(ev.target,0,0);
+        ev.dataTransfer.setDragImage(ev.target,0,0);  
     }
 
     $window.dragEnter = function(ev) {
@@ -45,7 +45,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
     $window.drop =function(ev) {
         var data = ev.dataTransfer.getData("text");
-        $('#div-pin').css("left", ev.pageX-30px).css("top", ev.pageY-40px);
+        $('#div-pin').css("left", ev.pageX-30+"px").css("top", ev.pageY-40+"px");
         console.log(ev.pageX, ev.pageY, "drop");
         // var pin = angular.element("#dragged_img");
         // console.log(pin.offset().top,"pin.top");
