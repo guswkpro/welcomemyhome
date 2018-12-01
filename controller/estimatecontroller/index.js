@@ -1,5 +1,5 @@
-var talkdao = require('../../dao/talkdao');
-var talkdto = require('../../dto/talkdto');
+var estimatedao = require('../../dao/estimatedao');
+var estimatedto = require('../../dto/estimatedto');
 var async = require('async');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
