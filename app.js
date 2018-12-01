@@ -111,7 +111,7 @@ app.post('/addmagazinecomment', magazinecontroller.addmagazinecomment);
 app.post('/addestimate', estimatecontroller.addestimate);
 app.post('/addestimateanswer', estimatecontroller.addestimateanswer);
 
-app.post('/addcoummunity', communitycontroller.addcommunity);
+app.post('/addcommunity', communitycontroller.addcommunity);
 app.post('/addcommunitylike', communitycontroller.addcommunitylike);
 app.post('/addcommunitycomment', communitycontroller.addcommunitycomment);
 
