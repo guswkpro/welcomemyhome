@@ -42,11 +42,12 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     $window.dragOver = function(ev) {
         ev.preventDefault();
         ev.dataTransfer.dropEffect = "copyMove";
+        $('#div-pin').css("left", ev.pageX).css("top",ev.pageY);
     }
 
     $window.drop =function(ev) {
         var data = ev.dataTransfer.getData("text");
-        $('#div-pin').css("left", ev.pageX).css("top", ev.pageY)
+        $('#div-pin').css("left", ev.pageX).css("top", ev.pageY);
         // var pin = angular.element("#dragged_img");
         // console.log(pin.offset().top,"pin.top");
         // pin.offset({top: pin.offset().top, left: pin.offset().left})
