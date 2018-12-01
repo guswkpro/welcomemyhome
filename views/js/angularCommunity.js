@@ -62,7 +62,6 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
               },
               data: ({
                 title: $scope.title,
-                address: $scope.address,
                 content: $scope.content,
                 image: images
               })
@@ -86,7 +85,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
       }
       recourcive(0);
     }
-    //estimate 작성 취소
+    //작성 취소
     $scope.cancelPosting = function() {
       var msg = "작성을 취소하여 리스트 페이지로 이동합니다.";
       $window.alert(msg);
