@@ -4,6 +4,7 @@ var app = express();
 var usercontroller = require('./controller/usercontroller')
 var magazinecontroller = require('./controller/magazinecontroller');
 var estimatecontroller = require('./controller/estimatecontroller');
+var communitycontroller = require('./controller/communitycontroller');
 var server = app.listen(3000, function () {
         console.log("Express server has started on port 3000")
 });
@@ -19,8 +20,8 @@ app.use(session({
         saveUninitialized: true
 }));
 app.use(cookieParser());
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 //app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(bodyParser.json());
 app.use(express.static(__dirname + '/views'));
@@ -54,6 +55,10 @@ app.get('/communitydetail', function (request, response) {
         response.render('communitydetail.html');
 });
 
+app.get('/getcommunitylist', communitycontroller.getcommunitylist);
+app.get('/getcommunitydetail', communitycontroller.getcommunitydetail);
+app.get('/getcommunitycomment', communitycontroller.getcommunitycomment);
+
 /* Magazine */
 app.get('/magazines', function (request, response) {
         response.render('magazines.html');
@@ -67,19 +72,19 @@ app.get('/getmagazinedetail', magazinecontroller.getmagazinedetail);
 app.get('/getmagazinecomment', magazinecontroller.getmagazinecomment);
 
 /* Estimate */
-app.get('/estimate', function(request, response){
+app.get('/estimate', function (request, response) {
         response.render('estimate.html');
 });
-app.get('/estimateanswer', function(request, response){
+app.get('/estimateanswer', function (request, response) {
         response.render('estimateanswer.html');
 });
-app.get('/estimatedetail', function(request, response){
+app.get('/estimatedetail', function (request, response) {
         response.render('estimatedetail.html');
 });
-app.get('/estimateanswerdetail', function(request, response){
+app.get('/estimateanswerdetail', function (request, response) {
         response.render('estimateanswerdetail.html');
 });
-app.get('/estimatelist', function(request, response){
+app.get('/estimatelist', function (request, response) {
         response.render('estimatelist.html');
 });
 
@@ -89,28 +94,41 @@ app.get('/getestimateanswerlist', estimatecontroller.getestimateanswerlist);
 app.get('/getestimateanswerdetail', estimatecontroller.getestimateanswerdetail);
 
 /* Preinspection */
-app.get('/preinspection', function(request, response){
+app.get('/preinspection', function (request, response) {
         response.render('preinspection.html');
 });
-app.get('/precheckcreate', function(request, response){
+app.get('/precheckcreate', function (request, response) {
         response.render('preinspectioncreate.html');
 });
 
 /* ----------- POST ----------- */
 app.post('/login', usercontroller.login);
 app.post('/signup', usercontroller.signup);
+
 app.post('/addmagazinelike', magazinecontroller.addmagazinelike);
 app.post('/addmagazinecomment', magazinecontroller.addmagazinecomment);
+
 app.post('/addestimate', estimatecontroller.addestimate);
 app.post('/addestimateanswer', estimatecontroller.addestimateanswer);
+
+app.post('/addcoummunity', communitycontroller.addcommunity);
+app.post('/addcommunitylike', communitycontroller.addcommunitylike);
+app.post('/addcommunitycomment', communitycontroller.addcommunitycomment);
 
 /* ---------- DELETE ---------- */
 app.delete('/deletemagazinelike', magazinecontroller.deletemagazinelike);
 app.delete('/deletemagazinecomment', magazinecontroller.deletemagazinecomment);
 
+app.delete('/deletecommunity', communitycontroller.deletecommunity);
+app.delete('/deletecommunitylike', communitycontroller.deletecommunitylike);
+app.delete('/deletecommunitycomment', communitycontroller.deletecommunitycomment);
+
+/* ----------- PUT ------------ */
+app.put('/putcommunity', communitycontroller.putcommunity);
+
 /* ----------- TEST ----------- */
-app.get('/test', function(request, response){
+app.get('/test', function (request, response) {
         response.json({
-		RESULT : "12"
-	});
+                RESULT: "12"
+        });
 });

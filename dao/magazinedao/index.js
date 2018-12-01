@@ -28,6 +28,11 @@ exports.getmagazinecommentcheck = function (magazine_idx, user_idx, callback) {
         callback(error, result);
     });
 };
+exports.getmagazinecount = function (callback){
+    client.query('SELECT count(*) as cnt FROM stweb.stweb_magazines', [], function(error, result){
+        callback(error, result);
+    });
+};
 
 /********************
         POST
