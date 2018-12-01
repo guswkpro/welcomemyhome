@@ -45,6 +45,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         function checkCursor(){
             $('#div-pin').css("left", ev.pageX).css("top",ev.pageY);
         }
+        clearInterval(checkCursor);
     }
 
     $window.drop =function(ev) {
