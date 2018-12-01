@@ -48,13 +48,14 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             dy = e.pageY - sy;
             $(o).offset({left: ix + dx, top: iy+ dy});
             dragging = false;
-            console.log("mouseup - d:", dx,dy,"/i:", ix, iy);
+            console.log("mouseup - d:", dx, dy, "/i:", ix, iy);
         });
+
         $('html').on('mousemove', function(e) {
             if(dragging) {
                 dx e.pageX -sx;
                 dy = e.pageY -sy;
-                $(o).offset({left:ix + dx, top: iy+dy});
+                $(o).offset({left: ix + dx, top: iy + dy});
                 $(debug).text(dx+","+dy);
             }
         });
