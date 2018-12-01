@@ -85,7 +85,7 @@ app.get('/estimatelist', function(req, res){
 app.get('/getestimatelist', estimatecontroller.getestimatelist);
 app.get('/getestimatedetail', estimatecontroller.getestimatedetail);
 app.get('/getestimateanswerlist', estimatecontroller.getestimateanswerlist);
-app.get('/getestimateanswerdetail', estimatecontroller.getestimateansweredtail);
+app.get('/getestimateanswerdetail', estimatecontroller.getestimateanswerdetail);
 
 app.get('/precheck', function(req, res){
         res.render('precheck.html');
