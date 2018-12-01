@@ -41,11 +41,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     $window.dragOver = function(ev) {
         ev.preventDefault();
         ev.dataTransfer.dropEffect = "copyMove";
-        setInterval(checkCursor, 1000);
-        function checkCursor(){
-            $('#div-pin').css("left", ev.pageX).css("top",ev.pageY);
-        }
-        clearInterval(checkCursor);
+        console.log(ev.pageX,ev.pageY);
     }
 
     $window.drop =function(ev) {
