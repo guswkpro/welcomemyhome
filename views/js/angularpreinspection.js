@@ -32,17 +32,19 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         ev.dataTransfer.effectAllowed = 'move';
         ev.dataTransfer.setData("Image", ev.target.getAttribute('id'));
         ev.dataTransfer.dropEffect = "copyMove";
-        ev.dataTransfer.setDragImage(ev.target,10,10);
+        ev.dataTransfer.setDragImage(ev.target,0,0);
     }
 
     $window.dragEnter = function(ev) {
-        ev.preventDefault();
     }
 
     $window.dragOver = function(ev) {
         ev.preventDefault();
         ev.dataTransfer.dropEffect = "copyMove";
-        $('#div-pin').css("left", ev.pageX).css("top",ev.pageY);
+        setInterval(checkCursor, 1000);
+        function checkCursor(){
+            $('#div-pin').css("left", ev.pageX).css("top",ev.pageY);
+        }
     }
 
     $window.drop =function(ev) {
