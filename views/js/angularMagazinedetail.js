@@ -27,13 +27,14 @@ app.controller('magazinedetailcard', function ($scope, $http) {
       $scope.div_login = {
         "width": "12%"
       };
-      console.log( "3");
+      console.log("3");
       $http.get('/getmagazinedetail', {
         params: {
           magazine_idx: $scope.magazine_idx
         }
       }).success(function (response) {
         if (response.RESULT == 1) {
+
           console.log(response, "success");
           console.log(response.INFO, "4");
           $scope.magazinedetail = response.INFO;
@@ -55,7 +56,7 @@ app.controller('magazinedetailcard', function ($scope, $http) {
 
       $http.get('/getmagazinecomment', {
         params: {
-          magazine_idx: idx
+          magazine_idx: $scope.magazine_idx
         }
       });
 
