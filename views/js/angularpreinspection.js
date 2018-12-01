@@ -55,7 +55,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
     $window.dragEnd = function(ev) {
         console.log(ev.pageX, ev.pageY, "drag");
-        $('#div-pin').css("left", ev.pageX-30+"px").css("top", ev.pageY-40+"px");
+        $('#div-pin').css("left", ev.pageX-88+"px").css("top", ev.pageY-70+"px");
         // var pin = angular.element("#dragged_img");
         // var pin_left = pin.offset().left;
         // var pin_top = pin.offset().top;
