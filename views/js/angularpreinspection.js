@@ -44,7 +44,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             dragging = true;
             console.log("mousedown - s:", sx, sy, "/i:", ix, iy);
         }).on('mouseup', function(e) {
-            dx = e.pageX - sx-;
+            dx = e.pageX - sx;
             dy = e.pageY - sy;
             $(o).offset({left: ix + dx, top: iy+ dy});
             dragging = false;
