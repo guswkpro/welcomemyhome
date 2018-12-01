@@ -61,8 +61,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         // pin.offset({top: pin.offset().top, left:pin.offset().left});
         $scope.pin_style = {
             'position' : 'absolute',
-            "left": "pin_left",
-            "top": "pin_top",
+            "left": pin_left,
+            "top": pin_top,
             "z-index" : "3",
             "margin" : "0",
             "display" : "block"
