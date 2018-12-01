@@ -14,8 +14,12 @@ exports.getmagazinelist = function (request, response) {
     var req_user_idx = request.session.user_idx;
     var req_offset = request.param('offset');
     var info = [];
+    var total_count;
     async.waterfall([
         function (nextCallback) {
+            estimatedao.getestimatecount(nextCallback);
+        }, function (cnt, nextCallback) {
+            total_count = cnt;
             magazinedao.getmagazinelist(req_offset, nextCallback);
         }, function (magazinelist, nextCallback) {
             var count = 0;
@@ -78,6 +82,7 @@ exports.getmagazinelist = function (request, response) {
             response.json({
                 RESULT: "1"
                 , INFO: info
+                , COUNT: total_count
             });
         }
     });
@@ -211,7 +216,6 @@ exports.getmagazinecomment = function (request, response) {
 exports.addmagazinelike = function (request, response) {
     var req_user_idx = request.session.user_idx
     var req_mag_idx = request.body.magazine_idx;
-    console.log(request.body);
     var date = new Date();
     date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
     async.waterfall([
