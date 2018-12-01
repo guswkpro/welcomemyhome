@@ -63,7 +63,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             'position' : 'fixed',
             "padding-left": "pin_left",
             "padding-top": "pin_top",
-            "z-index" : 
+            "z-index" : "3"
         };
     }
 
