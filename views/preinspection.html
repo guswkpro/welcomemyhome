@@ -28,7 +28,7 @@
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" ng-controller="preinspectionCtrl" ondrop="drop(event)" ondragover="dragOver(event)">
   <div class="container preinspection-div">
-    <div id="div-pin" style="position:relative"><img id="dragged_img" class="pin-img grabbable grabbing" draggable="true" ondragstart="dragStart(event)" ondragenter="dragEnter(event)" 
+    <div id="div-pin" class="pin_div"><img id="dragged_img" class="pin-img grabbable grabbing" draggable="true" ondragstart="dragStart(event)" ondragenter="dragEnter(event)" 
       ondragend="dragEnd(event)" ng-style="pin_style" ng-src="./img/pin.png" alt="이미지 없음"></div>
     <div style="position:relative">
         <table class="table table-bordered" draggable="true" ondragstart="dragStart(event)" ondragenter="dragEnter(event)">
@@ -36,7 +36,7 @@
               <form>
                 <tr>
                   <th>도면 사진 </th>
-                  <td>
+                  <td style="position : relative">
                     <div id="base_img" class="wrapper" draggable="true" ondragstart="dragStart(event)" ondragenter="dragEnter(event)">
                       <img class="based-img" draggable="true" ondragstart="dragStart(event)" ondragenter="dragEnter(event)" ng-model="preinspection_img" ng-src="./img/도면.JPG" alt="이미지 없음">
                     </div>
