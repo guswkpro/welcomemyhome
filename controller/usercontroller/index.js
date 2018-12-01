@@ -57,28 +57,11 @@ exports.idcheck = function (request, response) {
 	});
 };
 
-exports.logout = function (request, response) {
-	request.session.destroy(
-		function (error) {
-			if (error) {
-				console.log(error);
-				response.json({
-					RESULT: "0"
-				});
-			} else {
-				response.json({
-					RESULT: "1"
-				});
-			}
-		}
-	)
-};
-
-exports.idcheck = function (request, response) {
-	var req_user_id = request.param("user_id");
+exports.nicknamecheck = function (request, response) {
+	var req_user_nickname = request.param("user_nickname");
 	async.waterfall([
 		function (nextCallback) {
-			dao.getidcheck(req_user_id, nextCallback);
+			dao.getnicknamecheck(req_user_nickname, nextCallback);
 		}
 	], function (error, result) {
 		if (error) {
@@ -96,6 +79,23 @@ exports.idcheck = function (request, response) {
 			});
 		}
 	});
+};
+
+exports.logout = function (request, response) {
+	request.session.destroy(
+		function (error) {
+			if (error) {
+				console.log(error);
+				response.json({
+					RESULT: "0"
+				});
+			} else {
+				response.json({
+					RESULT: "1"
+				});
+			}
+		}
+	)
 };
 
 /********************
