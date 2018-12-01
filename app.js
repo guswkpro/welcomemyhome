@@ -89,11 +89,11 @@ app.get('/getestimateanswerlist', estimatecontroller.getestimateanswerlist);
 app.get('/getestimateanswerdetail', estimatecontroller.getestimateanswerdetail);
 
 /* Preinspection */
-app.get('/precheck', function(req, res){
-        res.render('precheck.html');
+app.get('/preinspection', function(req, res){
+        res.render('preinspection.html');
 });
 app.get('/precheckcreate', function(req, res){
-        res.render('precheckcreate.html');
+        res.render('preinspectioncreate.html');
 });
 
 /* ----------- POST ----------- */
