@@ -71,6 +71,11 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
         */
        $('#div-pin').css("left", ev.pageX).css("top", ev.pageY)
+       $scope.pin_style = {
+        "position" : "absolute",
+        "z-index" : "3"
+       }
+
     }
 
     $http.get('/getpreinspection', {
