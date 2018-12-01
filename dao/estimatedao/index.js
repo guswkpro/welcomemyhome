@@ -19,7 +19,7 @@ exports.getestimatedetail = function (estimate_idx, callback) {
     });
 };
 exports.getestimateanswer = function (offset, estimate_idx, callback) {
-    client.query('SELECT * FROM stweb.stweb_estimate_answers where estimate_idx = ? order by estimate_idx DESC limit ?, 5', [estimate_idx, offset], function (error, result) {
+    client.query('SELECT * FROM stweb.stweb_estimate_answers where estimate_idx = ? order by answer_idx DESC limit ?, 5', [estimate_idx, offset], function (error, result) {
         callback(error, result);
     });
 };
