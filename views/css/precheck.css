@@ -16,4 +16,23 @@ table tr{
 
 .wrapper {
     width: 100%;
+    z-index:1;
+}
+
+.grabbable {
+    cursor: move; cursor: -moz-grab; cursor: -webkit-grab; cursor: grab; 
+}
+
+.grabbing {
+   cursor: move; cursor: -moz-grabbing; cursor: -webkit-grabbing; cursor: grabbing;
+}
+
+.based-img {
+    z-index: 2;
+}
+
+.pin-img {
+    z-index: 3;
+    width: 30px;
+    height: 40px;
 }

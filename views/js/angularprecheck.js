@@ -1,7 +1,14 @@
 var app = angular.module('precheck', []);
 
 app.controller('logincheckCtrl', function ($scope, $http, $window) {
+    var cookie_auth = document.cookie.split("%2F");
+    var auth = cookie_auth[1];
     $scope.load = function () {
+        if (auth == 1) {
+            var msg = "사전점검은 사용자만 가능합니다"
+            $window.alert(msg);
+            $window.location.href = '/';
+        }
         $http.get('/logincheck').success(function (response) {
             console.log(response.RESULT);
             if (response.RESULT == "1") {
@@ -21,9 +28,23 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('precheckCtrl', function ($scope, $http, $window) {
+    $window.allowDrop = function(ev) {
+        ev.preventDefault();
+    }
+
+    $window.drag = function(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    $window.drop =function(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.before(document.getElementById(data));
+    }
+
     $http.get('/getprecheck', {
         params: {
-            
+
         }
     }).success(function (response) {
         if (response.RESULT == 1) {
