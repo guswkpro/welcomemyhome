@@ -18,8 +18,23 @@ exports.getestimatedetail = function (estimate_idx, callback) {
         callback(error, result);
     });
 };
-exports.getestimateanswer = function (estimate_idx, callback) {
+exports.getestimateanswer = function (offset, estimate_idx, callback) {
     client.query('SELECT * FROM stweb.stweb_estimate_answers where estimate_idx = ? order by estimate_idx DESC limit ?, 5', [estimate_idx], function (error, result) {
+        callback(error, result);
+    });
+};
+exports.getestimateanswerdetail = function (answer_idx, callback){
+    client.query('SELECT * FROM stweb.stweb_estimate_answers where answer_idx = ?', [answer_idx], function(error, result){
+        callback(error, result);
+    });
+};
+exports.getestimatecount = function (callback){
+    client.query('SELECT count(*) as cnt FROM stweb.stweb_estimates', [], function(error, resut){
+        callback(error, result);
+    });
+};
+exports.getestimateanswercount = function (callback){
+    client.query('SELECT count(*) as cnt FROM stweb.stweb_estimate_answers', [], function(error, resut){
         callback(error, result);
     });
 };

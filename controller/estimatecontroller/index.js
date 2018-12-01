@@ -11,9 +11,12 @@ require('date-utils');
 exports.getestimatelist = function (request, response) {
     var req_user_check = request.session.user_auth;
     var req_offset = request.param('offset');
-    var info = [];
+    var total_count;
     async.waterfall([
         function (nextCallback) {
+            estimatedao.getestimatecount(nextCallback);
+        }, function (cnt, nextCallback) {
+            total_count = cnt;
             if (req_user_check == "0") {
                 estimatedao.getestimatelistforuser(req_offset, request.session.user_idx, nextCallback);
             } else {
@@ -30,6 +33,7 @@ exports.getestimatelist = function (request, response) {
             response.json({
                 RESULT: "1"
                 , INFO: result
+                , COUNT: total_count
             });
         }
     });
@@ -80,42 +84,51 @@ exports.getestimatedetail = function (request, response) {
         }
     });
 };
+
 exports.getestimateanswerlist = function (request, response) {
     var req_estimate_idx = request.param('estimate_idx');
-    var info = [];
+    var req_offset = request.param('offset');
+    var total_count;
     async.waterfall([
         function (nextCallback) {
-            estimatedao.getestimateanswer(req_estimate_idx, nextCallback);
+            estimatedao.getestimateanswercount(nextCallback);
+        }, function (cnt, nextCallback) {
+            total_count = cnt;
+            estimatedao.getestimateanswer(req_offset, req_estimate_idx, nextCallback);
+        }
+    ], function (error, result) {
+        if (error) {
+            console.log(error);
+            response.json({
+                RESULT: "0"
+            });
+        } else {
+            response.json({
+                RESULT: "1"
+                , INFO: result
+                , COUNT: total_count
+            });
+        }
+    });
+};
+
+exports.getestimateanswerdetail = function (request, response) {
+    var req_answer_idx = request.param('answer_idx');
+    var info = {};
+    async.waterfall([
+        function (nextCallback) {
+            estimatedao.getestimateanswerdetail(req_answer_idx, nextCallback);
         }, function (answerdata, nextCallback) {
             var encodedimage = [];
             var count = 0;
+            answerdata[0].answer_picture_path = answerdata[0].answer_picture_path.split(',');
             async.whilst(function () {
-                return count < (answerdata.length);
+                return count < (answerdata[0].answer_picture_path.length - 1);
             }, function (callback) {
-                answerdata[count].answer_picture_path = answerdata[count].answer_picture_path.split(',');
-                answerdata[count].answer_date = answerdata[count].answer_date.toFormat('YYYY-MM-DD HH24:MI:SS');
-                var count2 = 0;
-                async.whilst(function () {
-                    return count2 < (answerdata[count].answer_picture_path.length - 1);
-                }, function (callback) {
-                    fs.readFile(answerdata[count].answer_picture_path[count2], function (error, data) {
-                        encodedimage.push(new Buffer(data).toString('base64'));
-                        count2++;
-                        callback();
-                    });
-                }, function (error) {
-                    if (error) {
-                        console.log(error);
-                        response.json({
-                            RESULT: "0"
-                        });
-                    } else {
-                        answerdata[count].encodedimage = encodedimage;
-                        encodedimage = [];
-                        info.push(answerdata[count]);
-                        count++;
-                        callback();
-                    }
+                fs.readFile(answerdata[0].answer_picture_path[count], function (error, data) {
+                    encodedimage.push(new Buffer(data).toString('base64'));
+                    count++;
+                    callback();
                 });
             }, function (error) {
                 if (error) {
@@ -124,6 +137,9 @@ exports.getestimateanswerlist = function (request, response) {
                         RESULT: "0"
                     });
                 } else {
+                    answerdata[0].answer_date = answerdata[0].answer_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+                    answerdata[0].encodedimage = encodedimage;
+                    info = answerdata[0];
                     nextCallback();
                 }
             });
@@ -170,7 +186,7 @@ exports.addestimate = function (request, response) {
         }, function (url, nextCallback) {
             count = 0;
             async.whilst(function () {
-              console.log(req_estimate_image);
+                console.log(req_estimate_image);
                 return count < req_estimate_image.length;
             }, function (callback) {
                 var bitmap = new Buffer(req_estimate_image[count].image, 'base64');
