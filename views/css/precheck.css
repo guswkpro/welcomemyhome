@@ -29,3 +29,10 @@ table tr{
 .based-img {
     z-index: 1;
 }
+
+.pin-img {
+    z-index: 2;
+    position : absolute;
+    width: 20px;
+    height: 40px;
+}
