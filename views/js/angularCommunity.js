@@ -20,3 +20,19 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
       });
     };
   });
+
+  app.controller('communityListCtrl', function($scope, $http) {
+    $http.get('/getcommunitylist', {
+      params: {
+        offset: "0"
+      }
+    }).success(function(response) {
+      if (response.RESULT == 1) {
+        $scope.community_list = response.INFO
+      } else {
+        console.log(response, "falt");
+      }
+    }).error(function() {
+      console.log(error);
+    });
+  });
