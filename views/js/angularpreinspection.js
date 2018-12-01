@@ -46,6 +46,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
     $window.drop =function(ev) {
         var data = ev.dataTransfer.getData("Image");
+        $('#div-pin').css("left", ev.pageX).css("top", ev.pageY)
         // var pin = angular.element("#dragged_img");
         // console.log(pin.offset().top,"pin.top");
         // pin.offset({top: pin.offset().top, left: pin.offset().left})
@@ -70,11 +71,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         };
 
         */
-       $('#div-pin').css("left", ev.pageX).css("top", ev.pageY)
-       $scope.pin_style = {
-        "position" : "absolute",
-        "z-index" : "3"
-       }
 
     }
 
