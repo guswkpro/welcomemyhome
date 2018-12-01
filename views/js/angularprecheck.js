@@ -29,21 +29,21 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 app.controller('precheckCtrl', function ($scope, $http, $window) {
 
-    function allowDrop(ev) {
+    $scope.allowDrop = function(ev) {
         ev.preventDefault();
     }
 
-    function drag(ev) {
+    $scope.drag = function(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
     }
 
-    function drop(ev) {
+    $scope.drop =function(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         ev.target.appendChild(document.getElementById(data));
         $scope.img_style = {
             "position": "relative",
-            
+
         };
     }
 
