@@ -57,7 +57,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                 $(o).offset({left:ix + dx, top: iy+dy});
                 $(debug).text(dx+","+dy);
             }
-        })
+        });
     });
     // var mouseX = 0;
     // var mouseY = 0;
