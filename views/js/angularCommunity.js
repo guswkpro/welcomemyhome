@@ -31,10 +31,10 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
         
         $scope.community_list = response.INFO
         for(i=0; i<$scope.community_list.length; i++){
-          var tmp = new Date($scope.community_list.community_post_date);
+          var tmp = new Date($scope.community_list[i].community_post_date);
           var month = tmp.getMonth()+1;
           var day =tmp.getDate();
-          $scope.community_list.community_post_date = month + "-" + day ;
+          $scope.community_list[i].community_post_date = month + "-" + day ;
 
         }
         console.log(response.INFO);
