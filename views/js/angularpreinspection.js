@@ -39,6 +39,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     $window.drop =function(ev) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
+        var pin = angular.element("#dragged_img");
+        console.log(pin.offset().top,"pin.top");
         ev.target.before(document.getElementById(data));
     }
 
