@@ -29,7 +29,7 @@ exports.getestimateanswerdetail = function (answer_idx, callback){
     });
 };
 exports.getestimatecount = function (callback){
-    client.query('SELECT count(*) as cnt FROM stweb.stweb_estimates', [], function(error, resut){
+    client.query('SELECT count(*) as cnt FROM stweb.stweb_estimates', [], function(error, result){
         callback(error, result);
     });
 };
