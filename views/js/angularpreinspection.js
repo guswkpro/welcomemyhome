@@ -36,7 +36,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         var dragging = false;
         $('#my_ball').on('mousedown', function(e) {
             e.preventDefault();
-            sz = e.pageX;
+            sx = e.pageX;
             sy = e.pageY;
             ix = $(o).offset().left;
             iy = $(o).offset().top;
