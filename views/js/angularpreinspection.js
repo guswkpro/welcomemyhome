@@ -39,11 +39,10 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             pin[i] = $(ui.helper).clone(); 
             $(this).after(pin[i].draggable());
             pin[i].attr("id", "pin"+i);
-            pin[i].attr("data-toggle", "modal");
-            pin[i].attr("data-target", "#pin_modal");
             pin[i].css({
                 'z-index': '999'
             });
+            $('#pin+i').modal();
             $('#pin_modal').css({
                 'display': 'block',
             });
