@@ -29,19 +29,15 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
-    $(function() {
+    $scope.addpin = function() {
         var plan = $('#plan');
         var o = $('#my_pin');
 
         var start_x, tart_y, dist_x, dist_y, image_x, image_y;
         var dragging = false;
         
-        var clone_pin = $(o).click(function(){
-            var clone_pin2 = $(o).clone(true).css({
-                'z-index': '999'
-            });
-            clone_pin2.appendTo(document.querySelector('#div_pin'));
-            return clone_pin2;
+        var clone_pin = $(o).clone(true).ppendTo(document.querySelector('#div_pin').css({
+            'z-index': '999'
         });
 
         $(clone_pin).on('mousedown', function(e) {
@@ -86,7 +82,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             //     $(plan).text(dist_x+","+dist_y);
             // }
         });
-    });
+    };
+
     $http.get('/getpreinspection', {
         params: {
 
