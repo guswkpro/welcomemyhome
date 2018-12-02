@@ -64,37 +64,25 @@
       <input type="button" value="새 도면 등록" class="preinspection-float-right" onclick="location.href = 'http://13.124.196.226:3000/preinspectioncreate'" />
     </div>
 
-    <section id="pin_modal">
-        <div class = "preinspectionPopup-div"style="position:relative">
-          <table class="table table-bordered">
-            <tbody>
-              <form>
-                <tr>
-                  <th>제목 </th>
-                  <td>
-                    <input type="text" placeholder="제목을 입력하세요. " class="form-control" ng-model="title" />
-                  </td>
-                </tr>
-                <tr>
-                  <th>체크 항목 </th>
-                  <td>
-                    <input type="checkbox" id="water_leak"> <label for="water_leak">누수</label>
-                    <input type="checkbox" id="crack"> <label for="crack">금</label>
-                    <input type="checkbox" id="three"> <label for="three">3</label><br>
-                    <input type="checkbox" id="four"> <label for="four">4</label>
-                    <input type="checkbox" id="five"> <label for="five">5</label>
-                    <input type="checkbox" id="six"> <label for="six">6</label>
-                  </td>
-                </tr>
-              </form>
-            </tbody>
-          </table>
+    <div id="pin_modal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
         </div>
-  
-        <div>
-          <input type="button" value="점검 등록" class="preinspection-float-right" />
-        </div>
-    </section>
+      </div>
+    </div>
 
   </div>
 
