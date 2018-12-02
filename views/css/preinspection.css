@@ -66,3 +66,7 @@ table tr{
     display: none;
     z-index: -1;
 }
+
+#dialog {
+    display: none;
+}
