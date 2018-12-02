@@ -30,7 +30,9 @@
   <div class="container preinspection-div" ng-controller="preinspectionCtrl">
     <!-- <div id="div-pin" class="pin_div"><img id="dragged_img" class="pin-img grabbable grabbing" draggable="true" ondragstart="dragStart(event)" ondragenter="dragEnter(event)" 
       ondragend="dragEnd(event)" ng-style="pin_style" ng-src="./img/pin.png" alt="이미지 없음"></div> -->
-    <img id="my_pin" class="pin-img" src="./img/pin.png" sytle="position:absolute">
+    <div id="div-pin">
+        <img id="my_pin" class="pin-img" src="./img/pin.png" sytle="position:absolute">
+    </div>
     <div style="position:relative">
         <table class="table table-bordered">
             <tbody>

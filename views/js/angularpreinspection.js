@@ -34,7 +34,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         var o = $('#my_pin');
         var clone_pin = $(o).clone(true).css({
             'z-index': '99999'
-        });
+        }).appendchild($('#div-pin');
 
         var start_x, start_y, dist_x, dist_y, image_x, image_y;
         var dragging = false;
