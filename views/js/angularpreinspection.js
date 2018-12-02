@@ -41,7 +41,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                                             id: "pin",
                                             data-toggle: "modal",
                                             data-target: "#pin_modal"
-                                        });
+                                        }));
                                         // .attr("data-toggle", "modal")
                                         // .attr("data-target", "#pin_modal");
 
