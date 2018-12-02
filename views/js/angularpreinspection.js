@@ -28,27 +28,38 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
+    var pin = new Array();
     // pin img 복사 이동
+    var i=0;
+
     $(function() {
         $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
         $('.pin-img').bind('dragstop', function(event, ui) {
-            $(this).after($(ui.helper).clone().draggable());
+            pin[i] = $(this).after($(ui.helper).clone().draggable());
+            pin[i].attr("id", "pin"+i);
             $(this).css({
                 'z-index': '999'
             });
             $('#pin_modal').css({
-                'display': 'block'
+                'display': 'block',
+                'margin-top': function() {
+                    return -($(this).height()/2);
+                },
+                'margin-left': function() {
+                    return -($(this).width()/2);
+                }
             });
-            $('#pin_modal_close').css({
-                'display': 'none'
-            });
+            i++;
+        });
+        $('#pin_modal_close').css({
+            'display': 'none'
         });
     });
 
 
     $http.get('/getpreinspection', {
         params: {
-
+            pin_idx: pin[1]
         }
     }).success(function (response) {
         if (response.RESULT == 1) {

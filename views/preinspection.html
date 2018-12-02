@@ -68,20 +68,24 @@
   <section id="pin_modal">
       <div>
           <form action="/login" method="post" id="login_form">
-              <div id="login_section">
-                  <h3>로그인</h3>
+              <div id="pin_section">
+                  <h3></h3>
                   <div>
-                      <label>아이디</label>
-                      <input type="text" placeholder="아이디를 입력해 주세요." id="id" name="id">
+                      <label>제목</label>
+                      <input type="text" placeholder="제목을 입력해 주세요." class="form-control" ng-model="title">
                   </div>
                   <div>
-                      <label>비밀번호</label>
-                      <input type="password" id="pw" name = "password">
+                      <label>체크 항목</label>
+                      <input type="checkbox" id="water_leak"> <label for="water_leak">누수</label>
+                        <input type="checkbox" id="crack"> <label for="crack">금</label>
+                        <input type="checkbox" id="three"> <label for="three">3</label><br>
+                        <input type="checkbox" id="four"> <label for="four">4</label>
+                        <input type="checkbox" id="five"> <label for="five">5</label>
+                        <input type="checkbox" id="six"> <label for="six">6</label>
                   </div>
               </div>
-              <div id="login_bottom">
-                  <input type="submit" value="로그인" id="login_btn">
-                  <input type="button" value="닫기" id="login_close">
+              <div>
+                  <input type="submit" value="점검 등록" class="preinspection-float-right">
               </div>
           </form>
       </div>
