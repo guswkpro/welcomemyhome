@@ -47,8 +47,17 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             });
             i++;
         });
-        $('#pin_modal_close').css({
+        $(".close").click(function() {
+            $("#dialog").css({
             'display': 'none'
+            });
+        });
+        $("html").click(function(event) {
+            if(event.target.id === "dialog") {
+                $("#dialog").css({
+                    'display': 'none'
+                });
+            }
         });
     });
 
