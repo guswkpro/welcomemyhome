@@ -41,7 +41,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                 'z-index': '99999'
             });
             console.log(clone_pin2);
-            clone_pin2.appendTo(document.querySelector('#my_div'));
+            clone_pin2.appendTo(document.querySelector('#div_pin'));
             return clone_pin2;
         });
         $(clone_pin).off('click');
