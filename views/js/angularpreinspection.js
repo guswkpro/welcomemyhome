@@ -33,11 +33,16 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
         $('.pin-img').bind('dragstop', function(event, ui) {
             $(this).after($(ui.helper).clone().draggable());
-            $(this).clone.css({
+            $(this).css({
                 'z-index': '999'
             });
         });
-       
+        $('.pin-img').onclick({
+            $("#pin_modal").css("display", "block");
+        });
+        $('.pin-img-close').onclick({
+            $("#pin_modal").css("display", "none");
+        });
     });
 
     $http.get('/getpreinspection', {
