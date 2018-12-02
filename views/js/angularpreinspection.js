@@ -36,19 +36,15 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             $(this).css({
                 'z-index': '999'
             });
+            $('#pin_modal').css({
+                'display': 'block'
+            });
+            $('#pin_modal_close').css({
+                'display': 'none'
+            });
         });
     });
 
-    $('.pin-img').onclick({
-        $("#pin_modal").css({
-            'display': 'block'
-        });
-    });
-    $('.pin-img-close').onclick({
-        $("#pin_modal").css({
-            "display": "none"
-        });
-    });
 
     $http.get('/getpreinspection', {
         params: {
