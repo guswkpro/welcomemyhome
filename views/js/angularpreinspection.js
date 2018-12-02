@@ -37,9 +37,10 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         $('.pin-img').bind('dragstop', function(event, ui) {
             $(this).after($(ui.helper).clone()
                                         .draggable()
-                                        .attr("id", "pin"+cloneCount++))
-                                        .attr("data-toggle", "modal")
-                                        .attr("data-target", "#pin_modal");
+                                        .attr({
+                                            id: 'pin'+cloneCount++
+                                        // .attr("data-toggle", "modal")
+                                        // .attr("data-target", "#pin_modal");
 
             // pin[i].css({
             //     'z-index': '999'
