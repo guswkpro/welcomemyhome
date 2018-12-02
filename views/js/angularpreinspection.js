@@ -38,7 +38,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
         $('.pin-img').draggable({helper: "clone"});
         $('.pin-img').bind('dragstop', function(event, ui) {
-            $(this).after($('#div-pin').clone().draggable());
+            $(this).after($(ui.helper).clone().draggable());
             $(this).css({
                 'z-index': '999'
             });
