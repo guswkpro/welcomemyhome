@@ -56,3 +56,25 @@ table tr{
 .addpin-button {
     margin-left : 30px;
 }
+
+.bgLayer {
+    top: 0px;
+    position: absolute;
+    background: blue;
+    width: 500px;
+    height: 500px;
+    display: none;
+}
+
+.bgLayer_background {
+    display:none;
+    position:absolute;
+    top:0;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color:#000;
+    opacity:.5;
+    filter: alpha(opacity=50);
+    z-index: 900;
+}

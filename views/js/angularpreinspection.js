@@ -28,6 +28,25 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
+    function bgLagyerOpen() {
+        if(!$('.bgLayer').length){
+            $('<div class="bgLayer"></div>').appendTo($('body'));
+        }
+        
+        var object = $(".bgLayer");
+        var w = $(document).width()+12;
+        var h = $(document).height();
+
+        object.css({'width':w, 'height': h});   
+        object.fadeln(500); // 생성되는 시간 설정
+    }
+
+    function bgLayerClear() {
+        var object = $('.bgLayer');
+        if(object.length) {
+            object.fadeout(500);
+        });
+    }
 
     // pin img 복사 이동
     $(function() {
@@ -38,6 +57,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             $(this).css({
                 'z-index': '999'
             });
+            window.open('./preinspectionPopup.html','preinspection','width=400, height=400, menubar = no,');
         });
         
         // var plan = $('#plan');
