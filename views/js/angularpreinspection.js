@@ -31,13 +31,13 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
     $(function() {
         var plan = $('#plan');
-        var o = $('#my_pin')
+        var o = $('#my_pin');
+        var clone_pin = $(o).clone(true);
 
         var start_x, start_y, dist_x, dist_y, image_x, image_y;
         var dragging = false;
         $('#my_pin').on('mousedown', function(e) {
             e.preventDefault();
-            var clone_pin = $(o).clone(true);
             start_x = e.pageX;
             start_y = e.pageY;
             image_x = clone_pin.offset().left;
