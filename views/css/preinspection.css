@@ -93,10 +93,11 @@ table tr{
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
+    color: #000;
     float: right;
-    font-size: 28px;
+    font-size: 35px;
     font-weight: bold;
+    text-align:right;
 }
 
 .close:hover,
