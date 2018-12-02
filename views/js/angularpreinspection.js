@@ -40,6 +40,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         $('.pin-img').bind('dragstop', function(event, ui) {
             $(this).after($(ui.helper).clone().draggable());
             $(this).css({
+                'position': 'absolute',
                 'z-index': '999'
             });
         });
