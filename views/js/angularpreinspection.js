@@ -29,16 +29,24 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
-    // pin img 이동
+    // pin img 복사 이동
     $(function() {
-        $('.pin-img').draggable({helper: "clone"});
-        $('.pin-img').bind('dragstop', function(event, ui) {
-            $(this).after($(ui.helper).clone().draggable());
-            $(this).css({
-                'z-index': '999'
-            });
+
+        $('.pin-img').draggable({helper: "clone", cursor: "move", cursorAt: { top: 56, left: 56 } });
+        $('.pin-img').droppable({
+            drop: function(event, ui) {
+                $(this).after($(ui.helper).clone().draggable());
+                $(this).css({
+                    'z-index': '999'
+                });
+            }
         });
         
+        // var plan = $('#plan');
+        // var o = $('.pin-img');
+
+        // var start_x, tart_y, dist_x, dist_y, image_x, image_y;
+        // var dragging = false;
         // $(clone_pin).on('mousedown', function(e) {
         //     e.preventDefault();
         //     start_x = e.pageX;
