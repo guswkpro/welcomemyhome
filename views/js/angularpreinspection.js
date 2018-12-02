@@ -36,7 +36,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
         var start_x, start_y, dist_x, dist_y, image_x, image_y;
         var dragging = false;
-        $('#my_pin').on('mousedown', function(e) {
+        $(clone_pin).on('mousedown', function(e) {
             e.preventDefault();
             start_x = e.pageX;
             start_y = e.pageY;
