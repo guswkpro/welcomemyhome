@@ -39,7 +39,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             var clone_pin2 = $(o).clone(true).css({
                 'z-index': '99999'
             });
-            clone_pin2.appendchild(document.querySelector('#div-pin'));
+            clone_pin2.append(document.querySelector('#div-pin'));
             return clone_pin2;
         });
         $(clone_pin).on('mousedown', function(e) {
