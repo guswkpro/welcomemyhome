@@ -36,10 +36,11 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         var start_x, tart_y, dist_x, dist_y, image_x, image_y;
         var dragging = false;
         
-        var clone_pin = $(o).clone(true).ppendTo(document.querySelector('#div_pin')).css({
+        var clone_pin = $(o).clone(true).ppendTo(document.querySelector('#div_pin'))
+        });
+        $(clone_pin).css({
             'z-index': '999'
         });
-
         $(clone_pin).on('mousedown', function(e) {
             e.preventDefault();
             start_x = e.pageX;
