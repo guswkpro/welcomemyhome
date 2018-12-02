@@ -29,18 +29,11 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
-
     var pin = new Array();
     // pin img 복사 이동
     var i=0;
 
     $(function() {
-        jQuery.fn.center= function() {
-            this.css('top', Math.max(0,(($(window).height()-$(this).outerHeight())/2) + $(window).scrollTop())+'px'); 
-            this.css('left', Math.max(0,(($(window).width()-$(this).outerWidth())/2) + $(window).scrollLeft())+'px'); 
-            this.css('display', 'block');
-            return this;
-        }
         $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
         $('.pin-img').bind('dragstop', function(event, ui) {
             pin[i] = $(ui.helper).clone(); 
@@ -49,7 +42,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             pin[i].css({
                 'z-index': '999'
             });
-            $("#dialog").center();
+            $("#dialog").center().css({
+                'display': 'block'
+            });
             i++;
         });
         $(".close").click(function() {

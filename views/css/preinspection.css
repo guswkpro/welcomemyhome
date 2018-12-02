@@ -85,6 +85,8 @@ table tr{
 /* Modal Content */
 .modal-content {
     position : fixed;
+    left : 50%;
+    top : 50%;
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
