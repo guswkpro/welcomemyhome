@@ -2,6 +2,11 @@
     margin-top:7%;
   }
 
+.preinspectionPopup-div{
+    position:relative;
+    background-color: white;
+}
+
 .preinspection-float-right {
     float : right;
 }
