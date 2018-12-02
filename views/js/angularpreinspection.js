@@ -30,11 +30,12 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
     var pin = new Array();
-    // pin img 복사 이동
     var i=0;
 
     $(function() {
+        // pin img 복사 이동
         $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
+        // drop 이벤트
         $('.pin-img').bind('dragstop', function(event, ui) {
             pin[i] = $(ui.helper).clone(); 
             $(this).after(pin[i].draggable());
@@ -60,33 +61,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             }
         });
     });
-
-
-    // var pin = new Array();
-    // // pin img 복사 이동
-    // var i=0;
-
-    // $(function() {
-    //     $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
-    //     $('.pin-img').bind('dragstop', function(event, ui) {
-    //         pin[i] = $(ui.helper).clone(); 
-    //         $(this).after(pin[i].draggable());
-    //         pin[i].attr("id", "pin"+i);
-    //         pin[i].attr("data-toggle", "modal");
-    //         pin[i].attr("data-target", "#pin_modal");
-    //         pin[i].css({
-    //             'z-index': '999'
-    //         });
-    //         $('#pin_modal').css({
-    //             'display': 'block',
-    //         });
-    //         i++;
-    //     });
-    //     $('#pin_modal_close').css({
-    //         'display': 'none'
-    //     });
-    // });
-
 
     $http.get('/getpreinspection', {
         params: {

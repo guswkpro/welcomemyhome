@@ -99,7 +99,7 @@ app.get('/getestimateanswerdetail', estimatecontroller.getestimateanswerdetail);
 app.get('/preinspection', function (request, response) {
         response.render('preinspection.html');
 });
-app.get('/precheckcreate', function (request, response) {
+app.get('/preinspectioncreate', function (request, response) {
         response.render('preinspectioncreate.html');
 });
 app.get('/preinspectionpopup', function (request, response) {
