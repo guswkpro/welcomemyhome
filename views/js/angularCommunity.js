@@ -35,8 +35,13 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
           var month = tmp.getMonth()+1;
           var day =tmp.getDate();
           $scope.community_list[i].community_post_date = month + "-" + day ;
-
         }
+        for(i=0; i<$scope.community_list.length; i++){
+          var string = $scope.community_list[i].community_content;
+          var str = string.substr(0,20);
+          $scope.community_list[i].community_content = str +"..." ;
+        }
+     
         console.log(response.INFO);
         console.log($scope.community_list);
       } else {
