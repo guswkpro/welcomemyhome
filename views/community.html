@@ -32,14 +32,14 @@
 
 
 <!-- Page Content -->
-<div class="container" style="width:50%; height:100%; margin-top:7%" ng-controller="communityListCtrl" >
+<div class="container" style="width:50%; height:100%; margin-top:7% " ng-controller="communityListCtrl" >
 
   <div style="width:100%; height:20px;">
     <button class="btn btn-secondary btn-sm" style="float:right;" onclick="location.href = 'http://13.124.196.226:3000/communityposting'">작성</button>
   </div>
 
   <!-- Project One -->
-  <div class="row" style="width:100%; height:150px; margin-bottom: 10px;" ng-repeat="c in community_list">
+  <div class="row" style="width:100%; height:150px; margin-bottom: 10px; border: 1px solid black" ng-repeat="c in community_list">
 
     <div class="community_post_img_div" style="width:25%; height:100%; margin-right:10px; border: 4px;">
       <a href="http://13.124.196.226:3000/communitydetail">
