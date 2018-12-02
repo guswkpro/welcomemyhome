@@ -43,7 +43,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         $('.pin-img-close').onclick({
             $("#pin_modal").css("display", "none");
         });
-    
     });
 
     $http.get('/getpreinspection', {
