@@ -41,7 +41,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
           var str = string.substr(0,20);
           $scope.community_list[i].community_content = str +"..." ;
         }
-        String str = "ABCDEFG";
+     
         console.log(response.INFO);
         console.log($scope.community_list);
       } else {
