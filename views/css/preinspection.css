@@ -48,7 +48,6 @@ table tr{
 }
 
 .pin-img {
-    position:absolute;
     z-index: 99;
     width: 30px;
     height: 30px;
