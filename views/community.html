@@ -74,11 +74,11 @@
     <div>
     <ul class="pagination justify-content-center">
     <div class="pagenation">
-      <button ng-disabled="currentPage==1" ng-click="listPre()">
+      <button class="btn btn-secondary" ng-disabled="currentPage==1" ng-click="listPre()">
           이전
       </button>
       {{currentPage}}/{{numberOfPages()}}
-      <button ng-disabled="currentPage >= numberOfPages()" ng-click="listNext()">
+      <button class="btn btn-secondary" ng-disabled="currentPage >= numberOfPages()" ng-click="listNext()">
           다음
       </button>
     </ul>
