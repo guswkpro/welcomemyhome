@@ -40,10 +40,10 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     });
 
     $('.pin-img').onclick({
-        $("#pin_modal").css("display", "block");
+        $("#pin_modal").css("display": "block");
     });
     $('.pin-img-close').onclick({
-        $("#pin_modal").css("display", "none");
+        $("#pin_modal").css("display": "none");
     });
 
     $http.get('/getpreinspection', {
