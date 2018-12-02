@@ -30,34 +30,23 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     var pin = new Array();
     // pin img 복사 이동
-    var cloneCount=1;
+    var i=0;
 
     $(function() {
         $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
         $('.pin-img').bind('dragstop', function(event, ui) {
-            var clone = $(ui.helper).clone();
-            clone.draggle();
-            clone.attr("id", function(cloneCount) {
-                return "pin"+cloneCount++;
+            pin[i] = $(ui.helper).clone(); 
+            $(this).after(pin[i].draggable());
+            pin[i].attr("id", "pin"+i);
+            pin[i].attr("data-toggle", "modal");
+            pin[i].attr("data-target", "#pin_modal");
+            pin[i].css({
+                'z-index': '999'
             });
-            clone.attr("data-toggle", "modal");
-            clone.attr("data-target", "#pin_modal");
-            $(this).after(clone);
-                                        // .draggable()
-                                        // .attr({
-                                        //     id: "pin",
-                                        //     data-toggle: "modal",
-                                        //     data-target: "#pin_modal"
-                                        // }));
-                                        // .attr("data-toggle", "modal")
-                                        // .attr("data-target", "#pin_modal");
-
-            // pin[i].css({
-            //     'z-index': '999'
-            // });
-            // $('#pin_modal').css({
-            //     'display': 'block',
-            // });
+            $('#pin_modal').css({
+                'display': 'block',
+            });
+            i++;
         });
         $('#pin_modal_close').css({
             'display': 'none'
