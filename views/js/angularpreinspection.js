@@ -35,10 +35,11 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     $(function() {
         $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
         $('.pin-img').bind('dragstop', function(event, ui) {
-            $(this).after($(ui.helper).clone().draggable(), function() {
-                pin[i]= $(this);
-                pin[i].attr("id", "pin"+i);
-            });
+            pin[i] = $(ui.helper).clone(); 
+            $(this).after(pin[i].draggable());
+            pin[i].attr("id", "pin"+i);
+            $(this).attr("data-toggle", "modal");
+            $(this).attr("data-target", "#pin_modal");
             $(this).css({
                 'z-index': '999'
             });
