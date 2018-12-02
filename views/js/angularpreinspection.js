@@ -28,6 +28,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
+    var pin = new Array();
     function bgLagyerOpen() {
         if(!$('.bgLayer').length){
             $('<div class="bgLayer"></div>').appendTo($('body'));
@@ -50,14 +51,16 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
     // pin img 복사 이동
     $(function() {
-
+        var i=0;
         $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
         $('.pin-img').bind('dragstop', function(event, ui) {
-            $(this).after($(ui.helper).clone().draggable());
+            pin[i] = $(this).after($(ui.helper).clone().draggable());
             $(this).css({
                 'z-index': '999'
             });
-            window.open('./preinspectionPopup.html','preinspection','width=400, height=400, menubar = no');
+            window.open('/preinspectionpopup','preinspection','width=400, height=400, menubar = no');
+            i++;
+            console.log(pin[i], "test");
         });
         
         // var plan = $('#plan');
