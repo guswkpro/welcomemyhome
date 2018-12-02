@@ -31,8 +31,6 @@
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
   <div class="container preinspection-div" ng-controller="preinspectionCtrl">
-    <!-- <div id="div-pin" class="pin_div"><img id="dragged_img" class="pin-img grabbable grabbing" draggable="true" ondragstart="dragStart(event)" ondragenter="dragEnter(event)" 
-      ondragend="dragEnd(event)" ng-style="pin_style" ng-src="./img/pin.png" alt="이미지 없음"></div> -->
     <div id="div-pin">
       <img id="my_pin" class="pin-img" src="./img/pin.png" sytle="position:absolute">
     </div>
@@ -87,6 +85,12 @@
                         <input type="checkbox" id="six"> <label for="six">6</label>
                   </td>
                 </tr>
+                <tr>
+                    <th>내용 </th>
+                    <td>
+                      <textarea cols="10" rows="10" placeholder="내용을 입력하세요." class="form-control" ng-model="content"></textarea>
+                    </td>
+                  </tr>
               </form>
             </tbody>
           </table>
