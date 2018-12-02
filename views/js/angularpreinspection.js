@@ -44,7 +44,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             clone_pin2.appendTo(document.querySelector('#div_pin'));
             return clone_pin2;
         });
-        $(clone_pin).off('click');
         $(clone_pin).on('mousedown', function(e) {
             e.preventDefault();
             start_x = e.pageX;
@@ -79,7 +78,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                 dist_x = e.pageX -start_x;
                 dist_y = e.pageY -start_y;
                 clone_pin.offset({left: image_x + dist_x, top: image_y + dist_y});
-                $(plan).text(dist_x+","+dist_y);
             }
             // if(dragging) {
             //     dist_x = e.pageX -start_x;
