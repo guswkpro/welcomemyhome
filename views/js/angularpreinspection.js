@@ -29,13 +29,8 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
+    // pin img 이동
     $(function() {
-        var plan = $('#plan');
-        var o = $('.pin-img');
-
-        var start_x, tart_y, dist_x, dist_y, image_x, image_y;
-        var dragging = false;
-
         $('.pin-img').draggable({helper: "clone"});
         $('.pin-img').bind('dragstop', function(event, ui) {
             $(this).after($(ui.helper).clone().draggable());
