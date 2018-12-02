@@ -78,7 +78,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             },
             data: ({
               title: $scope.title,
-              checkbox: $scope.,
+              checkbox: $scope.elements,
               content: $scope.content,
             })
           }).success(function(response) {
