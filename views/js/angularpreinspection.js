@@ -3,6 +3,7 @@ var app = angular.module('preinspection', []);
 app.controller('logincheckCtrl', function ($scope, $http, $window) {
     var cookie_auth = document.cookie.split("%2F");
     var auth = cookie_auth[1];
+    console.log(auth);
     $scope.load = function () {
         if (auth == 0) {
             $http.get('/logincheck').success(function (response) {
