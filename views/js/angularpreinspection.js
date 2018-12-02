@@ -41,7 +41,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                 'z-index': '99999'
             });
             console.log(clone_pin2);
-            clone_pin2.appendTo(document.querySelector('#my_pin'));
+            clone_pin2.appendTo(document.querySelector('#my_div'));
             return clone_pin2;
         });
             $(clone_pin).on('mousedown', function(e) {
@@ -65,6 +65,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             dist_y = e.pageY - start_y;
             clone_pin.offset({left: image_x + dist_x, top: image_y+ dist_y});
             dragging = false;
+            $(clone_pin).off('mousedown');
             console.log("mouseup - distance:", dist_x, dist_y, "/image place:", image_x, image_y);
             // dist_x = e.pageX - start_x;
             // dist_y = e.pageY - start_y;
