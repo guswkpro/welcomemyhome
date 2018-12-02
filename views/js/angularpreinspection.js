@@ -31,7 +31,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
     $scope.addpin = function() {
         var plan = $('#plan');
-        var o = $('#my_pin');
+        var o = $('.pin-img');
 
         var start_x, tart_y, dist_x, dist_y, image_x, image_y;
         var dragging = false;
