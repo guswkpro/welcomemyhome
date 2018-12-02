@@ -29,7 +29,7 @@ app.controller('preinspectionCreateCtrl', function ($scope, $http, $window) {
     };
 
     // preinspection 도면 등록
-    $scope.pushpreinspectionData = function () {
+    $scope.pushpreinspectionBluePrint = function () {
         var input = document.getElementById('fileselector');
         var fr = new FileReader();
         fr.readAsDataURL(input.files[0]);
@@ -42,7 +42,7 @@ app.controller('preinspectionCreateCtrl', function ($scope, $http, $window) {
         };
         $http({
             method: 'POST',
-            url: '/addpreinspectionimg',
+            url: '/addpreinspectionblueprint',
             headers: {
               'Content-Type': 'application/json'
             },
