@@ -43,7 +43,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             clone.attr("data-target", "#pin_modal");
             clone.css({
                 'z-index': '999'
-            });
+            }).modal();
             $('#pin_modal').css({
                 'display': 'block',
             });
@@ -53,36 +53,26 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         });
     });
 
-
-    // var pin = new Array();
-    // // pin img 복사 이동
-    // var i=0;
-
-    // $(function() {
-    //     $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
-    //     $('.pin-img').bind('dragstop', function(event, ui) {
-    //         pin[i] = $(ui.helper).clone(); 
-    //         $(this).after(pin[i].draggable());
-    //         pin[i].attr("id", "pin"+i);
-    //         pin[i].attr("data-toggle", "modal");
-    //         pin[i].attr("data-target", "#pin_modal");
-    //         pin[i].css({
-    //             'z-index': '999'
-    //         });
-    //         $('#pin_modal').css({
-    //             'display': 'block',
-    //         });
-    //         i++;
-    //     });
-    //     $('#pin_modal_close').css({
-    //         'display': 'none'
-    //     });
-    // });
-
-
-    $http.get('/getpreinspection', {
+    $http.get('/getpreinspectionPin', {
         params: {
-            pin_idx: pin[1]
+            
+        }
+    }).success(function (response) {
+        if (response.RESULT == 1) {
+            $scope.image = response.INFO.encodedimage;
+        } else {
+            var msg = "알 수 없는 에러로 preinspection 페이지를 불러 올 수 없습니다.";
+            $window.alert(msg);
+            $window.location.href = '/';
+        }
+    }).error(function () {
+        console.log("error");
+    });
+
+    // 사용자 등록 지도 띄우기
+    $http.get('/getpreinspectionBluePrint', {
+        params: {
+            
         }
     }).success(function (response) {
         if (response.RESULT == 1) {
