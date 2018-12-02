@@ -108,7 +108,3 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
     };
   });
 
-  app.controller('communityDetailCtrl', function($scope, $http, $window) {
-    
-
-  });
