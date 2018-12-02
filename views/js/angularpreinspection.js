@@ -31,10 +31,10 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
     $(function() {
         var debug = $('#debug');
-        var o = $('#my_ball');
+        var o = $('#my_pin');
         var start_x, start_y, dist_x, dist_y, image_x, image_y;
         var dragging = false;
-        $('#my_ball').on('mousedown', function(e) {
+        $('#my_pin').on('mousedown', function(e) {
             e.preventDefault();
             start_x = e.pageX;
             start_y = e.pageY;
@@ -53,8 +53,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
         $('html').on('mousemove', function(e) {
             if(dragging) {
-                dist_x = e.pageX -sx;
-                dist_y = e.pageY -sy;
+                dist_x = e.pageX -start_x;
+                dist_y = e.pageY -start_y;
                 $(o).offset({left: image_x + dist_x, top: image_y + dist_y});
                 $(debug).text(dist_x+","+dist_y);
             }
