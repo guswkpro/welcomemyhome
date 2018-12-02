@@ -31,6 +31,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
   
     $http.get('/getcommunitydetail', {
       params: {
+        user_idx : $scope.user_idx,
         estimate_idx: $scope.community_idx
       }
     }).success(function (response) {
