@@ -30,7 +30,7 @@
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
   <div class="container" ng-controller="communityDetailCtrl">
-    <table class="table table-bordered">
+    <table class="table table-bordered" ng-repeat="c in data">
       <tbody>
         <form>
           <tr>
@@ -55,28 +55,9 @@
       </tbody>
     </table>
   </div>
-  <div class="container" ng-controller="communityListCtrl">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>번호</th>
-          <th>제목</th>
-          <th ng-hide="hide_for_company">작성자</th>
-          <th>날짜</th>
-          <th ng-hide="hide_for_company">답변수</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="c in data" ng-click="getAnswer()">
-          <td>{{c.community_idx}}</td>
-          <td>{{c.community_title}}</td>
-          <td>{{c.user_nickname}}</td>
-          <td>{{c.community_post_date}}</td>
-        </tr>
-      </tbody>
-    </table>
-
+  
     <hr />
+
     <div class="pagenation">
       <input type="button" value="사용자 글" ng-hide="hide_for_company" class="" ng-click="viewUserWrite()"/>
       <input type="button" value="내 글보기" ng-hide="hide_for_company" class="" ng-click="viewMyWrite()"/>
@@ -88,7 +69,7 @@
           Next
       </button>
     </div>
-  </div>
+ 
 
 
   <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">

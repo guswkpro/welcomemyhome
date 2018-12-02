@@ -36,10 +36,10 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
     }).success(function (response) {
       if (response.RESULT == 1) {
         $scope.data = response.INFO;
-        $scope.title = response.INFO.community_title;
-        $scope.date = response.INFO.community_post_date;
-        $scope.content = response.INFO.community_content;
-        $scope.image = response.INFO.encodedimage;
+       // $scope.title = response.INFO.community_title;
+       // $scope.date = response.INFO.community_post_date;
+       // $scope.content = response.INFO.community_content;
+       // $scope.image = response.INFO.encodedimage;
       } else {
         var msg = "알 수 없는 에러로 detail 페이지를 불러 올 수 없습니다.";
         $window.alert(msg);
