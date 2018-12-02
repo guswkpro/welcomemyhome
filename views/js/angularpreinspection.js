@@ -32,31 +32,31 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     $(function() {
         var debug = $('#debug');
         var o = $('#my_ball');
-        var sx, sy, dx, dy, ix, iy;
+        var start_x, start_y, dist_x, dist_y, image_x, image_y;
         var dragging = false;
         $('#my_ball').on('mousedown', function(e) {
             e.preventDefault();
-            sx = e.pageX;
-            sy = e.pageY;
-            ix = $(o).offset().left;
-            iy = $(o).offset().top;
-            dx=dy=0;
+            start_x = e.pageX;
+            start_y = e.pageY;
+            image_x = $(o).offset().left;
+            image_y = $(o).offset().top;
+            dist_x=dist_y=0;
             dragging = true;
-            console.log("mousedown - s:", sx, sy, "/i:", ix, iy);
+            console.log("mousedown - start_cursur:", start_x, start_y, "/image place:", image_x, image_y);
         }).on('mouseup', function(e) {
-            dx = e.pageX - sx;
-            dy = e.pageY - sy;
-            $(o).offset({left: ix + dx, top: iy+ dy});
+            dist_x = e.pageX - start_x;
+            dist_y = e.pageY - start_y;
+            $(o).offset({left: image_x + dist_x, top: image_y+ dist_y});
             dragging = false;
-            console.log("mouseup - d:", dx, dy, "/i:", ix, iy);
+            console.log("mouseup - distance:", dist_x, dist_y, "/image place:", image_x, image_y);
         });
 
         $('html').on('mousemove', function(e) {
             if(dragging) {
-                dx = e.pageX -sx;
-                dy = e.pageY -sy;
-                $(o).offset({left: ix + dx, top: iy + dy});
-                $(debug).text(dx+","+dy);
+                dist_x = e.pageX -sx;
+                dist_y = e.pageY -sy;
+                $(o).offset({left: image_x + dist_x, top: image_y + dist_y});
+                $(debug).text(dist_x+","+dist_y);
             }
         });
     });
