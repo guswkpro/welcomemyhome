@@ -29,6 +29,14 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
 
+    jQuery.fn.center= function() {
+        this.css('top', Math.max(0,(($(window).height()-$(this).outerHeight())/2) + $(window).scrollTop())+'px'); 
+        this.css('left', Math.max(0,(($(window).width()-$(this).outerWidth())/2) + $(window).scrollLeft())+'px'); 
+        this.css('display', 'block');
+        return this;
+
+    }
+
     var pin = new Array();
     // pin img 복사 이동
     var i=0;
@@ -42,9 +50,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             pin[i].css({
                 'z-index': '999'
             });
-            $("#dialog").css({
-                'display': 'block'
-            });
+            $("#dialog").center();
             i++;
         });
         $(".close").click(function() {
