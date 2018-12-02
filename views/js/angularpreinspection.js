@@ -44,7 +44,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             clone_pin2.appendTo(document.querySelector('#div-pin'));
             return clone_pin2;
         });
-        console.log(clone_pin, "clone_pin", clone_pin2, "clone_pin2");
+        console.log(clone_pin, "clone_pin");
         $(clone_pin).on('mousedown', function(e) {
             e.preventDefault();
             start_x = e.pageX;
