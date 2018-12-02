@@ -39,6 +39,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                                         .draggable()
                                         .attr({
                                             id: 'pin'+cloneCount++
+                                        });
                                         // .attr("data-toggle", "modal")
                                         // .attr("data-target", "#pin_modal");
 
