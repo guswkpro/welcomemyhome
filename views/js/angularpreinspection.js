@@ -28,88 +28,22 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
-    var pin = new Array();
-    function bgLagyerOpen() {
-        if(!$('.bgLayer').length){
-            $('<div class="bgLayer"></div>').appendTo($('body'));
-        }
-        
-        var object = $(".bgLayer");
-        var w = $(document).width()+12;
-        var h = $(document).height();
-
-        object.css({'width':w, 'height': h});   
-        object.fadeln(500); // 생성되는 시간 설정
-    }
-
-    function bgLayerClear() {
-        var object = $('.bgLayer');
-        if(object.length) {
-            object.fadeout(500);
-        };
-    }
-
     // pin img 복사 이동
     $(function() {
-        var i=0;
         $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
         $('.pin-img').bind('dragstop', function(event, ui) {
-            pin[i] = $(this).after($(ui.helper).clone().draggable());
-            $(this).css({
+            pin = $(this).after($(ui.helper).clone().draggable());
+            $(this).clone.css({
                 'z-index': '999'
             });
-            window.open('/preinspectionpopup','preinspection','width=400, height=400, menubar = no');
-            i++;
-            console.log(pin[i], "test");
         });
-        
-        // var plan = $('#plan');
-        // var o = $('.pin-img');
-
-        // var start_x, tart_y, dist_x, dist_y, image_x, image_y;
-        // var dragging = false;
-        // $(clone_pin).on('mousedown', function(e) {
-        //     e.preventDefault();
-        //     start_x = e.pageX;
-        //     start_y = e.pageY;
-        //     image_x = clone_pin.offset().left;
-        //     image_y = clone_pin.offset().top;
-        //     dist_x=dist_y=0;
-        //     dragging = true;
-        //     console.log("mousedown - start_cursur:", start_x, start_y, "/image place:", image_x, image_y);
-        //     // start_x = e.pageX;
-        //     // start_y = e.pageY;
-        //     // image_x = $(o).offset().left;
-        //     // image_y = $(o).offset().top;
-        //     // dist_x=dist_y=0;
-        //     // dragging = true;
-        //     // console.log("mousedown - start_cursur:", start_x, start_y, "/image place:", image_x, image_y);
-        // }).on('mouseup', function(e) {
-        //     dist_x = e.pageX - start_x;
-        //     dist_y = e.pageY - start_y;
-        //     clone_pin.offset({left: image_x + dist_x, top: image_y+ dist_y});
-        //     dragging = false;
-        //     console.log("mouseup - distance:", dist_x, dist_y, "/image place:", image_x, image_y);
-        //     // dist_x = e.pageX - start_x;
-        //     // dist_y = e.pageY - start_y;
-        //     // $(o).offset({left: image_x + dist_x, top: image_y+ dist_y});
-        //     // dragging = false;
-        //     // console.log("mouseup - distance:", dist_x, dist_y, "/image place:", image_x, image_y);
-        // });
-
-        // $('html').on('mousemove', function(e) {
-        //     if(dragging) {
-        //         dist_x = e.pageX -start_x;
-        //         dist_y = e.pageY -start_y;
-        //         clone_pin.offset({left: image_x + dist_x, top: image_y + dist_y});
-        //     }
-        //     // if(dragging) {
-        //     //     dist_x = e.pageX -start_x;
-        //     //     dist_y = e.pageY -start_y;
-        //     //     $(o).offset({left: image_x + dist_x, top: image_y + dist_y});
-        //     //     $(plan).text(dist_x+","+dist_y);
-        //     // }
-        // });
+        $('.pin-img').onclick({
+            $("#pin_modal").css("display", "block");
+        })
+        $('.pin-img-close').onclick({
+            $("#pin_modal").css("display", "none");
+        })
+    
     });
 
     $http.get('/getpreinspection', {
