@@ -62,13 +62,9 @@ table tr{
     margin-left : 30px;
 }
 
-#pin_modal {
-    display: none;
-    z-index: -1;
-}
-
 #dialog {
     display: none;
+    z-index: -1;
 }
 
 
