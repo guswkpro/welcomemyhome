@@ -78,3 +78,8 @@ table tr{
     filter: alpha(opacity=50);
     z-index: 900;
 }
+
+#pin_modal {
+    display: none;
+    z-index: -1;
+}
