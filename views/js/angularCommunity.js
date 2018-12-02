@@ -37,7 +37,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
           $scope.community_list[i].community_post_date = month + "-" + day ;
         }
         for(i=0; i<$scope.community_list.length; i++){
-          var string = '$scope.community_list[i].community_content';
+          var string = $scope.community_list[i].community_content;
           var str = string.substr(0,20);
           $scope.community_list[i].community_content = str +"..." ;
         }
