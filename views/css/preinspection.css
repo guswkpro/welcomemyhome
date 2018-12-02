@@ -80,7 +80,7 @@ table tr{
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
-    margin: 7%, auto;
+    margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 40%;
