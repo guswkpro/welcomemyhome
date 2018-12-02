@@ -32,71 +32,73 @@
 
 
 <!-- Page Content -->
-<div class="container" style="width:50%; height:100%; margin-top:5% " ng-controller="communityListCtrl" >
+<div class="container" style="width:50%; height:100%; margin-top:5% "  >
 
   <div style="width:100%; height:30px;">
 
     <button class="btn btn-secondary btn-sm" ng-controller="logincheckCtrl" style="float:right;" onclick="location.href = 'http://13.124.196.226:3000/communityposting'">작성</button>
   </div>
+<div ng-controller="communityListCtrl"> 
 
+</div>
   <!-- Project One -->
   <div class="row" style="width:100%; height:150px; margin: 0px 0px 20px 0px; box-shadow: 0px 0px 3px #000; border: 1px solid black;" ng-repeat="c in community_list">
 
-    <div class="community_post_img_div" style="width:25%; height:100%; ">
-      <a href="http://13.124.196.226:3000/communitydetail">
-        <img class="community_post_img" style="width:100%; height:100%; border: 4px;" ng-src="data:image/jpeg;base64,{{c.encodedimage}}" alt="">
-      </a>
-    </div>
-    <div class="posting_content" style="width:75%; height:100%; padding:10px 20px 0px 20px; border-left:0.2px solid gray;">
-      <div>
-        <table style="width:100%;">
-          <tr>
-            <td><h4>{{c.community_title}}</h4> </td>
-            <td align ="right"><div><span><i class="fa fa-user"></i></span> {{c.user_nickname}}</div></td>
-          </tr>
-        </table>
+      <div class="community_post_img_div" style="width:25%; height:100%; ">
+        <a href="http://13.124.196.226:3000/communitydetail">
+          <img class="community_post_img" style="width:100%; height:100%; border: 4px;" ng-src="data:image/jpeg;base64,{{c.encodedimage}}" alt="">
+        </a>
       </div>
-      
-      <p style="color:gray;">{{c.community_content}}</p>
-      <div class="hit-like-post" style="padding-top:20px">
-          <table  style="width:100%;">
-            <tr>  
-              <td  style="width:10%;"><span><i class="fa fa-heart" style="color:red;"></i></span>{{c.community_like_count}}</td>        
-              <td  style="width:10%;"><span><i class="fa fa-comment"></i></span> {{c.community_comment_count}}</td>
-              <td  style="width:10%;"><span><i class="fa fa-eye"></i> </span>{{c.community_hit_count}}</td>
-              <td  align ="right"><span><i class="fa fa-calendar"></i> </span> {{c.community_post_date}}</td>
+      <div class="posting_content" style="width:75%; height:100%; padding:10px 20px 0px 20px; border-left:0.2px solid gray;">
+        <div>
+          <table style="width:100%;">
+            <tr>
+              <td><h4>{{c.community_title}}</h4> </td>
+              <td align ="right"><div><span><i class="fa fa-user"></i></span> {{c.user_nickname}}</div></td>
             </tr>
-        </table>
+          </table>
         </div>
+        
+        <p style="color:gray;">{{c.community_content}}</p>
+        <div class="hit-like-post" style="padding-top:20px">
+            <table  style="width:100%;">
+              <tr>  
+                <td  style="width:10%;"><span><i class="fa fa-heart" style="color:red;"></i></span>{{c.community_like_count}}</td>        
+                <td  style="width:10%;"><span><i class="fa fa-comment"></i></span> {{c.community_comment_count}}</td>
+                <td  style="width:10%;"><span><i class="fa fa-eye"></i> </span>{{c.community_hit_count}}</td>
+                <td  align ="right"><span><i class="fa fa-calendar"></i> </span> {{c.community_post_date}}</td>
+              </tr>
+          </table>
+          </div>
+      </div>
     </div>
-  </div>
-  <!-- /.row -->
-
-
-  <!-- Pagination -->
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">1</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">2</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">3</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-      </a>
-    </li>
-  </ul>
+    <!-- /.row -->
+  
+  
+    <!-- Pagination -->
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
 
 </div>
 
