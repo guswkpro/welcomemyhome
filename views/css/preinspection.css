@@ -53,3 +53,7 @@ table tr{
     width: 30px;
     height: 30px;
 }
+
+.addpin-button {
+    padding-left : 20px;
+}
