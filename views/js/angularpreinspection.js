@@ -39,8 +39,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                                         .draggable()
                                         .attr({
                                             id: "pin",
-                                            'data-toggle': "modal",
-                                            'data-target': "#pin_modal"
+                                            data-toggle: "modal",
+                                            data-target: "#pin_modal"
                                         });
                                         // .attr("data-toggle", "modal")
                                         // .attr("data-target", "#pin_modal");
