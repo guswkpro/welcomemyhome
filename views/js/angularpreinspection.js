@@ -33,14 +33,13 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         var plan = $('#plan');
         var o = $('#my_pin');
 
-        var start_x=start_y=dist_x=dist_y=image_x=image_y=0;
+        var start_x, tart_y, dist_x, dist_y, image_x, image_y;
         var dragging = false;
         
         var clone_pin = $(o).click(function(){
             var clone_pin2 = $(o).clone(true).css({
                 'z-index': '99999'
             });
-            console.log(clone_pin2);
             clone_pin2.appendTo(document.querySelector('#div_pin'));
             return clone_pin2;
         });
