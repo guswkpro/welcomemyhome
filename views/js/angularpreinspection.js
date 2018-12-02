@@ -40,9 +40,51 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                 'z-index': '99999'
             });
             clone_pin2.appendTo(document.querySelector('#div-pin'));
+            $(clone_pin).on('mousedown', function(e) {
+                e.preventDefault();
+                start_x = e.pageX;
+                start_y = e.pageY;
+                image_x = clone_pin.offset().left;
+                image_y = clone_pin.offset().top;
+                dist_x=dist_y=0;
+                dragging = true;
+                console.log("mousedown - start_cursur:", start_x, start_y, "/image place:", image_x, image_y);
+                // start_x = e.pageX;
+                // start_y = e.pageY;
+                // image_x = $(o).offset().left;
+                // image_y = $(o).offset().top;
+                // dist_x=dist_y=0;
+                // dragging = true;
+                // console.log("mousedown - start_cursur:", start_x, start_y, "/image place:", image_x, image_y);
+            }).on('mouseup', function(e) {
+                dist_x = e.pageX - start_x;
+                dist_y = e.pageY - start_y;
+                clone_pin.offset({left: image_x + dist_x, top: image_y+ dist_y});
+                dragging = false;
+                console.log("mouseup - distance:", dist_x, dist_y, "/image place:", image_x, image_y);
+                // dist_x = e.pageX - start_x;
+                // dist_y = e.pageY - start_y;
+                // $(o).offset({left: image_x + dist_x, top: image_y+ dist_y});
+                // dragging = false;
+                // console.log("mouseup - distance:", dist_x, dist_y, "/image place:", image_x, image_y);
+            });
+    
+            $('html').on('mousemove', function(e) {
+                if(dragging) {
+                    dist_x = e.pageX -start_x;
+                    dist_y = e.pageY -start_y;
+                    clone_pin.offset({left: image_x + dist_x, top: image_y + dist_y});
+                    $(plan).text(dist_x+","+dist_y);
+                }
+                // if(dragging) {
+                //     dist_x = e.pageX -start_x;
+                //     dist_y = e.pageY -start_y;
+                //     $(o).offset({left: image_x + dist_x, top: image_y + dist_y});
+                //     $(plan).text(dist_x+","+dist_y);
+                // }
+            });
             return clone_pin2;
-        });
-        $(clone_pin).on('mousedown', function(e) {
+            $(clone_pin).on('mousedown', function(e) {
             e.preventDefault();
             start_x = e.pageX;
             start_y = e.pageY;
@@ -85,6 +127,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             //     $(plan).text(dist_x+","+dist_y);
             // }
         });
+        });
+        
     });
     $http.get('/getpreinspection', {
         params: {
