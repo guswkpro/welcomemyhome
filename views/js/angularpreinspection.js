@@ -32,12 +32,16 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     $(function() {
         var plan = $('#plan');
         var o = $('#my_pin');
-        var clone_pin = $(o).clone(true).css({
-            'z-index': '99999'
-        }).appendchild($('#div-pin'));
 
         var start_x, start_y, dist_x, dist_y, image_x, image_y;
         var dragging = false;
+        var clone_pin = $(o).click(function(){
+            var clone_pin2 = $(o).clone(true).css({
+                'z-index': '99999'
+            });
+            clone_pin2.appendchild($('#div-pin'));
+            return clone_pin2;
+        });
         $(clone_pin).on('mousedown', function(e) {
             e.preventDefault();
             start_x = e.pageX;
