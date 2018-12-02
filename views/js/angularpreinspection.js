@@ -42,10 +42,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             pin[i].css({
                 'z-index': '999'
             });
-            $('#pin_modal').modal();
-            $('.modal-content').css({
-                'display': 'block',
-            });
+            $("#diaglog").dialog();
             i++;
         });
         $('#pin_modal_close').css({
