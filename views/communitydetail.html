@@ -36,19 +36,19 @@
           <tr>
             <th>제목 </th>
             <td>
-              <div>{{c.title}}</div>
+              <div>{{title}}</div>
             </td>
           </tr>
           <tr>
             <th>사진 </th>
             <td>
-              <div ng-repeat="e in image"><img width="500" height="300" ng-src="data:image/jpg;base64,{{c.encodedimage}}" alt="이미지 없음"><br/></div>
+              <div ng-repeat="e in image"><img width="500" height="300" ng-src="data:image/jpg;base64,{{encodedimage}}" alt="이미지 없음"><br/></div>
             </td>
           </tr>
           <tr>
             <th>내용 </th>
             <td>
-              <div>{{c.content}}</div>
+              <div>{{content}}</div>
             </td>
           </tr>
         </form>

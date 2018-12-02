@@ -35,6 +35,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
       }
     }).success(function (response) {
       if (response.RESULT == 1) {
+        $scope.data = response.INFO;
         $scope.title = response.INFO.community_title;
         $scope.date = response.INFO.community_post_date;
         $scope.content = response.INFO.community_content;
