@@ -2,11 +2,6 @@
     margin-top:7%;
   }
 
-.preinspectionPopup-div{
-    position:relative;
-    background-color: white;
-}
-
 .preinspection-float-right {
     float : right;
 }
@@ -85,7 +80,7 @@ table tr{
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
-    margin: auto;
+    margin: 7%, auto;
     padding: 20px;
     border: 1px solid #888;
     width: 40%;
