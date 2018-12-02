@@ -37,17 +37,13 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         $('.pin-img').bind('dragstop', function(event, ui) {
             pin[i] = $(this).after($(ui.helper).clone().draggable());
             pin[i].attr("id", "pin"+i);
+            $(this).attr("data-toggle", "modal");
+            $(this).attr("data-target", "#pin_modal");
             $(this).css({
                 'z-index': '999'
             });
             $('#pin_modal').css({
                 'display': 'block',
-                'margin-top': function() {
-                    return -($(this).height()/2);
-                },
-                'margin-left': function() {
-                    return -($(this).width()/2);
-                }
             });
             i++;
         });
