@@ -42,7 +42,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             pin[i].css({
                 'z-index': '999'
             });
-            $("#diaglog").css({
+            $("#dialog").css({
                 'display': 'block'
             });
             i++;
