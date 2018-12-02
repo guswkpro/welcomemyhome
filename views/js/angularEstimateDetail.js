@@ -22,7 +22,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 //detail 컨트롤러
-app.controller('estimatedetailCtrl', function ($scope, $http, $window) {
+app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
   // var cookie_user = document.cookie.substring(0, 8).split("=");
   // var usercheck = cookie_user[1];
   console.log(document.cookie);
