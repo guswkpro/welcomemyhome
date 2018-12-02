@@ -107,3 +107,8 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
       $window.location.href = '/community';
     };
   });
+
+  app.controller('communityDetailCtrl', function($scope, $http, $window) {
+    
+
+  });

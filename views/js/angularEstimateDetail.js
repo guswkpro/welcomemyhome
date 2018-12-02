@@ -1,4 +1,4 @@
-var app = angular.module('estimateDetail', []);
+var app = angular.module('communitydetail', []);
 
 // 화면 전환 시 login check 기능
 app.controller('logincheckCtrl', function ($scope, $http, $window) {
