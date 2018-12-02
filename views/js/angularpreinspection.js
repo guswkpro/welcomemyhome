@@ -37,12 +37,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                 'z-index': '999'
             });
         });
-        $('.pin-img').onclick({
-            $("#pin_modal").css("display", "block");
-        });
-        $('.pin-img-close').onclick({
-            $("#pin_modal").css("display", "none");
-        });
+       
     });
 
     $http.get('/getpreinspection', {
