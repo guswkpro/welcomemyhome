@@ -13,9 +13,17 @@ exports.getcommunitylist = function (request, response) {
     var req_user_idx = request.session.user_idx;
     var req_offset = request.param('offset');
     var info = [];
+    var total_count;
     async.waterfall([
         function (nextCallback) {
-            communitydao.getcommunitylist(req_offset, nextCallback);
+            communitydao.getcommunitycount(nextCallback);
+        }, function (cnt, nextCallback) {
+            total_count = cnt;
+            if (req_user_check == "0") {
+                communitydao.getcommunitycount(req_offset, request.session.user_idx, nextCallback);
+            } else {
+                estimatedao.getestimatelist(req_offset, nextCallback);
+            }
         }, function (communitylist, nextCallback) {
             count = 0;
             async.whilst(function () {
@@ -90,6 +98,7 @@ exports.getcommunitylist = function (request, response) {
             response.json({
                 RESULT: "1"
                 , INFO: info
+                , COUNT: total_count
             });
         }
     });
