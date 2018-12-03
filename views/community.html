@@ -14,17 +14,21 @@
 
   <!-- Angular js -->
   <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+    crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+    crossorigin="anonymous"></script>
   <script src="js/angularCommunity.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
 
-  
+
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/community.css" />
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
-  
+
 
   <title>놀러와 마이홈</title>
 </head>
@@ -33,47 +37,53 @@
 
 
 
-<!-- Page Content -->
-<div class="container" style="width:50%; height:100%; margin-top:5% "  >
+  <!-- Page Content -->
+  <div class="container" style="width:50%; height:100%; margin-top:5% ">
 
-  <div style="width:100%; height:30px;">
-    <button class="btn btn-secondary btn-sm" ng-controller="logincheckCtrl" style="float:right;" onclick="location.href = 'http://13.124.196.226:3000/communityposting'">작성</button>
-  </div>
+    <div style="width:100%; height:30px;">
+      <button class="btn btn-secondary btn-sm" ng-controller="logincheckCtrl" style="float:right;" onclick="location.href = 'http://13.124.196.226:3000/communityposting'">작성</button>
+    </div>
 
-<div ng-controller="communityListCtrl"> 
+    <div ng-controller="communityListCtrl">
 
-  <div class="row" style="width:100%; height:150px; margin: 0px 0px 20px 0px; border-radius: 5px; box-shadow: 0px 0px 3px #000; border: 1px solid black;" ng-repeat="c in community_list">
-      <div class="community_post_img_div" style="width:25%; height:100%; ">
-        <a href="http://13.124.196.226:3000/communitydetail">
-          <img class="community_post_img" style="width:100%; height:100%; border: 4px;" ng-src="data:image/jpeg;base64,{{c.encodedimage}}" alt="">
-        </a>
-      </div>
-      <div class="posting_content" style="width:75%; height:100%; padding:10px 20px 0px 20px; border-left:0.2px solid gray;">
-        <div>
-          <table style="width:100%;">
-            <tr>
-              <td><h4>{{c.community_title}}</h4> </td>
-              <td align ="right"><div><span><i class="fa fa-user"></i></span> {{c.user_nickname}}</div></td>
-            </tr>
-          </table>
+      <div class="row" style="width:100%; height:150px; margin: 0px 0px 20px 0px; border-radius: 5px; box-shadow: 0px 0px 3px #000; border: 1px solid black;"
+        ng-repeat="c in community_list">
+        <div class="community_post_img_div" style="width:25%; height:100%; ">
+          <a href="http://13.124.196.226:3000/communitydetail">
+            <img class="community_post_img" style="width:100%; height:100%; border: 4px;" ng-src="data:image/jpeg;base64,{{c.encodedimage}}"
+              alt="">
+          </a>
         </div>
-        
-        <p style="color:gray;">{{c.community_content}}</p>
-        <div class="hit-like-post" style="padding-top:20px">
-            <table  style="width:100%;">
-              <tr>  
-                <td  style="width:10%;"><span><i class="fa fa-heart" style="color:red;"></i></span>{{c.community_like_count}}</td>        
-                <td  style="width:10%;"><span><i class="fa fa-comment"></i></span> {{c.community_comment_count}}</td>
-                <td  style="width:10%;"><span><i class="fa fa-eye"></i> </span>{{c.community_hit_count}}</td>
-                <td  align ="right"><span><i class="fa fa-calendar"></i> </span> {{c.community_post_date}}</td>
+        <div class="posting_content" style="width:75%; height:100%; padding:10px 20px 0px 20px; border-left:0.2px solid gray;">
+          <div>
+            <table style="width:100%;">
+              <tr>
+                <td>
+                  <h4>{{c.community_title}}</h4>
+                </td>
+                <td align="right">
+                  <div><span><i class="fa fa-user"></i></span> {{c.user_nickname}}</div>
+                </td>
               </tr>
-          </table>
+            </table>
           </div>
+
+          <p style="color:gray;">{{c.community_content}}</p>
+          <div class="hit-like-post" style="padding-top:20px">
+            <table style="width:100%;">
+              <tr>
+                <td style="width:10%;"><span><i class="fa fa-heart" style="color:red;"></i></span>{{c.community_like_count}}</td>
+                <td style="width:10%;"><span><i class="fa fa-comment"></i></span> {{c.community_comment_count}}</td>
+                <td style="width:10%;"><span><i class="fa fa-eye"></i> </span>{{c.community_hit_count}}</td>
+                <td align="right"><span><i class="fa fa-calendar"></i> </span> {{c.community_post_date}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
     <!-- /.row -->
-  <!--   <ul class="pagination justify-content-center">
+    <!--   <ul class="pagination justify-content-center">
     <div class="pagenation">
       <button class="btn btn-secondary btn-sm" ng-disabled="currentPage==1" ng-click="listPre()">
           이전
@@ -84,13 +94,14 @@
       </button>
     </ul>-->
     <hr />
-    <div ng-controller="PaginationDemoCtrl" style="width:100%; height:50px;" >
-      <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
+    <div ng-controller="PaginationDemoCtrl" style="width:100%; height:50px;">
+      <pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm"
+        boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></pagination>
     </div>
 
-  
-  
-</div>
+
+
+  </div>
 
 
   <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
@@ -113,7 +124,7 @@
         </li>
       </ul>
     </div>
-    <div class = "nav-div-form" ng-init="load()" ng-style="div_login">
+    <div class="nav-div-form" ng-init="load()" ng-style="div_login">
       <form>
         <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
           type="button">로그인</button>
