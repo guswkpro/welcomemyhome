@@ -25,35 +25,36 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
   // var cookie_user = document.cookie.substring(0, 8).split("=");
   // var usercheck = cookie_user[1];
+  console.log(document.cookie);
   console.log(document.cookie.click_idx);
-  var cookie = document.cookie.split("%2F")[1];
-  var cookie_estimate_idx = decodeURI("84%2F0%2F_G2gJ6AEe-eHQ-XkWnQeoQpk2sgCKQXJ");
-  console.log(cookie);
-  console.log(cookie_estimate_idx);
+  // var cookie = document.cookie.split("%2F")[1];
+  // var cookie_estimate_idx = decodeURI("84%2F0%2F_G2gJ6AEe-eHQ-XkWnQeoQpk2sgCKQXJ");
+  // console.log(cookie);
+  // console.log(cookie_estimate_idx);
 
-  $http.get('/getestimatedetail', {
-    params: {
-      estimate_idx: "62"
-    }
-  }).success(function (response) {
-    if (response.RESULT == 1) {
-      $scope.title = response.INFO.estimate_title;
-      $scope.date = response.INFO.estimate_date;
-      $scope.address = response.INFO.estimate_address;
-      $scope.content = response.INFO.estimate_content;
-      $scope.image = response.INFO.encodedimage;
-    } else {
-      var msg = "알 수 없는 에러로 detail 페이지를 불러 올 수 없습니다.";
-      $window.alert(msg);
-      $window.location.href = '/estimatelist';
-    }
-  }).error(function () {
-    console.log("error");
-  });
+  // $http.get('/getestimatedetail', {
+  //   params: {
+  //     estimate_idx: "62"
+  //   }
+  // }).success(function (response) {
+  //   if (response.RESULT == 1) {
+  //     $scope.title = response.INFO.estimate_title;
+  //     $scope.date = response.INFO.estimate_date;
+  //     $scope.address = response.INFO.estimate_address;
+  //     $scope.content = response.INFO.estimate_content;
+  //     $scope.image = response.INFO.encodedimage;
+  //   } else {
+  //     var msg = "알 수 없는 에러로 detail 페이지를 불러 올 수 없습니다.";
+  //     $window.alert(msg);
+  //     $window.location.href = '/estimatelist';
+  //   }
+  // }).error(function () {
+  //   console.log("error");
+  // });
 });
 
 // Estimate list 출력
-app.controller('estimateListCtrl', function ($scope, $http, $window,) {
+app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
   $scope.currentPage = 1;
   $scope.pageSize = 5;  // var 써도 되지 않을까??
   // var cookie_user = document.cookie.substring(0, 8).split("=");
@@ -105,20 +106,20 @@ app.controller('estimateListCtrl', function ($scope, $http, $window,) {
   // 리스트 다음 값으로 갱신
   $scope.listNext = function () {
     $scope.currentPage = $scope.currentPage + 1;
-      offset = ($scope.currentPage + 1) * 5;
-      $http.get('/getestimatelist', {
-        params: {
-          offset: offset
-        }
-      }).success(function (response) {
-        if (response.RESULT == 1) {
-          $scope.data = response.INFO;
-          total = 10; // response.total;
-        } else {
-          var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
-          $window.alert(msg);
-          $window.location.href = '/';
-        }
-      });
-    }
+    offset = ($scope.currentPage + 1) * 5;
+    $http.get('/getestimatelist', {
+      params: {
+        offset: offset
+      }
+    }).success(function (response) {
+      if (response.RESULT == 1) {
+        $scope.data = response.INFO;
+        total = 10; // response.total;
+      } else {
+        var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
+        $window.alert(msg);
+        $window.location.href = '/';
+      }
+    });
+  }
 });
