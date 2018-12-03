@@ -115,6 +115,7 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
     }
   }).success(function (response) {
     $scope.data = response.INFO;
+    console.log(response.INFO);
     $scope.viewby = 10;
     $scope.totalItems = $scope.community_list.length;
     $scope.currentPage = 4;
