@@ -117,7 +117,7 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
     $scope.data = response.INFO;
     console.log(response);
     $scope.viewby = 10;
-    $scope.totalItems = $scope.data.length;
+    $scope.totalItems = $scope.data.COUNT;
     console.log($scope.data.length);
     $scope.currentPage = 4;
     $scope.itemsPerPage = $scope.viewby;

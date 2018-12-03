@@ -18,7 +18,7 @@ exports.getcommunitylist = function (request, response) {
         function (nextCallback) {
             communitydao.getcommunitycount(nextCallback);
         }, function (cnt, nextCallback) {
-            total_count = cnt;
+            total_count = cnt[0].cnt;
             communitydao.getcommunitylist(req_offset, nextCallback);
         }, function (communitylist, nextCallback) {
             count = 0;
