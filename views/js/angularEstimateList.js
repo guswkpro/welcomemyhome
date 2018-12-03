@@ -40,6 +40,7 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
   
     // auth(사용자, 사업자)에 따른 list 변화
     if (auth == "0") { // 사용자
+      console.log("사용자 체크")
       $scope.HideCompany = true;
       $http.get('/getestimatelist', {
         params: {
