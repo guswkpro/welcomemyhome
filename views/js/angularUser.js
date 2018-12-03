@@ -81,7 +81,6 @@ app.controller('signupController', function ($scope, $http, $window) {
 	};
 
 	$scope.clickIdOverlap = function () {
-		console.log($scope.id);
 		$http.get('/idcheck', {
 			params: {
 				user_id: $scope.id
@@ -89,18 +88,42 @@ app.controller('signupController', function ($scope, $http, $window) {
 		}).success(function (response) {
 			console.log(response.RESULT);
 			if (response.RESULT == "0") {
-				var msg = "이미 있는 ID입니다.";
+				var msg = "알 수 없는 에러로 중복 확인이 실패하였습니다.";
 				window.alert(msg);
 			} else if (response.RESULT == "1") {
 				var msg = "이미 있는 ID입니다.";
 				window.alert(msg);
 			} else if (response.RESULT == "2") {
-				console.log(angular.isUndefined($scope.id));
 				if (angular.isUndefined($scope.id)) {
-					var msg = "아이디는 비워둘 수 없습니다.";
+					var msg = "ID는 비워둘 수 없습니다.";
 					window.alert(msg);
 				} else {
 					var msg = "사용 가능한 ID입니다.";
+					window.alert(msg);
+				}
+			}
+		})
+	};
+
+	$scope.clickNicknameOverlap = function () {
+		$http.get('/nicknamecheck', {
+			params: {
+				user_id: $scope.nickname
+			}
+		}).success(function (response) {
+			console.log(response.RESULT);
+			if (response.RESULT == "0") {
+				var msg = "알 수 없는 에러로 중복 확인이 실패하였습니다.";
+				window.alert(msg);
+			} else if (response.RESULT == "1") {
+				var msg = "이미 있는 Nickname입니다.";
+				window.alert(msg);
+			} else if (response.RESULT == "2") {
+				if (angular.isUndefined($scope.nickname)) {
+					var msg = "Nickname은 비워둘 수 없습니다.";
+					window.alert(msg);
+				} else {
+					var msg = "사용 가능한 Nickname입니다.";
 					window.alert(msg);
 				}
 			}
