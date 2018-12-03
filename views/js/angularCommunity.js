@@ -42,8 +42,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
           $scope.community_list[i].community_content = str +"..." ;
         }
      
-        console.log(response.INFO);
-        console.log($scope.community_list);
+       
       } else {
         console.log(response, "falt");
       }
@@ -109,7 +108,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
   });
 
 
-var PaginationDemoCtrl = function ($scope, $http) {
+app.controller('PaginationDemoCtrl', function ($scope, $http) {
   $http.get('/getcommunitylist', {
     params: {
       offset: '0'
@@ -134,5 +133,5 @@ var PaginationDemoCtrl = function ($scope, $http) {
   }).else(function() {
     console.log(error);
   });
-}
+})
   
