@@ -108,7 +108,7 @@ app.controller('signupController', function ($scope, $http, $window) {
 	$scope.clickNicknameOverlap = function () {
 		$http.get('/nicknamecheck', {
 			params: {
-				user_id: $scope.nickname
+				user_ninckname: $scope.nickname
 			}
 		}).success(function (response) {
 			console.log(response.RESULT);
