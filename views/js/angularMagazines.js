@@ -27,6 +27,14 @@ app.controller('magazinelist', function($scope, $http) {
   }).success(function(response) {
     if (response.RESULT == 1) {
       $scope.magazine_list = response.INFO
+
+      for(i=0; i<$scope.magazine_list.length; i++){
+        var tmp = new Date($scope.magazine_list[i].magazine_post_date);
+        var month = tmp.getMonth()+1;
+        var day =tmp.getDate();
+        $scope.magazine_list[i].magazine_post_date = month + "-" + day ;
+      }
+
     } else {
       console.log(response, "falt");
     }
@@ -34,3 +42,5 @@ app.controller('magazinelist', function($scope, $http) {
     console.log(error);
   });
 });
+
+

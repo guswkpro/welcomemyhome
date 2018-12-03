@@ -50,18 +50,20 @@
                     <h5>{{m.magazine_title}}</h5>
                   </div>
                 </td>
-                <td style="width: 30%; float:right; ">
-                  <div>
-                    <a id="showcomment" class="comment-a-text4" href="http://13.124.196.226:3000/magazinedetail">댓글({{m.magazine_comment_count}})</a>
-                  </div>
-                </td>
               </tr>
             </table>
 
             <div class="hit-like-post">
-              <span><i class="fa fa-heart" style="color:red;"></i></span> ( {{m.magazine_like_count}} )
-              <span><i class="fa fa-eye"></i></span> ( {{m.magazine_hit_count}})
-              <span><i class="fa fa-calendar"></i></span>  {{m.magazine_post_date}}
+
+                <table style="width:100%;">
+                    <tr>
+                      <td style="width:10%;"><span><i class="fa fa-heart" style="color:red;"></i></span>{{m.magazine_like_count}}</td>
+                      <td style="width:10%;"><span><i class="fa fa-comment"></i></span> {{m.magazine_comment_count}}</td>
+                      <td style="width:10%;"><span><i class="fa fa-eye"></i> </span>{{m.magazine_hit_count}}</td>
+                      <td float="right"><span><i class="fa fa-calendar"></i> </span> {{m.magazine_post_date}}</td>
+                    </tr>
+                  </table>
+
             </div>
             
           </div>
