@@ -36,6 +36,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   var data_user;
   var data_my;
   var token_man = false;
+  var INFO;
   console.log(auth, "check");
 
   // auth(사용자, 사업자)에 따른 list 변화
@@ -49,6 +50,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
     }).success(function (response) {
       if (response.RESULT == 1) {
         $scope.data = response.INFO;
+        INFO = response.INFO;
         console.log(response.COUNT, "count");
         total = response.COUNT; // response.COUNT;
       } else {
@@ -199,8 +201,8 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   };
 
   // 사용자가 자기 게시글 클릭
-  $scope.userClickEstimate = function () {
-    alert($scope.d.estimate_idx);
-    $window.location.href = "/estimatedetail";
+  $scope.userClickEstimate = function (event) {
+    alert(event.target.innerHTML);
+    console.log(event.target.innerHTML);
   };
 });
