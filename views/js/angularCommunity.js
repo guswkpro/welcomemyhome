@@ -130,8 +130,6 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
       $scope.itemsPerPage = num;
       $scope.currentPage = 1; //reset to first page
     }
-  }).else(function() {
-    console.log(error);
-  });
+  })
 })
   
