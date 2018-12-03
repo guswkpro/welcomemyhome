@@ -19,7 +19,7 @@ exports.getmagazinelist = function (request, response) {
         function (nextCallback) {
             magazinedao.getmagazinecount(nextCallback);
         }, function (cnt, nextCallback) {
-            total_count = cnt;
+            total_count = cnt[0].cnt;
             magazinedao.getmagazinelist(req_offset, nextCallback);
         }, function (magazinelist, nextCallback) {
             var count = 0;

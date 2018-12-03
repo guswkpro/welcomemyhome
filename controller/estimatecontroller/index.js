@@ -17,7 +17,7 @@ exports.getestimatelist = function (request, response) {
         function (nextCallback) {
             estimatedao.getestimatecount(nextCallback);
         }, function (cnt, nextCallback) {
-            total_count = cnt;
+            total_count = cnt[0].cnt;
             if (req_user_check == "0") {
                 estimatedao.getestimatelistforuser(req_offset, request.session.user_idx, nextCallback);
             } else {
