@@ -202,9 +202,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
 
   // 사용자가 자기 게시글 클릭
   $scope.userClickEstimate = function (estimate_idx) {
-    alert(estimate_idx);
-    console.log(estimate_idx);
     document.cookie = "click_idx=" + estimate_idx;
-    console.log(document.cookie);
+    $window.location.href = '/estimatedetail';
   };
 });
