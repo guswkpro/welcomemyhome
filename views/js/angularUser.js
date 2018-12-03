@@ -81,7 +81,6 @@ app.controller('signupController', function ($scope, $http, $window) {
 	};
 
 	$scope.clickIdOverlap = function() {
-		console.log("come");
 		console.log($scope.id);
 		$http.get('/idcheck', {
       params: {
@@ -93,7 +92,7 @@ app.controller('signupController', function ($scope, $http, $window) {
 				var msg = "이미 있는 ID입니다."
 				window.alert(msg);
       } else if (response.RESULT == "1") {
-				var msg = "ID는 비워질 수 없습니다."
+				var msg = "이미 있는 ID입니다."
 				window.alert(msg);
       } else if(response.RESULT == "2") {
 				var msg = "사용 가능한 ID입니다."
