@@ -109,7 +109,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
   });
 
 
-var PaginationDemoCtrl = function ($scope) {
+var PaginationDemoCtrl = function ($scope, $http) {
   $http.get('/getcommunitylist', {
     params: {
       offset: '0'
