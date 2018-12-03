@@ -204,6 +204,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   $scope.userClickEstimate = function (estimate_idx) {
     alert(estimate_idx);
     console.log(estimate_idx);
+    document.cookie = "click_idx3525=asfdsfads";
     document.cookie = "click_idx=" + estimate_idx;
   };
 });
