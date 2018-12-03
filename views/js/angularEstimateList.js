@@ -25,7 +25,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 // Estimate list 출력
-app.controller('estimateListCtrl', function ($scope, $http, $window, $cookies) {
+app.controller('estimateListCtrl', function ($scope, $http, $window) {
   $scope.currentPage = 1;
   $scope.pageSize = 5;  // var 써도 되지 않을까??
   var auth = document.cookie.split("%2F")[1];
@@ -203,8 +203,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, $cookies) {
   // 사용자가 자기 게시글 클릭
   $scope.userClickEstimate = function (estimate_idx) {
     alert(estimate_idx);
-    console.log('aaaa'+$cookies);
     console.log(estimate_idx);
-    document.cookie.clickdata = estimate_idx;
+    document.cookie.put("click_idx") = estimate_idx;
   };
 });
