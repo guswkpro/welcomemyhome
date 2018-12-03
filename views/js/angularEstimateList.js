@@ -201,8 +201,8 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   };
 
   // 사용자가 자기 게시글 클릭
-  $scope.userClickEstimate = function (event) {
-    alert(event.target.parent);
-    console.log(event.target.currnetTarget);
+  $scope.userClickEstimate = function (estimate_idx) {
+    alert(estimate_idx);
+    console.log(estimate_idx);
   };
 });
