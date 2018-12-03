@@ -115,11 +115,10 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
     }
   }).success(function (response) {
     $scope.data = response.INFO;
-    console.log(response);
-    $scope.viewby = 10;
+    console.log($scope.data.COUNT);
+    $scope.viewby = 5;
     $scope.totalItems = $scope.data.COUNT;
-    console.log($scope.data.length);
-    $scope.currentPage = 4;
+    $scope.currentPage = 1;
     $scope.itemsPerPage = $scope.viewby;
     $scope.maxSize = 5; //Number of pager buttons to show
 
