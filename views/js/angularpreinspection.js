@@ -31,8 +31,8 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
-
-    var pin = new Array();
+    var pin = {};
+    var pin_arr = new Array();
     var cloneCount=0;
     $scope.elements = {
         누수 : false, 금 : false, 도벽 : false
