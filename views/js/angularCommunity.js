@@ -115,7 +115,7 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
     }
   }).success(function (response) {
     $scope.data = response.INFO;
- 
+    console.log(response.TOTAL);
     $scope.viewby = 10;
     $scope.totalItems = $scope.data.length;
     console.log($scope.data.length);
