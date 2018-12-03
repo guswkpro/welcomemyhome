@@ -95,7 +95,8 @@ app.controller('signupController', function ($scope, $http, $window) {
 				var msg = "이미 있는 ID입니다.";
 				window.alert(msg);
 			} else if (response.RESULT == "2") {
-				if ($scope.id == "undefined") {
+				console.log(angular.isUndefined($scope.id));
+				if (angular.isUndefined($scope.id)) {
 					var msg = "아이디는 비워둘 수 없습니다.";
 					window.alert(msg);
 				} else {
