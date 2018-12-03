@@ -151,6 +151,7 @@ app.directive('pagination', function() {
     $scope.postingPerPage = 3,
     $scope.maxSize = 5;
 
+    this.c = $scope.community_list;
 
   $scope.numOfPages = function () {
     return Math.ceil($scope.community_list.length / $scope.postingPerPage);
@@ -161,7 +162,7 @@ app.directive('pagination', function() {
     var begin = (($scope.curPage - 1) * $scope.postingPerPage),
       end = begin + $scope.postingPerPage;
 
-    $scope.filteredItems = $scope.community_list.slice(begin, end);
+    $scope.filteredList = $scope.community_list.slice(begin, end);
   });
     }
    };
