@@ -16,10 +16,10 @@ exports.getcommunitylist = function (request, response) {
     var total_count;
     async.waterfall([
         function (nextCallback) {
-            communitydao.getcommunitylist(req_offset, nextCallback);
+            communitydao.getcommunitycount(nextCallback);
         }, function (cnt, nextCallback) {
             total_count = cnt;
-            communitydao.getcommunitycount(nextCallback);
+            communitydao.getcommunitylist(req_offset, nextCallback);
         }, function (communitylist, nextCallback) {
             count = 0;
             async.whilst(function () {
