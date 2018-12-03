@@ -1,4 +1,4 @@
-var app = angular.module('community', []);
+var app = angular.module('community', ['ui.bootstrap']);
 
 
 app.controller('logincheckCtrl', function($scope, $http, $window) {
@@ -108,22 +108,23 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
     };
   });
 
-  app.controller('PaginationController', function($scope){
+
+var PaginationDemoCtrl = function ($scope) {
+  $scope.data = $scope.community_list.INFO
+  $scope.viewby = 10;
+  $scope.totalItems = $scope.data.length;
+  $scope.currentPage = 4;
+  $scope.itemsPerPage = $scope.viewby;
+  $scope.maxSize = 5; //Number of pager buttons to show
+
+  $scope.setPage = function (pageNo) {
+    $scope.currentPage = pageNo;
+  };
+
+
+$scope.setItemsPerPage = function(num) {
+  $scope.itemsPerPage = num;
+  $scope.currentPage = 1; //reset to first page
+}
+};
   
-    $scope.curPage = 1,
-    $scope.postingPerPage = 3,
-    $scope.maxSize = 5;
-    
-    
-    $scope.numOfPages = function () {
-      return Math.ceil($scope.community_list.length / $scope.postingPerPage);
-      
-    };
-    
-      $scope.$watch('curPage + numPerPage', function() {
-      var begin = (($scope.curPage - 1) * $scope.postingPerPage),
-      end = begin + $scope.postingPerPage;
-      
-      $scope.filteredItems = $scope.community_list.slice(begin, end);
-    });
-    });
