@@ -4,7 +4,7 @@ var client = require('../dao.js');
         GET
 ********************/
 exports.getcommunitylist = function (offset, callback) {
-    client.query('SELECT * FROM stweb.stweb_communities order by community_idx DESC limit ?, 10', [Number(offset)], function (error, result) {
+    client.query('SELECT * FROM stweb.stweb_communities order by community_idx DESC limit ?, 5', [Number(offset)], function (error, result) {
         callback(error, result);
     });
 };

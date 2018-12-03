@@ -108,81 +108,24 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
     };
   });
 
-  $scope.listPre = function(){
-    $scope.currentPage = $scope.currentPage - 1;
-    if(token_man == 1){ // 사업자
-      offset = ($scope.currentPage - 1) * 5;
-      $http.get('/getestimatelist', {
-        params: {
-          offset: offset
-        }
-      }).success(function(response) {
-        if (response.RESULT == 1) {
-          $scope.data = response.INFO;
-          total_my = response.COUNT; // response.total_my
-          total = total_my;
-        } else {
-          var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
-          $window.alert(msg);
-          $window.location.href = '/';
-        }
-      });
-    } else if(token_man == 0){  // 사용자
-      offset = ($scope.currentPage - 1) * 5;
-      $http.get('/getestimatelist', {
-        params: {
-          offset: offset
-        }
-      }).success(function(response) {
-        if (response.RESULT == 1) {
-          $scope.data=response.INFO;
-          total_user = response.COUNT; // response.total_user;
-          total = total_user;
-        } else {
-          var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
-          $window.alert(msg);
-          $window.location.href = '/';
-        }
-      });
-    }
-  };
-
-  // 리스트 다음 값으로 갱신
-  $scope.listNext = function(){
-    $scope.currentPage = $scope.currentPage + 1;
-    if(token_man == 1){ // 사업자
-      offset = ($scope.currentPage + 1) * 5;
-      $http.get('/getestimatelist', {
-        params: {
-          offset: offset
-        }
-      }).success(function(response) {
-        if (response.RESULT == 1) {
-          $scope.data = response.INFO;
-          total_my = response.COUNT; // response.total_my
-          total = total_my;
-        } else {
-          var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
-          $window.alert(msg);
-          $window.location.href = '/';
-        }
-      });
-    } else if(token_man == 0){  // 사용자
-      offset = ($scope.currentPage + 1) * 5;
-      $http.get('/getestimatelist', {
-        params: {
-          offset: offset
-        }
-      }).success(function(response) {
-        if (response.RESULT == 1) {
-          $scope.data = response.INFO;
-          total_user = response.COUNT; // response.total_user;
-          total = total_user;
-        } else {
-          var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
-          $window.alert(msg);
-          $window.location.href = '/';
-        }
-      });
-    }
-  };
+  app.controller('PaginationController', function($scope){
+  
+    $scope.curPage = 1,
+    $scope.postingPerPage = 3,
+    $scope.maxSize = 5;
+      
+      this.items = $scope.community_list;
+    
+    
+    $scope.numOfPages = function () {
+      return Math.ceil($scope.community_list.length / $scope.postingPerPage);
+      
+    };
+    
+      $scope.$watch('curPage + numPerPage', function() {
+      var begin = (($scope.curPage - 1) * $scope.postingPerPage),
+      end = begin + $scope.postingPerPage;
+      
+      $scope.filteredItems = $scope.community_list.slice(begin, end);
+    });
+    });
