@@ -71,11 +71,12 @@
       </div>
     </div>
     <!-- /.row -->
-  
+  <div ng-repeat="c in filteredList">
     <div data-pagination="" data-num-pages="numOfPages()" 
     data-current-page="curPage" data-max-size="maxSize"  
-    data-boundary-links="true" ng-repeat="c in filteredList">
+    data-boundary-links="true">
   </div>
+</div>
   </div>
 </div>
 
