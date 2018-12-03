@@ -1,25 +1,28 @@
 var app = angular.module('estimateList', []);
 
 // 화면 전환 시 login check 기능
-app.controller('logincheckCtrl', function($scope, $http, $window) {
-    $scope.load = function() {
-      $http.get('/logincheck').success(function(response) {
-        console.log(response.RESULT);
-        if (response.RESULT == "1") {
-          $scope.div_login = {
-            "width": "12%"
-          };
-          $scope.showHide_login = true;
-        } else if (response.RESULT == "0") {
-          var msg = "알수없는 오류로 로그인이 끊겼습니다.";
-          $window.alert(msg);
-          $window.location.href = '/';
-        } else {
-          $scope.showHide_logout = true;
-        }
-      });
-    };
-  });
+app.controller('logincheckCtrl', function ($scope, $http, $window) {
+  $scope.load = function () {
+    $http.get('/logincheck').success(function (response) {
+      console.log(response.RESULT);
+      if (response.RESULT == "1") {
+        $scope.div_login = {
+          "width": "12%"
+        };
+        $scope.showHide_login = true;
+      } else if (response.RESULT == "0") {
+        var msg = "알 수 없는 오류로 로그인이 끊겼습니다.";
+        $window.alert(msg);
+        $window.location.href = '/';
+      } else {
+        var msg = "견적요청은 로그인을 하고 이용할 수 있습니다.";
+        $window.alert(msg);
+        $window.location.href = '/';
+        $scope.showHide_logout = true;
+      }
+    });
+  };
+});
 
   // Estimate list 출력
 app.controller('estimateListCtrl', function($scope, $http, $window) {
@@ -34,15 +37,6 @@ app.controller('estimateListCtrl', function($scope, $http, $window) {
     var data_my;
     var token_man = false;
     console.log(auth,"check");
-    if(auth == 1) {
-      $scope.hideAnswer = true;
-      $scope.showAnswer = false;
-      //$scope.hideAnswerButton = false;
-    } else if(auth == 0 ){
-      $scope.hideAnswer = false;
-      $scope.showAnswer = true;
-      //$scope.hideAnswerButton = true;
-    }
   
     // auth(사용자, 사업자)에 따른 list 변화
     if (auth == "0") { // 사용자
