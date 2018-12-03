@@ -14,6 +14,9 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
           $window.alert(msg);
           $window.location.href = '/';
         } else {
+          var msg = "로그인 후 이용할 수 있습니다.";
+          $window.alert(msg);
+          $window.location.href = '/';
           $scope.showHide_logout = true;
         }
       });
