@@ -1,4 +1,4 @@
-var app = angular.module('community', ['ui.bootstrap']);
+var app = angular.module('community', []);
 
 
 app.controller('logincheckCtrl', function($scope, $http, $window) {
