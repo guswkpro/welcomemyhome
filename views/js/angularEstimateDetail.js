@@ -25,6 +25,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
   var cookie = document.cookie.split("=");
   var click_idx = cookie[2];
+  console.log(document.cookie);
 
   $http.get('/getestimatedetail', {
     params: {
@@ -45,6 +46,8 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
   }).error(function () {
     console.log("error");
   });
+
+  document.cookie="";
 });
 
 // Estimate list 출력
