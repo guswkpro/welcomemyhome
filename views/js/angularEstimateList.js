@@ -29,6 +29,8 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   $scope.currentPage = 1;
   $scope.pageSize = 5;  // var 써도 되지 않을까??
   var auth = document.cookie.split("%2F")[1];
+  console.log(document.cookie, " list cookie");
+  console.log(auth, " list cookie2");
   var offset = 0;
   var total;
   var total_user;
