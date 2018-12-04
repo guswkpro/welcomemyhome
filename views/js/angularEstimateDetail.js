@@ -23,10 +23,12 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 //detail 컨트롤러
 app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
-  // var cookie_user = document.cookie.substring(0, 8).split("=");
+  //var cookie_user = document.cookie.substring(0, 8).split("=");
   // var usercheck = cookie_user[1];
+  var cookie = document.cookie.split("=");
+  var click_idx = cookie_user[2];
   console.log(document.cookie);
-  console.log(document.cookie.click_idx);
+  console.log(click_idx , "click_idx");
   // var cookie = document.cookie.split("%2F")[1];
   // var cookie_estimate_idx = decodeURI("84%2F0%2F_G2gJ6AEe-eHQ-XkWnQeoQpk2sgCKQXJ");
   // console.log(cookie);
