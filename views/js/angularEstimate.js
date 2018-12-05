@@ -13,7 +13,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
         } else if (response.RESULT == "0") {
           var msg = "알수없는 오류로 로그인이 끊겼습니다.";
           $window.alert(msg);
-          $window.location.href = '/';
+          $window.location.href = '/login';
         } else {
           $scope.showHide_logout = true;
         }
