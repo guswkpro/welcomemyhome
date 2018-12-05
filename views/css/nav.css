@@ -108,24 +108,3 @@
   border-bottom: 1px solid #bcbcbc;
 }
 
-#footer {
-  position : relative;
-  height : 80px;
-  width : 100%;
-  background : #999;
-  clear : both;
-}
-
-#footer .copyright {
-  position : absolute;
-  top : 30px;
-  left : 20px;
-  font : 12px, 굴림, 돋움;
-  color : #000
-}
-
-.footer-logo { 
-  font-weight: bolder;
-  color: black;
-  font-size: 25px;
-}
