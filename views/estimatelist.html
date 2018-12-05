@@ -14,87 +14,212 @@
 
   <!-- Angular js -->
   <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.15/css/mdb.min.css" rel="stylesheet">
   <script src="js/angularEstimateList.js"></script>
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
   <link rel="stylesheet" type="text/css" href="css/estimateList.css" />
+  <link rel="stylesheet" type="text/css" href="css/footer.css" />
 
   <title>놀러와 마이홈</title>
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
-  <div class="container estimateList-div" ng-controller="estimateListCtrl">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>번호</th>
-          <th>제목</th>
-          <th>작성자</th>
-          <th>날짜</th>
-          <th ng-hide="answercount">답변수</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="d in data" data="{{d.estimate_idx}}" ng-click="userClickEstimate(d.estimate_idx)">
-          <td>{{d.estimate_idx}}</td>
-          <td>{{d.estimate_title}}</td>
-          <td>{{d.user_nickname}}</td>
-          <td>{{d.estimate_date}}</td>
-          <td ng-hide="answercount">{{d.estimate_answer_count}}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="wrap">
+    <div class="container estimateList-div" ng-controller="estimateListCtrl">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>날짜</th>
+            <th ng-hide="answercount">답변수</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="d in data" data="{{d.estimate_idx}}" ng-click="userClickEstimate(d.estimate_idx)">
+            <td>{{d.estimate_idx}}</td>
+            <td>{{d.estimate_title}}</td>
+            <td>{{d.user_nickname}}</td>
+            <td>{{d.estimate_date}}</td>
+            <td ng-hide="answercount">{{d.estimate_answer_count}}</td>
+          </tr>
+        </tbody>
+      </table>
 
-    <hr />
-    <input type="button" ng-hide="answercount" value="작성" class="estimateList-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimate'"/>
+      <hr />
+      <input type="button" ng-hide="answercount" value="작성" class="estimateList-float-right" onclick="location.href = 'http://13.124.196.226:3000/estimate'" />
 
-    <div class="pagenation">
-      <input type="button" value="사용자 글" ng-hide="HideCompany" class="estimateList-float-left" ng-click="viewUserWrite()"/>
-      <input type="button" value="내 글보기" ng-hide="HideCompany" class="estimateList-float-left" ng-click="viewMyWrite()"/>
-      <button ng-disabled="currentPage==1" ng-click="listPre()">
+      <div class="pagenation">
+        <input type="button" value="사용자 글" ng-hide="HideCompany" class="estimateList-float-left" ng-click="viewUserWrite()" />
+        <input type="button" value="내 글보기" ng-hide="HideCompany" class="estimateList-float-left" ng-click="viewMyWrite()" />
+        <button ng-disabled="currentPage==1" ng-click="listPre()">
           Previous
-      </button>
-      {{currentPage}}/{{numberOfPages()}}
-      <button ng-disabled="currentPage >= numberOfPages()" ng-click="listNext()">
+        </button>
+        {{currentPage}}/{{numberOfPages()}}
+        <button ng-disabled="currentPage >= numberOfPages()" ng-click="listNext()">
           Next
-      </button>
+        </button>
+      </div>
     </div>
+    <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
+      <div class="nav-logo">
+        <a class="navbar-bran" href='http://13.124.196.226:3000/'>WMH</a>
+      </div>
+      <div class="collapse navbar-collapse nav-menu">
+        <ul class="navbar-nav mr-auto nav-ul">
+          <li class="nav-item nav-li-magazine">
+            <a class="nav-a-text3" href='http://13.124.196.226:3000/magazines'>매거진</a>
+          </li>
+          <li class="nav-item nav-li">
+            <a class="nav-a-text4" href='http://13.124.196.226:3000/community'>커뮤니티</a>
+          </li>
+          <li class="nav-item nav-li">
+            <a class="nav-a-text4" href='http://13.124.196.226:3000/preinspection'>사전점검</a>
+          </li>
+          <li class="nav-item nav-li">
+            <a class="nav-a-text4" href='http://13.124.196.226:3000/estimatelist'>견적요청</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-div-form" ng-init="load()" ng-style="div_login">
+        <form>
+          <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
+            type="button">로그인</button>
+          <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-signup" onclick="location.href = 'http://13.124.196.226:3000/signup'"
+            type="button">회원가입</button>
+          <button ng-show="showHide_login" class="btn btn-secondary my-sm-0 nav-button-mypage" onclick="location.href = 'http://13.124.196.226:3000/mypage'"
+            type="button">마이페이지</button>
+          <button ng-show="showHide_login" class="btn btn-secondary my-sm-0 nav-button-logout" onclick="location.href = 'http://13.124.196.226:3000/'"
+            type="button">로그아웃</button>
+        </form>
+      </div>
+    </nav>
+    <!-- Footer -->
+    <footer class="page-footer font-small mdb-color pt-4">
+
+      <!-- Footer Links -->
+      <div class="container text-center text-md-left">
+
+        <!-- Footer links -->
+        <div class="row text-center text-md-left mt-3 pb-3">
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">놀러와 마이홈 </h6>
+            <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
+              amet, consectetur
+              adipisicing elit.</p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+            <p>
+              <a href="#!">MDBootstrap</a>
+            </p>
+            <p>
+              <a href="#!">MDWordPress</a>
+            </p>
+            <p>
+              <a href="#!">BrandFlow</a>
+            </p>
+            <p>
+              <a href="#!">Bootstrap Angular</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+            <p>
+              <i class="fa fa-home mr-3"></i> 서울과학기술대학교 학군단 314 </p>
+            <p>
+              <i class="fa fa-envelope mr-3"></i> info@seoultech.co.kr</p>
+            <p>
+              <i class="fa fa-phone mr-3"></i> + 02 123-4567</p>
+            <p>
+              <i class="fa fa-print mr-3"></i> + 02 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Footer links -->
+
+        <hr>
+
+        <!-- Grid row -->
+        <div class="row d-flex align-items-center">
+
+          <!-- Grid column -->
+          <div class="col-md-7 col-lg-8">
+
+            <!--Copyright-->
+            <p class="text-center text-md-left">© 2018 Copyright:
+              <strong> Darack Inc. All rights reserved.</strong>
+            </p>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-5 col-lg-4 ml-lg-0">
+
+            <!-- Social buttons -->
+            <div class="text-center text-md-right">
+              <ul class="list-unstyled list-inline">
+                <li class="list-inline-item">
+                  <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                    <i class="fa fa-google-plus"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+      </div>
+      <!-- Footer Links -->
+
+    </footer>
+    <!-- Footer -->
   </div>
-  <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
-    <div class="nav-logo">
-      <a class="navbar-bran" href='http://13.124.196.226:3000/'>WMH</a>
-    </div>
-    <div class="collapse navbar-collapse nav-menu">
-      <ul class="navbar-nav mr-auto nav-ul">
-        <li class="nav-item nav-li-magazine">
-          <a class="nav-a-text3" href='http://13.124.196.226:3000/magazines'>매거진</a>
-        </li>
-        <li class="nav-item nav-li">
-          <a class="nav-a-text4" href='http://13.124.196.226:3000/community'>커뮤니티</a>
-        </li>
-        <li class="nav-item nav-li">
-          <a class="nav-a-text4" href='http://13.124.196.226:3000/preinspection'>사전점검</a>
-        </li>
-        <li class="nav-item nav-li">
-          <a class="nav-a-text4" href='http://13.124.196.226:3000/estimatelist'>견적요청</a>
-        </li>
-      </ul>
-    </div>
-    <div class="nav-div-form" ng-init="load()" ng-style="div_login">
-      <form>
-        <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
-          type="button">로그인</button>
-        <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-signup" onclick="location.href = 'http://13.124.196.226:3000/signup'"
-          type="button">회원가입</button>
-        <button ng-show="showHide_login" class="btn btn-secondary my-sm-0 nav-button-mypage" onclick="location.href = 'http://13.124.196.226:3000/mypage'"
-          type="button">마이페이지</button>
-        <button ng-show="showHide_login" class="btn btn-secondary my-sm-0 nav-button-logout" onclick="location.href = 'http://13.124.196.226:3000/'"
-          type="button">로그아웃</button>
-      </form>
-    </div>
-  </nav>
 </body>
 
 </html>

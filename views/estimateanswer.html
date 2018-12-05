@@ -10,11 +10,18 @@
   <meta name="author" content="">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.15/css/mdb.min.css" rel="stylesheet">
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
   <link rel="stylesheet" type="text/css" href="css/estimate.css" />
+  <link rel="stylesheet" type="text/css" href="css/footer.css" />
 
   <!-- jQuery -->
   <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
@@ -27,66 +34,185 @@
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
-  <div class="container estimate-div" ng-controller="estimateAnswerCtrl">
-    <table class="table table-bordered">
-      <tbody>
+  <div class="wrap">
+    <div class="container estimate-div" ng-controller="estimateAnswerCtrl">
+      <table class="table table-bordered">
+        <tbody>
+          <form>
+            <tr>
+              <th>제목 </th>
+              <td><input type="text" placeholder="제목을 입력하세요. " class="form-control" ng-model="title" /></td>
+            </tr>
+            <tr>
+              <th>사진 </th>
+              <td>
+                <input id='fileselector2' type="file" placeholder="이미지를 선택하세요." accept="image/*" ng-model="image"
+                  multiple />
+              </td>
+            </tr>
+            <tr>
+              <th>내용 </th>
+              <td><textarea cols="10" rows="10" placeholder="내용을 입력하세요." class="form-control" ng-model="content"></textarea></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <input type="button" value="취소" class="estimate-float-right" ng-click="cancelEstimateAnswer()" />
+                <input type="submit" value="등록" class="estimate-float-right" ng-click="pushEstimateAnswerData()" />
+              </td>
+            </tr>
+          </form>
+        </tbody>
+      </table>
+    </div>
+    <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
+      <div class="nav-logo">
+        <a class="navbar-bran" href='http://13.124.196.226:3000/'>WMH</a>
+      </div>
+      <div class="collapse navbar-collapse nav-menu">
+        <ul class="navbar-nav mr-auto nav-ul">
+          <li class="nav-item nav-li-magazine">
+            <a class="nav-a-text3" href='http://13.124.196.226:3000/magazines'>매거진</a>
+          </li>
+          <li class="nav-item nav-li">
+            <a class="nav-a-text4" href='http://13.124.196.226:3000/community'>커뮤니티</a>
+          </li>
+          <li class="nav-item nav-li">
+            <a class="nav-a-text4" href='http://13.124.196.226:3000/preinspection'>사전점검</a>
+          </li>
+          <li class="nav-item nav-li">
+            <a class="nav-a-text4" href='http://13.124.196.226:3000/estimatelist'>견적요청</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-div-form" ng-init="load()" ng-style="div_login">
         <form>
-          <tr>
-            <th>제목 </th>
-            <td><input type="text" placeholder="제목을 입력하세요. " class="form-control" ng-model="title"/></td>
-          </tr>
-          <tr>
-            <th>사진 </th>
-            <td>
-              <input id='fileselector2' type="file" placeholder="이미지를 선택하세요." accept="image/*" ng-model="image" multiple />
-            </td>
-          </tr>
-          <tr>
-            <th>내용 </th>
-            <td><textarea cols="10" rows="10" placeholder="내용을 입력하세요." class="form-control" ng-model="content"></textarea></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <input type="button" value="취소" class="estimate-float-right" ng-click="cancelEstimateAnswer()"/>
-              <input type="submit" value="등록" class="estimate-float-right" ng-click="pushEstimateAnswerData()"/>
-            </td>
-          </tr>
+          <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
+            type="button">로그인</button>
+          <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-signup" onclick="location.href = 'http://13.124.196.226:3000/signup'"
+            type="button">회원가입</button>
+          <button ng-show="showHide_login" class="btn btn-secondary my-sm-0 nav-button-mypage" onclick="location.href = 'http://13.124.196.226:3000/mypage'"
+            type="button">마이페이지</button>
+          <button ng-show="showHide_login" class="btn btn-secondary my-sm-0 nav-button-logout" onclick="location.href = 'http://13.124.196.226:3000/'"
+            type="button">로그아웃</button>
         </form>
-      </tbody>
-    </table>
+      </div>
+    </nav>
+    <!-- Footer -->
+    <footer class="page-footer font-small mdb-color pt-4">
+
+      <!-- Footer Links -->
+      <div class="container text-center text-md-left">
+
+        <!-- Footer links -->
+        <div class="row text-center text-md-left mt-3 pb-3">
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">놀러와 마이홈 </h6>
+            <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
+              amet, consectetur
+              adipisicing elit.</p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+            <p>
+              <a href="#!">MDBootstrap</a>
+            </p>
+            <p>
+              <a href="#!">MDWordPress</a>
+            </p>
+            <p>
+              <a href="#!">BrandFlow</a>
+            </p>
+            <p>
+              <a href="#!">Bootstrap Angular</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+            <p>
+              <i class="fa fa-home mr-3"></i> 서울과학기술대학교 학군단 314 </p>
+            <p>
+              <i class="fa fa-envelope mr-3"></i> info@seoultech.co.kr</p>
+            <p>
+              <i class="fa fa-phone mr-3"></i> + 02 123-4567</p>
+            <p>
+              <i class="fa fa-print mr-3"></i> + 02 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Footer links -->
+
+        <hr>
+
+        <!-- Grid row -->
+        <div class="row d-flex align-items-center">
+
+          <!-- Grid column -->
+          <div class="col-md-7 col-lg-8">
+
+            <!--Copyright-->
+            <p class="text-center text-md-left">© 2018 Copyright:
+              <strong> Darack Inc. All rights reserved.</strong>
+            </p>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-5 col-lg-4 ml-lg-0">
+
+            <!-- Social buttons -->
+            <div class="text-center text-md-right">
+              <ul class="list-unstyled list-inline">
+                <li class="list-inline-item">
+                  <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                    <i class="fa fa-google-plus"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+      </div>
+      <!-- Footer Links -->
+
+    </footer>
+    <!-- Footer -->
   </div>
-  <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
-    <div class="nav-logo">
-      <a class="navbar-bran" href='http://13.124.196.226:3000/'>WMH</a>
-    </div>
-    <div class="collapse navbar-collapse nav-menu">
-      <ul class="navbar-nav mr-auto nav-ul">
-        <li class="nav-item nav-li-magazine">
-          <a class="nav-a-text3" href='http://13.124.196.226:3000/magazines'>매거진</a>
-        </li>
-        <li class="nav-item nav-li">
-          <a class="nav-a-text4" href='http://13.124.196.226:3000/community'>커뮤니티</a>
-        </li>
-        <li class="nav-item nav-li">
-          <a class="nav-a-text4" href='http://13.124.196.226:3000/preinspection'>사전점검</a>
-        </li>
-        <li class="nav-item nav-li">
-          <a class="nav-a-text4" href='http://13.124.196.226:3000/estimatelist'>견적요청</a>
-        </li>
-      </ul>
-    </div>
-    <div class = "nav-div-form" ng-init="load()" ng-style="div_login">
-      <form>
-        <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-login" onclick="location.href = 'http://13.124.196.226:3000/login'"
-          type="button">로그인</button>
-        <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-signup" onclick="location.href = 'http://13.124.196.226:3000/signup'"
-          type="button">회원가입</button>
-        <button ng-show="showHide_login" class="btn btn-secondary my-sm-0 nav-button-mypage" onclick="location.href = 'http://13.124.196.226:3000/mypage'"
-          type="button">마이페이지</button>
-        <button ng-show="showHide_login" class="btn btn-secondary my-sm-0 nav-button-logout" onclick="location.href = 'http://13.124.196.226:3000/'"
-          type="button">로그아웃</button>
-      </form>
-    </div>
-  </nav>
 </body>
+
 </html>
