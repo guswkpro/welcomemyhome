@@ -1,29 +1,29 @@
 var app = angular.module('user', []);
 
-app.controller('logincheckCtrl', function ($scope, $http, $window) {
-	$scope.load = function () {
-		$http.get('/logincheck').success(function (response) {
-			console.log(response.RESULT);
-			if (response.RESULT == "1") {
-				$scope.div_login = {
-					"width": "12%"
-				};
-				$scope.showHide_login = true;
-			} else if (response.RESULT == "0") {
-				var msg = "알수없는 오류로 로그인이 끊겼습니다.";
-				$window.alert(msg);
-				$window.location.href = '/';
-			} else {
-				$scope.showHide_logout = true;
-			}
-		});
-	};
-	$scope.clickLogout = function () {
-		var msg = "logout이 성공하였습니다.";
-		$window.alert(msg);
-		$window.location.href = '/';
-	}
-});
+// app.controller('logincheckCtrl', function ($scope, $http, $window) {
+// 	$scope.load = function () {
+// 		$http.get('/logincheck').success(function (response) {
+// 			console.log(response.RESULT);
+// 			if (response.RESULT == "1") {
+// 				$scope.div_login = {
+// 					"width": "12%"
+// 				};
+// 				$scope.showHide_login = true;
+// 			} else if (response.RESULT == "0") {
+// 				var msg = "알수없는 오류로 로그인이 끊겼습니다.";
+// 				$window.alert(msg);
+// 				$window.location.href = '/';
+// 			} else {
+// 				$scope.showHide_logout = true;
+// 			}
+// 		});
+// 	};
+// 	$scope.clickLogout = function () {
+// 		var msg = "logout이 성공하였습니다.";
+// 		$window.alert(msg);
+// 		$window.location.href = '/';
+// 	}
+// });
 
 app.controller('loginController', function ($scope, $http, $window) {
 	$scope.clickLogin = function () {

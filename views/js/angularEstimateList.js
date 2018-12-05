@@ -13,11 +13,11 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
       } else if (response.RESULT == "0") {
         var msg = "알 수 없는 오류로 로그인이 끊겼습니다.";
         $window.alert(msg);
-        $window.location.href = '/';
+        $window.location.href = '/login';
       } else {
         var msg = "견적요청은 로그인을 하고 이용할 수 있습니다.";
         $window.alert(msg);
-        $window.location.href = '/';
+        $window.location.href = '/login';
         $scope.showHide_logout = true;
       }
     });
@@ -29,8 +29,6 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   $scope.currentPage = 1;
   $scope.pageSize = 5;  // var 써도 되지 않을까??
   var auth = document.cookie.split("%2F")[1];
-  console.log(document.cookie, " list cookie");
-  console.log(auth, " list cookie2");
   var offset = 0;
   var total;
   var total_user;
@@ -38,7 +36,6 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   var data_user;
   var data_my;
   var token_man = false;
-  var INFO;
   console.log(auth, "check");
 
   // auth(사용자, 사업자)에 따른 list 변화
