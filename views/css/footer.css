@@ -9,6 +9,7 @@
     body {
     margin: 0;
     height: 100%;
+    padding-bottom : 0;
     }
     .wrap {
     min-height: 100%;
