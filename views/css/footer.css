@@ -41,3 +41,9 @@
 .footer_main {
     float : left;
 }
+
+.col-xl-2 {
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 20.666667%;
+    max-width: 20.666667%;
+}
