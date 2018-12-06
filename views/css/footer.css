@@ -30,6 +30,7 @@
 .footer_sponser {
     display : inline-block;
     margin:0 auto;
+    width: 150px;
 }
 
 .footer_contact {
