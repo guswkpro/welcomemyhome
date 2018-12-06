@@ -46,7 +46,7 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
     console.log("error");
   });
 
-  document.cookie="token=84%2F0%2FIuC5Qfid5sDZ6kuUuANT1YsCoZjCDQJj; click_idx=";
+  // document.cookie="token=84%2F0%2FIuC5Qfid5sDZ6kuUuANT1YsCoZjCDQJj; click_idx=";
 });
 
 // Estimate list 출력
