@@ -36,6 +36,11 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   var data_user;
   var data_my;
   var token_man = false;
+  var totalcheck =  function () {
+    console.log(total,"total");
+    return Math.ceil(total / $scope.pageSize);
+  };
+
   console.log(auth, "check");
 
   // auth(사용자, 사업자)에 따른 list 변화
@@ -52,6 +57,8 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
         INFO = response.INFO;
         console.log(response.COUNT, "count");
         total = response.COUNT; // response.COUNT;
+        // 페이지 수 계산
+        $scope.numberOfPages = totalcheck();
       } else {
         var msg = "알 수 없는 에러로 나의 견적 요청 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
@@ -71,6 +78,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
         $scope.data = data_user;
         total_user = response.COUNT; // data_user.total;
         total = total_user;
+        $scope.numberOfPages = totalcheck();
       } else {
         var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
@@ -86,6 +94,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
       if (response.RESULT == 1) {
         data_my = response.INFO;
         total_my = response.COUNT; // data_my.total
+        
       } else {
         var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
@@ -98,11 +107,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
     $window.location.href = '/';
   }
 
-  // 페이지 수 계산
-  $scope.numberOfPages = function () {
-    console.log(total,"total");
-    return Math.ceil(total / $scope.pageSize);
-  };
+  
 
   // 사용자 글 보기로 바꾸기
   $scope.viewUserWrite = function () {
@@ -110,6 +115,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
     $scope.currentPage = 1;
     $scope.data = data_user;
     total = total_user;
+    $scope.numberOfPages = totalcheck();
   };
 
   // 사업자가 쓴 답변 보기로 바꾸기
@@ -118,6 +124,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
     $scope.currentPage = 1;
     $scope.data = data_my;
     total = total_my;
+    $scope.numberOfPages = totalcheck();
   };
 
   // 리스트 이전 값으로 갱신
@@ -134,6 +141,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
           $scope.data = response.INFO;
           total_my = response.COUNT; // response.total_my
           total = total_my;
+          $scope.numberOfPages = totalcheck();
         } else {
           var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
           $window.alert(msg);
@@ -151,6 +159,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
           $scope.data = response.INFO;
           total_user = response.COUNT; // response.total_user;
           total = total_user;
+          $scope.numberOfPages = totalcheck();
         } else {
           var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
           $window.alert(msg);
@@ -174,6 +183,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
           $scope.data = response.INFO;
           total_my = response.COUNT; // response.total_my
           total = total_my;
+          $scope.numberOfPages = totalcheck();
         } else {
           var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
           $window.alert(msg);
@@ -191,6 +201,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
           $scope.data = response.INFO;
           total_user = response.COUNT; // response.total_user;
           total = total_user;
+          $scope.numberOfPages = totalcheck();
         } else {
           var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
           $window.alert(msg);
