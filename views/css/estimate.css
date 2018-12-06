@@ -5,3 +5,7 @@
 .estimate-float-right {
   float : right;
 }
+
+.estimate-detail-container{
+  min-height: 100%;
+}
