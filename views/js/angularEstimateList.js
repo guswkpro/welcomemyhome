@@ -100,6 +100,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
 
   // 페이지 수 계산
   $scope.numberOfPages = function () {
+    console.log(total,"total");
     return Math.ceil(total / $scope.pageSize);
   };
 
