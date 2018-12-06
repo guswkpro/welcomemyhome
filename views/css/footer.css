@@ -12,14 +12,15 @@
     padding-bottom : 0;
     }
     .wrap {
-    height: 100%;
+    min-height: 100%;
     position: relative;
     }
     
     footer {
     position: absolute;
+    width : 100%;
     bottom: 0;
-    left: 0;
+    left: 0; 
     right: 0;
     }
 
