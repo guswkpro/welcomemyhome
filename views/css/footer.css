@@ -25,6 +25,7 @@
 
 .container {
     text-align : center;
+    margin-right : 0;
 }
 
 .footer_sponser {
@@ -39,4 +40,9 @@
 
 .footer_main {
     float : left;
+}
+
+.col-xl-2 {
+    max-width: 20.666667%;
+    flex: 0 0  20.666667%;
 }
