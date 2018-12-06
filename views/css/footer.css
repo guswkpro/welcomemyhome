@@ -32,6 +32,8 @@
     display : inline-block;
     margin:0 auto;
     width: 150px;
+    max-width: 20.666667%;
+    flex: 0 0  20.666667%;
 }
 
 .footer_contact {
@@ -40,9 +42,4 @@
 
 .footer_main {
     float : left;
-}
-
-.col-xl-2 {
-    max-width: 20.666667%;
-    flex: 0 0  20.666667%;
 }
