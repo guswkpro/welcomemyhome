@@ -23,6 +23,10 @@
     right: 0;
     }
 
+.container {
+    text-align : center;
+}
+
 .footer_sponser {
     display : inline-block;
     margin:0 auto;
