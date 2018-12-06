@@ -24,13 +24,16 @@
     }
 
 .footer_sponser {
-    margin : 15px;
+    margin-left : 15px;
+    margin-right : 15px;
 }
 
 .footer_contact {
-    margin : 15px;
+    margin-left : 15px;
+    margin-right : 15px;
 }
 
 .footer_main {
-    margin : 15px;
+    margin-left : 15px;
+    margin-right : 15px;
 }
