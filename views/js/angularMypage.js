@@ -54,9 +54,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
         fr.readAsDataURL(input.files[0]);//input.files[0]에 사용자 로컬경로가 담기고 그게 fr에 저장
         fr.onload = function() {
           var str = fr.result.split(',')[1];
-          var image = {
-            image: str
-          };
+          var image = str;
             console.log(JSON.stringify(image));
             $http({
               method: 'POST',
