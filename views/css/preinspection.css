@@ -48,7 +48,7 @@ table tr{
 }
 
 .pin-img {
-    z-index: 99;
+    z-index: 5;
     width: 30px;
     height: 30px;
 }
