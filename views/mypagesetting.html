@@ -41,19 +41,28 @@
         <div class="card-title" style="margin-top:30px;">
             <h2 class="card-title text-center" style="color:#113366;">놀러와마이홈</h2>
         </div>
-        <div class="card-body" ng-controller="signupController">
-            <form class="form-signup" name="userInfo" method="POST">
+        <div class="card-body" ng-controller="userCtrl">
+            <form class="form-userInfo" name="userInfo" method="POST">
                 <label for="inputid" class="sr-only">아이디입력</label>
                 <input type="text" id="input_id" placeholder="아이디입력" class="form-control2" required autofocus style="padding-right:15px;"
                     ng-model="id">
                 <label for="checkid" class="sr-only"></label>
                 <button type="button" ng-click="clickIdOverlap()" name="idconfirm" class="btn btn-outline-primary btn-sm confirmbutton">중복확인</button>
                 <input type="hidden" id="id_check" value="no" />
+
+                <label for="inputnickname" class="sr-only">닉네임</label>
+                <input type="text" id="user_nickname" class="form-control2" placeholder="닉네임변경" style="padding-right:15px;"
+                    required ng-model="nickname">
+                <label for="checknickname" class="sr-only"></label>
+                <button id="nickname_confirm" type="button" ng-click="clickNicknameOverlap()" name="nicknameconfirm"
+                    class="btn btn-outline-primary btn-sm confirmbutton">중복확인</button>
+                <input type="hidden" id="nickname_check" value="no" /> <br>
+
                 <div>
                     <br />
                 </div>
-                <label for="inputPassword" class="sr-only">패스워드입력</label>
-                <input type="password" id="user_password" class="form-control2" placeholder="패스워드" style="padding-right:125px;"
+                <label for="inputPassword" class="sr-only">패스워드변경</label>
+                <input type="password" id="user_password" class="form-control2" placeholder="패스워드변경" style="padding-right:125px;"
                     required ng-model="pw">
                 <br />
                 <div>
@@ -65,13 +74,7 @@
                 <div>
                     <br />
                 </div>
-                <label for="inputnickname" class="sr-only">닉네임</label>
-                <input type="text" id="user_nickname" class="form-control2" placeholder="닉네임입력" style="padding-right:15px;"
-                    required ng-model="nickname">
-                <label for="checknickname" class="sr-only"></label>
-                <button id="nickname_confirm" type="button" ng-click="clickNicknameOverlap()" name="nicknameconfirm"
-                    class="btn btn-outline-primary btn-sm confirmbutton">중복확인</button>
-                <input type="hidden" id="nickname_check" value="no" /> <br>
+
 
                 <div>
                     <br />
