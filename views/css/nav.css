@@ -37,10 +37,10 @@
 }
 
 .nav-button-login {
-  padding: 5px 10px;
+  padding: 5px 3px;
   font-weight: bold;
   color: black;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.5;
   border-radius: 3px;
   margin-right: 3%;
@@ -112,6 +112,6 @@
 }
 
 .img-login {
-  width : 20px;
-  height : 20px;
+  width : 30px;
+  height : 30px;
 }
