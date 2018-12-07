@@ -90,15 +90,9 @@ exports.mypagepwcheck = function (request, response) {
 			}
 		}, function (data, nextCallback) {
 			if (data[0].user_pw == req_user_pw) {
-				var tmp = data[0].user_idx + '/' + data[0].user_auth + '/' + request.sessionID;
-				response.cookie('token', tmp, {
-					maxAge: 60000 * 60 * 24
-				});
-				request.session.user_idx = data[0].user_idx;
-				request.session.user_nickname = data[0].user_nickname;
-				request.session.user_auth = data[0].user_auth;
-				request.session.check_status = 1;
-				dao.edituserconnectdate(date, data[0].user_idx, nextCallback);
+				response.json({
+                    RESULT: "1"
+                });
 			} else {
 				nextCallback("WRONG PW", null, 3);
 			}
