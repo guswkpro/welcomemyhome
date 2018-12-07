@@ -63,8 +63,8 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   var data_user;
   var data_my;
   var token_man = false;
-  var totalcheck =  function () {
-    console.log(total,"total");
+  var totalcheck = function () {
+    console.log(total, "total");
     return Math.ceil(total / $scope.pageSize);
   };
 
@@ -121,7 +121,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
       if (response.RESULT == 1) {
         data_my = response.INFO;
         total_my = response.COUNT; // data_my.total
-        
+
       } else {
         var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
         $window.alert(msg);
@@ -134,7 +134,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
     $window.location.href = '/';
   }
 
-  
+
 
   // 사용자 글 보기로 바꾸기
   $scope.viewUserWrite = function () {
