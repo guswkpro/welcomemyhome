@@ -132,13 +132,37 @@ exports.mypagesetting = function (request, response) {
 					nextCallback(null);
 				},
 				function (nextCallback) {
-					dao.edituserthumbnail(dirname, request.session.user_idx, nextCallback);
+					if(req_user_picture != null){ //값이 있으면 그걸로 수정할거고
+						dao.edituserthumbnail(dirname, request.session.user_idx, nextCallback);
+					}else if(req_user_picture == null){ //값이 없으면 다음껄로 넘길거고
+						nextCallback(null);
+					}else{	// 이상하면 4를 넘겨줄거야
+						Response.json({
+							RESULT:"4"
+						});
+					}
 				},
 				function (nextCallback) {
-					dao.editusernickname(req_user_nickname , request.session.user_idx, nextCallback);
+					if(req_user_nickname != null){ //값이 있으면 그걸로 수정할거고
+						dao.editusernickname(req_user_nickname , request.session.user_idx, nextCallback);
+					}else if(req_user_nickname == null){ //값이 없으면 다음껄로 넘길거고
+						nextCallback(null);
+					}else{	// 이상하면 4를 넘겨줄거야
+						Response.json({
+							RESULT:"4"
+						});
+					}
 				},
 				function(nextCallback) {
-					dao.edituserpassword(req_user_pw, request.session.user_idx, nextCallback);
+					if(req_user_pw != null){ //값이 있으면 그걸로 수정할거고
+						dao.edituserpassword(req_user_pw, request.session.user_idx, nextCallback);
+					}else if(req_user_pw == null){ //값이 없으면 다음껄로 넘길거고
+						nextCallback(null);
+					}else{	// 이상하면 4를 넘겨줄거야
+						Response.json({
+							RESULT:"4"
+						});
+					}
 				}
 			], function (error) {
 				if (error) {

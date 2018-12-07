@@ -69,24 +69,24 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
               })
             }).success(function(response) {
               if (response.RESULT == "1") {
-                var msg = "견적 작성에 성공하셨습니다.";
+                var msg = "회원정보수정에 성공하셨습니다.";
                 $window.alert(msg);
-                $window.location.href = '/estimatelist';
-              } else {
-                var msg = "알 수 없는 오류로 견적 작성에 실패하였습니다.";
+                $window.location.href = '/';
+              } else if(response.RESULT == "4") {
+                var msg = "알 수 없는 오류로 변경에 실패하였습니다.";
                 $window.alert(msg);
-                $window.location.href='/estimatelist'
+                $window.location.href='/'
               }
             }).error(function() {
               console.log("error");
             });
         }
     }
-    //estimate 작성 취소
+    //변경 취소
     $scope.cancelEstimate = function() {
-      var msg = "작성을 취소하여 리스트 페이지로 이동합니다.";
+      var msg = "변경을 취소합니다.";
       $window.alert(msg);
-      $window.location.href = '/estimatelist';
+      $window.location.href = '/';
     };
     // $scope.clickLogin = function () {
     //   $http({
