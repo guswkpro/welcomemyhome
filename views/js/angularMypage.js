@@ -49,7 +49,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 
   app.controller('userCtrl', function ($scope, $http, $window) {
 
-    $scope.pushEstimateData = function() {
+    $scope.pushData = function() {
 
         var input = document.getElementById('fileselector');
         var fr = new FileReader();
