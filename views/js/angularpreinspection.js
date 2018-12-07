@@ -32,6 +32,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     var pin = {};
+    var pin_info = new Object();
     var pin_arr = new Array();
     var cloneCount=0;
     $scope.elements = {
@@ -46,9 +47,10 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             pin = $(ui.helper).clone(); 
             $(this).after(pin.draggable());
             pin.attr("id", "pin"+cloneCount);
-            pin.x = pin.offset().left;
-            pin.y = pin.offset().top;
-            console.log(pin, "pin");
+            pin_info.x = pin.offset().left;
+            pin_info.y = pin.offset().top;
+            pin_info.id = cloneCount;
+            console.log(pin_info, "pin_info");
             
             pin.css({
                 'z-index': '999'
