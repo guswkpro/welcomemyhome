@@ -4,6 +4,7 @@ var async = require('async');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var mkdirp = require('mkdirp');
+var fs = require('fs');
 require('date-utils');
 
 /********************
