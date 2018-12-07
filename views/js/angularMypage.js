@@ -51,7 +51,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
     $scope.clickLogin = function () {
       $http({
         method: 'POST',
-        url: '/login',
+        url: '/mypagesetting',
         headers: {
           'Content-Type': 'application/json'
         },

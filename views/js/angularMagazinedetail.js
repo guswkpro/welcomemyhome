@@ -64,7 +64,7 @@ app.controller('magazinedetailcard', function ($scope, $http) {
   });
 });
 
-
-
+var cookie = document.cookie.split("=");
+var click_idx = cookie[2];
 
 
