@@ -20,21 +20,15 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('magazinedetailcard', function ($scope, $http) {
+  var cookie = document.cookie.split("=");
+  var click_idx = cookie[2];
   console.log("1");
-  $http.get('/logincheck').success(function (response) {
-    console.log("2");
-    if (response.RESULT == "1") {
-      $scope.div_login = {
-        "width": "12%"
-      };
-      console.log("3");
       $http.get('/getmagazinedetail', {
         params: {
           magazine_idx: $scope.magazine_idx
         }
       }).success(function (response) {
         if (response.RESULT == 1) {
-
           console.log(response, "success");
           console.log(response.INFO, "4");
           $scope.magazinedetail = response.INFO;
@@ -59,12 +53,9 @@ app.controller('magazinedetailcard', function ($scope, $http) {
           magazine_idx: $scope.magazine_idx
         }
       });
+    });
 
-    }
-  });
-});
 
-var cookie = document.cookie.split("=");
-var click_idx = cookie[2];
+
 
 
