@@ -112,7 +112,7 @@ exports.mypagepwcheck = function (request, response) {
 
 exports.mypagesetting = function (request, response) {
 
-	
+	console.log(request.body.nickname);
 	// var req_user_id = request.body.id;
 	// var req_user_pw = request.body.pw;
 	// var req_user_nickname = request.body.nickname;

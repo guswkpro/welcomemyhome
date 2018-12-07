@@ -48,9 +48,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
   });
 
   app.controller('userCtrl', function ($scope, $http, $window) {
-
     $scope.pushData = function() {
-
         var input = document.getElementById('fileselector');
         var fr = new FileReader();
         fr.readAsDataURL(input.files[0]);//input.files[0]에 사용자 로컬경로가 담기고 그게 fr에 저장
@@ -59,7 +57,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
           var image = {
             image: str
           };
-            console.log(JSON.stringify(images));
+            console.log(JSON.stringify(image));
             $http({
               method: 'POST',
               url: '/mapagesetting',
