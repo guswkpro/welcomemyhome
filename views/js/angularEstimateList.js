@@ -26,7 +26,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 
 app.controller('estimateListCtrl', function ($scope, $http) {
-  $http.get('/getcommunitylist', {
+  $http.get('/getestimatelist', {
     params: {
       offset: '0'
     }
