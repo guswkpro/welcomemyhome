@@ -37,6 +37,7 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
       $scope.address = response.INFO.estimate_address;
       $scope.content = response.INFO.estimate_content;
       $scope.image = response.INFO.encodedimage;
+      document.cookie = "click_idx=";
     } else {
       var msg = "알 수 없는 에러로 detail 페이지를 불러 올 수 없습니다.";
       $window.alert(msg);
@@ -46,7 +47,6 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
     console.log("error");
   });
 
-  // document.cookie="token=84%2F0%2FIuC5Qfid5sDZ6kuUuANT1YsCoZjCDQJj; click_idx=";
 });
 
 // Estimate list 출력
@@ -64,7 +64,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
   }).success(function (response) {
     if (response.RESULT == 1) {
       $scope.data = response.INFO;
-      total = 10; // response.total;
+      total = response.COUNT;
     } else {
       var msg = "알 수 없는 에러로 나의 견적 요청 리스트를 불러 올 수 없습니다.";
       $window.alert(msg);
