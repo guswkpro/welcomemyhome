@@ -42,7 +42,7 @@ app.controller('magazinelist', function ($scope, $http) {
 });
 
 // 사용자가 게시글 클릭
-$scope.userClickEstimate = function (magazine_idx) {
+$scope.userClickMagazine = function (magazine_idx) {
   document.cookie = "click_idx=" + magazine_idx;
   $window.location.href = '/magazinedetail';
 };
