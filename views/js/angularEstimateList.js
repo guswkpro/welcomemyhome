@@ -51,7 +51,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 //   })
 // })
 
-Estimate list 출력
+//Estimate list 출력
 app.controller('estimateListCtrl', function ($scope, $http, $window) {
   $scope.currentPage = 1;
   $scope.pageSize = 5;  // var 써도 되지 않을까??
