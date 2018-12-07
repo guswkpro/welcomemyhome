@@ -125,7 +125,7 @@ exports.mypagesetting = function (request, response) {
 			mkdirp(dirname, nextCallback);
 		}, function (url, nextCallback) {
 			async.waterfall([
-				function (nextCallback) {
+				function (callback) {
 					var bitmap = new Buffer(req_user_picture, 'base64');
 					newPath = dirname + "/" + req_user_nickname  +  ".jpg";
 					fs.writeFile(newPath, bitmap, 'base64', callback);
