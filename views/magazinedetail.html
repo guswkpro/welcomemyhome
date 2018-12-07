@@ -31,7 +31,7 @@
 
   <div class="card card-body align-middle vh-100" style="width:60%; border-radius:20px;" ng-controller="magazinedetailcard">
     <div class="card-title" style="margin-top:15px;" ng-repeat="d in data">
-      {{d.magazine_title}}
+      {{title}}
       <!-- <div class="heart"></div> -->
     </div>
 
@@ -43,7 +43,7 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-          <img class="d-block w-100" ng-src="data:image/jpeg;base64,{{d.encodedimage}}" alt="First slide">
+          <img class="d-block w-100" ng-src="data:image/jpeg;base64,{{img}}" alt="First slide">
         </div>
 
         <!--
