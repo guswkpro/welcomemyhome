@@ -1,8 +1,8 @@
 var app = angular.module('magazines', []);
 
-app.controller('logincheckCtrl', function($scope, $http, $window) {
-  $scope.load = function() {
-    $http.get('/logincheck').success(function(response) {
+app.controller('logincheckCtrl', function ($scope, $http, $window) {
+  $scope.load = function () {
+    $http.get('/logincheck').success(function (response) {
       if (response.RESULT == "1") {
         $scope.div_login = {
           "width": "12%"
@@ -19,26 +19,24 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
   };
 });
 
-app.controller('magazinelist', function($scope, $http) {
+app.controller('magazinelist', function ($scope, $http) {
   $http.get('/getmagazinelist', {
     params: {
       offset: "0"
     }
-  }).success(function(response) {
+  }).success(function (response) {
     if (response.RESULT == 1) {
       $scope.magazine_list = response.INFO
-
-      for(i=0; i<$scope.magazine_list.length; i++){
+      for (i = 0; i < $scope.magazine_list.length; i++) {
         var tmp = new Date($scope.magazine_list[i].magazine_post_date);
-        var month = tmp.getMonth()+1;
-        var day =tmp.getDate();
-        $scope.magazine_list[i].magazine_post_date = month + "-" + day ;
+        var month = tmp.getMonth() + 1;
+        var day = tmp.getDate();
+        $scope.magazine_list[i].magazine_post_date = month + "-" + day;
       }
-
     } else {
       console.log(response, "falt");
     }
-  }).error(function() {
+  }).error(function () {
     console.log(error);
   });
 });

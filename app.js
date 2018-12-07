@@ -105,6 +105,9 @@ app.get('/preinspectioncreate', function (request, response) {
 app.get('/preinspectionpopup', function (request, response) {
         response.render('preinspectionpopup.html');
 });
+app.get('/mypage', function (request, response) {
+        response.render('mypage.html');
+});
 
 /* ----------- POST ----------- */
 app.post('/login', usercontroller.login);
