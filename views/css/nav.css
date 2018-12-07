@@ -46,6 +46,14 @@
   margin-right: 3%;
 }
 
+.nav-button-login:hover {
+  text-decoration: none;
+  color: #dcdcdc;
+  content: "";
+  display: inline;
+  border-bottom: 1px solid #bcbcbc;
+}
+
 .nav-button-mypage {
   padding: 5px 10px;
   font-size: 12px;
