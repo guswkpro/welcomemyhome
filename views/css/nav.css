@@ -29,12 +29,22 @@
 }
 
 .nav-button-signup {
-  padding: 5px 10px;
-  
-  font-size: 12px;
+  padding: 5px 3px;
+  font-weight: bold;
+  color: black;
+  font-size: 15px;
   line-height: 1.5;
   border-radius: 3px;
 }
+
+.nav-button-signup:hover {
+  text-decoration: none;
+  color: #dcdcdc;
+  content: "";
+  display: inline;
+  border-bottom: 1px solid #bcbcbc;
+}
+
 
 .nav-button-login {
   padding: 5px 3px;
@@ -55,19 +65,41 @@
 }
 
 .nav-button-mypage {
-  padding: 5px 10px;
-  font-size: 12px;
+  padding: 5px 3px;
+  font-weight: bold;
+  color: black;
+  font-size: 15px;
   line-height: 1.5;
   border-radius: 3px;
   margin-right: 3%;
 }
 
+.nav-button-mypage:hover {
+  text-decoration: none;
+  color: #dcdcdc;
+  content: "";
+  display: inline;
+  border-bottom: 1px solid #bcbcbc;
+}
+
+
 .nav-button-logout {
-  padding: 5px 10px;
-  font-size: 12px;
+  padding: 5px 3px;
+  font-weight: bold;
+  color: black;
+  font-size: 15px;
   line-height: 1.5;
   border-radius: 3px;
 }
+
+.nav-button-logout:hover {
+  text-decoration: none;
+  color: #dcdcdc;
+  content: "";
+  display: inline;
+  border-bottom: 1px solid #bcbcbc;
+}
+
 
 /* nav menu 간격*/
 .nav-menu {
@@ -119,7 +151,7 @@
   border-bottom: 1px solid #bcbcbc;
 }
 
-.img-login {
+.img-nav {
   width : 30px;
   height : 30px;
 }

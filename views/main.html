@@ -56,13 +56,14 @@
       </div>
       <div class="nav-div-form" ng-init="load()" ng-style="div_login">
         <form>
-          <img src="./img/Login.png" class="img-login" alt="이미지없음">
+          <img src="./img/Login.png" class="img-nav" alt="이미지없음">
           <a ng-show="showHide_logout" class="nav-button-login" href = 'http://13.124.196.226:3000/login'>로그인</a>
-          <button ng-show="showHide_logout" class="btn btn-secondary my-sm-0 nav-button-signup" onclick="location.href = 'http://13.124.196.226:3000/signup'"
-            type="button">회원가입</button>
-          <a ng-show="showHide_login"  class="nav-a-text4" href='http://13.124.196.226:3000/mypage'>마이페이지</a>
-          <button ng-show="showHide_login" class="btn btn-secondary my-sm-0 nav-button-logout" ng-click="clickLogout()"
-            type="button">로그아웃</button>
+          <img src="./img/Signup.png" class="img-nav" alt="이미지없음">
+          <a ng-show="showHide_logout" class="nav-button-signup" href = 'http://13.124.196.226:3000/login'>회원가입</a>
+          <img src="./img/Login.png" class="img-nav" alt="이미지없음">
+          <a ng-show="showHide_logout" class="nav-button-mypage" href = 'http://13.124.196.226:3000/login'>마이페이지</a>
+          <img src="./img/Logout.png" class="img-nav" alt="이미지없음">
+          <a ng-show="showHide_logout" class="nav-button-logout" href = 'http://13.124.196.226:3000/login'>로그아웃</a>
         </form>
       </div>
     </nav>
