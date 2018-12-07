@@ -43,12 +43,6 @@
         </div>
         <div class="card-body" ng-controller="userCtrl">
             <form class="form-userInfo" name="userInfo" method="POST">
-                <label for="inputid" class="sr-only">아이디입력</label>
-                <input type="text" id="input_id" placeholder="아이디입력" class="form-control2" required style="padding-right:15px;"
-                    ng-model="id">
-                <label for="checkid" class="sr-only"></label>
-                <button type="button" ng-click="clickIdOverlap()" name="idconfirm" class="btn btn-outline-primary btn-sm confirmbutton">중복확인</button>
-                <input type="hidden" id="id_check" value="no" />
 
                 <label for="inputnickname" class="sr-only">닉네임</label>
                 <input type="text" id="user_nickname" class="form-control2" placeholder="닉네임변경" style="padding-right:15px;"
@@ -62,15 +56,14 @@
                     <br />
                 </div>
                 <label for="inputPassword" class="sr-only">패스워드변경</label>
-                <input type="password" id="user_password" class="form-control2" placeholder="패스워드변경" 
+                <input type="password" id="user_password" class="form-control2" placeholder="패스워드변경" style="padding-right:100px;"
                     required ng-model="pw">
                 <br />
                 <div>
                     <br />
                 </div>
                 <label for="inputPasswordCheck" class="sr-only">패스워드확인</label>
-                <input type="password" id="user_password_check" class="form-control2" placeholder="패스워드확인" style="padding-right:125px;"
-                    required>
+                <input type="password" id="user_password_check" class="form-control2" placeholder="패스워드확인" style="padding-right:100px;" required>
                 <div>
                     <br />
                 </div>
