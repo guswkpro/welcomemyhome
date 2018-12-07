@@ -132,9 +132,9 @@ exports.mypagesetting = function (request, response) {
 					nextCallback(null);
 				},
 				function (nextCallback) {
-					if(req_user_picture != null){ //값이 있으면 그걸로 수정할거고
+					if(dirname != null){ //값이 있으면 그걸로 수정할거고
 						dao.edituserthumbnail(dirname, request.session.user_idx, nextCallback);
-					}else if(req_user_picture == null){ //값이 없으면 다음껄로 넘길거고
+					}else if(dirname == null){ //값이 없으면 다음껄로 넘길거고
 						nextCallback(null);
 					}else{	// 이상하면 4를 넘겨줄거야
 						Response.json({
