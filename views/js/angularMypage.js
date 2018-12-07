@@ -34,7 +34,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
       }).success(function (response) {
         console.log(response.RESULT);
         if (response.RESULT == "1") {
-          $window.location.href = '/mypagesetting';
+          $window.location.href = '/mypageset';
         } else if (response.RESULT == "2") {
           var msg = "비밀번호를 입력해주세요."; 
           $window.alert(msg);
