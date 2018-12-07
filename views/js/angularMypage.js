@@ -1,5 +1,4 @@
-var app = angular.module('mypage', ['ui.bootstrap']);
-
+var app = angular.module('mypage', []);
 
 app.controller('logincheckCtrl', function($scope, $http, $window) {
     $scope.load = function() {
@@ -22,4 +21,4 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
   });
 
 
-  
+
