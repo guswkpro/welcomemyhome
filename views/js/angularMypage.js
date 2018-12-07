@@ -21,7 +21,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
   });
 
   app.controller('passwordCheckCtrl', function ($scope, $http, $window) {
-    $scope.clickLogin = function () {
+    $scope.clickPasswordCheck = function () {
       $http({
         method: 'POST',
         url: '/mypagepwcheck',

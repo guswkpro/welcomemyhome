@@ -13,8 +13,8 @@ exports.getuserinformation = function (useridx, callback) {
         callback(error, result);
     });
 };
-exports.getidcheck = function (user_id, callback) {
-    client.query('SELECT * FROM stweb.stweb_users where user_id = ?', [user_id], function (error, result) {
+exports.getpwcheck = function (user_pw, callback) {
+    client.query('SELECT * FROM stweb.stweb_users where user_pw = ?', [user_pw], function (error, result) {
         callback(error, result);
     });
 };

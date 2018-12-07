@@ -79,11 +79,9 @@ exports.logout = function (request, response) {
 ********************/
 exports.mypagepwcheck = function (request, response) {
 	var req_user_pw = request.body.pw;
-	var date = new Date();
-	date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
 	async.waterfall([
 		function (nextCallback) {
-			dao.getuseridauth(req_user_id, nextCallback);
+			dao.getpwcheck(req_user_pw, nextCallback);
 		}, function (data, nextCallback) {
 			if (data.length == 0) {
 				nextCallback("NO PW", null, 2)
