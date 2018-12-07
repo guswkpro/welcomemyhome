@@ -25,13 +25,17 @@ app.controller('magazinedetailcard', function ($scope, $http) {
   console.log("1");
       $http.get('/getmagazinedetail', {
         params: {
-          magazine_idx: $scope.magazine_idx
+          magazine_idx: click_idx
         }
       }).success(function (response) {
         if (response.RESULT == 1) {
           console.log(response, "success");
           console.log(response.INFO, "4");
-          $scope.magazinedetail = response.INFO;
+          $scope.title = response.INFO.magaznine_title;
+          $scope.date = response.INFO.magaznine_post_date;
+          $scope.content = response.INFO.magaznine_content;
+          $scope.image = response.INFO.encodedimage;
+          document.cookie = "click_idx=";
           /*
                   var ol = document.getElementById('ol_indicators');
                   for(var i = 0; i < response.INFO.encodedimage.length; i++){
@@ -40,7 +44,6 @@ app.controller('magazinedetailcard', function ($scope, $http) {
                     li.setAttribute
                   }
           */
-
         } else {
           console.log(response, "falt");
         }
