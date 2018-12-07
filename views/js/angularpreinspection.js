@@ -51,14 +51,14 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             pin_info.y = pin.offset().top;
             pin_info.id = cloneCount;
             console.log(pin_info, "pin_info");
-            
             pin.css({
                 'z-index': '5'
             });
             $("#dialog").css({
                 'display': 'block'
             });
-            pin_arr[cloneCount] = pin;
+            pin_arr[cloneCount] = pin_info;
+            console.log(pin_arr, "pin_arr");
             cloneCount++;
         });
         $(".close").click(function() {
