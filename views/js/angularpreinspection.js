@@ -51,7 +51,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             pin_info.y = pin_img[cloneCount].offset().top;
             pin_info.id = cloneCount;
             console.log(pin_info, "pin_info");
-            pin.css({
+            pin_img[cloneCount].css({
                 'z-index': '5'
             });
             $("#dialog").css({
