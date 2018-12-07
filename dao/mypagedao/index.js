@@ -37,6 +37,11 @@ exports.signup = function (user, callback) {
 /********************
         PUT
 ********************/
+exports.edituserthumbnail = function (user_thumbnail_path, user_idx, callback) {
+    client.query('UPDATE stweb.stweb_users set user_picture_thumbnail_path = ? set user_picture_path = ? where user_idx = ?', [user_thumbnail_path, user_thumbnail_path, user_idx], function (error) {
+        callback(error);
+    });
+};
 
 exports.editusernickname = function (user_nickname, user_idx, callback) {
     client.query('UPDATE stweb.stweb_users set user_nickname = ? where user_idx = ?', [user_nickname, user_idx], function (error) {

@@ -111,41 +111,43 @@ exports.mypagepwcheck = function (request, response) {
 };
 
 exports.mypagesetting = function (request, response) {
-	var req_user_id = request.body.id;
-	var req_user_pw = request.body.pw;
-	var req_user_nickname = request.body.nickname;
-	var date = new Date();
-	date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
-	var user_auth = 0;
-	var user_subscription = 1;
-	var dir = './public/' + req_user_nickname;
 
-	async.waterfall([
-		function (nextCallback) {
-			mkdirp(dir, nextCallback);
-		}, function (url, nextCallback) {
-			async.waterfall([
-				function (nextCallback) {
-					dto.user(req_user_id, req_user_pw, req_user_nickname, date, user_subscription, user_auth, nextCallback)
-				}, function (userdata, nextCallback) {
-					dao.signup(userdata, nextCallback);
-				}
-			], function (error) {
-				if (error) {
-					console.log(error);
-					response.json({
-						RESULT: "0"
-					});
-				} else {
-					nextCallback(null);
-				}
-			});
-		}
-	], function (error) {
-		response.json({
-			RESULT: "1"
-		});
-	});
+	
+	// var req_user_id = request.body.id;
+	// var req_user_pw = request.body.pw;
+	// var req_user_nickname = request.body.nickname;
+	// var date = new Date();
+	// date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
+	// var user_auth = 0;
+	// var user_subscription = 1;
+	// var dir = './public/' + req_user_nickname;
+
+	// async.waterfall([
+	// 	function (nextCallback) {
+	// 		mkdirp(dir, nextCallback);
+	// 	}, function (url, nextCallback) {
+	// 		async.waterfall([
+	// 			function (nextCallback) {
+	// 				dto.user(req_user_id, req_user_pw, req_user_nickname, date, user_subscription, user_auth, nextCallback)
+	// 			}, function (userdata, nextCallback) {
+	// 				dao.signup(userdata, nextCallback);
+	// 			}
+	// 		], function (error) {
+	// 			if (error) {
+	// 				console.log(error);
+	// 				response.json({
+	// 					RESULT: "0"
+	// 				});
+	// 			} else {
+	// 				nextCallback(null);
+	// 			}
+	// 		});
+	// 	}
+	// ], function (error) {
+	// 	response.json({
+	// 		RESULT: "1"
+	// 	});
+	// });
 };
 
 exports.test = function (request, response) {
