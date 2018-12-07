@@ -31,7 +31,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
-    var pin = {};
+    var pin_img = new Array();
     var pin_info = new Object();
     var pin_arr = new Array();
     var cloneCount=0;
@@ -44,11 +44,11 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
         // drop 이벤트
         $('.pin-img').bind('dragstop', function(event, ui) {
-            pin = $(ui.helper).clone(); 
-            $(this).after(pin.draggable());
-            pin.attr("id", "pin"+cloneCount);
-            pin_info.x = pin.offset().left;
-            pin_info.y = pin.offset().top;
+            pin_img[cloneCount] = $(ui.helper).clone(); 
+            $(this).after(pin_img[cloneCount].draggable());
+            pin_img[cloneCount].attr("id", "pin"+cloneCount);
+            pin_info.x = pin_img[cloneCount].offset().left;
+            pin_info.y = pin_img[cloneCount].offset().top;
             pin_info.id = cloneCount;
             console.log(pin_info, "pin_info");
             pin.css({
