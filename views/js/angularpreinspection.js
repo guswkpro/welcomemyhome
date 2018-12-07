@@ -32,7 +32,6 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     var pin_img = new Array();
-    var pin_info = new Object();
     var pin_arr = new Array();
     var cloneCount=0;
     $scope.elements = {
@@ -44,6 +43,11 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
         // drop 이벤트
         $('.pin-img').bind('dragstop', function(event, ui) {
+            var pin_info = {
+                id: null,
+                x: null,
+                y: null
+            }
             pin_img[cloneCount] = $(ui.helper).clone(); 
             $(this).after(pin_img[cloneCount].draggable());
             pin_img[cloneCount].attr("id", "pin"+cloneCount);
@@ -73,6 +77,19 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                 });
             }
         });
+        //pin 클릭시 모듈 정보 다시 띄우기
+        $(".pin-img").click(function() {
+            $http.get('/getpreinspectionmodule', {
+                params: {
+                    pin_idx : $(this).attr("id")
+                }
+            }).success(function(response) {
+                if(response.RESULT == "1") {
+                    $scope.title = response.INFO.title;
+                    $scope.content = response.INFO.content;
+                }
+            })
+        })
     });
 
     // modal에서 데이터 제출
