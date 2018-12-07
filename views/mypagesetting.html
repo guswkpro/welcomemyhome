@@ -44,14 +44,22 @@
         <div class="card-body" ng-controller="userCtrl">
             <form class="form-userInfo" name="userInfo" method="POST">
 
-                <label for="inputnickname" class="sr-only">닉네임</label>
-                <input type="text" id="user_nickname" class="form-control2" placeholder="닉네임변경"
-                    required ng-model="nickname">
-                <label for="checknickname" class="sr-only"></label>
-                <button id="nickname_confirm" type="button" ng-click="clickNicknameOverlap()" name="nicknameconfirm"
-                    class="btn btn-outline-primary btn-sm">중복확인</button>
-                <input type="hidden" id="nickname_check" value="no" /> <br>
 
+                <table>
+                    <tr>
+                        <td>
+                            <label for="inputnickname" class="sr-only">닉네임</label>
+                            <input type="text" id="user_nickname" class="form-control2" placeholder="닉네임변경" required
+                                ng-model="nickname">
+                        </td>
+                        <td>
+                            <label for="checknickname" class="sr-only"></label>
+                            <button id="nickname_confirm" type="button" ng-click="clickNicknameOverlap()" name="nicknameconfirm"
+                                class="btn btn-outline-primary btn-sm">중복확인</button>
+                            <input type="hidden" id="nickname_check" value="no" /> <br>
+                        </td>
+                    </tr>
+                </table>
                 <div>
                     <br />
                 </div>
@@ -63,7 +71,8 @@
                     <br />
                 </div>
                 <label for="inputPasswordCheck" class="sr-only">패스워드확인</label>
-                <input type="password" id="user_password_check" class="form-control2" placeholder="패스워드확인" style="padding-right:100px;" required>
+                <input type="password" id="user_password_check" class="form-control2" placeholder="패스워드확인" style="padding-right:100px;"
+                    required>
                 <div>
                     <br />
                 </div>
