@@ -117,6 +117,9 @@ app.get('/preinspectionpopup', function (request, response) {
 app.post('/login', usercontroller.login);
 app.post('/signup', usercontroller.signup);
 
+app.post('/mypagepwcheck', usercontroller.mypagepwcheck);
+app.post('/mypagesetting', usercontroller.mypagesetting);
+
 app.post('/addmagazinelike', magazinecontroller.addmagazinelike);
 app.post('/addmagazinecomment', magazinecontroller.addmagazinecomment);
 
