@@ -60,7 +60,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
             console.log(JSON.stringify(image));
             $http({
               method: 'POST',
-              url: '/mapagesetting',
+              url: '/mypagesetting',
               headers: {
                 'Content-Type': 'application/json'
               },
