@@ -5,6 +5,7 @@ var usercontroller = require('./controller/usercontroller')
 var magazinecontroller = require('./controller/magazinecontroller');
 var estimatecontroller = require('./controller/estimatecontroller');
 var communitycontroller = require('./controller/communitycontroller');
+var mypagecontroller = require('./controller/mypagecontroller');
 var server = app.listen(3000, function () {
         console.log("Express server has started on port 3000")
 });
@@ -117,8 +118,8 @@ app.get('/preinspectionpopup', function (request, response) {
 app.post('/login', usercontroller.login);
 app.post('/signup', usercontroller.signup);
 
-app.post('/mypagepwcheck', usercontroller.mypagepwcheck);
-app.post('/mypagesetting', usercontroller.mypagesetting);
+app.post('/mypagepwcheck', mypagecontroller.mypagepwcheck);
+app.post('/mypagesetting', mypagecontroller.mypagesetting);
 
 app.post('/addmagazinelike', magazinecontroller.addmagazinelike);
 app.post('/addmagazinecomment', magazinecontroller.addmagazinecomment);
