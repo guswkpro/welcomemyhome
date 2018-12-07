@@ -53,7 +53,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             console.log(pin_info, "pin_info");
             
             pin.css({
-                'z-index': '999'
+                'z-index': '5'
             });
             $("#dialog").css({
                 'display': 'block'
