@@ -31,6 +31,9 @@
   <link rel="import" href="/main.html">
 
   <title>놀러와 마이홈</title>
+  <script>
+    $("#include").load("./main.html");
+  </script>
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
@@ -54,7 +57,7 @@
             <td>{{d.estimate_date}}</td>
             <td ng-hide="answercount">{{d.estimate_answer_count}}</td>
           </tr>
-        </tbody>
+        </tbody> 
       </table>
 
       <hr />
@@ -72,6 +75,7 @@
         </button>
       </div>
     </div>
+    <div id = "include"></div>
     <!--<nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
       <div class="nav-logo">
         <a class="navbar-bran" href='http://13.124.196.226:3000/'>WMH</a>
