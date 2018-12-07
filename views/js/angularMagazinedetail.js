@@ -50,15 +50,10 @@ app.controller('magazinedetailcard', function ($scope, $http) {
       }).error(function () {
         console.log(error);
       });
-
       $http.get('/getmagazinecomment', {
         params: {
           magazine_idx: $scope.magazine_idx
         }
       });
+ 
     });
-
-
-
-
-
