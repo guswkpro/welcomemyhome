@@ -39,10 +39,11 @@ app.controller('magazinelist', function ($scope, $http) {
   }).error(function () {
     console.log(error);
   });
+  // 사용자가 게시글 클릭
+  $scope.userClickMagazine = function (magazine_idx) {
+    document.cookie = "click_idx=" + magazine_idx;
+    $window.location.href = '/magazinedetail';
+  };
 });
 
-// 사용자가 게시글 클릭
-  $scope.userClickMagazine = function (magazine_idx) {
-  document.cookie = "click_idx=" + magazine_idx;
-  $window.location.href = '/magazinedetail';
-};
+
