@@ -35,7 +35,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
       }).success(function (response) {
         console.log(response.RESULT);
         if (response.RESULT == "1") {
-          $window.location.href = '/';
+          $window.location.href = '/mypage';
         } else if (response.RESULT == "2") {
           var msg = "존재하지 않는 아이디 입니다."; // 필요없음
           $window.alert(msg);
