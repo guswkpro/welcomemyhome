@@ -22,7 +22,8 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 app.controller('magazinedetailcard', function ($scope, $http) {
   var cookie = document.cookie.split("=");
   var click_idx = cookie[2];
-  console.log("1");
+  console.log(document.cookie, "cookie");
+  console.log(click_idx, "click_idx");
       $http.get('/getmagazinedetail', {
         params: {
           magazine_idx: click_idx
