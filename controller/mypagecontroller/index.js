@@ -114,35 +114,50 @@ exports.mypagesetting = function (request, response) {
 
 	console.log(request.session);
 
-	var req_user_picture_path = request.body.image;
+	var req_user_picture = request.body.image;
 	var req_user_pw = request.body.pw;
 	var req_user_nickname = request.body.nickname;
-	var dir = './public/user/' + req_user_nickname + '.jpg';
+	var dirname = './public/user/' + req_user_nickname;
 
-	// async.waterfall([
-	// 	function (nextCallback) {
-	// 		mkdirp(dir, nextCallback);
-	// 	}, function (url, nextCallback) {
-	// 		async.waterfall([
-	// 			function ( nextCallback) {
-	// 				dao.edituserthumbnail(dir, nextCallback);
-	// 			}
-	// 		], function (error) {
-	// 			if (error) {
-	// 				console.log(error);
-	// 				response.json({
-	// 					RESULT: "0"
-	// 				});
-	// 			} else {
-	// 				nextCallback(null);
-	// 			}
-	// 		});
-	// 	}
-	// ], function (error) {
-	// 	response.json({
-	// 		RESULT: "1"
-	// 	});
-	// });
+	async.waterfall([
+		function (nextCallback) {
+			mkdirp(dirname, nextCallback);
+		}, function (url, nextCallback) {
+			async.waterfall([
+				function (nextCallback) {
+					var bitmap = new Buffer(req_user_picture, 'base64');
+					newPath = dirname + "/" + req_user_nickname  +  ".jpg";
+					fs.writeFile(newPath, bitmap, 'base64', callback);
+					nextCallback(null);
+				},
+				function (nextCallback) {
+					dao.edituserthumbnail(dir, request.session.user_idx);
+					nextCallback(null);
+				},
+				function (nextCallback) {
+					dao.editusernickname(req_user_nickname , request.session.user_idx);
+					nextCallback(null);
+				},
+				function(nextCallback) {
+					dao.edituserpassword(req_user_pw, request.session.user_idx);
+					nextCallback(null);
+				}
+			], function (error) {
+				if (error) {
+					console.log(error);
+					response.json({
+						RESULT: "0"
+					});
+				} else {
+					nextCallback(null);
+				}
+			});
+		}
+	], function (error) {
+		response.json({
+			RESULT: "1"
+		});
+	});
 };
 
 exports.test = function (request, response) {
