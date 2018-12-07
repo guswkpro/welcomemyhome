@@ -43,6 +43,9 @@ app.get('/signup', function (request, response) {
 app.get('/mypage', function (request, response) {
         response.render('mypagepwcheck.html');
 });
+app.get('/mypageset', function (request, response) {
+        response.render('mypagesetting.html');
+});
 
 app.get('/logincheck', usercontroller.logincheck);
 app.get('/idcheck', usercontroller.idcheck);
