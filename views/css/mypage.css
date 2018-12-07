@@ -8,7 +8,6 @@ body {
       background-repeat: no-repeat;
       background:linear-gradient(to bottom right);
 }
-
 .card {
     margin: 0 auto; /* Added */
     float: none; /* Added */
@@ -16,26 +15,32 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-top: 150px;
 }
-  .form-passwordCheck {
-        position: relative;
-        height: auto;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-                 box-sizing: border-box;
-        padding: 5px;
-        font-size: 12px;
-    }
-    .form-userInfo {
-      position: relative;
-      height: auto;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-               box-sizing: border-box;
-      padding: 5px;
-      font-size: 12px;
-  }
-    .form-control {
-      padding: 7px;
-      font-size: 12px;
-        border-radius:5px
+.form-passwordCheck {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 5px;
+    font-size: 12px;
 }
+.form-userInfo {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 5px;
+    font-size: 12px;
+}
+.form-control {
+    padding: 7px;
+    font-size: 12px;
+    border-radius:5px
+}
+.form-control2 {  
+    padding: 7px;
+    font-size: 12px;
+    border-radius:5px;
+}
+
