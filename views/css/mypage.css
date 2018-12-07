@@ -43,3 +43,8 @@ body {
     font-size: 12px;
     border-radius:5px;
 }
+
+.userpicture{
+    border:2px outset rgba(44, 134, 204, 0.67);
+    border-radius:5px;
+}
