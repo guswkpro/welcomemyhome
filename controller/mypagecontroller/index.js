@@ -146,8 +146,6 @@ exports.mypagesetting = function (request, response) {
 					response.json({
 						RESULT: "0"
 					});
-				} else {
-					nextCallback(null);
 				}
 			});
 		}
