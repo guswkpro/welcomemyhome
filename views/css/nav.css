@@ -5,6 +5,7 @@
   height : 10%;
   padding:0;
   background-color: white;
+  z-index:99999;
 }
 
 .nav-logo {
