@@ -132,16 +132,13 @@ exports.mypagesetting = function (request, response) {
 					nextCallback(null);
 				},
 				function (nextCallback) {
-					dao.edituserthumbnail(dir, request.session.user_idx);
-					nextCallback(null);
+					dao.edituserthumbnail(dirname, request.session.user_idx, nextCallback);
 				},
 				function (nextCallback) {
-					dao.editusernickname(req_user_nickname , request.session.user_idx);
-					nextCallback(null);
+					dao.editusernickname(req_user_nickname , request.session.user_idx, nextCallback);
 				},
 				function(nextCallback) {
-					dao.edituserpassword(req_user_pw, request.session.user_idx);
-					nextCallback(null);
+					dao.edituserpassword(req_user_pw, request.session.user_idx, nextCallback);
 				}
 			], function (error) {
 				if (error) {
