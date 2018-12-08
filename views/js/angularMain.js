@@ -11,7 +11,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
         };
         $scope.showHide_login = true;
       } else if (response.RESULT == "2") {
-        scope.showHide_logout = true;
+        $scope.showHide_logout = true;
       } else {
         var msg = "알수없는 오류가 발생하여 메인페이지로 이동합니다.";
         $window.alert(msg);

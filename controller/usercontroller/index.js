@@ -159,27 +159,20 @@ exports.signup = function (request, response) {
 		function (nextCallback) {
 			mkdirp(dir, nextCallback);
 		}, function (url, nextCallback) {
-			async.waterfall([
-				function (nextCallback) {
-					dto.user(req_user_id, req_user_pw, req_user_nickname, date, user_subscription, user_auth, nextCallback)
-				}, function (userdata, nextCallback) {
-					dao.signup(userdata, nextCallback);
-				}
-			], function (error) {
-				if (error) {
-					console.log(error);
-					response.json({
-						RESULT: "0"
-					});
-				} else {
-					nextCallback(null);
-				}
-			});
+			dto.user(req_user_id, req_user_pw, req_user_nickname, date, user_subscription, user_auth, nextCallback);
+		}, function (userdata, nextCallback) {
+			dao.signup(userdata, nextCallback);
 		}
 	], function (error) {
-		response.json({
-			RESULT: "1"
-		});
+		if (error) {
+			response.json({
+				RESULT: "0"
+			});
+		} else {
+			response.json({
+				RESULT: "1"
+			});
+		}
 	});
 };
 

@@ -10,10 +10,11 @@ exports.estimate = function(user_idx, title, content, date, imagepath, address, 
     callback(null, estimate);
 };
 
-exports.estimateanswer = function (user_idx, estimate_idx, content, date, imagepath, callback) {
+exports.estimateanswer = function (user_idx, estimate_idx, title, content, date, imagepath, callback) {
     var answer = {};
     answer.user_idx = user_idx;
     answer.estimate_idx = estimate_idx;
+    answer.answer_title = title;
     answer.answer_content = content;
     answer.answer_post_date = date;
     answer.answer_picture_path = imagepath;

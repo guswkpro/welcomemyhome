@@ -253,14 +253,14 @@ exports.addestimateanswer = function (request, response) {
     var req_user_idx = request.session.user_idx;
     var req_user_nickname = request.session.user_nickname;
     var req_estimate_idx = request.body.estimate_idx;
-    var req_estimate_content = request.body.content;
-    var req_estimate_image = request.body.image;
+    var req_answer_content = request.body.content;
+    var req_answer_image = request.body.image;
+    var req_answer_title = request.body.title;
     var date = new Date();
     date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
     var dirdate = new Date();
     dirdate = dirdate.toFormat("YYYYMMDDHH24MISS");
     var imagepath = '';
-    var thumbnailpath = '';
     var dirname = "./public/" + req_user_nickname + "/estimateanswer";
     var newPath;
     async.waterfall([
@@ -272,9 +272,9 @@ exports.addestimateanswer = function (request, response) {
         }, function (url, nextCallback) {
             count = 0;
             async.whilst(function () {
-                return count < req_estimate_image.length;
+                return count < req_answer_image.length;
             }, function (callback) {
-                var bitmap = new Buffer(req_estimate_image[count].image, 'base64');
+                var bitmap = new Buffer(req_answer_image[count].image, 'base64');
                 newPath = dirname + "/" + dirdate + "_" + count + ".jpg";
                 imagepath = imagepath + newPath + ',';
                 count++;
@@ -286,11 +286,11 @@ exports.addestimateanswer = function (request, response) {
                         RESULT: "0"
                     });
                 } else {
-                    estimatedto.estimateanswer(req_user_idx, req_estimate_idx, req_estimate_content, date, imagepath, nextCallback);
+                    estimatedto.estimateanswer(req_user_idx, req_estimate_idx, req_answer_title, req_answer_content, date, imagepath, nextCallback);
                 }
             });
-        }, function (estimate, nextCallback) {
-            estimatedao.addestimateanswer(estimate, nextCallback);
+        }, function (answer, nextCallback) {
+            estimatedao.addestimateanswer(answer, nextCallback);
         }, function (nextCallback) {
             estimatedao.editanswercount(req_estimate_idx, nextCallback);
         }
