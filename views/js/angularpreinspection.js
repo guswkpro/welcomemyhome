@@ -7,7 +7,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
         var height_nav = document.getElementsByTagName('nav')[0].clientHeight;
         var height_div = document.getElementsByClassName('preinspection-div').clientHeight;
         var footer = document.getElementsByTagName('footer')[0];
-        footer.style.top = height_div+height_nav;
+        footer.style.top = height_div+300;
         
         if (auth == 0) {
             $http.get('/logincheck').success(function (response) {
