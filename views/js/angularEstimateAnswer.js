@@ -51,6 +51,7 @@ app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
                 'Content-Type': 'application/json'
               },
               data: ({
+                estimate_idx : click_idx,
                 title: $scope.title,
                 content: $scope.content,
                 image: images

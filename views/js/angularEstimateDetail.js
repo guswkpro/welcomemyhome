@@ -49,7 +49,11 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
   }).error(function () {
     console.log("error");
   });
-
+  $scope.addAnswer = function () {
+    document.cookie = "click_idx=" + click_idx;
+    console.log(document.cookie);
+    $window.location.href = '/estimateanswer';
+  };
 });
 
 // Estimate list 출력
