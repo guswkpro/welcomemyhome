@@ -10,11 +10,15 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
           "width": "13%"
         };
         $scope.showHide_login = true;
-      } else if (response.RESULT == "0") {
+      } else if (response.RESULT == "2") {
         var msg = "알수없는 오류로 로그인이 끊겼습니다.";
         $window.alert(msg);
         $window.location.href = '/login';
+        scope.showHide_logout = true;
       } else {
+        var msg = "알수없는 오류가 발생하여 메인페이지로 이동합니다.";
+        $window.alert(msg);
+        $window.location.href = '/';
         $scope.showHide_logout = true;
       }
     });
@@ -59,7 +63,7 @@ app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
               } else {
                 var msg = "알 수 없는 오류로 답변 작성에 실패하였습니다.";
                 $window.alert(msg);
-                $window.location.href = '/estimatedetail';
+                $window.location.href = '/estimatelist';
               }
             }).error(function() {
               console.log("error");

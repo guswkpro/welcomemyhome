@@ -22,13 +22,11 @@ exports.getpreinspectionblueprint = function (request, response) {
 }
 
 
-/********************
+/*************  *******
         POST
 ********************/
 exports.addpreinspectionblueprint = function (request, response) {
     var req_user_nickname = request.session.user_nickname;
-    var req_preinspection_title = request.body.title;
-    var req_preinspection_content = request.body.content;
     var req_preinspection_image = request.body.image;
     var dirname = "./public/" + req_user_nickname + "/blueprint";
     var newPath;
