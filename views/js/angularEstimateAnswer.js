@@ -30,7 +30,7 @@ app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
   
       var recourcive = function(index) {
         var input = document.getElementById('fileselector');
-        var fr2 = new FileReader();
+        var fr = new FileReader();
         fr.readAsDataURL(input.files[index]);
         fr.onload = function() {
           var str = fr.result.split(',')[1];
