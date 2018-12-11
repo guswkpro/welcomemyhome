@@ -27,6 +27,8 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 
 // 사업자 답변 관련 controller
 app.controller('estimateAnswerCtrl', function($scope, $http, $window) {
+  var cookie = document.cookie.split("=");
+  var click_idx = cookie[2];
     //어느 글의 답변인지 정보 가져오기
     // 답변 등록 기능
     $scope.pushEstimateAnswerData = function() {
