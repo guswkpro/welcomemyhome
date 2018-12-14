@@ -112,13 +112,10 @@ exports.mypagepwcheck = function (request, response) {
 };
 
 exports.mypagesetting = function (request, response) {
-
-	console.log(request.session);
-
 	var req_user_picture = request.body.image;
 	var req_user_pw = request.body.pw;
 	var req_user_nickname = request.body.nickname;
-	var dirname = './public/user/' + req_user_nickname;
+	var dirname = './public/' + req_user_nickname;
 
 	async.waterfall([
 		function (nextCallback) {
@@ -128,7 +125,7 @@ exports.mypagesetting = function (request, response) {
 				function (callback) {
 					if(req_user_picture){
 						var bitmap = new Buffer(req_user_picture, 'base64');
-						newPath = dirname + "/" + req_user_nickname  +  ".jpg";
+						newPath = dirname + "/" + req_user_nickname  +  "_profile.jpg";
 						fs.writeFile(newPath, bitmap, 'base64', callback);
 						nextCallback(null);
 					} else{
