@@ -4,6 +4,7 @@ var app = angular.module('estimateDetail', []);
 app.controller('logincheckCtrl', function($scope, $http, $window) {
   var cookie_auth = document.cookie.split("%2F");
   var auth = cookie_auth[1];
+  console.log(auth);
   $scope.load = function() {
     if (auth == 0 ){
       $scope.hideAnswerButton = true;
@@ -82,10 +83,9 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
       $scope.data = response.INFO;
       total = response.COUNT;
     } else {
-      console.log("tmep");
-      // var msg = "알 수 없는 에러로 나의 견적 요청 리스트를 불러 올 수 없습니다.";
-      // $window.alert(msg);
-      // $window.location.href = '/';
+      var msg = "알 수 없는 에러로 나의 견적 요청 리스트를 불러 올 수 없습니다.";
+      $window.alert(msg);
+      $window.location.href = '/';
     }
   });
 
