@@ -66,7 +66,7 @@ app.controller('magazinedetailcard', function ($scope, $http) {
       },
       data: ({
         magazine_idx: click_idx,
-        conmment: $scope.content
+        comment: $scope.content
       })
     }).success(function (response) {
       if (response.RESULT == "1") {
