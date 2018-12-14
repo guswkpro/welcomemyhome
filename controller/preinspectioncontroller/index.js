@@ -1,4 +1,4 @@
-var preinspectiondao = require('../../dao/');
+var preinspectiondao = require('../../dao/preinspectiondao');
 var preinspectiondto = require('../../dto/');
 var async = require('async');
 var mkdirp = require('mkdirp');
