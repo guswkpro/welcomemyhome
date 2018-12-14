@@ -35,9 +35,9 @@ app.controller('magazinedetailcard', function ($scope, $http) {
           console.log(response.INFO, "4");
          // $scope.magazine_list = response.INFO
           $scope.title = response.INFO.magazine_title;
-          console.log(magazine_title, "magazine_title");
+          
           $scope.date = response.INFO.magazine_post_date;
-          console.log(response.INFO.magazine_post_date, "magazine_post_date");
+         
           $scope.content = response.INFO.magazine_content;
           $scope.image = response.INFO.encodedimage;
           document.cookie = "click_idx=";
