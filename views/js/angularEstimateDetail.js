@@ -135,7 +135,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
 
   // 사용자가 답변 클릭
   $scope.userClickAnswer = function (answer_idx) {
-    document.cookie = "click_idx=" + answer_idx;
+    document.cookie = "click_idx=" + answer_idx + "-";
     $window.location.href = '/estimateanswerdetail';
   };
 });

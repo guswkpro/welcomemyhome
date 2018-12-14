@@ -241,7 +241,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
 
   // 사용자가 자기 게시글 클릭
   $scope.userClickEstimate = function (estimate_idx) {
-    document.cookie = "click_idx=" + estimate_idx;
+    document.cookie = "click_idx=" + estimate_idx + "-";
     $window.location.href = '/estimatedetail';
   };
 });
