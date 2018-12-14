@@ -65,7 +65,7 @@ exports.addpreinspectionblueprint = function (request, response) {
             newPath = dirname + "/" + req_user_nickname + ".jpg";
             fs.writeFile(newPath, bitmap, 'base64', nextCallback);    
         }, function (preinspection, nextCallback) {
-            preinspection.addpreinspectionblueprint(preinspection, nextCallback);
+            preinspectiondao.addpreinspectionblueprint(preinspection, nextCallback);
         }
     ], function (error) {
         if (error) {

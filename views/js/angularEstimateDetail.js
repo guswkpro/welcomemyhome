@@ -64,7 +64,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
   var total;
 
   // 형이 고치면 getestimateanswerlist로 변경
-  $http.get('/getestimatelist', {
+  $http.get('/getestimateanswerlist', {
     params: {
       offset: offset
     }
