@@ -32,7 +32,7 @@ exports.addpreinspectionblueprint = function (request, response) {
     var date = new Date();
     date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
     var dirdate = new Date();
-    dirdate = dirdate.toFormate("YYYYMMDDHH24MISS");
+    dirdate = dirdate.toFormat("YYYYMMDDHH24MISS");
     var dirname = "./public/" + req_user_nickname + "/blueprint";
     var newPath;
 
