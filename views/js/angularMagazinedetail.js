@@ -56,7 +56,7 @@ app.controller('magazinedetailcard', function ($scope, $http) {
     console.log(error);
   });
 
-  $scope.pushCommentData = function () {
+  $scope.pushCommentData = function ($scope, $http, $window) {
     $http({
       method: 'POST',
       url: '/addmagazinecomment',
