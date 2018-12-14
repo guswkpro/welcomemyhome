@@ -28,10 +28,8 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 //detail 컨트롤러
 app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
   var cookie = document.cookie.substring(0,12);
-  console.log(document.cookie, "cookie detail");
   var temp_cookie = cookie.split("=");
   var click_idx = temp_cookie[1];
-  console.log(click_idx, "detail idx")
   $http.get('/getestimatedetail', {
     params: {
       estimate_idx: click_idx
@@ -62,9 +60,7 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
 app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
   var cookie = document.cookie.substring(0,12);
   var temp_cookie = cookie.split("=");
-  console.log(cookie, "cookie list");
   var click_idx = temp_cookie[1];
-  console.log(click_idx, "click_idx");
   $scope.currentPage = 1;
   $scope.pageSize = 5;  // var 써도 되지 않을까??
   var offset = 0;
@@ -81,9 +77,10 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
       $scope.data = response.INFO;
       total = response.COUNT;
     } else {
-      var msg = "알 수 없는 에러로 나의 견적 요청 리스트를 불러 올 수 없습니다.";
-      $window.alert(msg);
-      $window.location.href = '/';
+      console.log("tmep");
+      // var msg = "알 수 없는 에러로 나의 견적 요청 리스트를 불러 올 수 없습니다.";
+      // $window.alert(msg);
+      // $window.location.href = '/';
     }
   });
 
