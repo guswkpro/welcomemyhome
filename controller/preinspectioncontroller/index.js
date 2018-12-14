@@ -19,10 +19,11 @@ exports.getpreinspectionblueprint = function (request, response) {
         }, function (answerdata, nextCallback) {
             console.log(req_user_check);
             console.log(answerdata, "answer");
+            fs.readFile(answerdata.preinspection_picture_path, nextCallback);
+        }, function (data, nextCallback){
             var  encodedimage = [];
-            fs.readFile(answerdata.preinspection_picture_path, function(error, data) {
-                encodedimage.push(new Buffer(data).toString('base64'));
-            })
+            encodedimage.push(new Buffer(data).toString('base64'));
+            nextCallback(null);
         }
     ], function (error) {
         if (error) {
