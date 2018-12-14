@@ -2,13 +2,7 @@ var app = angular.module('estimateDetail', []);
 
 // 화면 전환 시 login check 기능
 app.controller('logincheckCtrl', function($scope, $http, $window) {
-  var cookie_auth = document.cookie.split("%2F");
-  var auth = cookie_auth[1];
-  console.log(auth);
   $scope.load = function() {
-    if (auth == 0 ){
-      $scope.hideAnswerButton = true;
-    }
     $http.get('/logincheck').success(function(response) {
       console.log(response.RESULT);
       if (response.RESULT == "1") {
@@ -20,7 +14,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
         var msg = "알수없는 오류로 로그인이 끊겼습니다.";
         $window.alert(msg);
         $window.location.href = '/login';
-        scope.showHide_logout = true;
+        $scope.showHide_logout = true;
       } else {
         var msg = "알수없는 오류가 발생하여 메인페이지로 이동합니다.";
         $window.alert(msg);
@@ -36,6 +30,11 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
   var cookie = document.cookie.substring(0,12);
   var temp_cookie = cookie.split("=");
   var click_idx = temp_cookie[1];
+  var cookie_auth = document.cookie.split("%2F");
+  var auth = cookie_auth[1];
+  if (auth == 0 ){
+    $scope.hideAnswerButton = true;
+  }
   $http.get('/getestimatedetail', {
     params: {
       estimate_idx: click_idx
