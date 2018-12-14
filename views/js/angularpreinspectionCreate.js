@@ -55,10 +55,12 @@ app.controller('preinspectionCreateCtrl', function ($scope, $http, $window) {
             })
           }).success(function(response) {
             if (response.RESULT == "1") {
+              console.log("도면");
               var msg = "도면 등록에 성공하셨습니다.";
               $window.alert(msg);
               $window.location.href = '/preinspection';
             } else {
+              console.log("도면");
               var msg = "알 수 없는 오류로 도면 등록에 실패하였습니다.";
               $window.alert(msg);
               $window.location.href='/preinspection'
