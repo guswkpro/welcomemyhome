@@ -34,7 +34,7 @@ exports.addpreinspectionblueprint = function (request, response) {
 
     async.waterfall([
         function (nextCallback) {
-            mkdirp(dirname, nextCallback);
+            mkdirp(dirname, Callback);
         }, function (url, nextCallback) {
             var bitmap = new Buffer(req_preinspection_image, 'base64');
             newPath = dirname + "/" + req_user_idx + ".jpg";
