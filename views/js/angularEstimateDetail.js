@@ -2,7 +2,12 @@ var app = angular.module('estimateDetail', []);
 
 // 화면 전환 시 login check 기능
 app.controller('logincheckCtrl', function($scope, $http, $window) {
+  var cookie_auth = document.cookie.split("%2F");
+  var auth = cookie_auth[1];
   $scope.load = function() {
+    if (auth == 0 ){
+      $scope.hideAnswerButton = true
+    }
     $http.get('/logincheck').success(function(response) {
       console.log(response.RESULT);
       if (response.RESULT == "1") {

@@ -4,10 +4,6 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
     var cookie_auth = document.cookie.split("%2F");
     var auth = cookie_auth[1];
     $scope.load = function () {
-        var height_nav = document.getElementsByTagName('nav')[0].clientHeight;
-        var height_div = document.getElementsByClassName('preinspection-div').clientHeight;
-        var footer = document.getElementsByTagName('footer')[0];
-        
         if (auth == 0) {
             $http.get('/logincheck').success(function (response) {
                 console.log(response.RESULT);
