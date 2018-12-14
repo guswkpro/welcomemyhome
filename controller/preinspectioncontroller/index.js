@@ -17,6 +17,7 @@ exports.getpreinspectionblueprint = function (request, response) {
         function (nextCallback) {
             preinspectiondao.getpreinspectionblueprint(req_user_check, nextCallback);
         }, function (answerdata, nextCallback) {
+            console.log(answerdata);
             var  encodedimage = [];
             fs.readFile(answerdata.preinspection_picture_path, function(error, data) {
                 encodedimage.push(new Buffer(data).toString('base64'));
