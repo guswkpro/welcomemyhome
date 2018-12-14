@@ -66,14 +66,14 @@ app.controller('magazinedetailcard', function ($scope, $http) {
       },
       data: ({
         magazine_idx: click_idx,
-        content: $scope.content
+        conmment: $scope.content
       })
     }).success(function (response) {
       if (response.RESULT == "1") {
         var msg = "댓글이 등록됐습니다.";
         $window.alert(msg);
         $window.location.href = '/magazinedetail';
-      } else {
+      } else if(response.RESULT == "0"){
         var msg = "알 수 없는 오류로 댓글 작성에 실패하였습니다.";
         $window.alert(msg);
         $window.location.href = '/magazinedetail'
