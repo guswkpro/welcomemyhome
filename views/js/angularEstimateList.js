@@ -160,7 +160,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
       if (response.RESULT == 1) {
         console.log(response.INFO, "gettest_Info");
         $scope.hideEstimate = true;
-        $scope.hideAnswer = true;
+        $scope.hideAnswer = false;
         $scope.data = response.INFO;
         console.log(data_my, "gettest_my");
         total = response.COUNT; // data_my.total
