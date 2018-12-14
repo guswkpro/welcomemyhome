@@ -114,7 +114,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
       }
     });
     // 사업자 my 글 리스트 요청
-    $http.get('/getestimatelist', { // 형이 구분 해줄 거임
+    $http.get('/gettest', { // 형이 구분 해줄 거임
       params: {
         offset: offset
       }
@@ -134,8 +134,6 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
     $window.alert(msg);
     $window.location.href = '/';
   }
-
-
 
   // 사용자 글 보기로 바꾸기
   $scope.viewUserWrite = function () {

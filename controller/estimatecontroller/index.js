@@ -52,6 +52,47 @@ exports.getestimatelist = function (request, response) {
         }
     });
 };
+
+exports.gettest = function (request, response) {
+    var req_user_check = request.session.user_auth;
+    var req_offset = request.param('offset');
+    var total_count;
+    async.waterfall([
+        function (nextCallback) {
+            estimatedao.getestimatecount(nextCallback);
+        }, function (cnt, nextCallback) {
+            total_count = cnt[0].cnt;
+            estimatedao.getestimatelistforuser(req_offset, request.session.user_idx, nextCallback);
+        }, function (estimatelist, nextCallback) {
+            count = 0;
+            async.whilst(function () {
+                return count < estimatelist.length;
+            }, function (callback) {
+                userdao.getuserinformation(estimatelist[count].user_idx, function (error, estimateuserdata) {
+                    estimatelist[count].user_nickname = estimateuserdata[0].user_nickname;
+                    count++;
+                    callback();
+                });
+            }, function (error) {
+                nextCallback(error, estimatelist);
+            });
+        }
+    ], function (error, result) {
+        if (error) {
+            console.log(error);
+            response.json({
+                RESULT: "0"
+            });
+        } else {
+            response.json({
+                RESULT: "1"
+                , INFO: result
+                , COUNT: total_count
+            });
+        }
+    });
+}
+
 exports.getestimatedetail = function (request, response) {
     var req_estimate_idx = request.param('estimate_idx');
     var info = {};
