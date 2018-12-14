@@ -34,11 +34,11 @@ exports.addpreinspectionblueprint = function (request, response) {
 
     async.waterfall([
         function (nextCallback) {
-            mkdirp(dirname, Callback);
+            mkdirp(dirname, nextCallback);
         }, function (url, nextCallback) {
             var bitmap = new Buffer(req_preinspection_image, 'base64');
             newPath = dirname + "/" + req_user_idx + ".jpg";
-            fs.writeFile(newPath, bitmap, 'base64', callback);    
+            fs.writeFile(newPath, bitmap, 'base64', nextCallback);    
         }, function (error) {
             if (error) {
                 console.log(error);
