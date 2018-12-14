@@ -64,6 +64,8 @@ exports.addpreinspectionblueprint = function (request, response) {
             var bitmap = new Buffer(req_preinspection_image, 'base64');
             newPath = dirname + "/" + req_user_nickname + ".jpg";
             fs.writeFile(newPath, bitmap, 'base64', nextCallback);    
+        }, function (preinspection, nextCallback) {
+            preinspection.addpreinspectionblueprint(preinspection, nextCallback);
         }
     ], function (error) {
         if (error) {
