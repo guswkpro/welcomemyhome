@@ -28,9 +28,10 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 //detail 컨트롤러
 app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
   console.log(document.cookie);
-  var cookie = document.cookie.substring(0,12);
-  var temp_cookie = cookie.split("=");
-  var click_idx = temp_cookie[1];
+  var cookie = document.cookie.split("click_idx=");
+  var temp_cookie = cookie[1].split("-");
+  var click_idx = temp_cookie[0];
+  console.log(click_idx);
   var cookie_auth = document.cookie.split("%2F");
   var auth = cookie_auth[1];
   if (auth == 0 ){
