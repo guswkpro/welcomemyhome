@@ -83,6 +83,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
       $scope.data = response.INFO;
       total = response.COUNT;
     } else {
+      console.log(response.RESULT);
       var msg = "알 수 없는 에러로 나의 견적 요청 리스트를 불러 올 수 없습니다.";
       $window.alert(msg);
       $window.location.href = '/';
