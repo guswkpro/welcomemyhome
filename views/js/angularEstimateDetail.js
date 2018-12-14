@@ -58,6 +58,8 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
 
 // Estimate list 출력
 app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
+  var cookie = document.cookie.split("=");
+  var click_idx = cookie[2];
   $scope.currentPage = 1;
   $scope.pageSize = 5;  // var 써도 되지 않을까??
   var offset = 0;
@@ -66,6 +68,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
   // 형이 고치면 getestimateanswerlist로 변경
   $http.get('/getestimateanswerlist', {
     params: {
+      estimate_idx : click_idx,
       offset: offset
     }
   }).success(function (response) {
