@@ -38,7 +38,7 @@ app.controller('preinspectionCreateCtrl', function ($scope, $http, $window) {
         var fr = new FileReader();
         fr.readAsDataURL(input.files[0]);
         fr.onload = function() {
-            var str = fr.result.split(',')[0];
+            var str = fr.result.split(',')[1];
             console.log(str);
             var image= {
                 image: str
