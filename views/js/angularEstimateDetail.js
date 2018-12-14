@@ -79,7 +79,9 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
     }
   }).success(function (response) {
     if (response.RESULT == 1) {
+      console.log(response.INFO, "info");
       $scope.data = response.INFO;
+      console.log($scope.data, "data");
       total = response.COUNT;
     } else {
       console.log(response.RESULT);
