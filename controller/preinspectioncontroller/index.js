@@ -11,13 +11,13 @@ var fs = require('fs');
 ********************/
 
 exports.getpreinspectionblueprint = function (request, response) {
-    var req_user_check = request.session.user_auth;
+    var req_user_check = request.session.user_idx;
     var info = {};
     async.waterfall([
         function (nextCallback) {
             preinspectiondao.getpreinspectionblueprint(req_user_check, nextCallback);
         }, function (answerdata, nextCallback) {
-            console.log(answerdata);
+            console.log(answerdata, "answer");
             var  encodedimage = [];
             fs.readFile(answerdata.preinspection_picture_path, function(error, data) {
                 encodedimage.push(new Buffer(data).toString('base64'));
