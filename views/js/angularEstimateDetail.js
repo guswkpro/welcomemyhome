@@ -28,7 +28,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 //detail 컨트롤러
 app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
   var cookie = document.cookie.split("=");
-  console.log(cookie, "cookie detail");
+  console.log(document.cookie, "cookie detail");
   var click_idx = cookie[2];
   console.log(click_idx, "detail idx")
   $http.get('/getestimatedetail', {
