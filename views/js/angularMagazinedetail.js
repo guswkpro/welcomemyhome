@@ -30,12 +30,14 @@ app.controller('magazinedetailcard', function ($scope, $http) {
         }
       }).success(function (response) {
         if (response.RESULT == 1) {
+         
           console.log(response, "success");
           console.log(response.INFO, "4");
-          $scope.title = response.INFO.magaznine_title;
-          $scope.date = response.INFO.magaznine_post_date;
-          $scope.content = response.INFO.magaznine_content;
-          $scope.image = response.INFO.encodedimage;
+          $scope.magazine_list = response.INFO
+          // $scope.title = response.INFO.magaznine_title;
+          // $scope.date = response.INFO.magaznine_post_date;
+          // $scope.content = response.INFO.magaznine_content;
+          // $scope.image = response.INFO.encodedimage;
           document.cookie = "click_idx=";
           /*
                   var ol = document.getElementById('ol_indicators');

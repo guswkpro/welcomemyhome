@@ -126,10 +126,14 @@ exports.mypagesetting = function (request, response) {
 		}, function (url, nextCallback) {
 			async.waterfall([
 				function (callback) {
-					var bitmap = new Buffer(req_user_picture, 'base64');
-					newPath = dirname + "/" + req_user_nickname  +  ".jpg";
-					fs.writeFile(newPath, bitmap, 'base64', callback);
-					nextCallback(null);
+					if(req_user_picture){
+						var bitmap = new Buffer(req_user_picture, 'base64');
+						newPath = dirname + "/" + req_user_nickname  +  ".jpg";
+						fs.writeFile(newPath, bitmap, 'base64', callback);
+						nextCallback(null);
+					} else{
+						
+					}
 				},
 				function (nextCallback) {
 					if(dirname != null){ //값이 있으면 그걸로 수정할거고
