@@ -28,8 +28,13 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
                 }
             })
         }
-        else {
+        else if (auth == 1) {
             var msg = "사전점검은 사용자만 가능합니다"
+            $window.alert(msg);
+            $window.location.href = '/';
+        }
+        else {
+            var msg = "사전점검은 로그인후에 이용가능합니다.";
             $window.alert(msg);
             $window.location.href = '/login';
         }
