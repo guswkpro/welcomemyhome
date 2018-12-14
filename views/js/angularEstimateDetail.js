@@ -40,7 +40,6 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
       $scope.address = response.INFO.estimate_address;
       $scope.content = response.INFO.estimate_content;
       $scope.image = response.INFO.encodedimage;
-      document.cookie = "click_idx=";
     } else {
       var msg = "알 수 없는 에러로 detail 페이지를 불러 올 수 없습니다.";
       $window.alert(msg);
@@ -74,6 +73,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
     }
   }).success(function (response) {
     if (response.RESULT == 1) {
+      document.cookie = "click_idx=";
       $scope.data = response.INFO;
       total = response.COUNT;
     } else {
