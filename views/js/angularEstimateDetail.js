@@ -2,7 +2,15 @@ var app = angular.module('estimateDetail', []);
 
 app.factory('hides', function() {
   var hide_flag = false;
-  return hide_flag;
+  var hideService = {};
+
+  hideService.setFlag = function(flag) {
+    hides.hide_flag = flag;
+  } 
+  hideService.getFlag = function() {
+    return hide_flag;
+  }
+  return hideService;
 });
 
 // 화면 전환 시 login check 기능
@@ -41,7 +49,7 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window, hides) {
     $scope.hideAnswerButton = true;
   }
   if (auth == 1){
-    hides.hide_flag = true;
+    hides.setFlag(true);
   }
   $http.get('/getestimatedetail', {
     params: {
@@ -72,10 +80,11 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, hides) {
   var click_idx = temp_cookie[0];
   $scope.currentPage = 1;
   $scope.pageSize = 5;
-  console.log(hides.hide_flag);
-  $scope.hideList = hides.hide_flag;  
   var offset = 0;
   var total;
+
+  $scope.hideList = hides.getFlag();
+  console.log($scope.hideList);
 
   // Answer 정보 받아옴
   $http.get('/getestimateanswerlist', {
