@@ -30,6 +30,7 @@ app.controller('estimateAnswerDetailCtrl', function ($scope, $http, $window) {
   var cookie = document.cookie.substring(0,12);
   var temp_cookie = cookie.split("=");
   var click_idx = temp_cookie[1];
+  console.log(click_idx);
 
   $http.get('/getestimateanswerdetail', {
     params: {
