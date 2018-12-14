@@ -29,6 +29,10 @@ exports.getpreinspectionblueprint = function (request, response) {
 exports.addpreinspectionblueprint = function (request, response) {
     var req_user_nickname = request.session.user_nickname;
     var req_preinspection_image = request.body.image;
+    var date = new Date();
+    date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
+    var dirdate = new Date();
+    dirdate = dirdate.toFormate("YYYYMMDDHH24MISS");
     var dirname = "./public/" + req_user_nickname + "/blueprint";
     var newPath;
 
@@ -36,8 +40,11 @@ exports.addpreinspectionblueprint = function (request, response) {
         function (nextCallback) {
             mkdirp(dirname, nextCallback);
         }, function (url, nextCallback) {
+            dirname = dirname + "/" + dirdate;
+            mkdirp(dirname, nextCallback);
+        }, function (url, nextCallback) {
             var bitmap = new Buffer(req_preinspection_image, 'base64');
-            newPath = dirname + "/" + req_user_idx + ".jpg";
+            newPath = dirname + "/" + req_user_nickname + ".jpg";
             fs.writeFile(newPath, bitmap, 'base64', nextCallback);    
         }
     ], function (error) {
