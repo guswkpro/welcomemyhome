@@ -72,6 +72,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, hides) {
   var click_idx = temp_cookie[0];
   $scope.currentPage = 1;
   $scope.pageSize = 5;
+  console.log(hides.hide_flag);
   $scope.hideList = hides.hide_flag;  
   var offset = 0;
   var total;
