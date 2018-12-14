@@ -17,10 +17,25 @@ exports.getpreinspectionblueprint = function (request, response) {
         function (nextCallback) {
             preinspectiondao.getpreinspectionblueprint(req_user_check, nextCallback);
         }, function (answerdata, nextCallback) {
-            var  encodedimage = [];
+            var  encodedimage;
+            fs.readFile(answerdata.preinspection_picture_path, function(error, data) {
+                encodedimage = (new Buffer(data).toString('base64'));
+            })
         }
-    ])
-}
+    ], function (error) {
+        if (error) {
+            console.log(error);
+            response.json({
+                RESULT:"0"
+            });
+        } else {
+            response.json({
+                RESULT: "1",
+                INFO: info
+            });
+        }
+    });
+};
 
 
 /********************
