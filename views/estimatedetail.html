@@ -82,16 +82,14 @@
             <th>제목</th>
             <th ng-hide="hide_for_company">작성자</th>
             <th>날짜</th>
-            <th ng-hide="hide_for_company">답변수</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="d in data" ng-click="getAnswer()">
-            <td>{{d.estimate_idx}}</td>
-            <td>{{d.estimate_title}}</td>
+            <td>{{d.answer_idx}}</td>
+            <td>{{d.answer_title}}</td>
             <td ng-hide="hide_for_company">{{d.user_nickname}}</td>
-            <td>{{d.estimate_date}}</td>
-            <td ng-hide="hide_for_company">{{d.estimate_answer_count}}</td>
+            <td>{{d.answer_date}}</td>
           </tr>
         </tbody>
       </table>
