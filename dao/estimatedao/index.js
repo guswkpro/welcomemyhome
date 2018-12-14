@@ -34,7 +34,7 @@ exports.getestimatecount = function (callback){
     });
 };
 exports.getestimateanswercount = function (callback){
-    client.query('SELECT count(*) as cnt FROM stweb.stweb_estimate_answers', [], function(error, resut){
+    client.query('SELECT count(*) as cnt FROM stweb.stweb_estimate_answers', [], function(error, result){
         callback(error, result);
     });
 };
