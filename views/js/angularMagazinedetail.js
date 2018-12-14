@@ -64,7 +64,7 @@ app.controller('magazinedetailcard', function ($scope, $http) {
         'Content-Type': 'application/json'
       },
       data: ({
-        magazine_idx: $scope.magazine_idx,
+        magazine_idx: click_idx,
         content: $scope.content
       })
     }).success(function (response) {
