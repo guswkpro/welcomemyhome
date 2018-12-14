@@ -131,6 +131,8 @@ app.post('/addcommunity', communitycontroller.addcommunity);
 app.post('/addcommunitylike', communitycontroller.addcommunitylike);
 app.post('/addcommunitycomment', communitycontroller.addcommunitycomment);
 
+app.post('/addpreinspectionblueprint', preinspectioncontroller.addpreinspectionblueprint)
+
 /* ---------- DELETE ---------- */
 app.delete('/deletemagazinelike', magazinecontroller.deletemagazinelike);
 app.delete('/deletemagazinecomment', magazinecontroller.deletemagazinecomment);
