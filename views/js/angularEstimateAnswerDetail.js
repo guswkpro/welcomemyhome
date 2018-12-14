@@ -27,6 +27,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 
 //detail 컨트롤러
 app.controller('estimateAnswerDetailCtrl', function ($scope, $http, $window) {
+  console.log(document.cookie);
   var cookie = document.cookie.substring(0,12);
   var temp_cookie = cookie.split("=");
   var click_idx = temp_cookie[1];
