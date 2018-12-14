@@ -60,9 +60,10 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
 
 // Estimate answer list 출력
 app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
-  var cookie = document.cookie.substring(0,12);
-  var temp_cookie = cookie.split("=");
-  var click_idx = temp_cookie[1];
+  var cookie = document.cookie.split("click_idx=");
+  var temp_cookie = cookie[1].split("-");
+  var click_idx = temp_cookie[0];
+  console.log(click_idx);
   $scope.currentPage = 1;
   $scope.pageSize = 5;  
   var offset = 0;
