@@ -2,6 +2,7 @@ var app = angular.module('estimateDetail', []);
 
 app.factory('hides', function() {
   var hide_flag = false;
+  return hide_flag;
 });
 
 // 화면 전환 시 login check 기능
