@@ -46,7 +46,6 @@
   border-bottom: 1px solid #bcbcbc;
 }
 
-
 .nav-button-login {
   padding: 5px 3px;
   font-weight: bold;
@@ -83,7 +82,6 @@
   border-bottom: 1px solid #bcbcbc;
 }
 
-
 .nav-button-logout {
   padding: 5px 3px;
   font-weight: bold;
@@ -100,7 +98,6 @@
   display: inline;
   border-bottom: 1px solid #bcbcbc;
 }
-
 
 /* nav menu 간격*/
 .nav-menu {
