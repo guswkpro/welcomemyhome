@@ -51,7 +51,7 @@ app.controller('preinspectionCreateCtrl', function ($scope, $http, $window) {
               'Content-Type': 'application/json'
             },
             data: ({
-              image: image
+              image: $scope.image
             })
           }).success(function(response) {
             if (response.RESULT == "1") {
