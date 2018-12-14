@@ -27,15 +27,16 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 
 //detail 컨트롤러
 app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
-  console.log(document.cookie);
   var cookie = document.cookie.split("click_idx=");
   var temp_cookie = cookie[1].split("-");
   var click_idx = temp_cookie[0];
-  console.log(click_idx);
   var cookie_auth = document.cookie.split("%2F");
   var auth = cookie_auth[1];
   if (auth == 0 ){
     $scope.hideAnswerButton = true;
+  }
+  if (auth == 1){
+    $scope.hideList = true;
   }
   $http.get('/getestimatedetail', {
     params: {
@@ -64,7 +65,6 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
   var cookie = document.cookie.split("click_idx=");
   var temp_cookie = cookie[1].split("-");
   var click_idx = temp_cookie[0];
-  console.log(click_idx);
   $scope.currentPage = 1;
   $scope.pageSize = 5;  
   var offset = 0;
