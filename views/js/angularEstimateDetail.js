@@ -73,7 +73,6 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
     }
   }).success(function (response) {
     if (response.RESULT == 1) {
-      document.cookie = "click_idx=";
       $scope.data = response.INFO;
       total = response.COUNT;
     } else {
