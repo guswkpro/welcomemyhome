@@ -54,12 +54,13 @@ exports.getestimatelist = function (request, response) {
 };
 
 exports.gettest = function (request, response) {
-    var req_user_check = request.session.user_auth;
     var req_offset = request.param('offset');
     var total_count;
+    var test;
     async.waterfall([
         function (nextCallback) {
-            estimatedao.getestimatecount(nextCallback);
+            test = estimatedao.getestimatecount(nextCallback);
+            console.log(test);
         }, function (cnt, nextCallback) {
             total_count = cnt[0].cnt;
             estimatedao.getestimatelistforuser(req_offset, request.session.user_idx, nextCallback);
