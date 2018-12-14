@@ -35,9 +35,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       console.log(response.INFO, "4");
       // $scope.magazine_list = response.INFO
       $scope.title = response.INFO.magazine_title;
-
       $scope.date = response.INFO.magazine_post_date;
-
       $scope.content = response.INFO.magazine_content;
       $scope.image = response.INFO.encodedimage;
       document.cookie = "click_idx=";
@@ -85,7 +83,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
 
   $http.get('/getmagazinecomment', {
     params: {
-      magazine_idx: $scope.magazine_idx
+      magazine_idx: click_idx
     }
   });
 
