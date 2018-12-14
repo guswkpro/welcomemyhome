@@ -51,10 +51,10 @@
         </thead>
         <tbody>
           <tr ng-repeat="d in data" data="{{d.estimate_idx}}" ng-click="userClickEstimate(d.estimate_idx)">
-            <td>{{d.estimate_idx}}</td>
-            <td>{{d.estimate_title}}</td>
-            <td>{{d.user_nickname}}</td>
-            <td>{{d.estimate_date}}</td>
+            <td ng-hide="hideEstimate">{{d.estimate_idx}}</td> <td ng-hide="hideAnswer">{{d.answer_idx}}</td>
+            <td ng-hide="hideEstimate">{{d.estimate_title}}</td> <td ng-hide="hideAnswer">{{d.answer_title}}</td>
+            <td ng-hide="hideEstimate">{{d.user_nickname}}</td> <td ng-hide="hideAnswer">{{d.user_nickname}}</td>
+            <td ng-hide="hideEstimate">{{d.estimate_date}}</td> <td ng-hide="hideAnswer">{{d.answer_date}}</td>
             <td ng-hide="answercount">{{d.estimate_answer_count}}</td>
           </tr>
         </tbody> 

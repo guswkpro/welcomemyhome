@@ -113,24 +113,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
         $window.location.href = '/';
       }
     });
-    // 사업자 my 글 리스트 요청
-    $http.get('/gettest', { // 형이 구분 해줄 거임
-      params: {
-        offset: offset
-      }
-    }).success(function (response) {
-      if (response.RESULT == 1) {
-        console.log(response.INFO, "gettest_Info");
-        data_my = response.INFO;
-        console.log(data_my, "gettest_my");
-        total_my = response.COUNT; // data_my.total
-
-      } else {
-        var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
-        $window.alert(msg);
-        $window.location.href = '/';
-      }
-    });
+    
   } else { //로그인 안 했을 시
     var msg = "User 정보가 명확치 않습니다. 로그인을 해주세요";
     $window.alert(msg);
@@ -151,8 +134,26 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   $scope.viewMyWrite = function () { // 형이 구분해 주는 데이터를 띄우도록 변경해야함
     token_man = true;
     $scope.currentPage = 1;
-    $scope.data = data_my;
-    total = total_my;
+    // 사업자 my 글 리스트 요청
+    $http.get('/gettest', { // 형이 구분 해줄 거임
+      params: {
+        offset: offset
+      }
+    }).success(function (response) {
+      if (response.RESULT == 1) {
+        console.log(response.INFO, "gettest_Info");
+        $scope.hideEstimate = true;
+        $scope.data = response.INFO;
+        console.log(data_my, "gettest_my");
+        total = response.COUNT; // data_my.total
+
+      } else {
+        var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
+        $window.alert(msg);
+        $window.location.href = '/';
+      }
+    });
+
     $scope.numberOfPages = totalcheck();
   };
 
