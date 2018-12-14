@@ -6,7 +6,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
   var auth = cookie_auth[1];
   $scope.load = function() {
     if (auth == 0 ){
-      $scope.hideAnswerButton = true
+      $scope.hideAnswerButton = true;
     }
     $http.get('/logincheck').success(function(response) {
       console.log(response.RESULT);

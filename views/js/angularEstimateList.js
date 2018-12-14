@@ -14,7 +14,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
         var msg = "견적요청은 로그인후 이용 가능합니다.";
         $window.alert(msg);
         $window.location.href = '/login';
-        scope.showHide_logout = true;
+        $scope.showHide_logout = true;
       } else {
         var msg = "알수없는 오류가 발생하여 메인페이지로 이동합니다.";
         $window.alert(msg);
