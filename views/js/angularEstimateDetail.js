@@ -1,5 +1,9 @@
 var app = angular.module('estimateDetail', []);
 
+app.factory('hides', function() {
+  var hide_flag = false;
+});
+
 // 화면 전환 시 login check 기능
 app.controller('logincheckCtrl', function($scope, $http, $window) {
   $scope.load = function() {
@@ -26,7 +30,7 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 });
 
 //detail 컨트롤러
-app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
+app.controller('estimateDetailCtrl', function ($scope, $http, $window, hides) {
   var cookie = document.cookie.split("click_idx=");
   var temp_cookie = cookie[1].split("-");
   var click_idx = temp_cookie[0];
@@ -36,7 +40,7 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
     $scope.hideAnswerButton = true;
   }
   if (auth == 1){
-    $scope.hideList = true;
+    hides.hide_flag = true;
   }
   $http.get('/getestimatedetail', {
     params: {
@@ -61,12 +65,13 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
 });
 
 // Estimate answer list 출력
-app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
+app.controller('estimateListCtrl', function ($scope, $http, $window, hides) {
   var cookie = document.cookie.split("click_idx=");
   var temp_cookie = cookie[1].split("-");
   var click_idx = temp_cookie[0];
   $scope.currentPage = 1;
-  $scope.pageSize = 5;  
+  $scope.pageSize = 5;
+  $scope.hideList = hides.hide_flag;  
   var offset = 0;
   var total;
 
