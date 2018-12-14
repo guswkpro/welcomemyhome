@@ -60,6 +60,7 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
 app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
   var cookie = document.cookie.split("=");
   var click_idx = cookie[2];
+  console.log(click_idx, "click_idx");
   $scope.currentPage = 1;
   $scope.pageSize = 5;  // var 써도 되지 않을까??
   var offset = 0;
