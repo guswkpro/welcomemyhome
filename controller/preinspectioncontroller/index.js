@@ -27,9 +27,9 @@ exports.getpreinspectionblueprint = function (request, response) {
         POST
 ********************/
 exports.addpreinspectionblueprint = function (request, response) {
-    var req_user_idx = request.session.user_idx;
+    var req_user_nickname = request.session.user_nickname;
     var req_preinspection_image = request.body.image;
-    var dirname = "./public/" + req_user_idx + "/blueprint";
+    var dirname = "./public/" + req_user_nickname + "/blueprint";
     var newPath;
 
     async.waterfall([
@@ -39,13 +39,6 @@ exports.addpreinspectionblueprint = function (request, response) {
             var bitmap = new Buffer(req_preinspection_image, 'base64');
             newPath = dirname + "/" + req_user_idx + ".jpg";
             fs.writeFile(newPath, bitmap, 'base64', nextCallback);    
-        }, function (error) {
-            if (error) {
-                console.log(error);
-                response.json({
-                    RESULT: "0"
-                });
-            }
         }
     ], function (error) {
         if (error) {
