@@ -6,6 +6,7 @@ var magazinecontroller = require('./controller/magazinecontroller');
 var estimatecontroller = require('./controller/estimatecontroller');
 var communitycontroller = require('./controller/communitycontroller');
 var mypagecontroller = require('./controller/mypagecontroller');
+var preinspectioncontroller = require('./controller/preinspectioncontroller');
 var server = app.listen(3000, function () {
         console.log("Express server has started on port 3000")
 });
