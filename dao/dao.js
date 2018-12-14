@@ -1,10 +1,10 @@
 var mysql = require('mysql');
 
 var client = mysql.createConnection({
-    host: 'stweb.ccmxaq6oosug.ap-northeast-2.rds.amazonaws.com'
+    host: '127.0.0.1'
     , port: 3306
-    , user: 'stweb'
-    , password: 'stwebstweb'
+    , user: 'root'
+    , password: 'dkflfkd13gh'
     , database: 'stweb'
 });
 
