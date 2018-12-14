@@ -36,20 +36,16 @@ exports.addpreinspectionblueprint = function (request, response) {
         function (nextCallback) {
             mkdirp(dirname, nextCallback);
         }, function (url, nextCallback) {
-            async.waterfall([
-                function (callback) {
-                    var bitmap = new Buffer(req_preinspection_image, 'base64');
-                    newPath = dirname + "/" + req_user_idx + ".jpg";
-                    fs.writeFile(newPath, bitmap, 'base64', callback);
-                }
-            ], function (error) {
-                if (error) {
-                    console.log(error);
-                    response.json({
-                        RESULT: "0"
-                    });
-                }
-            });
+            var bitmap = new Buffer(req_preinspection_image, 'base64');
+            newPath = dirname + "/" + req_user_idx + ".jpg";
+            fs.writeFile(newPath, bitmap, 'base64', callback);    
+        }, function (error) {
+            if (error) {
+                console.log(error);
+                response.json({
+                    RESULT: "0"
+                });
+            }
         }
     ], function (error) {
         if (error) {

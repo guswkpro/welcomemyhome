@@ -33,7 +33,6 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
             $window.alert(msg);
             $window.location.href = '/login';
         }
-        
     };
 });
 
