@@ -1,27 +1,27 @@
-* {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    }
-    html {
-    height: 100%;
-    }
-    body {
+
+html {
+    position: relative;
+    min-height: 100%;
+    margin:0;
+}
+
+body {
     margin: 0;
-    height: 100%;
-    padding-bottom : 0;
-    }
-    .wrap {
+    min-height: 100%;
+}
+
+.wrap {
     min-height: 100%;
     position: relative;
-    }
+}
     
-    footer {
+footer {
     position: absolute;
     width : 100%;
     left: 0; 
     right: 0;
-    }
+    bottom: 0;
+}
 
 .footer_container {
     text-align : center;
