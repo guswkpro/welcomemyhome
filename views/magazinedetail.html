@@ -79,7 +79,7 @@
                 <form>
                   <div class="newcommentheader">
                     <h3 class="pull-left">댓글 쓰기</h3>
-                    <button type="submit" class="btn btn-normal pull-right">등록</button>
+                    <button type="submit" class="btn btn-normal pull-right" ng-click="pushCommentData()">등록</button>
                   </div>
 
                   <div class="newcommentbody">
@@ -93,7 +93,7 @@
                         </td>
                         <td style="width:100%;">
                           <div style="height: 100%;">
-                            <textarea class="form-control" id="message" placeholder="Your message" required="" style="width:100%; height:100px;"></textarea>
+                            <textarea class="form-control" id="content" placeholder="Your message" required="" style="width:100%; height:100px;"></textarea>
                           </div>
                         </td>
                       </tr>

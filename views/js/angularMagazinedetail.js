@@ -24,41 +24,68 @@ app.controller('magazinedetailcard', function ($scope, $http) {
   var click_idx = cookie[2];
   console.log(document.cookie, "cookie");
   console.log(click_idx, "click_idx");
-      $http.get('/getmagazinedetail', {
-        params: {
-          magazine_idx: click_idx
-        }
-      }).success(function (response) {
-        if (response.RESULT == 1) {
-         
-          console.log(response, "success");
-          console.log(response.INFO, "4");
-         // $scope.magazine_list = response.INFO
-          $scope.title = response.INFO.magazine_title;
-          
-          $scope.date = response.INFO.magazine_post_date;
-         
-          $scope.content = response.INFO.magazine_content;
-          $scope.image = response.INFO.encodedimage;
-          document.cookie = "click_idx=";
-          /*
-                  var ol = document.getElementById('ol_indicators');
-                  for(var i = 0; i < response.INFO.encodedimage.length; i++){
-                    //<li data-target="#Indicators" data-slide-to="0" class="active">
-                    var li = document.createElement('li');
-                    li.setAttribute
-                  }
-          */
-        } else {
-          console.log(response, "falt");
-        }
-      }).error(function () {
-        console.log(error);
-      });
-      $http.get('/getmagazinecomment', {
-        params: {
-          magazine_idx: $scope.magazine_idx
-        }
-      });
- 
+  $http.get('/getmagazinedetail', {
+    params: {
+      magazine_idx: click_idx
+    }
+  }).success(function (response) {
+    if (response.RESULT == 1) {
+
+      console.log(response, "success");
+      console.log(response.INFO, "4");
+      // $scope.magazine_list = response.INFO
+      $scope.title = response.INFO.magazine_title;
+
+      $scope.date = response.INFO.magazine_post_date;
+
+      $scope.content = response.INFO.magazine_content;
+      $scope.image = response.INFO.encodedimage;
+      document.cookie = "click_idx=";
+      /*
+              var ol = document.getElementById('ol_indicators');
+              for(var i = 0; i < response.INFO.encodedimage.length; i++){
+                //<li data-target="#Indicators" data-slide-to="0" class="active">
+                var li = document.createElement('li');
+                li.setAttribute
+              }
+      */
+    } else {
+      console.log(response, "falt");
+    }
+  }).error(function () {
+    console.log(error);
+  });
+
+  $scope.pushCommentData = function () {
+    $http({
+      method: 'POST',
+      url: '/addmagazinecomment',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: ({
+        magazine_idx: $scope.magazine_idx,
+        content: $scope.content
+      })
+    }).success(function (response) {
+      if (response.RESULT == "1") {
+        var msg = "댓글이 등록됐습니다.";
+        $window.alert(msg);
+        $window.location.href = '/magazinedetail';
+      } else {
+        var msg = "알 수 없는 오류로 댓글 작성에 실패하였습니다.";
+        $window.alert(msg);
+        $window.location.href = '/magazinedetail'
+      }
+    }).error(function () {
+      console.log("error");
     });
+  }
+
+  $http.get('/getmagazinecomment', {
+    params: {
+      magazine_idx: $scope.magazine_idx
+    }
+  });
+
+});
