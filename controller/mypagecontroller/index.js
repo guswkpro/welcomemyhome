@@ -92,8 +92,8 @@ exports.mypagepwcheck = function (request, response) {
 		}, function (data, nextCallback) {
 			if (data[0].user_pw == req_user_pw) {
 				response.json({
-					RESULT: "1"
-				});
+                    RESULT: "1"
+                });
 			} else {
 				nextCallback("WRONG PW", null, 3);
 			}
@@ -112,54 +112,59 @@ exports.mypagepwcheck = function (request, response) {
 };
 
 exports.mypagesetting = function (request, response) {
+
+	console.log(request.session);
+
 	var req_user_picture = request.body.image;
 	var req_user_pw = request.body.pw;
 	var req_user_nickname = request.body.nickname;
-	var dirname = './public/' + req_user_nickname;
+	var dirname = './public/user/' + req_user_nickname;
 
 	async.waterfall([
 		function (nextCallback) {
+			mkdirp(dirname, nextCallback);
+		}, function (url, nextCallback) {
 			async.waterfall([
 				function (callback) {
-					if (req_user_picture) {
+					if(req_user_picture){
 						var bitmap = new Buffer(req_user_picture, 'base64');
-						newPath = dirname + "/" + req_user_nickname + "_profile.jpg";
+						newPath = dirname + "/" + req_user_nickname  +  ".jpg";
 						fs.writeFile(newPath, bitmap, 'base64', callback);
 						nextCallback(null);
-					} else {
-
+					} else{
+						
 					}
 				},
 				function (nextCallback) {
-					if (dirname != null) { //값이 있으면 그걸로 수정할거고
+					if(dirname != null){ //값이 있으면 그걸로 수정할거고
 						dao.edituserthumbnail(dirname, request.session.user_idx, nextCallback);
-					} else if (dirname == null) { //값이 없으면 다음껄로 넘길거고
+					}else if(dirname == null){ //값이 없으면 다음껄로 넘길거고
 						nextCallback(null);
-					} else {	// 이상하면 4를 넘겨줄거야
+					}else{	// 이상하면 4를 넘겨줄거야
 						Response.json({
-							RESULT: "4"
+							RESULT:"4"
 						});
 					}
 				},
 				function (nextCallback) {
-					if (req_user_nickname != null) { //값이 있으면 그걸로 수정할거고
-						dao.editusernickname(req_user_nickname, request.session.user_idx, nextCallback);
-					} else if (req_user_nickname == null) { //값이 없으면 다음껄로 넘길거고
+					if(req_user_nickname != null){ //값이 있으면 그걸로 수정할거고
+						dao.editusernickname(req_user_nickname , request.session.user_idx, nextCallback);
+					}else if(req_user_nickname == null){ //값이 없으면 다음껄로 넘길거고
 						nextCallback(null);
-					} else {	// 이상하면 4를 넘겨줄거야
+					}else{	// 이상하면 4를 넘겨줄거야
 						Response.json({
-							RESULT: "4"
+							RESULT:"4"
 						});
 					}
 				},
-				function (nextCallback) {
-					if (req_user_pw != null) { //값이 있으면 그걸로 수정할거고
+				function(nextCallback) {
+					if(req_user_pw != null){ //값이 있으면 그걸로 수정할거고
 						dao.edituserpassword(req_user_pw, request.session.user_idx, nextCallback);
-					} else if (req_user_pw == null) { //값이 없으면 다음껄로 넘길거고
+					}else if(req_user_pw == null){ //값이 없으면 다음껄로 넘길거고
 						nextCallback(null);
-					} else {	// 이상하면 4를 넘겨줄거야
+					}else{	// 이상하면 4를 넘겨줄거야
 						Response.json({
-							RESULT: "4"
+							RESULT:"4"
 						});
 					}
 				}
