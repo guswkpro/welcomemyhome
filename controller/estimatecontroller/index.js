@@ -59,8 +59,7 @@ exports.gettest = function (request, response) {
     var test;
     async.waterfall([
         function (nextCallback) {
-            test = estimatedao.getestimatecount(nextCallback);
-            console.log(estimatedao.getestimatecount(nextCallback));
+            test = estimatedao.getestimateanswercount(nextCallback);
             console.log(test);
         }, function (cnt, nextCallback) {
             total_count = cnt[0].cnt;
