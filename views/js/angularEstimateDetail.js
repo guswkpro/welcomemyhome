@@ -5,7 +5,7 @@ app.factory('hides', function() {
   var hideService = {};
 
   hideService.setFlag = function(flag) {
-    hides.hide_flag = flag;
+    hide_flag = flag;
   } 
   hideService.getFlag = function() {
     return hide_flag;
