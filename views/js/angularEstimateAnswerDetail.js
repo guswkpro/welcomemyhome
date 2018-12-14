@@ -27,8 +27,9 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 
 //detail 컨트롤러
 app.controller('estimateAnswerDetailCtrl', function ($scope, $http, $window) {
-  var cookie = document.cookie.split("=");
-  var click_idx = cookie[2];
+  var cookie = document.cookie.substring(0,12);
+  var temp_cookie = cookie.split("=");
+  var click_idx = temp_cookie[1];
 
   $http.get('/getestimateanswerdetail', {
     params: {
@@ -36,9 +37,8 @@ app.controller('estimateAnswerDetailCtrl', function ($scope, $http, $window) {
     }
   }).success(function (response) {
     if (response.RESULT == 1) {
-      $scope.title = response.INFO.estimate_title;
-      $scope.date = response.INFO.estimate_date;
-      $scope.content = response.INFO.estimate_content;
+      $scope.title = response.INFO.answer_title;
+      $scope.content = response.INFO.answer_content;
       $scope.image = response.INFO.encodedimage;
     } else {
       var msg = "알 수 없는 에러로 detail 페이지를 불러 올 수 없습니다.";

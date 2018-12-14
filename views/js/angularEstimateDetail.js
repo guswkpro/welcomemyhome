@@ -54,24 +54,20 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
   }).error(function () {
     console.log("error");
   });
-  $scope.addAnswer = function () {
-    document.cookie = "click_idx=" + click_idx;
-    console.log(document.cookie);
-    $window.location.href = '/estimateanswer';
-  };
+
 });
 
-// Estimate list 출력
+// Estimate answer list 출력
 app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
   var cookie = document.cookie.substring(0,12);
   var temp_cookie = cookie.split("=");
   var click_idx = temp_cookie[1];
   $scope.currentPage = 1;
-  $scope.pageSize = 5;  // var 써도 되지 않을까??
+  $scope.pageSize = 5;  
   var offset = 0;
   var total;
 
-  // 형이 고치면 getestimateanswerlist로 변경
+  // Answer 정보 받아옴
   $http.get('/getestimateanswerlist', {
     params: {
       estimate_idx : click_idx,
@@ -135,4 +131,10 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
       }
     });
   }
+
+  // 사용자가 답변 클릭
+  $scope.userClickAnswer = function (answer_idx) {
+    document.cookie = "click_idx=" + answer_idx;
+    $window.location.href = '/estimateanswerdetail';
+  };
 });
