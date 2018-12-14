@@ -57,6 +57,7 @@ app.controller('magazinedetailcard', function ($scope, $http) {
   });
 
   $scope.pushCommentData = function ($scope, $http, $window) {
+    console.log($scope.content);
     $http({
       method: 'POST',
       url: '/addmagazinecomment',
