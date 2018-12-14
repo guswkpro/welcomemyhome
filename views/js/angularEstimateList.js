@@ -120,7 +120,9 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
       }
     }).success(function (response) {
       if (response.RESULT == 1) {
+        console.log(response.INFO, "gettest_Info");
         data_my = response.INFO;
+        console.log(data_my, "gettest_my");
         total_my = response.COUNT; // data_my.total
 
       } else {
@@ -140,6 +142,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
     token_man = false;
     $scope.currentPage = 1;
     $scope.data = data_user;
+    console.log(data_my, "view");
     total = total_user;
     $scope.numberOfPages = totalcheck();
   };
