@@ -19,7 +19,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
   };
 });
 
-app.controller('magazinedetailcard', function ($scope, $http) {
+app.controller('magazinedetailcard', function ($scope, $http, $window) {
   var cookie = document.cookie.split("=");
   var click_idx = cookie[2];
   console.log(document.cookie, "cookie");
