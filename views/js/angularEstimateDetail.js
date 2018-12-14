@@ -27,10 +27,10 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 
 //detail 컨트롤러
 app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
-  var cookie = document.cookie.split("=");
+  var cookie = document.cookie.substring(0,11);
   console.log(document.cookie, "cookie detail");
-  var temp_cookie = cookie.split(";");
-  var click_idx = temp_cookie.cookie[0];
+  var temp_cookie = cookie.split("=");
+  var click_idx = temp_cookie[1];
   console.log(click_idx, "detail idx")
   $http.get('/getestimatedetail', {
     params: {
@@ -60,10 +60,10 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window) {
 
 // Estimate list 출력
 app.controller('estimateListCtrl', function ($scope, $http, $window, ) {
-  var cookie = document.cookie.split("=");
-  var temp_cookie = cookie.split(";");
+  var cookie = document.cookie.substring(0,11);
+  var temp_cookie = cookie.split("=");
   console.log(cookie, "cookie list");
-  var click_idx = temp_cookie.cookie[0];
+  var click_idx = temp_cookie[1];
   console.log(click_idx, "click_idx");
   $scope.currentPage = 1;
   $scope.pageSize = 5;  // var 써도 되지 않을까??
