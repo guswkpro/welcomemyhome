@@ -162,7 +162,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                     console.log(cloneCount, "clone");
                     console.log(pin_arr, "pin");
                     console.log(pin_arr[0], "pin[0]");
-
+                    console.log($scope.type);
                     $http({
                         method: 'POST',
                         url: '/addpreinspectionmodal',
