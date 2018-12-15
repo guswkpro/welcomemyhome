@@ -174,6 +174,7 @@ exports.getmagazinecomment = function (request, response) {
             }, function (callback) {
                 var magazinecommentinfodetail = {};
                 userdao.getuserinformation(magazinecommentdata[count].user_idx, function (error, magazinecommentuserdata) {
+                    console.log(count);
                     magazinecommentinfodetail.user_nickname = magazinecommentuserdata[0].user_nickname;
                     if (magazinecommentuserdata[0].user_picture_thumbnail_path + '' == "null") {
                         magazinecommentinfodetail.user_profile_image = "null";
