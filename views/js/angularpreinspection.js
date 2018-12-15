@@ -131,6 +131,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     $http.get('/getpreinspectionblueprint').success(function (response) {
         if (response.RESULT == 1) {
             console.log(response.INFO);
+            console.log(response.INFO.preinspection_picture_path);
             $scope.image = response.INFO.encodedimage;
         } else {
             var msg = "알 수 없는 에러로 preinspection 페이지를 불러 올 수 없습니다.";
