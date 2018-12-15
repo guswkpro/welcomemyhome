@@ -71,8 +71,8 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
 
   // auth(사용자, 사업자)에 따른 list 변화
   if (auth == "1") { // 사업자
-    $scope.HideCompany = true;
-    $scope.answercount = true;
+    $scope.HideCompany = false;
+    $scope.answercount = false;
   }
 
   $http.get('/getestimatelist', {
