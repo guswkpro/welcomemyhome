@@ -27,7 +27,7 @@
 
   <title>놀러와 마이홈</title>
 </head>
-  <div class="card card-body align-middle vh-100" style="width:60%; border-radius:20px;" ng-controller="communityDetailCtrl">
+  <div class="card card-body vh-100" align="center" style="width:60%; border-radius:20px;" ng-controller="communityDetailCtrl">
       <div class="card-title" style="margin-top:15px;">
         <h4> {{title}} </h4>
         <!-- <div class="heart"></div> -->
@@ -39,7 +39,7 @@
           <div class="card card-content">
               <p>{{content}}</p>
           </div>
-
+<hr>
       <div class="card-userReact">
         <form class="writeComment" method="POST" align="center">
           <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -74,10 +74,10 @@
                   <div class="media" ng-repeat="c in comment">
                     <a class="pull-left" href="#"><img class="media-object" ng-model="userimg" ng-src="{{userimg}}" alt=""></a>
                     <div class="media-body">
-                      <h4 class="media-heading" align="left">{{comment.user_nickname}}</h4>
-                      <p>{{c.magazine_comment_content}}</p>
+                      <h4 class="media-heading" align="left">{{c.user_nickname}}</h4>
+                      <p>{{c.community_comment_content}}</p>
                       <ul class="list-unstyled list-inline media-detail pull-left">
-                        <li><i class="fa fa-calendar"></i>{{c.magazine_comment_post_date}}</li>
+                        <li><i class="fa fa-calendar"></i>{{c.community_comment_post_date}}</li>
                       </ul>
                     </div>
                   </div>
