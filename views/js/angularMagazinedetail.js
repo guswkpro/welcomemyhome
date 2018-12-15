@@ -30,16 +30,13 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     }
   }).success(function (response) {
     if (response.RESULT == 1) {
-      var image = []
       console.log(response, "success");
-      //console.log(response.INFO, "4");
       $scope.magazinedetail = response.INFO
+      
       console.log($scope.magazinedetail);
       $scope.title = response.INFO.magazine_title;
-      // $scope.date = response.INFO.magazine_post_date;
-      // $scope.content = response.INFO.magazine_content;
-      // $scope.image = response.INFO.encodedimage;
       document.cookie = "click_idx=";
+
       /*
               var ol = document.getElementById('ol_indicators');
               for(var i = 0; i < response.INFO.encodedimage.length; i++){
