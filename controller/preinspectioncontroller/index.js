@@ -14,10 +14,14 @@ exports.getpreinspectionblueprint = function (request, response) {
     var info = {};
     async.waterfall([
         function (nextCallback) {
+            console.log("1");
             preinspectiondao.getpreinspectionblueprint(req_user_check, nextCallback);
+            console.log("2");
         }, function (preinspection, nextCallback) {
-            console.log(req_user_check);
+            console.log("3");
+            console.log(preinspection);
             fs.readFile(preinspection.preinspection_picture_path, nextCallback);
+            console.log("4");
         }, function (data, nextCallback){
             var  encodedimage = [];
             encodedimage.push(new Buffer(data).toString('base64'));
@@ -58,16 +62,13 @@ exports.addpreinspectionblueprint = function (request, response) {
     async.waterfall([
         function (nextCallback) {
             mkdirp(dirname, nextCallback);
-            console.log("1");
         }, function (url, nextCallback) {
             dirname = dirname + "/" + dirdate;
             mkdirp(dirname, nextCallback);
-            console.log("2");
         }, function (url, nextCallback) {
             var bitmap = new Buffer(req_preinspection_image, 'base64');
             newPath = dirname + "/" + req_user_nickname + ".jpg";
             fs.writeFile(newPath, bitmap, 'base64', nextCallback);
-            console.log("3");
         //}, function (error) {
             // if(error) {
             //     console.log(error);
@@ -82,7 +83,6 @@ exports.addpreinspectionblueprint = function (request, response) {
             preinspectiondto.preinspection(req_user_idx, date, newPath, req_preinspection_width, req_preinspection_height, nextCallback);
         }, function (preinspection, nextCallback) {
             preinspectiondao.addpreinspectionblueprint(preinspection, nextCallback);
-            console.log("4");
         }
     ], function (error) {
         if (error) {
