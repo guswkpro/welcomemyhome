@@ -180,13 +180,13 @@ exports.getmagazinecomment = function (request, response) {
                         magazinecommentinfodetail.user_profile_image = "null";
                     } else {
                         fs.readFile(magazinecommentuserdata[0].user_picture_thumbnail_path, function (error, data) {
+                            console.log(error);
                             magazinecommentinfodetail.user_profile_image = new Buffer(data).toString('base64');
                         });
                     }
                     magazinecommentinfodetail.magazine_comment_user_idx = magazinecommentdata[count].user_idx;
                     magazinecommentinfodetail.magazine_comment_idx = magazinecommentdata[count].comment_idx;
                     magazinecommentinfodetail.magazine_comment_content = magazinecommentdata[count].comment_content;
-                    magazinecommentinfodetail.test = "ASDFADSF";
                     magazinecommentinfodetail.magazine_comment_post_date = magazinecommentdata[count].comment_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                     info.push(magazinecommentinfodetail);
                     console.log('aaaaaa');
