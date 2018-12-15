@@ -41,7 +41,7 @@ app.controller('communityListCtrl', function ($scope, $http) {
         $scope.community_list[i].community_content = str + "...";
       }
     } else {
-      console.log(response, "falt");
+      console.log(response, "fault");
     }
   }).error(function () {
     console.log(error);

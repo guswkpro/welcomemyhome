@@ -106,7 +106,7 @@
                 </div>
 
                 <div class="media" ng-repeat="c in comment">
-                  <a class="pull-left" href="#"><img class="media-object" ng-src="data:image/jpeg;base64,{{c.user_profile_image}}"
+                  <a class="pull-left" href="#"><img class="media-object" ng-model="userimg" ng-src="{{userimg}}"
                       alt=""></a>
                   <div class="media-body">
                     <h4 class="media-heading" align="left">{{c.user_nickname}}</h4>

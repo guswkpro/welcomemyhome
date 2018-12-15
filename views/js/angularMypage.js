@@ -112,8 +112,7 @@ app.controller('userCtrl', function ($scope, $http, $window) {
       url: '/mypagesetting',
       headers: {
         'Content-Type': 'application/json'
-      },
-      data: ({
+      },data: ({
         pw: $scope.pw
       })
     }).success(function (response) {
