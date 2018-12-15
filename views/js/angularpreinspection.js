@@ -72,6 +72,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     $scope.elements = {
         누수: false, 금: false, 도벽: false
     };
+    var cloneCount=0;
 
     $(function () {
         // pin img 복사 이동
