@@ -45,7 +45,7 @@
             <form class="form-userInfo" name="userInfo" method="POST">
                 <div>
                     <img class="card-img-top userpicture" style="height:220px; width:100%;" src="img/user_profile_default.JPG">
-                    <input id='fileselector' type="file" accept="image/*" ng-model="image" style="width:60%;"/>
+                    <input id='fileselector' type="file" accept="image/*" ng-model="image" style="width:66%;"/>
                     <button id="userpicture_confirm" type="submit" class="btn btn-outline-primary btn-sm" ng-click="pushDataUserpicture()">변경</button>
                 </div>
                 <div>
@@ -78,7 +78,9 @@
                     <br />
                 </div>
                 <label for="inputPasswordCheck" class="sr-only">패스워드확인</label>
-                <input type="password" id="user_password_check" class="form-control2" placeholder="패스워드확인" style="padding-right:100px;">
+                <input type="password" id="user_password_check" class="form-control2" placeholder="패스워드확인" style="width:66%;">
+                <button id="nickname_confirm" type="submit" ng-click="clickNicknameOverlap()" name="nicknameconfirm"
+                class="btn btn-outline-primary btn-sm" ng-click="pushDataNickname()" >변경</button>
                 <div>
                     <br />
                 </div>
