@@ -78,6 +78,11 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
       });
     }
 
+    $scope.pushtolist = function () {
+        $window.location.href = '/community';
+    }
+    
+
     $http.get('/getcommunitycomment', {
       params: {
         community_idx: click_idx
