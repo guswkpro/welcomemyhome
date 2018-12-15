@@ -173,27 +173,36 @@ exports.getmagazinecomment = function (request, response) {
                 return count < magazinecommentdata.length;
             }, function (callback) {
                 var magazinecommentinfodetail = {};
-                userdao.getuserinformation(magazinecommentdata[count].user_idx, function (error, magazinecommentuserdata) {
-                    console.log(count);
-                    magazinecommentinfodetail.user_nickname = magazinecommentuserdata[0].user_nickname;
-                    if (magazinecommentuserdata[0].user_picture_thumbnail_path + '' == "null") {
-                        magazinecommentinfodetail.user_profile_image = "null";
-                    } else {
-                        fs.readFile(magazinecommentuserdata[0].user_picture_thumbnail_path, function (error, data) {
-                            console.log(new Buffer(data).toString('base64').substring(0, 10));
-                            magazinecommentinfodetail.user_profile_image = new Buffer(data).toString('base64');
-                            console.log(magazinecommentinfodetail.user_profile_image.substring(0, 10) + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                        });
+                async.waterfall([
+                    function (nextCallback) {
+                        userdao.getuserinformation(magazinecommentdata[count].user_idx, nextCallback);
+                    }, function (magazinecommentuserdata) {
+                        magazinecommentinfodetail.user_nickname = magazinecommentuserdata[0].user_nickname;
+                        if (magazinecommentuserdata[0].user_picture_thumbnail_path + '' == "null") {
+                            magazinecommentinfodetail.user_profile_image = "null";
+                            magazinecommentinfodetail.magazine_comment_user_idx = magazinecommentdata[count].user_idx;
+                            magazinecommentinfodetail.magazine_comment_idx = magazinecommentdata[count].comment_idx;
+                            magazinecommentinfodetail.test = "ASDFASDFSADF";
+                            magazinecommentinfodetail.magazine_comment_content = magazinecommentdata[count].comment_content;
+                            magazinecommentinfodetail.magazine_comment_post_date = magazinecommentdata[count].comment_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+                            info.push(magazinecommentinfodetail);
+                            count++;
+                            callback();
+                        } else {
+                            fs.readFile(magazinecommentuserdata[0].user_picture_thumbnail_path, nextCallback);
+                        }
+                    }, function (data) {
+                        magazinecommentinfodetail.user_profile_image = new Buffer(data).toString('base64');
+                        magazinecommentinfodetail.magazine_comment_user_idx = magazinecommentdata[count].user_idx;
+                        magazinecommentinfodetail.magazine_comment_idx = magazinecommentdata[count].comment_idx;
+                        magazinecommentinfodetail.test = "ASDFASDFSADF";
+                        magazinecommentinfodetail.magazine_comment_content = magazinecommentdata[count].comment_content;
+                        magazinecommentinfodetail.magazine_comment_post_date = magazinecommentdata[count].comment_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+                        info.push(magazinecommentinfodetail);
+                        count++;
+                        callback();
                     }
-                    magazinecommentinfodetail.magazine_comment_user_idx = magazinecommentdata[count].user_idx;
-                    magazinecommentinfodetail.magazine_comment_idx = magazinecommentdata[count].comment_idx;
-                    magazinecommentinfodetail.test="ASDFASDFSADF";
-                    magazinecommentinfodetail.magazine_comment_content = magazinecommentdata[count].comment_content;
-                    magazinecommentinfodetail.magazine_comment_post_date = magazinecommentdata[count].comment_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
-                    info.push(magazinecommentinfodetail);
-                    count++;
-                    callback();
-                });
+                ])
             }, function (error) {
                 nextCallback(error, null);
             });
