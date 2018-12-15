@@ -98,13 +98,31 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     });
     console.log(clones.getPinArray(clones.getcloneCount()));
     // 핀 정보 받아오기
+    // $http.get('/getpreinspectionpin', {
+    //     params: {
+    //       preinspection_idx: preinspection_idx,
+    //       pin_idx : clones.getPinArray(clones.getcloneCount()).id
+    //     }
+    //   }).success(function (response) {
+    //     if (response.RESULT == "1") {
+    //         temp_x = response.INFO.pin_x;
+    //         temp_y = response.INFO.pin_y;
+    //         console.log(temp_x, temp_y);
+    //     } else {
+    //         var msg = "핀 정보를 불러 올 수 없습니다.";
+    //         $window.alert(msg);
+    //         $window.location.href = '/';
+    //     }
+    // }).error(function () {
+    //     console.log("error");
+    // });
     $http.get('/getpreinspectionpin', {
         params: {
-          preinspection_idx: preinspection_idx,
-          pin_idx : clones.getPinArray(clones.getcloneCount()).id
+            preinspection_idx: preinspection_idx,
+            // pin_idx: clones.getPinArray(clones.getcloneCount()).id
         }
-      }).success(function (response) {
-        if (response.RESULT == 1) {
+    }).success(function (response) {
+        if (response.RESULT == "1") {
             temp_x = response.INFO.pin_x;
             temp_y = response.INFO.pin_y;
             console.log(temp_x, temp_y);
@@ -116,6 +134,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     }).error(function () {
         console.log("error");
     });
+    
+
 
     // 핀 정보 받아서 도면위에 찍기
 
@@ -162,16 +182,22 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
         });
         //pin 클릭시 모듈 정보 다시 띄우기
         $(".pin-img").click(function () {
-            $http.get('/getpreinspectionmodule', {
+            $http.get('/getpreinspectionpin', {
                 params: {
-                    pin_idx: $(this).attr("id")
+                  pin_idx : $(this).attr("id")
                 }
-            }).success(function (response) {
+              }).success(function (response) {
                 if (response.RESULT == "1") {
-                    $scope.title = response.INFO.title;
                     $scope.content = response.INFO.content;
+                    $scope.type = response.INFO.type;
+                } else {
+                    var msg = "핀 정보를 불러 올 수 없습니다.";
+                    $window.alert(msg);
+                    $window.location.href = '/';
                 }
-            })
+            }).error(function () {
+                console.log("error");
+            });
         })
     });
 
