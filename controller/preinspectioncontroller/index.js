@@ -22,12 +22,15 @@ exports.getpreinspectionblueprint = function (request, response) {
             nextCallback(preinspectiondata);
             console.log("3");
         }, function (nextCallback){
+            console.log("4");
             fs.readFile(preinspectiondata[0].preinspection_picture_path, nextCallback);
         }, function (nextCallback){
+            console.log("5");
             var encodedimage = [];
             encodedimage.push(new Buffer(data).toString('base64'));
             nextCallback(null);
         }, function (nextCallback) {
+            console.log("6");
             preinspectiondata[0].preinspection_date = preinspectiondata[0].preinspection_date.toFormat('YYYY-MM-DD HH24:MI:SS');
             preinspectiondata[0].encodedimage = encodedimage;
             preinspectiondata[0].preinspection_width = preinspectiondata[0].preinspection_width;
