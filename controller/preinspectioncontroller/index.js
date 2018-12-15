@@ -133,7 +133,7 @@ exports.addpreinspectionmodal = function (request, response) {
             count = 0;
             console.log("3");
             async.whilst(function() {
-                console.log(req_pin_image);
+                //console.log(req_pin_image);
                 console.log("4");
                 return count < req_pin_image.length;
             }, function (nextCallback) {
