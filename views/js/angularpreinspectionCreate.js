@@ -66,32 +66,32 @@ app.controller('preinspectionCreateCtrl', function ($scope, $http, $window) {
       console.log(image_width, image_height);
       var str = fr.result.split(',')[1];
       console.log(str);
+      $http({
+        method: 'POST',
+        url: '/addpreinspectionblueprint',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: ({
+          image: str,
+          width: image_width,
+          height: image_height
+        })
+      }).success(function (response) {
+        if (response.RESULT == "1") {
+          console.log("도면");
+          var msg = "도면 등록에 성공하셨습니다.";
+          $window.alert(msg);
+          $window.location.href = '/preinspection';
+        } else {
+          console.log("도면");
+          var msg = "알 수 없는 오류로 도면 등록에 실패하였습니다.";
+          $window.alert(msg);
+          $window.location.href = '/preinspection';
+        }
+      }).error(function () {
+        console.log("error");
+      });
     };
-    $http({
-      method: 'POST',
-      url: '/addpreinspectionblueprint',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: ({
-        image: str,
-        width: image_width,
-        height: image_height
-      })
-    }).success(function (response) {
-      if (response.RESULT == "1") {
-        console.log("도면");
-        var msg = "도면 등록에 성공하셨습니다.";
-        $window.alert(msg);
-        $window.location.href = '/preinspection';
-      } else {
-        console.log("도면");
-        var msg = "알 수 없는 오류로 도면 등록에 실패하였습니다.";
-        $window.alert(msg);
-        $window.location.href = '/preinspection';
-      }
-    }).error(function () {
-      console.log("error");
-    });
   };
 });
