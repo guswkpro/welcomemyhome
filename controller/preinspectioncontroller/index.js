@@ -43,8 +43,11 @@ exports.getpreinspectionblueprint = function (request, response) {
         POST
 ********************/
 exports.addpreinspectionblueprint = function (request, response) {
+    var req_user_idx = request.session.user_idx;
     var req_user_nickname = request.session.user_nickname;
     var req_preinspection_image = request.body.image;
+    var req_preinspection_width = request.body.width;
+    var req_preinspection_height = request.body.height;
     var date = new Date();
     date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
     var dirdate = new Date();
@@ -65,6 +68,16 @@ exports.addpreinspectionblueprint = function (request, response) {
             newPath = dirname + "/" + req_user_nickname + ".jpg";
             fs.writeFile(newPath, bitmap, 'base64', nextCallback);
             console.log("3");
+        }, function (error) {
+            if(error) {
+                console.log(error);
+                response.json({
+                    RESULT: "0"
+                });
+            }
+            else {
+               preinspectiondto.preinspection(req_user_idx, date, imagepath, req_preinspection_width, req_preinspection_height, nextCallback);
+            }
         }, function (preinspection, nextCallback) {
             preinspectiondao.addpreinspectionblueprint(preinspection, nextCallback);
             console.log("4");
