@@ -20,7 +20,7 @@ exports.getpreinspectionblueprint = function (request, response) {
         },  function (preinspectiondata, nextCallback) {
             var encodedimage = [];
             var count = 0;
-            preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].estimate_picture_path.split(',');
+            preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path.split(',');
             async.whilst(function () {
                 return count < (preinspectiondata[0].preinspection_picture_path.length - 1);
             }, function (callback) {
