@@ -22,16 +22,16 @@ exports.getpreinspectionblueprint = function (request, response) {
             nextCallback();
             console.log("3");
         }, function (nextCallback){
-            fs.readFile(preinspection[0].preinspection_picture_path, nextCallback);
+            fs.readFile(preinspectiondata[0].preinspection_picture_path, nextCallback);
         }, function (nextCallback){
             var encodedimage = [];
             encodedimage.push(new Buffer(data).toString('base64'));
             nextCallback(null);
         }, function (nextCallback) {
-            preinspection[0].preinspection_date = preinspection[0].preinspection_date.toFormat('YYYY-MM-DD HH24:MI:SS');
-            preinspection[0].encodedimage = encodedimage;
-            preinspection[0].req_preinspection_width = preinspection[0].preinspection_width;
-            preinspection[0].req_preinspection_height = preinspection[0].preinspection_height;
+            preinspectiondata[0].preinspection_date = preinspectiondata[0].preinspection_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+            preinspectiondata[0].encodedimage = encodedimage;
+            preinspectiondata[0].preinspection_width = preinspectiondata[0].preinspection_width;
+            preinspectiondata[0].preinspection_height = preinspectiondata[0].preinspection_height;
             info = preinspection[0];
             nextCallback();
         }
