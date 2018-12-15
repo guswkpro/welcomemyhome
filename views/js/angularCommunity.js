@@ -62,7 +62,7 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
     $scope.viewby = 5;
     $scope.totalItems = response.COUNT;
 
-    $scope.currentPage = 1;
+    $scope.currentPage = 2;
     $scope.itemsPerPage = $scope.viewby;
     $scope.maxSize = 5; //Number of pager buttons to show
 
@@ -70,7 +70,7 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
     //   $('#page-content').text('Page ' + page);
     //   paging(page);
     // }
-    
+
     $scope.setPage = function (pageNo) {
       $scope.currentPage = pageNo;
     };
