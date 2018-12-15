@@ -18,6 +18,7 @@ exports.getpreinspectionblueprint = function (request, response) {
             preinspectiondao.getpreinspectionblueprint(req_user_check, nextCallback);
             console.log("2");
         }, function (preinspectiondata, nextCallback) {
+            console.log(preinspectiondata[0].preinspection_picture_path);
             preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path;
             nextCallback(preinspectiondata);
             console.log("3");
