@@ -103,31 +103,18 @@
                   <br />
                 </div>
 
-                <div class="media">
-                  <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                <div class="media" ng-repeat="c in comment">
+                  <a class="pull-left" href="#"><img class="media-object" ng-src="data:image/jpeg;base64,{{c.user_profile_image}}"
                       alt=""></a>
                   <div class="media-body">
-                    <h4 class="media-heading">정승원</h4>
-                    <p>아 졸려</p>
+                    <h4 class="media-heading">{{c.user_nickname}}</h4>
+                    <p>{{c.magazine_comment_content}}</p>
                     <ul class="list-unstyled list-inline media-detail pull-left">
-                      <li><i class="fa fa-calendar"></i>2018-11-25</li>
+                      <li><i class="fa fa-calendar"></i>{{c.magazine_comment_post_date}}</li>
                     </ul>
                   </div>
                 </div>
-                <div class="media">
-                  <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                      alt=""></a>
-                  <div class="media-body">
-                    <h4 class="media-heading">김우진</h4>
-                    <p>아 배고파</p>
-                    <ul class="list-unstyled list-inline media-detail pull-left">
-                      <li><i class="fa fa-calendar"></i>2018-11-25</li>
-                    </ul>
-                  </div>
-                </div>
-
-
-
+      
               </div>
             </div>
           </div>

@@ -85,6 +85,13 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     params: {
       magazine_idx: click_idx
     }
-  });
-
+  }).success(function (response) {
+      if (response.RESULT == 1) {
+        $scope.comment = response.INFO
+      } else {
+        console.log(response, "falt");
+      }
+    }).error(function () {
+      console.log(error);
+    });
 });
