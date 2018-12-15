@@ -138,8 +138,8 @@ exports.addpreinspectionmodal = function (request, response) {
                 return count < req_pin_image.length;
             }, function (nextCallback) {
                 console.log("5");
-                var bitmap = new Buffer(req_pin_image, 'base64');
-                newPath = dirname + "/" + req_user_nickname + ".jpg";
+                var bitmap = new Buffer(req_pin_image[count].image, 'base64');
+                newPath = dirname + "/" + dirdate + "_" + count + ".jpg";
                 imagepath = imagepath + newPath + ',';
                 count++;
                 fs.writeFile(newPath, bitmap, 'base64', nextCallback);

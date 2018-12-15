@@ -173,9 +173,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                             preinspection_idx: preinspection_idx,
                             type: $scope.type,
                             content: $scope.content,
-                            image: images,
                             pin_x: pin_arr[cloneCount-1].x,
-                            pin_y: pin_arr[cloneCount-1].y
+                            pin_y: pin_arr[cloneCount-1].y,
+                            image: images
                         })
                     }).success(function (response) {
                         if (response.RESULT == "1") {
