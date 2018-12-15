@@ -184,7 +184,7 @@ exports.getmagazinecomment = function (request, response) {
                     }
                     magazinecommentinfodetail.magazine_comment_user_idx = magazinecommentdata[count].user_idx;
                     magazinecommentinfodetail.magazine_comment_idx = magazinecommentdata[count].comment_idx;
-                    magazinecommentinfodetail.magazine_comment_content = magazinecommentdata[count].comment;
+                    magazinecommentinfodetail.magazine_comment_content = magazinecommentdata[count].comment_content;
                     magazinecommentinfodetail.magazine_comment_post_date = magazinecommentdata[count].comment_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                     info.push(magazinecommentinfodetail);
                     count++;
