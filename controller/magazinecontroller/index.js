@@ -176,7 +176,7 @@ exports.getmagazinecomment = function (request, response) {
                 async.waterfall([
                     function (nextCallback) {
                         userdao.getuserinformation(magazinecommentdata[count].user_idx, nextCallback);
-                    }, function (magazinecommentuserdata) {
+                    }, function (magazinecommentuserdata, nextCallback) {
                         magazinecommentinfodetail.user_nickname = magazinecommentuserdata[0].user_nickname;
                         if (magazinecommentuserdata[0].user_picture_thumbnail_path + '' == "null") {
                             magazinecommentinfodetail.user_profile_image = "null";
