@@ -136,7 +136,7 @@ exports.addpreinspectionmodal = function (request, response) {
                 console.log(req_pin_image);
                 console.log("4");
                 return count < req_pin_image.length;
-            }, function (callback) {
+            }, function (nextCallback) {
                 console.log("5");
                 var bitmap = new Buffer(req_pin_image, 'base64');
                 newPath = dirname + "/" + req_user_nickname + ".jpg";
