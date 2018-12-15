@@ -91,19 +91,19 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     });
 
     // 핀 정보 받아오기
-    // $http.get('/getpreinspectionpin').success(function (response) {
-    //     if (response.RESULT == 1) {
-    //         temp_x = response.INFO.pin_x;
-    //         temp_y = response.INFO.pin_y;
-    //         console.log(temp_x, temp_y);
-    //     } else {
-    //         var msg = "핀 정보를 불러 올 수 없습니다.";
-    //         $window.alert(msg);
-    //         $window.location.href = '/';
-    //     }
-    // }).error(function () {
-    //     console.log("error");
-    // });
+    $http.get('/getpreinspectionpin').success(function (response) {
+        if (response.RESULT == 1) {
+            temp_x = response.INFO.pin_x;
+            temp_y = response.INFO.pin_y;
+            console.log(temp_x, temp_y);
+        } else {
+            var msg = "핀 정보를 불러 올 수 없습니다.";
+            $window.alert(msg);
+            $window.location.href = '/';
+        }
+    }).error(function () {
+        console.log("error");
+    });
 
     // 핀 정보 받아서 도면위에 찍기
 
