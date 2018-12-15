@@ -119,61 +119,57 @@ exports.mypagesetting = function (request, response) {
 
 	async.waterfall([
 		function (nextCallback) {
-			async.waterfall([
-				function (callback) {
-					if (req_user_picture) {
-						var bitmap = new Buffer(req_user_picture, 'base64');
-						newPath = dirname + "/" + req_user_nickname + "_profile.jpg";
-						fs.writeFile(newPath, bitmap, 'base64', callback);
-					} else {
+			if (typeof req_user_picture != undefined) {
+				console.log("여기 들어와지니?");
+				var bitmap = new Buffer(req_user_picture, 'base64');
+				newPath = dirname + "/" + req_user_nickname + "_profile.jpg";
+				fs.writeFile(newPath, bitmap, 'base64', nextCallback);
+			} else {
+				
+			}
+		},
+		function (nextCallback) {
+			if (dirname != null) { //값이 있으면 그걸로 수정할거고
+				console.log(dirname, "1111111111111111111111111");
+				dao.edituserthumbnail(dirname, request.session.user_idx, nextCallback);
+			} else if (dirname == null) { //값이 없으면 다음껄로 넘길거고
+				nextCallback(null);
+			} else {	// 이상하면 4를 넘겨줄거야
+				Response.json({
+					RESULT: "4"
+				});
+			}
+		},
+		function (nextCallback) {
+			if (req_user_nickname != null) { //값이 있으면 그걸로 수정할거고
+				dao.editusernickname(req_user_nickname, request.session.user_idx, nextCallback);
 
-					}
-				},
-				function (nextCallback) {
-					if (dirname != null) { //값이 있으면 그걸로 수정할거고
-						console.log(dirname, "1111111111111111111111111");
-						dao.edituserthumbnail(dirname, request.session.user_idx, nextCallback);
-					} else if (dirname == null) { //값이 없으면 다음껄로 넘길거고
-						nextCallback(null);
-					} else {	// 이상하면 4를 넘겨줄거야
-						Response.json({
-							RESULT: "4"
-						});
-					}
-				},
-				function (nextCallback) {
-					if (req_user_nickname != null) { //값이 있으면 그걸로 수정할거고
-						dao.editusernickname(req_user_nickname, request.session.user_idx, nextCallback);
-
-					} else if (req_user_nickname == null) { //값이 없으면 다음껄로 넘길거고
-						nextCallback(null);
-					} else {	// 이상하면 4를 넘겨줄거야
-						Response.json({
-							RESULT: "4"
-						});
-					}
-				},
-				function (nextCallback) {
-					if (req_user_pw != null) { //값이 있으면 그걸로 수정할거고
-						dao.edituserpassword(req_user_pw, request.session.user_idx, nextCallback);
-					} else if (req_user_pw == null) { //값이 없으면 다음껄로 넘길거고
-						nextCallback(null);
-					} else {	// 이상하면 4를 넘겨줄거야
-						Response.json({
-							RESULT: "4"
-						});
-					}
-				}
-			], function (error) {
-				if (error) {
-					console.log(error);
-					response.json({
-						RESULT: "0"
-					});
-				}
-			});
+			} else if (req_user_nickname == null) { //값이 없으면 다음껄로 넘길거고
+				nextCallback(null);
+			} else {	// 이상하면 4를 넘겨줄거야
+				Response.json({
+					RESULT: "4"
+				});
+			}
+		},
+		function (nextCallback) {
+			if (req_user_pw != null) { //값이 있으면 그걸로 수정할거고
+				dao.edituserpassword(req_user_pw, request.session.user_idx, nextCallback);
+			} else if (req_user_pw == null) { //값이 없으면 다음껄로 넘길거고
+				nextCallback(null);
+			} else {	// 이상하면 4를 넘겨줄거야
+				Response.json({
+					RESULT: "4"
+				});
+			}
 		}
 	], function (error) {
+		if (error) {
+			console.log(error);
+			response.json({
+				RESULT: "0"
+			});
+		}
 		response.json({
 			RESULT: "1"
 		});
