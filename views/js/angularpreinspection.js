@@ -66,7 +66,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
     };
 });
 
-app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
+app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     var pin_img = new Array();
     var pin_arr = new Array();
     var preinspection_idx;
@@ -78,8 +78,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     // 도면 이미지 받아오기
     $http.get('/getpreinspectionblueprint').success(function (response) {
         if (response.RESULT == 1) {
-            console.log(response.INFO);
-            console.log(response.INFO.preinspection_picture_path);
             $scope.image = response.INFO.encodedimage[0];
             preinspection_idx = response.INFO.preinspection_idx;
         } else {
@@ -152,7 +150,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
         var recourcive = function (index) {
             var input = document.getElementById('fileselector');
             var fr = new FileReader();
-            fr.readAsDataURL(input.files[index]);
+            fr.readAsDataURL(input.files[input]);
             fr.onload = function () {
                 var str = fr.result.split(',')[1];
                 var image = {
@@ -193,5 +191,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                 }
             }
         };
+        recourcive(0);
     };
 });
