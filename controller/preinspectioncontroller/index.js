@@ -20,7 +20,7 @@ exports.getpreinspectionblueprint = function (request, response) {
         }, function (preinspectiondata, nextCallback){
             console.log("4");
             fs.readFile(preinspectiondata[0].preinspection_picture_path, nextCallback);
-        }, function (nextCallback){
+        }, function (data, nextCallback){
             console.log("5");
             var encodedimage = [];
             encodedimage.push(new Buffer(data).toString('base64'));
