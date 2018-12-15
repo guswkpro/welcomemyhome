@@ -53,7 +53,7 @@ exports.getestimatelist = function (request, response) {
     });
 };
 
-exports.gettest = function (request, response) {
+exports.getestimateanswerforcompany = function (request, response) {
     var req_offset = request.param('offset');
     var total_count;
     async.waterfall([
