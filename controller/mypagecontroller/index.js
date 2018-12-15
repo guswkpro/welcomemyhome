@@ -119,6 +119,7 @@ exports.mypagesetting = function (request, response) {
 
 	async.waterfall([
 		function (nextCallback) {
+			mkdirp(dirname, nextCallback);
 			async.waterfall([
 				function (callback) {
 					if(req_user_picture){
@@ -132,7 +133,7 @@ exports.mypagesetting = function (request, response) {
 				},
 				function (nextCallback) {
 					if(dirname != null){ //값이 있으면 그걸로 수정할거고
-						console.log(dirname);
+						console.log(dirname,"1111111111111111111111111");
 						dao.edituserthumbnail(dirname, request.session.user_idx, nextCallback);
 					}else if(dirname == null){ //값이 없으면 다음껄로 넘길거고
 						nextCallback(null);
