@@ -24,6 +24,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
   var temp_cookie = cookie[1].split("-");
   var click_idx = temp_cookie[2];
   console.log(document.cookie, "cookie");
+  console.log(temp_cookie, "tmpcookie");
   console.log(click_idx, "click_idx");
   $http.get('/getmagazinedetail', {
     params: {
