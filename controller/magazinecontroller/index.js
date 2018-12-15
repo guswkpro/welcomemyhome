@@ -178,6 +178,7 @@ exports.getmagazinecomment = function (request, response) {
                     if (magazinecommentuserdata[0].user_picture_thumbnail_path + '' == "null") {
                         magazinecommentinfodetail.user_profile_image = "null";
                     } else {
+                        console.log('ffffffffffffffff',magazinecommentuserdata[0].user_picture_thumbnail_path);
                         fs.readFile(magazinecommentuserdata[0].user_picture_thumbnail_path, function (error, data) {
                             magazinecommentinfodetail.user_profile_image = new Buffer(data).toString('base64');
                         });
