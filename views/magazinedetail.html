@@ -37,7 +37,7 @@
 
     <div id="Indicators" class="carousel slide carousel-fade" data-ride="carousel">
       <ol id="ol_indicators" class="carousel-indicators" >
-        <li data-target="#Indicators" data-slide-to="0" class="active"></li>
+        <li data-target="#Indicators"  ng-repeat="idx in slideidx" data-slide-to="{{idx}}"></li>
         <!--  <li data-target="#Indicators" data-slide-to="1" ></li>
         <li data-target="#Indicators" data-slide-to="2"></li> -->
       </ol>

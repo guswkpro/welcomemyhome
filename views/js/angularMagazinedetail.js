@@ -35,6 +35,11 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       
       console.log($scope.magazinedetail);
       $scope.title = response.INFO.magazine_title;
+      var tmp = [];
+      for(var i = 0; i < response.INFO.encodedimage.length; i++){
+        tmp.push(i);
+      }
+      $scope.slideidx = tmp;
       document.cookie = "click_idx=";
 
       /*
