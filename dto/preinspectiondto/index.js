@@ -8,7 +8,7 @@ exports.preinspection = function(user_idx, date, imagepath, width, height, callb
     callback(null, preinspection);
 };
 
-exports.preinspectionpin = function(preinspection_idx, newPath, type, content, X, Y, Callback){
+exports.preinspectionpin = function(preinspection_idx, newPath, type, content, X, Y, callback){
     var preinspectionpin = {};
     preinspectionpin.preinspection_idx = preinspection_idx;
     preinspectionpin.pin_picture_path = newPath;
