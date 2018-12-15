@@ -66,27 +66,7 @@ exports.editanswercount = function (estimate_idx, callback) {
         callback(error);
     });
 };
-exports.editmagazinelikecount = function (magazine_idx, count, callback) {
-    client.query('UPDATE stweb.stweb_magazines set magazine_like_count = magazine_like_count + ? where magazine_idx = ?', [Number(count), magazine_idx], function (error) {
-        callback(error);
-    });
-};
-exports.editmagazinecommentcount = function (magazine_idx, count, callback) {
-    client.query('UPDATE stweb.stweb_magazines set magazine_comment_count = magazine_comment_count + ? where magazine_idx = ?', [Number(count), magazine_idx], function (error) {
-        callback(error);
-    });
-};
 
 /********************
        DELETE
 ********************/
-exports.deletemagazinelike = function (magazine_idx, user_idx, callback) {
-    client.query('DELETE FROM stweb.stweb_magazine_likes WHERE magazine_idx= ? and user_idx= ?', [magazine_idx, user_idx], function (error) {
-        callback(error);
-    });
-};
-exports.deletemagazinecomment = function (comment_idx, callback) {
-    client.query('DELETE FROM stweb.stweb_magazine_comments WHERE comment_idx = ?', [comment_idx], function (error) {
-        callback(error);
-    });
-};
