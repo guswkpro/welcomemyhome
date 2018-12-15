@@ -38,22 +38,21 @@
     <div id="Indicators" class="carousel slide carousel-fade" data-ride="carousel">
       <ol id="ol_indicators" class="carousel-indicators" >
         <li data-target="#Indicators" data-slide-to="0" class="active"></li>
-         <li data-target="#Indicators" data-slide-to="1" ></li>
-        <li data-target="#Indicators" data-slide-to="2"></li>
+        <!--  <li data-target="#Indicators" data-slide-to="1" ></li>
+        <li data-target="#Indicators" data-slide-to="2"></li> -->
       </ol>
       <div class="carousel-inner" role="listbox" >
-        <div class="carousel-item active" >
-            <!--위에 ng-repeat="m in magazinedetail.encodedimage" -->
-          <img class="d-block w-100" src="public/magazine/15-2018-11-01/1.jpg" alt="slide image">
+        <div class="carousel-item active" ng-repeat="m in magazinedetail.encodedimage">
+          <img class="d-block w-100" ng-src="data:image/jpeg;base64,{{m}}" alt="slide image">
         </div>
-        <!-- data:image/jpeg;base64,{{m}} -->
+        <!--
           <div class="carousel-item">
-            <img class="d-block w-100" src="public/magazine/15-2018-11-01/2.jpg" alt="Second slide">
+            <img class="d-block w-100" src="../public/magazine/15-2018-11-01/2.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="public/magazine/15-2018-11-01/3.jpg" alt="Third slide">
+              <img class="d-block w-100" src="../public/magazine/15-2018-11-01/3.jpg" alt="Third slide">
             </div>
-         
+          -->
       </div>
       <a class="carousel-control-prev" href="#Indicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
