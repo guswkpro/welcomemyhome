@@ -7,6 +7,7 @@ app.factory('clones', function () {
         x: null,
         y: null
     };
+    var pin_arr = new Array();
     var cloneService = {};
 
     cloneService.setcloneCount = function (Count) {
@@ -26,6 +27,15 @@ app.factory('clones', function () {
     cloneService.getPinInfo = function () {
         return pin_info;
     }
+
+    cloneService.Countup = function () {
+        cloneCount ++;
+    }
+
+    cloneService.getPinArray = function (count) {
+        return pin_arr[count];
+    }
+
     return cloneService;
 });
 
@@ -66,15 +76,12 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
     };
 });
 
-app.controller('preinspectionCtrl', function ($scope, $http, $window) {
+app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     var pin_img = new Array();
-    var pin_arr = new Array();
+    // var pin_arr = new Array();
     var preinspection_idx;
-    var temp_x, temp_y;
-    $scope.elements = {
-        누수: false, 금: false, 도벽: false
-    };
-    var cloneCount = 0;
+    // var temp_x, temp_y;
+    // var cloneCount = 0;
 
     // 도면 이미지 받아오기
     $http.get('/getpreinspectionblueprint').success(function (response) {
@@ -93,7 +100,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     // 핀 정보 받아오기
     $http.get('/getpreinspectionpin', {
         params: {
-          preinspection_idx: preinspection_idx
+          preinspection_idx: preinspection_idx,
+          pin_idx : clones.getPinArray(clones.getcloneCount()).id
         }
       }).success(function (response) {
         if (response.RESULT == 1) {
@@ -123,22 +131,22 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                 x: null,
                 y: null
             }
-            pin_img[cloneCount] = $(ui.helper).clone();
-            $(this).after(pin_img[cloneCount].draggable());
-            pin_img[cloneCount].attr("id", "pin" + cloneCount);
-            pin_info.x = pin_img[cloneCount].offset().left;
-            pin_info.y = pin_img[cloneCount].offset().top;
-            pin_info.id = cloneCount;
+            pin_img[clones.getcloneCount()] = $(ui.helper).clone();
+            $(this).after(pin_img[clones.getcloneCount()].draggable());
+            pin_img[clones.getcloneCount()].attr("id", "pin" + clones.getcloneCount());
+            pin_info.x = pin_img[clones.getcloneCount()].offset().left;
+            pin_info.y = pin_img[clones.getcloneCount()].offset().top;
+            pin_info.id = clones.getcloneCount();
             console.log(pin_info, "pin_info");
-            pin_img[cloneCount].css({
+            pin_img[clones.getcloneCount()].css({
                 'z-index': '5'
             });
             $("#dialog").css({
                 'display': 'block'
             });
-            pin_arr[cloneCount] = pin_info;
+            clones.pin_arr[clones.getcloneCount()] = pin_info;
             console.log(pin_arr, "pin_arr");
-            cloneCount++;
+            clones.Countup();
         });
         $(".close").click(function () {
             $("#dialog").css({
