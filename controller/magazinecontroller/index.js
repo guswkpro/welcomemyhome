@@ -182,7 +182,7 @@ exports.getmagazinecomment = function (request, response) {
                         fs.readFile(magazinecommentuserdata[0].user_picture_thumbnail_path, function (error, data) {
                             console.log(new Buffer(data).toString('base64'));
                             magazinecommentinfodetail.user_profile_image = new Buffer(data).toString('base64');
-                            console.log(magazinecommentinfodetail.user_profile_image);
+                            console.log(magazinecommentinfodetail.user_profile_image + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                         });
                     }
                     magazinecommentinfodetail.magazine_comment_user_idx = magazinecommentdata[count].user_idx;
