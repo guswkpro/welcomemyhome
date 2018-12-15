@@ -66,9 +66,6 @@ app.controller('preinspectionCreateCtrl', function ($scope, $http, $window) {
       console.log(image_width, image_height);
       var str = fr.result.split(',')[1];
       console.log(str);
-      var image = {
-        image: str
-      };
     };
     $http({
       method: 'POST',
@@ -77,7 +74,7 @@ app.controller('preinspectionCreateCtrl', function ($scope, $http, $window) {
         'Content-Type': 'application/json'
       },
       data: ({
-        image: $scope.image,
+        image: str,
         width: image_width,
         height: image_height
       })
