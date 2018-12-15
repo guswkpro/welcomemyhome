@@ -36,12 +36,12 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
     }).success(function (response) {
       if (response.RESULT == 1) {
         $scope.data = response.INFO;
-        console.log(JSON.stringify(response.INFO)+"겟커뮤니티디테일 반환값");
+        console.log(JSON.stringify(response.INFO)+"디테일 반환값");
         $scope.title = response.INFO.community_title;
         $scope.date = response.INFO.community_post_date;
         $scope.content = response.INFO.community_content;
         $scope.image = response.INFO.encodedimage;
-        $scope.userimage = response.INFO.user_image_path;
+        $scope.userimage = response.INFO.encodedimage;
       } else {
         var msg = "알 수 없는 에러로 페이지를 불러올 수 없습니다.";
         $window.alert(msg);
