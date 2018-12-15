@@ -156,6 +156,7 @@ exports.addpreinspectionmodal = function (request, response) {
             });
         }, function (pin, nextCallback) {
             console.log("7");
+            console.log(pin);
             preinspectiondao.addpreinspectionmodal(pin, nextCallback);
         }
     ], function (error) {
