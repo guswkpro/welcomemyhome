@@ -28,25 +28,25 @@ app.controller('preinspectionCreateCtrl', function ($scope, $http, $window) {
 
   var image_width, image_height;
 
-  // function readImage(file) {
-  //   var reader = new FileReader();
-  //   var image = new Image();
+  function readImage(file) {
+    var reader = new FileReader();
+    var image = new Image();
 
-  //   reader.readAsDataURL(file);
-  //   reader.onload = function(_file) {
-  //     image.src = _file.target.result;
-  //     image.onload = function() {
-  //       image_width = this.width;
-  //       image_height = this.height;
-  //       console.log(image_width, image_height);
-  //     }
-  //   }
-  // }
+    reader.readAsDataURL(file);
+    reader.onload = function(_file) {
+      image.src = _file.target.result;
+      image.onload = function() {
+        image_width = this.width;
+        image_height = this.height;
+        console.log(image_width, image_height);
+      }
+    }
+  }
 
-  // $("#fileselector").change(function(e) {
-  //   var F = this.files;
-  //   if(F && F[0]) for(var i=0; i<F.length; i++) readImage(F[i]);
-  // });
+  $("#fileselector").change(function(e) {
+    var F = this.files;
+    if(F && F[0]) for(var i=0; i<F.length; i++) readImage(F[i]);
+  });
 
   // preinspection 작성 취소
   $scope.cancelpreinspectionCreate = function () {
@@ -61,8 +61,6 @@ app.controller('preinspectionCreateCtrl', function ($scope, $http, $window) {
     var fr = new FileReader();
     fr.readAsDataURL(input.files[0]);
     fr.onload = function () {
-      var image_width = this.width;
-      var image_height = this.height;
       console.log(image_width, image_height);
       var str = fr.result.split(',')[1];
       console.log(str);
