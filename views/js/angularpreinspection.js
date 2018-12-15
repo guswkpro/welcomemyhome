@@ -78,10 +78,10 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     var pin_img = new Array();
-    // var pin_arr = new Array();
+    var pin_arr = new Array();
     var preinspection_idx;
-    // var temp_x, temp_y;
-    // var cloneCount = 0;
+    var temp_x, temp_y;
+    var cloneCount = 0;
 
     // 도면 이미지 받아오기
     $http.get('/getpreinspectionblueprint').success(function (response) {
