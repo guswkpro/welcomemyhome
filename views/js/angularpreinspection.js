@@ -1,5 +1,34 @@
 var app = angular.module('preinspection', []);
 
+app.factory('clones', function () {
+    var cloneCount = 0;
+    var pin_info = {
+        id: null,
+        x: null,
+        y: null
+    };
+    var cloneService = {};
+
+    cloneService.setcloneCount = function (Count) {
+        cloneCount = Count;
+    }
+
+    cloneService.getcloneCount = function () {
+        return cloneCount;
+    }
+
+    cloneService.setPinInfo = function (pininfo) {
+        pin_info.id = pininfo.id;
+        pin_info.x = pininfo.x;
+        pin_info.y = pininfo.y;
+    }
+
+    cloneService.getPinInfo = function () {
+        return pin_info;
+    }
+    return cloneService;
+});
+
 app.controller('logincheckCtrl', function ($scope, $http, $window) {
     var cookie_auth = document.cookie.split("%2F");
     var auth = cookie_auth[1];
@@ -37,27 +66,26 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
     };
 });
 
-app.controller('preinspectionCtrl', function ($scope, $http, $window) {
+app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     var pin_img = new Array();
     var pin_arr = new Array();
-    var cloneCount=0;
     $scope.elements = {
-        누수 : false, 금 : false, 도벽 : false
+        누수: false, 금: false, 도벽: false
     };
 
-    $(function() {
+    $(function () {
         // pin img 복사 이동
-        $('.pin-img').draggable({helper: "clone", cursorAt: { top: 0, left: 15 }});
+        $('.pin-img').draggable({ helper: "clone", cursorAt: { top: 0, left: 15 } });
         // drop 이벤트
-        $('.pin-img').bind('dragstop', function(event, ui) {
+        $('.pin-img').bind('dragstop', function (event, ui) {
             var pin_info = {
                 id: null,
                 x: null,
                 y: null
             }
-            pin_img[cloneCount] = $(ui.helper).clone(); 
+            pin_img[cloneCount] = $(ui.helper).clone();
             $(this).after(pin_img[cloneCount].draggable());
-            pin_img[cloneCount].attr("id", "pin"+cloneCount);
+            pin_img[cloneCount].attr("id", "pin" + cloneCount);
             pin_info.x = pin_img[cloneCount].offset().left;
             pin_info.y = pin_img[cloneCount].offset().top;
             pin_info.id = cloneCount;
@@ -72,26 +100,26 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
             console.log(pin_arr, "pin_arr");
             cloneCount++;
         });
-        $(".close").click(function() {
+        $(".close").click(function () {
             $("#dialog").css({
-            'display': 'none'
+                'display': 'none'
             });
         });
-        $("html").click(function(event) {
-            if(event.target.id === "dialog") {
+        $("html").click(function (event) {
+            if (event.target.id === "dialog") {
                 $("#dialog").css({
                     'display': 'none'
                 });
             }
         });
         //pin 클릭시 모듈 정보 다시 띄우기
-        $(".pin-img").click(function() {
+        $(".pin-img").click(function () {
             $http.get('/getpreinspectionmodule', {
                 params: {
-                    pin_idx : $(this).attr("id")
+                    pin_idx: $(this).attr("id")
                 }
-            }).success(function(response) {
-                if(response.RESULT == "1") {
+            }).success(function (response) {
+                if (response.RESULT == "1") {
                     $scope.title = response.INFO.title;
                     $scope.content = response.INFO.content;
                 }
@@ -100,32 +128,42 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     });
 
     // modal에서 데이터 제출
-    $scope.pushpreinspectionData = function() {
-        $http({
-            method: 'POST',
-            url: '/addpreinspection',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            data: ({
-              title: $scope.title,
-              checkbox: $scope.elements,
-              content: $scope.content,
-            })
-          }).success(function(response) {
-            if (response.RESULT == "1") {
-              var msg = "사전점검을 등록하셨습니다.";
-              $window.alert(msg);
-              $window.location.href = '/preinspection';
-            } else {
-              var msg = "알 수 없는 오류로 사전점검 등록에 실패하였습니다.";
-              $window.alert(msg);
-              $window.location.href='/estimatelist'
-            }
-          }).error(function() {
-            console.log("error");
-          });
-    }
+    $scope.pushpreinspectionData = function () {
+        var input = document.getElementById('fileselector');
+        var fr = new FileReader();
+        fr.readAsDataURL(input.files[0]);
+        fr.onload = function () {
+            var str = fr.result.split(',')[1];
+            console.log(str);
+            $http({
+                method: 'POST',
+                url: '/addpreinspectionmodal',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: ({
+                    type: $scope.elements,
+                    content: $scope.content,
+                    image: str,
+                    pin_x: pin_arr.x,
+                    pin_y: pin_arr.y
+                })
+            }).success(function (response) {
+                if (response.RESULT == "1") {
+                    var msg = "사전점검을 등록하셨습니다.";
+                    $window.alert(msg);
+                    $window.location.href = '/preinspection';
+                } else {
+                    var msg = "알 수 없는 오류로 사전점검 등록에 실패하였습니다.";
+                    $window.alert(msg);
+                    $window.location.href = '/estimatelist'
+                }
+            }).error(function () {
+                console.log("error");
+            });
+        }
+    };
+
 
     // 도면 이미지 받아오기
     $http.get('/getpreinspectionblueprint').success(function (response) {
