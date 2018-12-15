@@ -17,24 +17,53 @@ exports.getpreinspectionblueprint = function (request, response) {
             console.log("1");
             preinspectiondao.getpreinspectionblueprint(req_user_check, nextCallback);
             console.log("2");
-        }, function (preinspectiondata, nextCallback){
-            console.log("4");
-            fs.readFile(preinspectiondata[0].preinspection_picture_path, nextCallback);
-        }, function (preinspectiondata, nextCallback){
-            console.log("5");
+        },  function (preinspectiondata, nextCallback) {
             var encodedimage = [];
-            console.log(preinspectiondata);
-            encodedimage.push(new Buffer(preinspectiondata[0].preinspection_picture_path).toString('base64'));
-            nextCallback(preinspectiondata);
-        }, function (preinspectiondata, nextCallback) {
-            console.log("6");
-            console.log(preinspectiondata);
-            preinspectiondata[0].preinspection_date = preinspectiondata[0].preinspection_date.toFormat('YYYY-MM-DD HH24:MI:SS');
-            preinspectiondata[0].encodedimage = encodedimage;
-            preinspectiondata[0].preinspection_width = preinspectiondata[0].preinspection_width;
-            preinspectiondata[0].preinspection_height = preinspectiondata[0].preinspection_height;
-            info = preinspection[0];
-            nextCallback();
+            var count = 0;
+            preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].estimate_picture_path.split(',');
+            async.whilst(function () {
+                return count < (preinspectiondata[0].preinspection_picture_path.length - 1);
+            }, function (callback) {
+                fs.readFile(preinspectiondata[0].preinspection_picture_path[count], function (error, data) {
+                    encodedimage.push(new Buffer(data).toString('base64'));
+                    count++;
+                    callback();
+                });
+            }, function (error) {
+                if (error) {
+                    console.log(error);
+                    response.json({
+                        RESULT: "0"
+                    });
+                } else {
+                    preinspectiondata[0].preinspection_date = preinspectiondata[0].preinspection_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+                    preinspectiondata[0].encodedimage = encodedimage;
+                    preinspectiondata[0].preinspection_width = preinspectiondata[0].preinspection_width;
+                    preinspectiondata[0].preinspection_height = preinspectiondata[0].preinspection_height;
+                    info = preinspection[0];
+                    nextCallback();
+                }
+            });
+        // }, function (preinspectiondata, nextCallback) {
+        //     preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path;
+        //     nextCallback(preinspectiondata);
+        //     console.log("3");
+        // }, function (preinspectiondata, nextCallback){
+        //     console.log("4");
+        //     fs.readFile(preinspectiondata[0].preinspection_picture_path, nextCallback);
+        // }, function (nextCallback){
+        //     console.log("5");
+        //     var encodedimage = [];
+        //     encodedimage.push(new Buffer(data).toString('base64'));
+        //     nextCallback(null);
+        // }, function (nextCallback) {
+        //     console.log("6");
+        //     preinspectiondata[0].preinspection_date = preinspectiondata[0].preinspection_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+        //     preinspectiondata[0].encodedimage = encodedimage;
+        //     preinspectiondata[0].preinspection_width = preinspectiondata[0].preinspection_width;
+        //     preinspectiondata[0].preinspection_height = preinspectiondata[0].preinspection_height;
+        //     info = preinspection[0];
+        //     nextCallback();
         }
     ], function (error) {
         if (error) {
