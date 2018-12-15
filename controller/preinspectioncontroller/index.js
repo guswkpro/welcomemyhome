@@ -25,7 +25,7 @@ exports.getpreinspectionblueprint = function (request, response) {
             var encodedimage = [];
             encodedimage.push(new Buffer(data).toString('base64'));
             nextCallback(null);
-        }, function (nextCallback) {
+        }, function (preinspectiondata, nextCallback) {
             console.log("6");
             preinspectiondata[0].preinspection_date = preinspectiondata[0].preinspection_date.toFormat('YYYY-MM-DD HH24:MI:SS');
             preinspectiondata[0].encodedimage = encodedimage;
