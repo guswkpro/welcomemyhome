@@ -41,14 +41,6 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       $scope.slideidx = tmp;
       document.cookie = "click_idx=";
 
-      /*
-              var ol = document.getElementById('ol_indicators');
-              for(var i = 0; i < response.INFO.encodedimage.length; i++){
-                //<li data-target="#Indicators" data-slide-to="0" class="active">
-                var li = document.createElement('li');
-                li.setAttribute
-              }
-      */
     } else {
       console.log(response, "fault");
     }

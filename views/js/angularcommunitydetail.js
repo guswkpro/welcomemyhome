@@ -24,18 +24,14 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
   });
 
   app.controller('communityDetailCtrl', function ($scope, $http, $window) {
-    // var cookie_user = document.cookie.substring(0, 8).split("=");
-    // var usercheck = cookie_user[1];
-    console.log(document.cookie);
-    var cookie = document.cookie.split("%2F")[1];
-    var cookie_community_idx = decodeURI("84%2F0%2F_G2gJ6AEe-eHQ-XkWnQeoQpk2sgCKQXJ");
-    console.log(cookie);
-    console.log(cookie_community_idx);
+    var cookie = document.cookie.split("click_idx=");
+    var temp_cookie = cookie[1].split("-");
+    var click_idx = temp_cookie;
   
     $http.get('/getcommunitydetail', {
       params: {
         user_idx : $scope.user_idx,
-        estimate_idx: $scope.community_idx
+        community_idx: click_idx
       }
     }).success(function (response) {
       if (response.RESULT == 1) {
@@ -52,4 +48,6 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
     }).error(function () {
       console.log("error");
     });
+
+   
   });

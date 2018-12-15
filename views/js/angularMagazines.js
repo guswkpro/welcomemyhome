@@ -46,4 +46,33 @@ app.controller('magazinelist', function ($scope, $http) {
   };
 });
 
+app.controller('communitydetailcard', function ($scope, $http, $window) {
+  var cookie = document.cookie.split("click_idx=");
+  var temp_cookie = cookie[1].split("-");
+  var click_idx = temp_cookie;
+  $http.get('/getmagazinedetail', {
+    params: {
+      magazine_idx: click_idx
+    }
+  }).success(function (response) {
+    if (response.RESULT == 1) {
+      console.log(response, "success");
+      $scope.magazinedetail = response.INFO
+      
+      console.log($scope.magazinedetail);
+      $scope.title = response.INFO.magazine_title;
+      var tmp = [];
+      for(var i = 0; i < response.INFO.encodedimage.length; i++){
+        tmp.push(i);
+      }
+      $scope.slideidx = tmp;
+      document.cookie = "click_idx=";
+
+    } else {
+      console.log(response, "fault");
+    }
+  }).error(function () {
+    console.log(error);
+  });
+
 

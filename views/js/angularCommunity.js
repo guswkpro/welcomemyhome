@@ -46,6 +46,10 @@ app.controller('communityListCtrl', function ($scope, $http) {
   }).error(function (error) {
     console.log(error);
   });
+  $scope.userClickCommunity = function (community_idx) {
+    document.cookie = "click_idx=" + community_idx;
+    $window.location.href = '/communitydetail';
+  };
 });
 
 app.controller('PaginationDemoCtrl', function ($scope, $http) {
