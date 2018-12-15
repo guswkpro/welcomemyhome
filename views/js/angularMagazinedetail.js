@@ -22,7 +22,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 app.controller('magazinedetailcard', function ($scope, $http, $window) {
   var cookie = document.cookie.split("click_idx=");
   var temp_cookie = cookie[1].split("-");
-  var click_idx = temp_cookie[2];
+  var click_idx = temp_cookie;
   console.log(document.cookie, "cookie");
   console.log(temp_cookie, "tmpcookie");
   console.log(click_idx, "click_idx");
