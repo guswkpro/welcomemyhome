@@ -25,7 +25,7 @@ exports.getpreinspectionblueprint = function (request, response) {
             preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path.split(',');
             async.whilst(function () {
                 console.log("4");
-                return count <= (preinspectiondata[0].preinspection_picture_path.length);
+                return count < (preinspectiondata[0].preinspection_picture_path.length);
             }, function (callback) {
                 console.log("5");
                 console.log(preinspectiondata[0].preinspection_picture_path)
