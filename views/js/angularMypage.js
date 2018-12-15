@@ -54,7 +54,6 @@ app.controller('userCtrl', function ($scope, $http, $window) {
     if (input.files[0]) {
       fr.readAsDataURL(input.files[0]);//input.files[0]에 사용자 로컬경로가 담기고 그게 fr에 저장
       fr.onload = function () {
-
         var str = fr.result.split(',')[1];
         var image = str;
         console.log(JSON.stringify(image));
@@ -111,7 +110,7 @@ app.controller('userCtrl', function ($scope, $http, $window) {
     }
   }
   //변경 취소
-  $scope.cancelEstimate = function () {
+  $scope.cancelSetting = function () {
     var msg = "변경을 취소합니다.";
     $window.alert(msg);
     $window.location.href = '/';
