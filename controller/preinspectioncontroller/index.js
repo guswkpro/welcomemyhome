@@ -17,13 +17,14 @@ exports.getpreinspectionblueprint = function (request, response) {
             console.log("1");
             preinspectiondao.getpreinspectionblueprint(req_user_check, nextCallback);
             console.log("2");
-        }, function (preinspection, nextCallback) {
+        }, function (preinspectiondata, nextCallback) {
+            preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path;
+            nextCallback();
             console.log("3");
-            console.log(preinspection);
+        }, function (nextCallback){
             fs.readFile(preinspection[0].preinspection_picture_path, nextCallback);
-            console.log("4");
-        }, function (data, nextCallback){
-            var  encodedimage = [];
+        }, function (nextCallback){
+            var encodedimage = [];
             encodedimage.push(new Buffer(data).toString('base64'));
             nextCallback(null);
         }, function (nextCallback) {
