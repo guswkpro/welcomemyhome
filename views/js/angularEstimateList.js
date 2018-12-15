@@ -61,6 +61,8 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   var total;
   var total_user;
   var total_my;
+  var data_user;
+  var data_my;
   var token_man = false;
   var totalcheck = function () {
     console.log(total, "total");
@@ -70,29 +72,54 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   console.log(auth, "check");
 
   // auth(사용자, 사업자)에 따른 list 변화
-  if (auth == "1") { // 사업자
-    $scope.HideCompany = false;
-    $scope.answercount = false;
+  if (auth == "0") { // 사용자
+    console.log("사용자 체크")
+    $scope.HideCompany = true;
+    $http.get('/getestimatelist', {
+      params: {
+        offset: offset
+      }
+    }).success(function (response) {
+      if (response.RESULT == 1) {
+        $scope.data = response.INFO;
+        console.log(response.COUNT, "count");
+        total = response.COUNT; // response.COUNT;
+        // 페이지 수 계산
+        $scope.numberOfPages = totalcheck();
+      } else {
+        var msg = "알 수 없는 에러로 나의 견적 요청 리스트를 불러 올 수 없습니다.";
+        $window.alert(msg);
+        $window.location.href = '/';
+      }
+    });
+  } else if (auth == "1") { // 사업자
+    $scope.answercount = true;  // 사용자 글의 답변 갯수도 보이게 (e_a_c)
+    // 전체 사용자 리스트 요청
+    $http.get('/getestimatelist', {
+      params: {
+        offset: offset
+      }
+    }).success(function (response) {
+      if (response.RESULT == 1) {
+        console.log(response.INFO, "gettest_Info");
+        $scope.hideEstimate = false;
+        $scope.hideAnswer = true;
+        $scope.data = response.INFO;
+        console.log(data_my, "gettest_my");
+        total = response.COUNT; 
+        $scope.numberOfPages = totalcheck();
+      } else {
+        var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
+        $window.alert(msg);
+        $window.location.href = '/';
+      }
+    });
+    
+  } else { //로그인 안 했을 시
+    var msg = "User 정보가 명확치 않습니다. 로그인을 해주세요";
+    $window.alert(msg);
+    $window.location.href = '/';
   }
-
-  $http.get('/getestimatelist', {
-    params: {
-      offset: offset
-    }
-  }).success(function (response) {
-    if (response.RESULT == 1) {
-      $scope.data = response.INFO;
-      INFO = response.INFO;
-      console.log(response.COUNT, "count");
-      total = response.COUNT; // response.COUNT;
-      // 페이지 수 계산
-      $scope.numberOfPages = totalcheck();
-    } else {
-      var msg = "알 수 없는 에러로 나의 견적 요청 리스트를 불러 올 수 없습니다.";
-      $window.alert(msg);
-      $window.location.href = '/';
-    }
-  });
 
   // 사용자 글 보기로 바꾸기
   $scope.viewUserWrite = function () {
@@ -106,9 +133,11 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
       }
     }).success(function (response) {
       if (response.RESULT == 1) {
+        console.log(response.INFO, "gettest_Info");
         $scope.hideEstimate = false;
         $scope.hideAnswer = true;
         $scope.data = response.INFO;
+        console.log(data_my, "gettest_my");
         total = response.COUNT; // data_my.total
       } else {
         var msg = "알 수 없는 에러로 사용자 견적 리스트를 불러 올 수 없습니다.";
@@ -130,9 +159,11 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
       }
     }).success(function (response) {
       if (response.RESULT == 1) {
+        console.log(response.INFO, "gettest_Info");
         $scope.hideEstimate = true;
         $scope.hideAnswer = false;
         $scope.data = response.INFO;
+        console.log(data_my, "gettest_my");
         total = response.COUNT; // data_my.total
       } else {
         var msg = "알 수 없는 에러로 답변 리스트를 불러 올 수 없습니다.";
