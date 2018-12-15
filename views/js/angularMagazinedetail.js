@@ -91,7 +91,9 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       magazine_idx: click_idx
     }
   }).success(function (response) {
+    console.log(response.RESULT+"resultresult");
       if (response.RESULT == 1) {
+
         $scope.comment = response.INFO;
         console.log(response.INFO+"000000000000000");
         if(response.INFO.user_profile_image == null){
