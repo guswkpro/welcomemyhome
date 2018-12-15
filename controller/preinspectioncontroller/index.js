@@ -22,6 +22,7 @@ exports.getpreinspectionblueprint = function (request, response) {
             preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path;
             console.log(preinspectiondata[0].preinspection_picture_path);
             console.log("3");
+            nextCallback(null);
         }, function (nextCallback){
             console.log("4");
             fs.readFile(preinspectiondata[0].preinspection_picture_path, nextCallback);
