@@ -83,9 +83,10 @@ app.controller('preinspectionCreateCtrl', function ($scope, $http, $window) {
           $window.location.href = '/preinspection';
         } else {
           console.log("도면");
+          console.log(response.RESULT);
           var msg = "알 수 없는 오류로 도면 등록에 실패하였습니다.";
           $window.alert(msg);
-          $window.location.href = '/preinspection';
+          // $window.location.href = '/preinspection';
         }
       }).error(function () {
         console.log("error");
