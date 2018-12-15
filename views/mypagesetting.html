@@ -43,14 +43,12 @@
         </div>
         <div class="card-body" ng-controller="userCtrl">
             <form class="form-userInfo" name="userInfo" method="POST">
-
                 <div>
                     <img class="card-img-top userpicture" style="height:220px; width:100%;" src="img/user_profile_default.JPG">
-                    <input id='fileselector' type="file" accept="image/*" ng-model="image" marginright=""/>
+                    <input id='fileselector' type="file" accept="image/*" ng-model="image" style="margin-right:20px"/>
                     <button id="userpicture_confirm" type="submit" class="btn btn-outline-primary btn-sm" ng-click="pushDataUserpicture()">변경</button>
                 </div>
                 <div>
-                    <br />
                     <hr>
                 </div>
                 <table>
@@ -70,10 +68,8 @@
                     </tr>
                 </table>
                 <div>
-                    <br />
                     <hr>
                 </div>
-
                 <label for="inputPassword" class="sr-only">패스워드변경</label>
                 <input type="password" id="user_password" class="form-control2" placeholder="패스워드변경" style="padding-right:100px;"
                     ng-model="pw">
