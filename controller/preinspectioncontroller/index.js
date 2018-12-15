@@ -21,6 +21,7 @@ exports.getpreinspectionblueprint = function (request, response) {
             var encodedimage = [];
             var count = 0;
             console.log("3");
+            console.log(preinspectiondata[0].preinspection_picture_path);
             preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path.split(',');
             async.whilst(function () {
                 console.log("4");
