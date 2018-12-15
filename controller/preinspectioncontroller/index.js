@@ -67,6 +67,7 @@ exports.getpreinspectionpin = function (request, response) {
         }, function (pindata, nextCallback) {
             var encodedimage = [];
             var count = 0;
+            console.log(pindata);
             pindata[0].pin_picture_path = pindata[0].pin_picture_path.split(',');
             async.whilst(function () {
                 return count < (pindata[0].pin_picture_path.length - 1);
