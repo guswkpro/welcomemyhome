@@ -23,9 +23,6 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
   var cookie = document.cookie.split("click_idx=");
   var temp_cookie = cookie[1].split("-");
   var click_idx = temp_cookie;
-  console.log(document.cookie, "cookie");
-  console.log(temp_cookie, "tmpcookie");
-  console.log(click_idx, "click_idx");
   $http.get('/getmagazinedetail', {
     params: {
       magazine_idx: click_idx
@@ -53,7 +50,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
               }
       */
     } else {
-      console.log(response, "falt");
+      console.log(response, "fault");
     }
   }).error(function () {
     console.log(error);
@@ -93,7 +90,6 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
   }).success(function (response) {
     console.log(response.RESULT+"resultresult");
       if (response.RESULT == 1) {
-
         $scope.comment = response.INFO;
         console.log($scope.comment+"000000000000000");
         if(response.INFO.user_profile_image == null){
