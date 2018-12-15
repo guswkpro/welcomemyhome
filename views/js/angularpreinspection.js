@@ -181,7 +181,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                         } else {
                             var msg = "알 수 없는 오류로 사전점검 등록에 실패하였습니다.";
                             $window.alert(msg);
-                            $window.location.href = '/estimatelist'
+                            $window.location.href = '/preinspection';
                         }
                     }).error(function () {
                         console.log("error");
