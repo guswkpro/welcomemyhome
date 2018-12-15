@@ -119,7 +119,6 @@ exports.mypagesetting = function (request, response) {
 
 	async.waterfall([
 		function (nextCallback) {
-			mkdirp(dirname, nextCallback);
 			async.waterfall([
 				function (callback) {
 					if(req_user_picture){
