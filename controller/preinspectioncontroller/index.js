@@ -55,15 +55,19 @@ exports.addpreinspectionblueprint = function (request, response) {
     async.waterfall([
         function (nextCallback) {
             mkdirp(dirname, nextCallback);
+            console.log("1");
         }, function (url, nextCallback) {
             dirname = dirname + "/" + dirdate;
             mkdirp(dirname, nextCallback);
+            console.log("2");
         }, function (url, nextCallback) {
             var bitmap = new Buffer(req_preinspection_image, 'base64');
             newPath = dirname + "/" + req_user_nickname + ".jpg";
-            fs.writeFile(newPath, bitmap, 'base64', nextCallback);    
+            fs.writeFile(newPath, bitmap, 'base64', nextCallback);
+            console.log("3");
         }, function (preinspection, nextCallback) {
             preinspectiondao.addpreinspectionblueprint(preinspection, nextCallback);
+            console.log("4");
         }
     ], function (error) {
         if (error) {
