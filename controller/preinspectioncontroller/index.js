@@ -27,6 +27,7 @@ exports.getpreinspectionblueprint = function (request, response) {
                 console.log("4");
                 return count < (preinspectiondata[0].preinspection_picture_path.length - 1);
             }, function (callback) {
+                console.log("5");
                 fs.readFile(preinspectiondata[0].preinspection_picture_path, function (error, data) {
                     encodedimage.push(new Buffer(data).toString('base64'));
                     count++;
