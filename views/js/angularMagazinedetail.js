@@ -32,8 +32,9 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     if (response.RESULT == 1) {
       var image = []
       console.log(response, "success");
-      console.log(response.INFO, "4");
+      //console.log(response.INFO, "4");
       $scope.magazinedetail = response.INFO
+      console.log($scope.magazinedetail);
       $scope.title = response.INFO.magazine_title;
       // $scope.date = response.INFO.magazine_post_date;
       // $scope.content = response.INFO.magazine_content;
