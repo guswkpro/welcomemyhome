@@ -154,7 +154,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
     token_man = true;
     $scope.currentPage = 1;
     // 사업자 my 글 리스트 요청
-    $http.get('/gettest', { // 형이 구분 해줄 거임
+    $http.get('/getestimateanswerforcompany', { // 형이 구분 해줄 거임
       params: {
         offset: offset
       }
