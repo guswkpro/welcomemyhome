@@ -158,7 +158,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                 };
                 images.push(image);
                 if (index == input.files.length - 1) {
-                    console.log(JSON.stringify(images));
+                    console.log(JSON.stringify(images).substring(0.10));
                     console.log(cloneCount, "clone");
                     console.log(pin_arr, "pin");
                     console.log(pin_arr[0], "pin[0]");
