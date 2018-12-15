@@ -112,11 +112,9 @@ app.get('/preinspection', function (request, response) {
 app.get('/preinspectioncreate', function (request, response) {
         response.render('preinspectioncreate.html');
 });
-app.get('/preinspectionpopup', function (request, response) {
-        response.render('preinspectionpopup.html');
-});
 
 app.get('/getpreinspectionblueprint', preinspectioncontroller.getpreinspectionblueprint);
+app.get('/getpreinspectionpin', preinspectioncontroller.getpreinspectionpin);
 
 /* ----------- POST ----------- */
 app.post('/login', usercontroller.login);
