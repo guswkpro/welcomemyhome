@@ -15,10 +15,10 @@ exports.getpreinspectionblueprint = function (request, response) {
     async.waterfall([
         function (nextCallback) {
             preinspectiondao.getpreinspectionblueprint(req_user_check, nextCallback);
-        }, function (answerdata, nextCallback) {
+        }, function (preinspection, nextCallback) {
             console.log(req_user_check);
-            console.log(answerdata, "answer");
-            fs.readFile(answerdata.preinspection_picture_path, nextCallback);
+            console.log(ans, "answer");
+            fs.readFile(preinspection.preinspection_picture_path[0], nextCallback);
         }, function (data, nextCallback){
             var  encodedimage = [];
             encodedimage.push(new Buffer(data).toString('base64'));
