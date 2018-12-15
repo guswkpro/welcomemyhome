@@ -146,7 +146,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     // modal에서 데이터 제출
     $scope.pushpreinspectionData = function () {
         var images = [];
-
+        console.log(pin_arr, "check");
         var recourcive = function (index) {
             var input = document.getElementById('fileselector');
             var fr = new FileReader();
