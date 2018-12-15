@@ -113,20 +113,69 @@ exports.addpreinspectionblueprint = function (request, response) {
             var bitmap = new Buffer(req_preinspection_image, 'base64');
             newPath = dirname + "/" + req_user_nickname + ".jpg";
             fs.writeFile(newPath, bitmap, 'base64', nextCallback);
-        //}, function (error) {
-            // if(error) {
-            //     console.log(error);
-            //     response.json({
-            //         RESULT: "0"
-            //     });
-            // }
-            // else {
-            //    preinspectiondto.preinspection(req_user_idx, date, imagepath, req_preinspection_width, req_preinspection_height, nextCallback);
-            // }
         }, function (nextCallback) {
             preinspectiondto.preinspection(req_user_idx, date, newPath, req_preinspection_width, req_preinspection_height, nextCallback);
         }, function (preinspection, nextCallback) {
             preinspectiondao.addpreinspectionblueprint(preinspection, nextCallback);
+        }
+    ], function (error) {
+        if (error) {
+            console.log(error);
+            response.json({
+                RESULT: "0"
+            });
+        }
+        else {
+            response.json({
+                RESULT: "1"
+            });
+        }
+    });
+}
+
+exports.addpreinspectionmodal = function (request, response) {
+    var req_preinspection_idx = request.body.preinspection_idx;
+    var req_pin_X = request.body.pin_x;
+    var req_pin_Y = request.body.pin_y;
+    var req_pin_type = request.body.type;
+    var req_pin_image = request.body.image;
+    var req_pin_content = request.body.content;
+    var date = new Date();
+    date = date.toFormat('YYY-MM-DD HH24:MI:SS');
+    var dirdate = new Date();
+    dirdate = dirdate.toFormat("YYYYMMDDHH24MISS");
+    var imagepath='';
+    var dirname = "./public/" + req_user_nickname + "/blueprint";
+    var newPath;
+    async.waterfall([
+        function (nextCallback) {
+            mkdirp(dirname, nextCallback);
+        }, function (url, nextCallback) {
+            dirname = dirname + "/" + dirdate;
+            mkdirp(dirname, nextCallback);
+        }, function (url, nextCallback) {
+            count = 0;
+            async.whilst(function() {
+                console.log(req_pin_image);
+                return count < req_pin_image.length;
+            }, function (callback) {
+                var bitmap = new Buffer(req_pin_image, 'base64');
+                newPath = dirname + "/" + req_user_nickname + ".jpg";
+                imagepath = imagepath + newPath + ',';
+                count++;
+                fs.writeFile(newPath, bitmap, 'base64', nextCallback);
+            }, function(error) {
+                if(error) {
+                    console.log(error);
+                    response.json({
+                        RESULT: "0"
+                    });
+                } else {
+                    preinspectiondto.preinspectionpin(req_preinspection_idx, newPath, req_pin_type, req_pin_X, req_pin_Y, req_pin_content, nextCallback);
+                }
+            });
+        }, function (pin, nextCallback) {
+            preinspectiondao.addpreinspectionmodal(pin, nextCallback);
         }
     ], function (error) {
         if (error) {

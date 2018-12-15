@@ -69,10 +69,27 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     var pin_img = new Array();
     var pin_arr = new Array();
+    var preinspection_idx;
     $scope.elements = {
         누수: false, 금: false, 도벽: false
     };
-    var cloneCount=0;
+    var cloneCount = 0;
+
+    // 도면 이미지 받아오기
+    $http.get('/getpreinspectionblueprint').success(function (response) {
+        if (response.RESULT == 1) {
+            console.log(response.INFO);
+            console.log(response.INFO.preinspection_picture_path);
+            $scope.image = response.INFO.encodedimage[0];
+            preinspection_idx = response.INFO.preinspection_idx;
+        } else {
+            var msg = "알 수 없는 에러로 preinspection 페이지를 불러 올 수 없습니다.";
+            $window.alert(msg);
+            $window.location.href = '/';
+        }
+    }).error(function () {
+        console.log("error");
+    });
 
     $(function () {
         // pin img 복사 이동
@@ -130,54 +147,51 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
 
     // modal에서 데이터 제출
     $scope.pushpreinspectionData = function () {
-        var input = document.getElementById('fileselector');
-        var fr = new FileReader();
-        fr.readAsDataURL(input.files[0]);
-        fr.onload = function () {
-            var str = fr.result.split(',')[1];
-            console.log(str);
-            $http({
-                method: 'POST',
-                url: '/addpreinspectionmodal',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: ({
-                    type: $scope.elements,
-                    content: $scope.content,
-                    image: str,
-                    pin_x: pin_arr.x,
-                    pin_y: pin_arr.y
-                })
-            }).success(function (response) {
-                if (response.RESULT == "1") {
-                    var msg = "사전점검을 등록하셨습니다.";
-                    $window.alert(msg);
-                    $window.location.href = '/preinspection';
+        var images = [];
+
+        var recourcive = function (index) {
+            var input = document.getElementById('fileselector');
+            var fr = new FileReader();
+            fr.readAsDataURL(input.files[index]);
+            fr.onload = function () {
+                var str = fr.result.split(',')[1];
+                var image = {
+                    image: str
+                };
+                images.push(image);
+                if (index == input.files.length - 1) {
+                    console.log(JSON.stringify(images));
+                    $http({
+                        method: 'POST',
+                        url: '/addpreinspectionmodal',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        data: ({
+                            preinspection_idx: preinspection_idx,
+                            type: $scope.elements,
+                            content: $scope.content,
+                            image: images,
+                            pin_x: pin_arr.x,
+                            pin_y: pin_arr.y
+                        })
+                    }).success(function (response) {
+                        if (response.RESULT == "1") {
+                            var msg = "사전점검을 등록하셨습니다.";
+                            $window.alert(msg);
+                            $window.location.href = '/preinspection';
+                        } else {
+                            var msg = "알 수 없는 오류로 사전점검 등록에 실패하였습니다.";
+                            $window.alert(msg);
+                            $window.location.href = '/estimatelist'
+                        }
+                    }).error(function () {
+                        console.log("error");
+                    });
                 } else {
-                    var msg = "알 수 없는 오류로 사전점검 등록에 실패하였습니다.";
-                    $window.alert(msg);
-                    $window.location.href = '/estimatelist'
+                    recourcive(index + 1);
                 }
-            }).error(function () {
-                console.log("error");
-            });
-        }
+            }
+        };
     };
-
-
-    // 도면 이미지 받아오기
-    $http.get('/getpreinspectionblueprint').success(function (response) {
-        if (response.RESULT == 1) {
-            console.log(response.INFO);
-            console.log(response.INFO.preinspection_picture_path);
-            $scope.image = response.INFO.encodedimage[0];
-        } else {
-            var msg = "알 수 없는 에러로 preinspection 페이지를 불러 올 수 없습니다.";
-            $window.alert(msg);
-            $window.location.href = '/';
-        }
-    }).error(function () {
-        console.log("error");
-    });
 });

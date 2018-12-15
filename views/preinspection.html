@@ -70,9 +70,10 @@
             <tbody>
               <form>
                 <tr>
-                  <th>제목 </th>
+                  <th>사진 </th>
                   <td>
-                    <input type="text" placeholder="제목을 입력하세요. " class="form-control" ng-model="title" />
+                    <input id='fileselector' type="file" placeholder="이미지를 선택하세요." accept="image/*" ng-model="image"
+                      multiple />
                   </td>
                 </tr>
                 <tr>

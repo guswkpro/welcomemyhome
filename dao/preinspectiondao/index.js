@@ -19,3 +19,9 @@ exports.addpreinspectionblueprint = function (preinspection, callback) {
                 callback(error);
         });
 }
+
+exports.addpreinspectionmodal = function (pin, callback) {
+        client.query('INSERT INTO stweb.stweb_preinspections (preinspection_idx, pin_picture_path, pin_type, pin_X, pin_Y, pin_content) VALUES (?, ?, ?, ?, ?, ?)',  [pin.preinspection_idx, pin.pin_picture_path, Number(preinspection.preinspection_width), Number(preinspection.preinspection_height), preinspection.user_idx], function(error) {
+                callback(error);
+        });
+}
