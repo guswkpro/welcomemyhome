@@ -93,7 +93,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
         $scope.comment = response.INFO;
         console.log(response+"000000000000000");
         if(response.INFO.user_profile_image == null){
-          $scope.userimg = "img/user_profile_default.jpg"
+          $scope.userimg = "img/user_profile_default.JPG"
           console.log($scope.userimg+"aaaaaaaaaa");
         }
         else{
