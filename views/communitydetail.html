@@ -29,7 +29,7 @@
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
-  <div class="container" ng-controller="communityDetailCtrl">
+  <div class="container" >
     <table class="table table-bordered">
       <tbody>
         <form>
@@ -55,8 +55,68 @@
       </tbody>
     </table>
   </div>
-  
-    <hr />
+
+  <div class="card card-body align-middle vh-100" style="width:60%; border-radius:20px;" ng-controller="communityDetailCtrl">
+      <div class="card-title" style="margin-top:15px;">
+        <h4> {{title}} </h4>
+        <!-- <div class="heart"></div> -->
+      </div>
+
+          <div class="card card-img">
+            <img class="d-block w-100" ng-src="data:image/jpeg;base64,{{data.encodedimage[0]}}" alt="image">
+          </div>
+          <div class="card card-content">
+              <p>{{content}}</p>
+          </div>
+
+      <div class="card-userReact">
+        <form class="writeComment" method="POST" align="center">
+          <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+          <section class="content-item" id="comments">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <form>
+                    <div class="newcommentbody">
+                      <h3 class="pull-left">댓글 쓰기</h3>
+                      <button type="submit" class="btn btn-normal pull-right" ng-click="pushCommentData()">등록</button>
+                      <table style="width:100%;">
+                        <tr>
+                          <td>
+                            <div style="margin-right: 10px;">
+                              <img class="img-responsive" ng-src="{{userimg}}" alt="" style="height: 100px; width:100px;">
+                            </div>
+                          </td>
+                          <td style="width:100%;">
+                            <div style="height: 100%;">
+                              <textarea class="form-control" ng-model="content" placeholder="Your message" required=""
+                                style="width:100%; height:100px;"></textarea>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </form>
+                  <div>
+                    <br />
+                  </div>
+                  <div class="media" ng-repeat="c in comment">
+                    <a class="pull-left" href="#"><img class="media-object" ng-model="userimg" ng-src="{{userimg}}" alt=""></a>
+                    <div class="media-body">
+                      <h4 class="media-heading" align="left">{{c.user_nickname}}</h4>
+                      <p>{{c.magazine_comment_content}}</p>
+                      <ul class="list-unstyled list-inline media-detail pull-left">
+                        <li><i class="fa fa-calendar"></i>{{c.magazine_comment_post_date}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </form>
+      </div>
+    </div>
 
   <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
     <div class="nav-logo">
