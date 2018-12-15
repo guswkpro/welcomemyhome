@@ -199,6 +199,7 @@ exports.getmagazinecomment = function (request, response) {
             });
         }
     ], function (error, result) {
+        console.log(info);
         if (error) {
             console.log(error);
             response.json({
