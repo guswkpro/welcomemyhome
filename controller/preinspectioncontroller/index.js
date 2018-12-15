@@ -26,6 +26,13 @@ exports.getpreinspectionblueprint = function (request, response) {
             var  encodedimage = [];
             encodedimage.push(new Buffer(data).toString('base64'));
             nextCallback(null);
+        }, function (nextCallback) {
+            preinspection[0].preinspection_date = preinspection[0].preinspection_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+            preinspection[0].encodedimage = encodedimage;
+            preinspection[0].req_preinspection_width = preinspection[0].preinspection_width;
+            preinspection[0].req_preinspection_height = preinspection[0].preinspection_height;
+            info = preinspection[0];
+            nextCallback();
         }
     ], function (error) {
         if (error) {
