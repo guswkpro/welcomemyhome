@@ -125,7 +125,6 @@ exports.mypagesetting = function (request, response) {
 						var bitmap = new Buffer(req_user_picture, 'base64');
 						newPath = dirname + "/" + req_user_nickname  +  "_profile.jpg";
 						fs.writeFile(newPath, bitmap, 'base64', callback);
-						mkdirp(newPath, nextCallback);
 					} else{
 						
 					}

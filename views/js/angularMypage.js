@@ -48,10 +48,9 @@ app.controller('passwordCheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('userCtrl', function ($scope, $http, $window) {
-  $scope.pushData = function () {
+  $scope.pushDataUserpicture = function () {
     var input = document.getElementById('fileselector');
     var fr = new FileReader();
-    if (input.files[0]) {
       fr.readAsDataURL(input.files[0]);//input.files[0]에 사용자 로컬경로가 담기고 그게 fr에 저장
       fr.onload = function () {
         var str = fr.result.split(',')[1];
@@ -64,15 +63,13 @@ app.controller('userCtrl', function ($scope, $http, $window) {
             'Content-Type': 'application/json'
           },
           data: ({
-            nickname: $scope.nickname,
-            pw: $scope.pw,
             image: image
           })
         }).success(function (response) {
           if (response.RESULT == "1") {
             var msg = "회원정보수정에 성공하셨습니다.";
             $window.alert(msg);
-            $window.location.href = '/';
+            $window.location.href = '/mypagesetting';
           } else if (response.RESULT == "4") {
             var msg = "알 수 없는 오류로 변경에 실패하였습니다.";
             $window.alert(msg);
@@ -82,67 +79,124 @@ app.controller('userCtrl', function ($scope, $http, $window) {
           console.log("error");
         });
       }
-    } else {
-      $http({
-        method: 'POST',
-        url: '/mypagesetting',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: ({
-          nickname: $scope.nickname,
-          pw: $scope.pw,
-          image: null
-        })
-      }).success(function (response) {
-        if (response.RESULT == "1") {
-          var msg = "회원정보수정에 성공하셨습니다.";
-          $window.alert(msg);
-          $window.location.href = '/';
-        } else if (response.RESULT == "4") {
-          var msg = "알 수 없는 오류로 변경에 실패하였습니다.";
-          $window.alert(msg);
-          $window.location.href = '/'
-        }
-      }).error(function () {
-        console.log("error");
-      });
-    }
   }
-  //변경 취소
+
+  $scope.pushDataNickname = function () {
+        $http({
+          method: 'POST',
+          url: '/mypagesetting',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: ({
+            nickname: $scope.nickname
+          })
+        }).success(function (response) {
+          if (response.RESULT == "1") {
+            var msg = "회원정보수정에 성공하셨습니다.";
+            $window.alert(msg);
+            $window.location.href = '/mypagesetting';
+          } else if (response.RESULT == "4") {
+            var msg = "알 수 없는 오류로 변경에 실패하였습니다.";
+            $window.alert(msg);
+            $window.location.href = '/'
+          }
+        }).error(function () {
+          console.log("error");
+        });
+      }
+
+  $scope.pushDataPassword = function () {
+    $http({
+      method: 'POST',
+      url: '/mypagesetting',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: ({
+        pw: $scope.pw
+      })
+    }).success(function (response) {
+      if (response.RESULT == "1") {
+        var msg = "회원정보수정에 성공하셨습니다.";
+        $window.alert(msg);
+        $window.location.href = '/mypagesetting';
+      } else if (response.RESULT == "4") {
+        var msg = "알 수 없는 오류로 변경에 실패하였습니다.";
+        $window.alert(msg);
+        $window.location.href = '/'
+      }
+    }).error(function () {
+      console.log("error");
+    });
+  }
+
+  // $scope.pushDataUserpicture = function () {
+  //   var input = document.getElementById('fileselector');
+  //   var fr = new FileReader();
+  //   if (input.files[0]) {
+  //     fr.readAsDataURL(input.files[0]);//input.files[0]에 사용자 로컬경로가 담기고 그게 fr에 저장
+  //     fr.onload = function () {
+  //       var str = fr.result.split(',')[1];
+  //       var image = str;
+  //       console.log(JSON.stringify(image));
+  //       $http({
+  //         method: 'POST',
+  //         url: '/mypagesetting',
+  //         headers: {
+  //           'Content-Type': 'application/json'
+  //         },
+  //         data: ({
+  //           nickname: $scope.nickname,
+  //           pw: $scope.pw,
+  //           image: image
+  //         })
+  //       }).success(function (response) {
+  //         if (response.RESULT == "1") {
+  //           var msg = "회원정보수정에 성공하셨습니다.";
+  //           $window.alert(msg);
+  //           $window.location.href = '/';
+  //         } else if (response.RESULT == "4") {
+  //           var msg = "알 수 없는 오류로 변경에 실패하였습니다.";
+  //           $window.alert(msg);
+  //           $window.location.href = '/'
+  //         }
+  //       }).error(function () {
+  //         console.log("error");
+  //       });
+  //     }
+  //   } else {
+  //     $http({
+  //       method: 'POST',
+  //       url: '/mypagesetting',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       data: ({
+  //         nickname: $scope.nickname,
+  //         pw: $scope.pw,
+  //         image: null
+  //       })
+  //     }).success(function (response) {
+  //       if (response.RESULT == "1") {
+  //         var msg = "회원정보수정에 성공하셨습니다.";
+  //         $window.alert(msg);
+  //         $window.location.href = '/';
+  //       } else if (response.RESULT == "4") {
+  //         var msg = "알 수 없는 오류로 변경에 실패하였습니다.";
+  //         $window.alert(msg);
+  //         $window.location.href = '/'
+  //       }
+  //     }).error(function () {
+  //       console.log("error");
+  //     });
+  //   }
+  // }
+
   $scope.cancelSetting = function () {
     var msg = "변경을 취소합니다.";
     $window.alert(msg);
     $window.location.href = '/';
   };
-  // $scope.clickLogin = function () {
-  //   $http({
-  //     method: 'POST',
-  //     url: '/mypagesetting',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     data: ({
-
-  //       nickname: $scope.nickname,
-  //       pw: $scope.pw,
-  //     })
-  //   }).success(function (response) {
-  //     console.log(response.RESULT);
-  //     if (response.RESULT == "1") {
-  //       $window.location.href = '/mypagesetting';
-  //     } else if (response.RESULT == "2") {
-  //       var msg = "존재하지 않는 아이디 입니다."; // 필요없음
-  //       $window.alert(msg);
-  //     } else if (response.RESULT == "3") {
-  //       var msg = "비밀번호가 틀립니다.";
-  //       $window.alert(msg);
-  //       $window.location.href = '/';
-  //     } else if (response.RESULT == "4") {
-  //       var msg = "탈퇴한 회원입니다.";
-  //       $window.alert(msg);
-  //     }
-  //   })
-  // }
 });
 
