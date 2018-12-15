@@ -59,10 +59,11 @@ exports.getpreinspectionblueprint = function (request, response) {
 };
 
 exports.getpreinspectionpin = function (request, response) {
-    var req_preinspection_idx = request.body.preinspection_idx;
+    var req_preinspection_idx = request.params.preinspection_idx;
     var info = {};
     async.waterfall([
         function (nextCallback) {
+
             preinspectiondao.getpreinspectionpin(req_preinspection_idx, nextCallback);
         }, function (pindata, nextCallback) {
             var encodedimage = [];

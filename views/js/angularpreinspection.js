@@ -91,7 +91,11 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     });
 
     // 핀 정보 받아오기
-    $http.get('/getpreinspectionpin').success(function (response) {
+    $http.get('/getpreinspectionpin', {
+        params: {
+          preinspection_idx: preinspection_idx
+        }
+      }).success(function (response) {
         if (response.RESULT == 1) {
             temp_x = response.INFO.pin_x;
             temp_y = response.INFO.pin_y;
