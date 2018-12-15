@@ -93,7 +93,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     // 핀 정보 받아오기
     $http.get('/getpreinspectionpin').success(function (response) {
         if (response.RESULT == 1) {
-            $scope.image = response.INFO.encodedimage[0];
             temp_x = response.INFO.pin_x;
             temp_y = response.INFO.pin_y;
             console.log(temp_x, temp_y);
