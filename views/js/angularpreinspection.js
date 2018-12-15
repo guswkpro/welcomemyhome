@@ -128,12 +128,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     }
 
     // 도면 이미지 받아오기
-    $http.get('/getpreinspectionblueprint', {
-        params: {
-            
-        }
-    }).success(function (response) {
+    $http.get('/getpreinspectionblueprint').success(function (response) {
         if (response.RESULT == 1) {
+            console.log(response.RESULT);
             $scope.image = response.INFO.encodedimage;
         } else {
             var msg = "알 수 없는 에러로 preinspection 페이지를 불러 올 수 없습니다.";
