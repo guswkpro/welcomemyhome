@@ -37,7 +37,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       $scope.title = response.INFO.magazine_title;
       // $scope.date = response.INFO.magazine_post_date;
       // $scope.content = response.INFO.magazine_content;
-      // image = response.INFO.encodedimage;
+      // $scope.image = response.INFO.encodedimage;
       document.cookie = "click_idx=";
       /*
               var ol = document.getElementById('ol_indicators');

@@ -45,6 +45,8 @@
         <div class="carousel-item active" ng-repeat="m in magazinedetail">
           <img class="d-block w-100" ng-src="data:image/jpeg;base64,{{m.encodedimage}}" alt="slide image">
         </div>
+        <img class="d-block w-100" ng-src="data:image/jpeg;base64,{{magazinedetail[0].encodedimage}}" alt="slide image">
+        
 
         <!--
           <div class="carousel-item">
