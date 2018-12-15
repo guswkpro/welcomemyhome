@@ -41,11 +41,31 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
         $scope.content = response.INFO.community_content;
         $scope.image = response.INFO.encodedimage;
       } else {
-        var msg = "알 수 없는 에러로 detail 페이지를 불러 올 수 없습니다.";
+        var msg = "알 수 없는 에러로 페이지를 불러올 수 없습니다.";
         $window.alert(msg);
         $window.location.href = '/community';
       }
     }).error(function () {
       console.log("error");
     });
+
+    $http.get('/getcommunitycomment', {
+      params: {
+        community_idx: click_idx
+      }
+    }).success(function (response) {
+      if (response.RESULT == 1) {
+        $scope.comment = response.INFO;
+        console.log(response+"겟커뮤니티댓글 반환값");
+      } else {
+        var msg = "알 수 없는 에러로 댓글을 불러올 수 없습니다.";
+        $window.alert(msg);
+        $window.location.href = '/community';
+      }
+    }).error(function () {
+      console.log("error");
+    });
+
   });
+
+  
