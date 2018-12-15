@@ -96,7 +96,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     }).error(function () {
         console.log("error");
     });
-
+    console.log(clones.getPinArray(clones.getcloneCount()));
     // 핀 정보 받아오기
     $http.get('/getpreinspectionpin', {
         params: {
