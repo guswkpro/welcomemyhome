@@ -43,7 +43,7 @@ app.controller('communityListCtrl', function ($scope, $http) {
     } else {
       console.log(response, "fault");
     }
-  }).error(function () {
+  }).error(function (error) {
     console.log(error);
   });
 });
@@ -61,7 +61,7 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
     $scope.currentPage = 1;
     $scope.itemsPerPage = $scope.viewby;
     $scope.maxSize = 5; //Number of pager buttons to show
-    
+
     $scope.setPage = function (pageNo) {
       $scope.currentPage = pageNo;
     };

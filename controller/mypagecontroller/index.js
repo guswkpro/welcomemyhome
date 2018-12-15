@@ -169,9 +169,10 @@ exports.mypagesetting = function (request, response) {
 			response.json({
 				RESULT: "0"
 			});
+		} else {
+			response.json({
+				RESULT: "1"
+			});
 		}
-		response.json({
-			RESULT: "1"
-		});
 	});
 };
