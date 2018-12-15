@@ -170,8 +170,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                             type: $scope.elements,
                             content: $scope.content,
                             image: images,
-                            pin_x: pin_arr.x,
-                            pin_y: pin_arr.y
+                            pin_x: pin_arr[cloneCount].x,
+                            pin_y: pin_arr[cloneCount].y
                         })
                     }).success(function (response) {
                         if (response.RESULT == "1") {
