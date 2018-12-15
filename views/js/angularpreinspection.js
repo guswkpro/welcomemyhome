@@ -159,7 +159,10 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                 images.push(image);
                 if (index == input.files.length - 1) {
                     console.log(JSON.stringify(images));
+                    console.log(cloneCount, "clone");
                     console.log(pin_arr, "pin");
+                    console.log(pin_arr[0], "pin[0]");
+
                     $http({
                         method: 'POST',
                         url: '/addpreinspectionmodal',
