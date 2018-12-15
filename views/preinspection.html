@@ -49,15 +49,9 @@
                 <th>도면 사진 </th>
                 <td style="position : relative">
                   <div id="base_img" class="wrapper">
-                    <img id="plan" src="./img/도면.JPG" alt="이미지 없음">
+                    <img id="plan" ng-src="data:image/jpg;base64,{{image}}" alt="이미지 없음">
                     <!-- <img class="based-img" draggable="true" ondragstart="dragStart(event)" ondragenter="dragEnter(event)" ng-model="preinspection_img" ng-src="./img/도면.JPG" alt="이미지 없음"> -->
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <th>사진 </th>
-                <td>
-                  <div class="wrapper"><img ng-src="data:image/jpg;base64,{{image}}" alt="이미지 없음"><br /></div>
                 </td>
               </tr>
             </form>
