@@ -40,7 +40,7 @@ exports.getpreinspectionblueprint = function (request, response) {
                     preinspectiondata[0].encodedimage = encodedimage;
                     preinspectiondata[0].preinspection_width = preinspectiondata[0].preinspection_width;
                     preinspectiondata[0].preinspection_height = preinspectiondata[0].preinspection_height;
-                    info = preinspection[0];
+                    info = preinspectiondata[0];
                     nextCallback();
                 }
             });
