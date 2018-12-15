@@ -70,6 +70,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
     var pin_img = new Array();
     var pin_arr = new Array();
     var preinspection_idx;
+    var temp_x, temp_y;
     $scope.elements = {
         누수: false, 금: false, 도벽: false
     };
@@ -89,6 +90,26 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         console.log("error");
     });
 
+    // 핀 정보 받아오기
+    $http.get('/getpreinspectionpin').success(function (response) {
+        if (response.RESULT == 1) {
+            $scope.image = response.INFO.encodedimage[0];
+            temp_x = response.INFO.pin_x;
+            temp_y = response.INFO.pin_y;
+            console.log(temp_x, temp_y);
+        } else {
+            var msg = "핀 정보를 불러 올 수 없습니다.";
+            $window.alert(msg);
+            $window.location.href = '/';
+        }
+    }).error(function () {
+        console.log("error");
+    });
+
+    // 핀 정보 받아서 도면위에 찍기
+
+
+    // 핀 이동해서 찍기
     $(function () {
         // pin img 복사 이동
         $('.pin-img').draggable({ helper: "clone", cursorAt: { top: 0, left: 15 } });

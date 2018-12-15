@@ -15,7 +15,7 @@ exports.getpreinspectionblueprint = function (request, response) {
     async.waterfall([
         function (nextCallback) {
             preinspectiondao.getpreinspectionblueprint(req_user_check, nextCallback);
-        },  function (preinspectiondata, nextCallback) {
+        }, function (preinspectiondata, nextCallback) {
             var encodedimage = [];
             var count = 0;
             preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path.split(',');
@@ -48,7 +48,7 @@ exports.getpreinspectionblueprint = function (request, response) {
         if (error) {
             console.log(error);
             response.json({
-                RESULT:"0"
+                RESULT: "0"
             });
         } else {
             response.json({
@@ -58,6 +58,53 @@ exports.getpreinspectionblueprint = function (request, response) {
         }
     });
 };
+
+exports.getpreinspectionpin = function (request, response) {
+    var req_preinspection_idx = request.body.preinspection_idx;
+    var info = {};
+    async.waterfall([
+        function (nextCallback) {
+            preinspectiondao.getpreinspectionpin(req_preinspection_idx, nextCallback);
+        }, function (pindata, nextCallback) {
+            var encodedimage = [];
+            var count = 0;
+            pindata[0].pin_picture_path = pindata[0].pin_picture_path.split(',');
+            async.whilst(function () {
+                return count < (pindata[0].pin_picture_path.length - 1);
+            }, function (nextCallback) {
+                fs.readFile(pindata[0].pindata_picture_path[count], function (error, data) {
+                    encodedimage.push(new Buffer(data).toString('base64'));
+                    count++;
+                    nextCallback();
+                });
+            }, function (error) {
+                if (error) {
+                    console.log(error);
+                    response.json({
+                        RESULT: "0"
+                    });
+                } else {
+                    pindata[0].pin_date = pindata[0].pin_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+                    pindata[0].encodedimage = encodedimage;
+                    info = pindata[0];
+                    nextCallback();
+                }
+            });
+        }
+    ], function (error) {
+        if (error) {
+            console.log(error);
+            response.json({
+                RESULT: "0"
+            });
+        } else {
+            response.json({
+                RESULT: "1"
+                , INFO: info
+            });
+        }
+    });
+}
 
 
 /********************
@@ -118,7 +165,7 @@ exports.addpreinspectionmodal = function (request, response) {
     date = date.toFormat('YYY-MM-DD HH24:MI:SS');
     var dirdate = new Date();
     dirdate = dirdate.toFormat("YYYYMMDDHH24MISS");
-    var imagepath='';
+    var imagepath = '';
     var dirname = "./public/" + req_user_nickname + "/blueprint";
     var newPath;
     async.waterfall([
@@ -132,7 +179,7 @@ exports.addpreinspectionmodal = function (request, response) {
         }, function (url, nextCallback) {
             count = 0;
             console.log("3");
-            async.whilst(function() {
+            async.whilst(function () {
                 //console.log(req_pin_image);
                 console.log("4");
                 return count < req_pin_image.length;
@@ -144,8 +191,8 @@ exports.addpreinspectionmodal = function (request, response) {
                 count++;
                 fs.writeFile(newPath, bitmap, 'base64', nextCallback);
                 console.log("6");
-            }, function(error) {
-                if(error) {
+            }, function (error) {
+                if (error) {
                     console.log(error);
                     response.json({
                         RESULT: "0"

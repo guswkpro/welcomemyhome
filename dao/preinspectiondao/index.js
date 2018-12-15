@@ -10,6 +10,12 @@ exports.getpreinspectionblueprint = function (user_idx, callback) {
         });
 };
 
+exports.getpreinspectionpin = function (preinspection_idx, callback) {
+        client.query('SELECT * FROM stweb.stweb_preinspection_pins where preinspection_idx = ?', [preinspection_idx], function (error, result) {
+                callback(error, result);
+        });
+}
+
 /********************
         POST
 ********************/
