@@ -124,20 +124,26 @@ exports.addpreinspectionmodal = function (request, response) {
     async.waterfall([
         function (nextCallback) {
             mkdirp(dirname, nextCallback);
+            console.log("1");
         }, function (url, nextCallback) {
             dirname = dirname + "/" + dirdate;
             mkdirp(dirname, nextCallback);
+            console.log("2");
         }, function (url, nextCallback) {
             count = 0;
+            console.log("3");
             async.whilst(function() {
                 console.log(req_pin_image);
+                console.log("4");
                 return count < req_pin_image.length;
             }, function (callback) {
+                console.log("5");
                 var bitmap = new Buffer(req_pin_image, 'base64');
                 newPath = dirname + "/" + req_user_nickname + ".jpg";
                 imagepath = imagepath + newPath + ',';
                 count++;
                 fs.writeFile(newPath, bitmap, 'base64', nextCallback);
+                console.log("6");
             }, function(error) {
                 if(error) {
                     console.log(error);
@@ -149,6 +155,7 @@ exports.addpreinspectionmodal = function (request, response) {
                 }
             });
         }, function (pin, nextCallback) {
+            console.log("7");
             preinspectiondao.addpreinspectionmodal(pin, nextCallback);
         }
     ], function (error) {
