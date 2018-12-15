@@ -145,7 +145,7 @@ exports.addpreinspectionmodal = function (request, response) {
                         RESULT: "0"
                     });
                 } else {
-                    preinspectiondto.preinspectionpin(req_preinspection_idx, newPath, req_pin_type, req_pin_X, req_pin_Y, req_pin_content, nextCallback);
+                    preinspectiondto.preinspectionpin(req_preinspection_idx, imagepath, req_pin_type, req_pin_X, req_pin_Y, req_pin_content, nextCallback);
                 }
             });
         }, function (pin, nextCallback) {
