@@ -180,8 +180,9 @@ exports.getmagazinecomment = function (request, response) {
                         magazinecommentinfodetail.user_profile_image = "null";
                     } else {
                         fs.readFile(magazinecommentuserdata[0].user_picture_thumbnail_path, function (error, data) {
-                            console.log(error);
+                            console.log(new Buffer(data).toString('base64'));
                             magazinecommentinfodetail.user_profile_image = new Buffer(data).toString('base64');
+                            console.log(magazinecommentinfodetail.user_profile_image);
                         });
                     }
                     magazinecommentinfodetail.magazine_comment_user_idx = magazinecommentdata[count].user_idx;
@@ -189,7 +190,6 @@ exports.getmagazinecomment = function (request, response) {
                     magazinecommentinfodetail.magazine_comment_content = magazinecommentdata[count].comment_content;
                     magazinecommentinfodetail.magazine_comment_post_date = magazinecommentdata[count].comment_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                     info.push(magazinecommentinfodetail);
-                    console.log('aaaaaa');
                     count++;
                     callback();
                 });
@@ -198,7 +198,6 @@ exports.getmagazinecomment = function (request, response) {
             });
         }
     ], function (error, result) {
-        console.log(info);
         if (error) {
             console.log(error);
             response.json({
