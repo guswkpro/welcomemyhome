@@ -92,14 +92,16 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       if (response.RESULT == 1) {
         $scope.comment = response.INFO
         if(response.INFO.user_profile_image == null){
-          $scope.userimg = "/img/user_profile_default.jpg"
+          $scope.userimg = "img/user_profile_default.jpg"
+          console.log(userimg+"aaaaaaaaaa");
         }
         else{
           $scope.userimg = "data:image/jpeg;base64," + response.INFO.user_profile_image;
+          console.log(userimg+"bbbbbbbbbb");
         }
         console.log(response.INFO);
       } else {
-        console.log(response, "falt");
+        console.log(response, "fault");
       }
     }).error(function () {
       console.log(error);
