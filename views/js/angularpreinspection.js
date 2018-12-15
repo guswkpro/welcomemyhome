@@ -150,7 +150,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
         var recourcive = function (index) {
             var input = document.getElementById('fileselector');
             var fr = new FileReader();
-            fr.readAsDataURL(input.files[input]);
+            fr.readAsDataURL(input.files[index]);
             fr.onload = function () {
                 var str = fr.result.split(',')[1];
                 var image = {

@@ -14,21 +14,14 @@ exports.getpreinspectionblueprint = function (request, response) {
     var info = {};
     async.waterfall([
         function (nextCallback) {
-            console.log("1");
             preinspectiondao.getpreinspectionblueprint(req_user_check, nextCallback);
-            console.log("2");
         },  function (preinspectiondata, nextCallback) {
             var encodedimage = [];
             var count = 0;
-            console.log("3");
-            console.log(preinspectiondata[0].preinspection_picture_path);
             preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path.split(',');
             async.whilst(function () {
-                console.log("4");
                 return count < (preinspectiondata[0].preinspection_picture_path.length);
             }, function (callback) {
-                console.log("5");
-                console.log(preinspectiondata[0].preinspection_picture_path)
                 fs.readFile(preinspectiondata[0].preinspection_picture_path[0], function (error, data) {
                     encodedimage.push(new Buffer(data).toString('base64'));
                     count++;
