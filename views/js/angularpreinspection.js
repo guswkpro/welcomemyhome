@@ -171,7 +171,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window) {
                         },
                         data: ({
                             preinspection_idx: preinspection_idx,
-                            type: $scope.elements,
+                            type: $scope.type,
                             content: $scope.content,
                             image: images,
                             pin_x: pin_arr[cloneCount-1].x,
