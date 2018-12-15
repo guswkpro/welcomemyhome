@@ -20,8 +20,9 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('magazinedetailcard', function ($scope, $http, $window) {
-  var cookie = document.cookie.split("=");
-  var click_idx = cookie[2];
+  var cookie = document.cookie.split("click_idx=");
+  var temp_cookie = cookie[1].split("-");
+  var click_idx = temp_cookie[2];
   console.log(document.cookie, "cookie");
   console.log(click_idx, "click_idx");
   $http.get('/getmagazinedetail', {
