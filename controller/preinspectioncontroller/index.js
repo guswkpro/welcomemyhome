@@ -43,26 +43,6 @@ exports.getpreinspectionblueprint = function (request, response) {
                     nextCallback();
                 }
             });
-        // }, function (preinspectiondata, nextCallback) {
-        //     preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path;
-        //     nextCallback(preinspectiondata);
-        //     console.log("3");
-        // }, function (preinspectiondata, nextCallback){
-        //     console.log("4");
-        //     fs.readFile(preinspectiondata[0].preinspection_picture_path, nextCallback);
-        // }, function (nextCallback){
-        //     console.log("5");
-        //     var encodedimage = [];
-        //     encodedimage.push(new Buffer(data).toString('base64'));
-        //     nextCallback(null);
-        // }, function (nextCallback) {
-        //     console.log("6");
-        //     preinspectiondata[0].preinspection_date = preinspectiondata[0].preinspection_date.toFormat('YYYY-MM-DD HH24:MI:SS');
-        //     preinspectiondata[0].encodedimage = encodedimage;
-        //     preinspectiondata[0].preinspection_width = preinspectiondata[0].preinspection_width;
-        //     preinspectiondata[0].preinspection_height = preinspectiondata[0].preinspection_height;
-        //     info = preinspection[0];
-        //     nextCallback();
         }
     ], function (error) {
         if (error) {
@@ -128,6 +108,7 @@ exports.addpreinspectionblueprint = function (request, response) {
 
 exports.addpreinspectionmodal = function (request, response) {
     var req_preinspection_idx = request.body.preinspection_idx;
+    var req_user_nickname = request.session.user_nickname;
     var req_pin_X = request.body.pin_x;
     var req_pin_Y = request.body.pin_y;
     var req_pin_type = request.body.type;
