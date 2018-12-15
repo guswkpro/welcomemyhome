@@ -203,7 +203,7 @@ exports.getcommunitycomment = function (request, response) {
                     }
                     communitycommentinfodetail.community_comment_user_idx = communitycommentdata[count].user_idx;
                     communitycommentinfodetail.community_comment_idx = communitycommentdata[count].comment_idx;
-                    communitycommentinfodetail.community_comment_content = communitycommentdata[count].comment;
+                    communitycommentinfodetail.community_comment_content = communitycommentdata[count].comment_content;
                     communitycommentinfodetail.community_comment_post_date = communitycommentdata[count].comment_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                     info.push(communitycommentinfodetail);
                     count++;
