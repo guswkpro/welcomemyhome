@@ -68,7 +68,6 @@ exports.addpreinspectionblueprint = function (request, response) {
             var bitmap = new Buffer(req_preinspection_image, 'base64');
             newPath = dirname + "/" + req_user_nickname + ".jpg";
             fs.writeFile(newPath, bitmap, 'base64', nextCallback);
-            preinspectiondto.preinspection(req_user_idx, date, newPath, req_preinspection_width, req_preinspection_height, nextCallback);
             console.log("3");
         //}, function (error) {
             // if(error) {
@@ -80,6 +79,8 @@ exports.addpreinspectionblueprint = function (request, response) {
             // else {
             //    preinspectiondto.preinspection(req_user_idx, date, imagepath, req_preinspection_width, req_preinspection_height, nextCallback);
             // }
+        }, function (nextCallback) {
+            preinspectiondto.preinspection(req_user_idx, date, newPath, req_preinspection_width, req_preinspection_height, nextCallback);
         }, function (preinspection, nextCallback) {
             preinspectiondao.addpreinspectionblueprint(preinspection, nextCallback);
             console.log("4");
