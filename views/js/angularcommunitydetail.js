@@ -59,7 +59,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
         },
         data: ({
           community_idx: click_idx,
-          content: $scope.content
+          content: $scope.addcomment
         })
       }).success(function (response) {
         if (response.RESULT == "1") {
