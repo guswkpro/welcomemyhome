@@ -42,6 +42,7 @@ exports.getcommunitylist = function (request, response) {
                     function (secondNextCallback) {
                         communitylist[count].community_post_date = communitylist[count].community_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                         fs.readFile(communitylist[count].community_thumbnail_path, function (error, data) {
+                            console.log((data + "").substring(0, 20));
                             communitylist[count].encodedimage = new Buffer(data).toString('base64');
                             secondNextCallback(error);
                         });
