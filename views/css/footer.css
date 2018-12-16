@@ -9,6 +9,7 @@ html {
 
 body {
     margin: 0;
+    padding:0;
 }
     
 .footer {
@@ -53,6 +54,12 @@ body {
 }
 
 .content {
+    margin-top:10%;
+    width: 100%;
+    margin-bottom:150px;
+}
+
+.content2 {
     margin-top:10%;
     width: 100%;
     margin-bottom:150px;

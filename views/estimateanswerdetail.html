@@ -34,134 +34,134 @@
 </head>
 
 <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%">
-    <div class="container estimate-div" ng-controller="estimateAnswerDetailCtrl">
-      <table class="table table-bordered">
-        <tbody>
-          <form>
-            <tr>
-              <th>제목 </th>
-              <td>
-                <div>{{title}}</div>
-              </td>
-            </tr>
-            <tr>
-              <th>사진 </th>
-              <td>
-                <div ng-repeat="e in image"><img width="500" height="300" ng-src="data:image/jpg;base64,{{e}}" alt="이미지 없음"><br /></div>
-              </td>
-            </tr>
-            <tr>
-              <th>내용 </th>
-              <td>
-                <div>{{content}}</div>
-              </td>
-            </tr>
-          </form>
-        </tbody>
-      </table>
-    </div>
-    <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
-      <div class="nav-logo">
-        <a class="navbar-bran" href='http://13.124.196.226:3000/'>WMH</a>
-      </div>
-      <div class="collapse navbar-collapse nav-menu">
-        <ul class="navbar-nav mr-auto nav-ul">
-          <li class="nav-item nav-li-magazine">
-            <a class="nav-a-text3" href='http://13.124.196.226:3000/magazines'>매거진</a>
-          </li>
-          <li class="nav-item nav-li">
-            <a class="nav-a-text4" href='http://13.124.196.226:3000/community'>커뮤니티</a>
-          </li>
-          <li class="nav-item nav-li">
-            <a class="nav-a-text4" href='http://13.124.196.226:3000/preinspection'>사전점검</a>
-          </li>
-          <li class="nav-item nav-li">
-            <a class="nav-a-text4" href='http://13.124.196.226:3000/estimatelist'>견적요청</a>
-          </li>
-        </ul>
-      </div>
-      <div class="nav-div-form" ng-init="load()" ng-style="div_login">
+  <div class="container estimate-div" ng-controller="estimateAnswerDetailCtrl">
+    <table class="table table-bordered">
+      <tbody>
         <form>
-          <a ng-show="showHide_logout" class="nav-button-login" href = 'http://13.124.196.226:3000/login'>로그인</a>
-          <a ng-show="showHide_logout" class="nav-button-signup" href = 'http://13.124.196.226:3000/signup'>회원가입</a>
-          <a ng-show="showHide_login" class="nav-button-mypage" href = 'http://13.124.196.226:3000/mypage'>마이페이지</a>
-          <a ng-show="showHide_login" class="nav-button-logout" ng-click ="logout()">로그아웃</a>
+          <tr>
+            <th>제목 </th>
+            <td>
+              <div>{{title}}</div>
+            </td>
+          </tr>
+          <tr>
+            <th>사진 </th>
+            <td>
+              <div ng-repeat="e in image"><img width="500" height="300" ng-src="data:image/jpg;base64,{{e}}" alt="이미지 없음"><br /></div>
+            </td>
+          </tr>
+          <tr>
+            <th>내용 </th>
+            <td>
+              <div>{{content}}</div>
+            </td>
+          </tr>
         </form>
-      </div>
-    </nav>
+      </tbody>
+    </table>
+  </div>
+  <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
+    <div class="nav-logo">
+      <a href='http://13.124.196.226:3000/'><img class="logo_wmh" src="./img/logo_WMH.png"></a>
+    </div>
+    <div class="collapse navbar-collapse nav-menu">
+      <ul class="navbar-nav mr-auto nav-ul">
+        <li class="nav-item nav-li-magazine">
+          <a class="nav-a-text3" href='http://13.124.196.226:3000/magazines'>매거진</a>
+        </li>
+        <li class="nav-item nav-li">
+          <a class="nav-a-text4" href='http://13.124.196.226:3000/community'>커뮤니티</a>
+        </li>
+        <li class="nav-item nav-li">
+          <a class="nav-a-text4" href='http://13.124.196.226:3000/preinspection'>사전점검</a>
+        </li>
+        <li class="nav-item nav-li">
+          <a class="nav-a-text4" href='http://13.124.196.226:3000/estimatelist'>견적요청</a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav-div-form" ng-init="load()" ng-style="div_login">
+      <form>
+        <a ng-show="showHide_logout" class="nav-button-login" href='http://13.124.196.226:3000/login'>로그인</a>
+        <a ng-show="showHide_logout" class="nav-button-signup" href='http://13.124.196.226:3000/signup'>회원가입</a>
+        <a ng-show="showHide_login" class="nav-button-mypage" href='http://13.124.196.226:3000/mypage'>마이페이지</a>
+        <a ng-show="showHide_login" class="nav-button-logout" ng-click="logout()">로그아웃</a>
+      </form>
+    </div>
+  </nav>
 
-    <footer class="page-footer font-small mdb-color pt-4 footer">
-      <div class="container text-center text-md-left">
-        <div class="row text-center text-md-left mt-3 pb-3 footer_container">
-          <div class="col-md-3 col-lg-3 col-xl-3 footer_main">
-            <h6 class="text-uppercase mb-4 font-weight-bold">놀러와 마이홈 </h6>
-            <p>This is our first Web Site.<br> Our site allows users and operators to match and request quotes.</p>
-          </div>
-          <hr class="w-100 clearfix d-md-none">
-          <div class="col-md-2 col-lg-2 col-xl-2 footer_sponser">
-            <h6 class="text-uppercase mb-4 font-weight-bold">Sponser</h6>
-            <p>
-              Samsung Electronics Co., Ltd.
-            </p>
-            <p>
-              Intel Corp.
-            </p>
-            <p>
-              Google
-            </p>
-            <p>
-              Amazon Web Services Inc.
-            </p>
-          </div>
-          <hr class="w-100 clearfix d-md-none">
-          <div class="col-md-4 col-lg-3 col-xl-3 footer_contact">
-            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-            <p>
-              <i class="fa fa-home mr-3"></i> 서울과학기술대학교 학군단 314 </p>
-            <p>
-              <i class="fa fa-envelope mr-3"></i> info@seoultech.co.kr</p>
-            <p>
-              <i class="fa fa-phone mr-3"></i> + 02 123-4567</p>
-            <p>
-              <i class="fa fa-print mr-3"></i> + 02 234 567 89</p>
-          </div>
+  <footer class="page-footer font-small mdb-color pt-4 footer">
+    <div class="container text-center text-md-left">
+      <div class="row text-center text-md-left mt-3 pb-3 footer_container">
+        <div class="col-md-3 col-lg-3 col-xl-3 footer_main">
+          <h6 class="text-uppercase mb-4 font-weight-bold">놀러와 마이홈 </h6>
+          <p>This is our first Web Site.<br> Our site allows users and operators to match and request quotes.</p>
         </div>
-        <hr>
-        <div class="row d-flex align-items-center">
-          <div class="col-md-7 col-lg-8">
-            <p class="text-center text-md-left">© 2018 Copyright:
-              <strong> Darack Inc. All rights reserved.</strong>
-            </p>
-          </div>
-          <div class="col-md-5 col-lg-4 ml-lg-0">
-            <div class="text-center text-md-right">
-              <ul class="list-unstyled list-inline">
-                <li class="list-inline-item">
-                  <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                    <i class="fa fa-facebook"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                    <i class="fa fa-twitter"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                    <i class="fa fa-google-plus"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                    <i class="fa fa-linkedin"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+        <hr class="w-100 clearfix d-md-none">
+        <div class="col-md-2 col-lg-2 col-xl-2 footer_sponser">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Sponser</h6>
+          <p>
+            Samsung Electronics Co., Ltd.
+          </p>
+          <p>
+            Intel Corp.
+          </p>
+          <p>
+            Google
+          </p>
+          <p>
+            Amazon Web Services Inc.
+          </p>
+        </div>
+        <hr class="w-100 clearfix d-md-none">
+        <div class="col-md-4 col-lg-3 col-xl-3 footer_contact">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+          <p>
+            <i class="fa fa-home mr-3"></i> 서울과학기술대학교 학군단 314 </p>
+          <p>
+            <i class="fa fa-envelope mr-3"></i> info@seoultech.co.kr</p>
+          <p>
+            <i class="fa fa-phone mr-3"></i> + 02 123-4567</p>
+          <p>
+            <i class="fa fa-print mr-3"></i> + 02 234 567 89</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row d-flex align-items-center">
+        <div class="col-md-7 col-lg-8">
+          <p class="text-center text-md-left">© 2018 Copyright:
+            <strong> Darack Inc. All rights reserved.</strong>
+          </p>
+        </div>
+        <div class="col-md-5 col-lg-4 ml-lg-0">
+          <div class="text-center text-md-right">
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fa fa-google-plus"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
 </body>
 
 </html>
