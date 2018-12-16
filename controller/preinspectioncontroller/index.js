@@ -63,9 +63,9 @@ exports.getpreinspectionpin = function (request, response) {
     var info = {};
     async.waterfall([
         function (nextCallback) {
-            console.log(req_preinspection_idx, "도면");
             preinspectiondao.getpreinspectionpin(req_preinspection_idx, nextCallback);
         }, function (pindata, nextCallback) {
+            var total = pindata.length;
             var encodedimage = [];
             var count = 0;
             console.log(pindata, "pindata");
@@ -100,8 +100,9 @@ exports.getpreinspectionpin = function (request, response) {
             });
         } else {
             response.json({
-                RESULT: "1"
-                , INFO: info
+                RESULT: "1",
+                INFO: info,
+                TOTAL: total
             });
         }
     });

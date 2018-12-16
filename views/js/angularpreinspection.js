@@ -88,12 +88,16 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             $scope.image = response.INFO.encodedimage[0];
             console.log(response.INFO.preinspection_idx , "result");
             console.log($scope.preinspection_idx, "var");
+
+             // 핀 정보 받아오기
             $http.get('/getpreinspectionpin', {
                 params: {
                   preinspection_idx: response.INFO.preinspection_idx
                 }
               }).success(function (response) {
                 if (response.RESULT == "1") {
+                    total = response.TOTAL;
+                    console.log(total);
                     temp_x = response.INFO.pin_x;
                     temp_y = response.INFO.pin_y;
                     console.log(temp_x, temp_y);
@@ -113,9 +117,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     }).error(function () {
         console.log("error");
     });
-
-    console.log(clones.getPinArray(clones.getcloneCount()));
-    // 핀 정보 받아오기
 
     // 핀 정보 받아서 도면위에 찍기
 
