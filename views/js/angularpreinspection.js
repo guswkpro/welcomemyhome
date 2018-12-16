@@ -90,6 +90,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             preinspection_idx = response.INFO.preinspection_idx;
             console.log(response.INFO.preinspection_idx , "result");
             console.log(preinspection_idx, "var");
+            return preinspection_idx;
         } else {
             var msg = "알 수 없는 에러로 preinspection 페이지를 불러 올 수 없습니다.";
             $window.alert(msg);
