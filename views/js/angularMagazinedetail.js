@@ -34,7 +34,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       console.log(JSON.stringify(response.INFO)+"체크치크");
       console.log(response.INFO.likecheck+"좋아요체크치크");
       if(response.INFO.likecheck==1){
-        $('.heart').css('background', 'url(/views/img/like-after.JPG)')
+        $('.heart').css('background', 'url(/img/like-after.JPG)')
       }
       var tmp = [];
       for (var i = 0; i < response.INFO.encodedimage.length; i++) {
