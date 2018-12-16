@@ -31,8 +31,16 @@
 
   <div class="card card-body align-middle vh-100" style="width:60%; border-radius:20px;">
     <div class="card-title" style="margin-top:15px;">
-      <h4> {{title}} </h4>
-      <!-- <div class="heart"></div> -->
+      <table>
+        <tr>
+          <td>
+            <h4> {{title}} </h4>
+          </td>
+          <td clsaa="pull-left">
+            <div class="heart"></div>
+          </td>
+        </tr>
+      </table>
     </div>
 
     <div id="Indicators" class="carousel slide carousel-fade" data-ride="carousel">
@@ -73,7 +81,6 @@
                 <form>
                   <div class="newcommentbody">
                     <h3 class="pull-left">댓글 쓰기</h3>
-                    <div class="heart"></div> 
                     <button type="submit" class="btn btn-normal pull-right" ng-click="pushCommentData()">등록</button>
                     <table style="width:100%;">
                       <tr>
