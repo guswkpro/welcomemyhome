@@ -52,6 +52,10 @@
     background-position: -2800px 0;
     transition: background 1s steps(28);
   }
+  .heart-end {
+    background-position: -2800px 0;
+    transition: background 0s step-end;
+  }
 
 	.newcommentheader{
 		height: 10%;
