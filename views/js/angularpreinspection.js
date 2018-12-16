@@ -85,9 +85,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     $http.get('/getpreinspectionblueprint').success(function (response) {
         if (response.RESULT == "1") {
             $scope.image = response.INFO.encodedimage[0];
-            console.log(response.INFO.preinspection_idx , "result");
-            console.log($scope.preinspection_idx, "var");
-
              // 핀 정보 받아오기
             $http.get('/getpreinspectionpin', {
                 params: {
@@ -102,7 +99,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                         temp_x = response.INFO[count].pin_X;
                         temp_y = response.INFO[count].pin_Y;
                         temp_idx = response.INFO[count].pin_idx;
-                        pin_img[count] = $('.pin-img').clone();
+                        pin_img[count] = $('#div-pin').clone();
                         $("#my_pin").after(pin_img[count].draggable());
                         pin_img[count].css({
                             'position': 'absolute',
@@ -173,7 +170,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             }
         });
         //pin 클릭시 모듈 정보 다시 띄우기
-        $(".pin-img").click(function () {
+        $("#div-pin").click(function () {
             $http.get('/getpreinspectionmodal', {
                 params: {
                   pin_idx : $(this).attr("id")
