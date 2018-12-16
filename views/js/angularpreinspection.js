@@ -101,7 +101,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                         temp_idx = response.INFO[count].pin_idx;
                         pin_img[count] = $('#div-pin').clone();
                         pin_img[clones.getcloneCount()].attr("id", "pin" + cloneCount);
-                        $("#my_pin").after(pin_img[count].draggable());
+                        $("#div-pin").after(pin_img[count].draggable());
                         pin_img[count].css({
                             'position': 'absolute',
                             'z-index': '5',
