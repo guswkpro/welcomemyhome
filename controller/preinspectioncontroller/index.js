@@ -241,7 +241,7 @@ exports.addpreinspectionmodal = function (request, response) {
         }
     ], function (error, result) {
 
-        console.log(result);
+        console.log(result, "result");
         if (error) {
             console.log(error);
             response.json({
