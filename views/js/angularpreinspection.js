@@ -194,6 +194,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             pin_img[cloneCount].css({
                 'z-index': '5'
             });
+            $("#check").val('');
+            $("#content").val('');
+            $("img-modal").attr({"ng-src": ''});
             $("#dialog").css({
                 'display': 'block'
             });
