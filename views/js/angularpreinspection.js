@@ -190,7 +190,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                 y: null
             }
             pin_img[cloneCount] = $(ui.helper).clone();
-            $(this).after(pin_img[cloneCount].draggable());
+            $(this).after(pin_img[cloneCount]);
             // pin_img[cloneCount].attr("id", "pin" + cloneCount);
             pin_info.x = pin_img[cloneCount].offset().left;
             pin_info.y = pin_img[cloneCount].offset().top;
