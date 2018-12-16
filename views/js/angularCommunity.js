@@ -23,6 +23,9 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 app.controller('communityListCtrl', function ($scope, $http) {
 
   var getcommunitylist = function(offset){
+
+    alert(offset)
+    
     $http.get('/getcommunitylist', {
       params: {
         offset: offset
