@@ -52,3 +52,7 @@ body {
     flex: 0 0 20.666667%;
     max-width: 20.666667%;
 }
+
+.content {
+    margin-top:800px;
+}
