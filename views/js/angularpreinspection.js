@@ -196,7 +196,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             });
             $("#check").val('');
             $("#content").val('');
-            $("img-modal").attr({"ng-src": ''});
+            $scope.encoded_image_modal = "";
             $("#dialog").css({
                 'display': 'block'
             });
