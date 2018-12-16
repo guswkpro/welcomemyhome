@@ -115,6 +115,7 @@ app.get('/preinspectioncreate', function (request, response) {
 
 app.get('/getpreinspectionblueprint', preinspectioncontroller.getpreinspectionblueprint);
 app.get('/getpreinspectionpin', preinspectioncontroller.getpreinspectionpin);
+app.get('/getpreinspectionmodal', preinspectioncontroller.getpreinspectionmodal);
 
 /* ----------- POST ----------- */
 app.post('/login', usercontroller.login);

@@ -88,7 +88,7 @@ exports.getpreinspectionmodal = function (request, response) {
     var info = {};
     async.waterfall([
         function (nextCallback) {
-            preinspectiondao.getpreinspectionpinmodal(req_pin_idx, nextCallback);
+            preinspectiondao.getpreinspectionmodal(req_pin_idx, nextCallback);
         }, function (pindata, nextCallback) {
             var encodedimage = [];
             var count = 0;
