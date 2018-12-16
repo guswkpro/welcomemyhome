@@ -12,6 +12,7 @@ require('date-utils');
 ********************/
 exports.getmagazinelist = function (request, response) {
     var req_user_idx = request.session.user_idx;
+    console.log(req_user_idx);
     var req_offset = request.param('offset');
     var info = [];
     var total_count;
@@ -69,7 +70,7 @@ exports.getmagazinelist = function (request, response) {
                     }
                 });
             }, function (error) {
-                nextCallback();
+                nextCallback(error);
             });
         }
     ], function (error) {

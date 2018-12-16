@@ -20,7 +20,6 @@ exports.getmagazinecomment = function (magazine_idx, callback) {
 };
 exports.getmagazinelikecheck = function (magazine_idx, user_idx, callback) {
     client.query('SELECT * FROM stweb.stweb_magazine_likes where magazine_idx = ? AND user_idx = ?', [magazine_idx, user_idx], function (error, result) {
-        console.log(result);
         callback(error, result);
     });
 };

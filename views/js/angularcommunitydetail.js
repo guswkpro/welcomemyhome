@@ -36,10 +36,12 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
     }).success(function (response) {
       if (response.RESULT == 1) {
         $scope.data = response.INFO;
+        console.log(JSON.stringify(response.INFO)+"디테일 반환값");
         $scope.title = response.INFO.community_title;
         $scope.date = response.INFO.community_post_date;
         $scope.content = response.INFO.community_content;
         $scope.image = response.INFO.encodedimage;
+        $scope.userimage = response.INFO.encodedimage;
       } else {
         var msg = "알 수 없는 에러로 페이지를 불러올 수 없습니다.";
         $window.alert(msg);
@@ -59,7 +61,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
         },
         data: ({
           community_idx: click_idx,
-          content: $scope.content
+          content: $scope.addcomment
         })
       }).success(function (response) {
         if (response.RESULT == "1") {
@@ -76,6 +78,40 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
       });
     }
 
+    $scope.pushLike = function () {
+      $http({
+        method: 'POST',
+        url: '/addcommunitylike',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: ({
+          community_idx: click_idx
+        })
+      }).success(function (response) {
+        if (response.RESULT == "1") {
+          $(function() {
+            $(".heart").on("click", function() {
+              $(this).toggleClass("heart-blast");
+            });
+          }); 
+        } else if (response.RESULT == "0") {
+          var msg = "요청 실패";
+          $window.alert(msg);
+        };
+      }).error(function () {
+        var msg = "로그인이 필요합니다";
+        $window.alert(msg);
+        $window.location.href = '/login';
+        console.log("error");
+      });
+    }
+
+    $scope.pushtolist = function () {
+        $window.location.href = '/community';
+    }
+    
+
     $http.get('/getcommunitycomment', {
       params: {
         community_idx: click_idx
@@ -84,7 +120,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
       if (response.RESULT == 1) {
         $scope.comment = response.INFO;
         console.log(JSON.stringify(response.INFO)+"겟커뮤니티댓글 반환값");
-        console.log($scope.comment+"겟커뮤니티댓글 반환값");
+        
       } else {
         var msg = "알 수 없는 에러로 댓글을 불러올 수 없습니다.";
         $window.alert(msg);

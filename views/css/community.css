@@ -25,9 +25,32 @@
   margin-top: 5%;
 }
 
+.content-card{
+  margin: 0 auto; /* Added */
+  height: auto;
+  float: none; /* Added */
+  margin-bottom: 5px; /* Added */
+}
+
 .card-userReact{
   width: 100%;
   height: auto;
   position: relative;
   margin:  0 auto;
+}
+
+.heart {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 1170px;
+  top: 125px;
+  transform: translate(-50%, -50%);
+  background: url(../img/heart.png) no-repeat;
+  cursor: pointer;
+  
+}
+.heart-blast {
+  background-position: -2800px 0;
+  transition: background 1s steps(28);
 }
