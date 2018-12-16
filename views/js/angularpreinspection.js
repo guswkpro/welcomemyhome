@@ -99,7 +99,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                     total = response.INFO.length;
                     temp_x = response.INFO.pin_x;
                     temp_y = response.INFO.pin_y;
-                    console.log(total);
+                    console.log(responseINFO);
+                    console.log(total, "total");
                     console.log(temp_x, temp_y);
                 } else {
                     var msg = "핀 정보를 불러 올 수 없습니다.";
