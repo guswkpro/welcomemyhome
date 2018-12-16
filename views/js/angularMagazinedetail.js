@@ -61,7 +61,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     }
     else if(likecheck == 1) {
       method = 'DELETE'
-      url = '/deletecommunitylike';
+      url = '/deletemagazinelike';
     }
     $http({
       method: method,
