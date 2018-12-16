@@ -53,9 +53,10 @@ app.controller('communityListCtrl', function ($scope, $http) {
 });
 
 app.controller('PaginationDemoCtrl', function ($scope, $http) {
+  var offset = $scope.currentPage - 1;
   $http.get('/getcommunitylist', {
     params: {
-      offset: '0'
+      offset: offset
     }
   }).success(function (response) {
     $scope.data = response.INFO;
