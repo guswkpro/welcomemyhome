@@ -33,7 +33,7 @@ app.controller('communityListCtrl', function ($scope, $http) {
     var offset = newPage;
   $http.get('/getcommunitylist', {
     params: {
-      offset: offsets
+      offset: offset
     }
   }).success(function (response) {
     if (response.RESULT == 1) {
