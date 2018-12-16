@@ -46,9 +46,6 @@
     transform: translate(-50%, -50%);
     background: url(../img/heart.png) no-repeat;
     cursor: pointer;
-    background-position: none;
-    transition: none;
-    
   }
   .heart-blast {
     background-position: -2800px 0;
