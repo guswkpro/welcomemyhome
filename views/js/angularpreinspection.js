@@ -174,7 +174,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             }
         });
         //pin 클릭시 모듈 정보 다시 띄우기
-        $(".pin-img").click(function () {
+        $(".pin-img").on('click', function () {
             console.log("click event")
             $http.get('/getpreinspectionmodal', {
                 params: {
