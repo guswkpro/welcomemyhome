@@ -37,7 +37,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       likecheck = response.INFO.likecheck;
       if (likecheck == 1) {
         $(function () {
-          $('.heart').toggleClass("heart-end");
+          $('.heart').toggleClass("heart-blast");
          
         });
       }
