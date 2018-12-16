@@ -21,6 +21,36 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('communityListCtrl', function ($scope, $http) {
+
+  var getcommunitylist = function(offset){
+    $http.get('/getcommunitylist', {
+      params: {
+        offset: offset
+      }
+    }).success(function (response) {
+      if (response.RESULT == 1) {
+  
+        $scope.community_list = response.INFO
+        for (i = 0; i < $scope.community_list.length; i++) {
+          var tmp = new Date($scope.community_list[i].community_post_date);
+          var month = tmp.getMonth() + 1;
+          var day = tmp.getDate();
+          $scope.community_list[i].community_post_date = month + "-" + day;
+        }
+        for (i = 0; i < $scope.community_list.length; i++) {
+          var string = $scope.community_list[i].community_content;
+          var str = string.substr(0, 20);
+          $scope.community_list[i].community_content = str + "...";
+        }
+      } else {
+        console.log(response, "fault");
+      }
+    }).error(function (error) {
+      console.log(error);
+    });
+  }
+
+  getcommunitylist(0);
   
   $scope.userClickCommunity = function (community_idx) {
     document.cookie = "click_idx=" + community_idx;
@@ -29,33 +59,8 @@ app.controller('communityListCtrl', function ($scope, $http) {
 
   $scope.$watch('currentPage', function(newPage){
     $scope.watchPage = newPage;
-    
-    var offset = newPage;
-  $http.get('/getcommunitylist', {
-    params: {
-      offset: offset
-    }
-  }).success(function (response) {
-    if (response.RESULT == 1) {
 
-      $scope.community_list = response.INFO
-      for (i = 0; i < $scope.community_list.length; i++) {
-        var tmp = new Date($scope.community_list[i].community_post_date);
-        var month = tmp.getMonth() + 1;
-        var day = tmp.getDate();
-        $scope.community_list[i].community_post_date = month + "-" + day;
-      }
-      for (i = 0; i < $scope.community_list.length; i++) {
-        var string = $scope.community_list[i].community_content;
-        var str = string.substr(0, 20);
-        $scope.community_list[i].community_content = str + "...";
-      }
-    } else {
-      console.log(response, "fault");
-    }
-  }).error(function (error) {
-    console.log(error);
-  });
+    getcommunitylist(newPage);
 
   });
 
