@@ -79,7 +79,6 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     var pin_img = new Array();
     var pin_arr = new Array();
-    $scope.preinspection_idx = 0;
     var temp_x, temp_y;
     var cloneCount = 0;
 
@@ -87,10 +86,25 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     $http.get('/getpreinspectionblueprint').success(function (response) {
         if (response.RESULT == "1") {
             $scope.image = response.INFO.encodedimage[0];
-            $scope.preinspection_idx = response.INFO.preinspection_idx;
             console.log(response.INFO.preinspection_idx , "result");
             console.log($scope.preinspection_idx, "var");
-            return preinspection_idx;
+            $http.get('/getpreinspectionpin', {
+                params: {
+                  preinspection_idx: response.INFO.preinspection_idx
+                }
+              }).success(function (response) {
+                if (response.RESULT == "1") {
+                    temp_x = response.INFO.pin_x;
+                    temp_y = response.INFO.pin_y;
+                    console.log(temp_x, temp_y);
+                } else {
+                    var msg = "핀 정보를 불러 올 수 없습니다.";
+                    $window.alert(msg);
+                    $window.location.href = '/';
+                }
+            }).error(function () {
+                console.log("error");
+            });
         } else {
             var msg = "알 수 없는 에러로 preinspection 페이지를 불러 올 수 없습니다.";
             $window.alert(msg);
@@ -101,25 +115,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     });
 
     console.log(clones.getPinArray(clones.getcloneCount()));
-    console.log($scope.preinspection_idx, "var 2");
     // 핀 정보 받아오기
-    // $http.get('/getpreinspectionpin', {
-    //     params: {
-    //       preinspection_idx: $scope.preinspection_idx,
-    //     }
-    //   }).success(function (response) {
-    //     if (response.RESULT == "1") {
-    //         temp_x = response.INFO.pin_x;
-    //         temp_y = response.INFO.pin_y;
-    //         console.log(temp_x, temp_y);
-    //     } else {
-    //         var msg = "핀 정보를 불러 올 수 없습니다.";
-    //         $window.alert(msg);
-    //         $window.location.href = '/';
-    //     }
-    // }).error(function () {
-    //     console.log("error");
-    // });
 
     // 핀 정보 받아서 도면위에 찍기
 
