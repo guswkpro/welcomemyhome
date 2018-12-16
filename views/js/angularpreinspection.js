@@ -102,10 +102,10 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
 
                     for(count=0; count<total; count++){
                         console.log(count);
-                        temp_x = response.INFO[count].pin_x;
-                        temp_y = response.INFO[count].pin_y;
-                        console.log(response.INFO[count].pin_x);
-                        console.log(response.INFO[count].pin_y);
+                        temp_x = response.INFO[count].pin_X;
+                        temp_y = response.INFO[count].pin_Y;
+                        console.log(response.INFO[count].pin_X);
+                        console.log(response.INFO[count].pin_Y);
                         console.log(temp_x, temp_y);
                         pin_img[count] = $('.pin-img').clone();
                         pin_img[count].css({
