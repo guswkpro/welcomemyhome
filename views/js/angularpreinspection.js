@@ -138,7 +138,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
         // drop 이벤트
         $('.pin-img').bind('dragstop', function (event, ui) {
             var pin_info = {
-                id: null,
+                // id: null,
                 x: null,
                 y: null
             }

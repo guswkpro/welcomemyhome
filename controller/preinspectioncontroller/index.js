@@ -18,7 +18,12 @@ exports.getpreinspectionblueprint = function (request, response) {
         }, function (preinspectiondata, nextCallback) {
             var encodedimage = [];
             var count = 0;
-            preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path.split(',');
+            if(preinspectiondata[0].preinspection_picture_path){
+                preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path.split(',');
+            }
+            else{
+                preinspectiondata[0].preinspection_picture_path = [];
+            }
             async.whilst(function () {
                 return count < (preinspectiondata[0].preinspection_picture_path.length);
             }, function (callback) {
