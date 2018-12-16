@@ -138,16 +138,16 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
         // drop 이벤트
         $('.pin-img').bind('dragstop', function (event, ui) {
             var pin_info = {
-                // id: null,
+                id: null,
                 x: null,
                 y: null
             }
             pin_img[cloneCount] = $(ui.helper).clone();
             $(this).after(pin_img[cloneCount].draggable());
-            // pin_img[clones.getcloneCount()].attr("id", "pin" + clones.getcloneCount());
+            pin_img[cloneCount].attr("id", "pin" + cloneCount;
             pin_info.x = pin_img[cloneCount].offset().left;
             pin_info.y = pin_img[cloneCount].offset().top;
-            // pin_info.id = clones.getcloneCount();
+            pin_info.id = cloneCount;
             console.log(pin_info, "pin_info");
             pin_img[cloneCount].css({
                 'z-index': '5'
