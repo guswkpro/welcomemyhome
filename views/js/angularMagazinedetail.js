@@ -45,23 +45,23 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
               },
               data: ({
                 magazine_idx: click_idx
-              }).success(function (response) {
-                if (response.RESULT == "1") {
-                  $(function () {
-                    $(".heart").on("click", function () {
-                      $(this).toggleClass("heart-blast");
-                    });
-                  });
-                } else if (response.RESULT == "0") {
-                  var msg = "요청 실패";
-                  $window.alert(msg);
-                };
-              }).error(function () {
-                var msg = "로그인이 필요합니다";
-                $window.alert(msg);
-                $window.location.href = '/login';
-                console.log("error");
               })
+            }).success(function (response) {
+              if (response.RESULT == "1") {
+                $(function () {
+                  $(".heart").on("click", function () {
+                    $(this).toggleClass("heart-end");
+                  });
+                });
+              } else if (response.RESULT == "0") {
+                var msg = "요청 실패";
+                $window.alert(msg);
+              };
+            }).error(function () {
+              var msg = "로그인이 필요합니다";
+              $window.alert(msg);
+              $window.location.href = '/login';
+              console.log("error");
             })
           }
         });
