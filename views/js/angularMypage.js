@@ -35,13 +35,13 @@ app.controller('passwordCheckCtrl', function ($scope, $http, $window) {
       console.log(response.RESULT);
       if (response.RESULT == "1") {
         $window.location.href = '/mypageset';
-      } else if (response.RESULT == "2") {
-        var msg = "비밀번호를 입력해주세요.";
+      } else if (response.RESULT == "0") {
+        var msg = "알 수 없는 에러";
         $window.alert(msg);
-      } else if (response.RESULT == "3") {
+      } else if (response.RESULT == "2") {
         var msg = "비밀번호가 틀립니다.";
         $window.alert(msg);
-        $window.location.href = '/';
+       // $window.location.href = '/';
       }
     })
   }
