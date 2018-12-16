@@ -61,8 +61,8 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
     $scope.data = response.INFO;
     $scope.viewby = 5;
     $scope.totalItems = response.COUNT;
-
-    $scope.currentPage = 2;
+    console.log(response.COUNT+"전체페이지갯수");
+    $scope.currentPage = 1;
     $scope.itemsPerPage = $scope.viewby;
     $scope.maxSize = 5; //Number of pager buttons to show
 
@@ -73,6 +73,7 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
 
     $scope.setPage = function (pageNo) {
       $scope.currentPage = pageNo;
+      console.log(pageNo+"페이지번호 어디서 오는거지");
     };
 
     $scope.setItemsPerPage = function (num) {
