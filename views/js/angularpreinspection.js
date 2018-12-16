@@ -97,14 +97,20 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
               }).success(function (response) {
                 if (response.RESULT == "1") {
                     total = response.INFO.length;
-                    temp_x = response.INFO.pin_x;
-                    temp_y = response.INFO.pin_y;
                     console.log(response.INFO);
                     console.log(total, "total");
-                    console.log(temp_x, temp_y);
 
                     for(count=0; count<total; count++){
-                        pin_img[Count] = $('.pin-img').clone();
+                        temp_x = response.INFO[count].pin_x;
+                        temp_y = response.INFO[count].pin_y;
+                        console.log(temp_x, temp_y);
+                        pin_img[count] = $('.pin-img').clone();
+                        pin_img[count].css({
+                            'position': 'absolute',
+                            'z-index': '5',
+                            'left' : temp_x,
+                            'top' : temp_y
+                        });
                     }
                 } else {
                     var msg = "핀 정보를 불러 올 수 없습니다.";
@@ -168,7 +174,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
         });
         //pin 클릭시 모듈 정보 다시 띄우기
         $(".pin-img").click(function () {
-            $http.get('/getpreinspectionpin', {
+            $http.get('/getpreinspectionmodal', {
                 params: {
                   pin_idx : $(this).attr("id")
                 }
@@ -176,6 +182,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                 if (response.RESULT == "1") {
                     $scope.content = response.INFO.content;
                     $scope.type = response.INFO.type;
+                    $scope.encoded_image_modal = response.INFO.encodedimage;
                 } else {
                     var msg = "핀 정보를 불러 올 수 없습니다.";
                     $window.alert(msg);

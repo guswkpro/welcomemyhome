@@ -64,8 +64,8 @@ exports.getpreinspectionpin = function (request, response) {
     async.waterfall([
         function (nextCallback) {
             preinspectiondao.getpreinspectionpin(req_preinspection_idx, nextCallback);
-        }, function (pindata, nextCallback) {
-            info = pindata;
+        }, function (pinsdata, nextCallback) {
+            info = pinsdata;
             nextCallback();
         }
     ], function (error) {
