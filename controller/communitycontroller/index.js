@@ -103,6 +103,7 @@ exports.getcommunitylist = function (request, response) {
 exports.getcommunitydetail = function (request, response) {
     var req_user_idx = request.session.user_idx;
     var req_community_idx = request.param('community_idx');
+    console.log(req_community_idx + "-----------" + req_user_idx);
     var info = {};
     async.waterfall([
         function (nextCallback) {
