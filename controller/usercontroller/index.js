@@ -208,12 +208,14 @@ exports.editprofile = function (request, response) {
 	var req_user_idx = request.session.user_idx
 	var req_user_profile_imgae = request.body.image;
 	var dirname = "./public/" + request.session.user_nickname;
+	var dirdate = new Date();
+	dirdate = dirdate.toFormat("YYYYMMDDHH24MISS");
 	var newPath;
 
 	async.waterfall([
 		function (nextCallback) {
 			var bitmap = new Buffer(req_user_profile_imgae, 'base64');
-			newPath = dirname + "/" + request.session.user_nickname + "_profile.jpg";
+			newPath = dirname + "/" + request.session.user_nickname + "_profile" + dirdate + ".jpg";
 			fs.writeFile(newPath, bitmap, 'base64', nextCallback);
 		}, function (nextCallback) {
 			dao.editprofile(req_user_idx, newPath, nextCallback);
