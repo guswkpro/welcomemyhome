@@ -85,8 +85,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     $http.get('/getpreinspectionblueprint').success(function (response) {
         if (response.RESULT == "1") {
             $scope.image = response.INFO.encodedimage[0];
-            console.log(response.INFO.preinspection_idx , "result");
-            console.log($scope.preinspection_idx, "var");
 
              // 핀 정보 받아오기
             $http.get('/getpreinspectionpin', {
@@ -123,6 +121,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                                     $scope.content = response.INFO.content;
                                     $scope.type = response.INFO.type;
                                     $scope.encoded_image_modal = response.INFO.encodedimage;
+                                    console.log($scope.type);
+                                    console.log($("#check"));
                                     $("#check").val($scope.type);
                                     $("#content").val($scope.content);
                                 } else {
