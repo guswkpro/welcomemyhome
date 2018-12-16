@@ -110,8 +110,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                             'left' : temp_x,
                             'top' : temp_y
                         });
-                        $(".pin-img").click(function () {
+                        $(".pin-img").click(function (event) {
                             console.log("click event");
+                            console.log(event.target)
                             console.log($(this).attr("name"));
                             $http.get('/getpreinspectionmodal', {
                                 params: {
@@ -208,10 +209,42 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             cloneCount++;
             //pin 클릭시 모듈 정보 다시 띄우기
             $(".pin-img").click(function () {
-                console.log("click");
-                $("#dialog").css({
-                    'display': 'block'
-                });
+                if($(this).attr("name")) {
+                    $http.get('/getpreinspectionmodal', {
+                        params: {
+                            pin_idx: $(this).attr("name")
+                        }
+                    }).success(function (response) {
+                        if (response.RESULT == "1") {
+                            console.log(response.INFO);
+                            $scope.content = response.INFO.pin_content;
+                            $scope.type = response.INFO.pin_type;
+                            $scope.encoded_image_modal = response.INFO.encodedimage;
+                            var src = "data:image/jpg;base64," + response.INFO.encodedimage
+                            $scope.hideimg=false;
+                            console.log($scope.hideimg, "보이기")
+                            $("#check").val($scope.type);
+                            $("#content").val($scope.content);
+                            $("<img>").attr({"width": "500", "height": "300", "id": "img-modal", "src": src}).appendTo("#append");
+                        } else {
+                            var msg = "핀 정보를 불러 올 수 없습니다.";
+                            $window.alert(msg);
+                            $window.location.href = '/';
+                        }
+                    }).error(function () {
+                        console.log("error");
+                    });
+                    console.log("click");
+                    $("#dialog").css({
+                        'display': 'block'
+                    });
+                }
+                else {
+                    console.log("click");
+                    $("#dialog").css({
+                        'display': 'block'
+                    });
+                }
             });
         });
         $(".close").click(function () {
@@ -254,6 +287,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
 
     // modal에서 데이터 제출
     $scope.pushpreinspectionData = function () {
+
         var images = [];
         console.log(pin_arr, "check");
         var recourcive = function (index) {
