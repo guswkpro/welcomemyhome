@@ -31,6 +31,14 @@ app.controller('communityListCtrl', function ($scope, $http) {
         offset: offset
       }
     }).success(function (response) {
+
+      $scope.data = response.INFO;
+    $scope.viewby = 5;
+    $scope.totalItems = response.COUNT;
+    console.log(response.COUNT+"전체페이지갯수");
+    $scope.currentPage = 1;
+    $scope.itemsPerPage = $scope.viewby;
+    $scope.maxSize = 5
       if (response.RESULT == 1) {
   
         $scope.community_list = response.INFO
