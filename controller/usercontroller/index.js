@@ -247,7 +247,10 @@ exports.editpassword = function (request, response) {
 
 	async.waterfall([
 		function (nextCallback) {
-			dao.editpassword(req_user_idx, req_user_pw, nextCallback);
+			dao.getuserinformation(req_user_idx, nextCallback);
+		}, function (data, nextCallback) {
+			data[0].user_join_date = data[0].user_join_date.toFormat("YYYYMMDDHH24MISS");
+			dao.editpassword(req_user_idx, crypto.createHash('sha512').update(data[0].user_join_date + req_user_pw).digest('hex'), nextCallback);
 		}
 	], function (error) {
 		if (error) {
