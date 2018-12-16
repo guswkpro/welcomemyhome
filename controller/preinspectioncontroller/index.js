@@ -65,7 +65,6 @@ exports.getpreinspectionpin = function (request, response) {
         function (nextCallback) {
             preinspectiondao.getpreinspectionpin(req_preinspection_idx, nextCallback);
         }, function (pindata, nextCallback) {
-            var total = pindata.length;
             var encodedimage = [];
             var count = 0;
             console.log(pindata, "pindata");
@@ -102,7 +101,6 @@ exports.getpreinspectionpin = function (request, response) {
             response.json({
                 RESULT: "1",
                 INFO: info,
-                TOTAL: total
             });
         }
     });

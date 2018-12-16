@@ -96,8 +96,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                 }
               }).success(function (response) {
                 if (response.RESULT == "1") {
-                    total = response.TOTAL;
-                    console.log(total);
+                    total = response.INFO.length;
                     temp_x = response.INFO.pin_x;
                     temp_y = response.INFO.pin_y;
                     console.log(temp_x, temp_y);
