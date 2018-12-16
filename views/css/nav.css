@@ -153,3 +153,7 @@
   width : 30px;
   height : 30px;
 }
+
+.screen {
+  width: 100%;
+}
