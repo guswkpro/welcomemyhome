@@ -85,7 +85,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     $http.get('/getpreinspectionblueprint').success(function (response) {
         if (response.RESULT == "1") {
             $scope.image = response.INFO.encodedimage[0];
-
+            preinspection_idx = response.INFO.preinspection_idx;
              // 핀 정보 받아오기
             $http.get('/getpreinspectionpin', {
                 params: {
@@ -111,8 +111,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                             'top' : temp_y
                         });
                         $(".pin-img").click(function (event) {
-                            console.log("click event");
-                            console.log($(this).attr("name"));
                             $http.get('/getpreinspectionmodal', {
                                 params: {
                                     pin_idx: $(this).attr("name")
@@ -190,6 +188,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                 y: null
             }
             pin_img[cloneCount] = $(ui.helper).clone();
+
             $(this).after(pin_img[cloneCount].draggable());
             // pin_img[cloneCount].attr("id", "pin" + cloneCount);
             pin_info.x = pin_img[cloneCount].offset().left;
@@ -222,6 +221,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                             var src = "data:image/jpg;base64," + response.INFO.encodedimage
                             $scope.hideimg=false;
                             console.log($scope.hideimg, "보이기")
+                            if(img_modal){
+                                img_modal.remove();
+                            }
                             $("#check").val($scope.type);
                             $("#content").val($scope.content);
                             $("<img>").attr({"width": "500", "height": "300", "id": "img-modal", "src": src}).appendTo("#append");
@@ -287,7 +289,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     // modal에서 데이터 제출
     $scope.pushpreinspectionData = function () {
         var images = [];
-    
         console.log(pin_arr, "check");
         var recourcive = function (index) {
             var input = document.getElementById('fileselector');

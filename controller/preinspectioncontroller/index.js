@@ -237,8 +237,11 @@ exports.addpreinspectionmodal = function (request, response) {
             console.log("7");
             console.log(pin);
             preinspectiondao.addpreinspectionmodal(pin, nextCallback);
+
         }
-    ], function (error) {
+    ], function (error, result) {
+
+        console.log(result, "result");
         if (error) {
             console.log(error);
             response.json({
