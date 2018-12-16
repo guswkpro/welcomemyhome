@@ -56,11 +56,11 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       })
     }).success(function (response) {
       if (response.RESULT == "1") {
-        $(function() {
+    
           $(".heart").on("click", function() {
             $(this).toggleClass("heart-blast");
           });
-        }); 
+      
       } else if (response.RESULT == "0") {
         var msg = "요청 실패";
         $window.alert(msg);
