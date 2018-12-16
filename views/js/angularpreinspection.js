@@ -79,7 +79,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     var pin_img = new Array();
     var pin_arr = new Array();
-    var preinspection_idx;
+    $scope.preinspection_idx = 0;
     var temp_x, temp_y;
     var cloneCount = 0;
 
@@ -101,7 +101,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     });
 
     console.log(clones.getPinArray(clones.getcloneCount()));
-    console.log(preinspection_idx, "var 2");
+    console.log($scope.preinspection_idx, "var 2");
     // 핀 정보 받아오기
     // $http.get('/getpreinspectionpin', {
     //     params: {
