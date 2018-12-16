@@ -155,7 +155,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             $("#dialog").css({
                 'display': 'block'
             });
-            clones.pin_arr[cloneCount] = pin_info;
+            pin_arr[cloneCount] = pin_info;
             console.log(pin_arr, "pin_arr");
             cloneCount++;
         });
