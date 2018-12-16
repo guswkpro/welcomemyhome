@@ -24,6 +24,8 @@ app.controller('communityListCtrl', function ($scope, $http) {
 
   var getcommunitylist = function(offset){
 
+    offset = (offset - 1) * 5; 
+
     $http.get('/getcommunitylist', {
       params: {
         offset: offset
@@ -58,7 +60,7 @@ app.controller('communityListCtrl', function ($scope, $http) {
     });
   }
 
-  getcommunitylist(0);
+  getcommunitylist(1);
   
   $scope.userClickCommunity = function (community_idx) {
     document.cookie = "click_idx=" + community_idx;
@@ -66,9 +68,9 @@ app.controller('communityListCtrl', function ($scope, $http) {
   };
 
   $scope.$watch('currentPage', function(newPage){
-    $scope.watchPage = newPage - 1;
+    $scope.watchPage = newPage;
 
-    getcommunitylist(newPage);
+    getcommunitylist((newPage));
 
   });
 
