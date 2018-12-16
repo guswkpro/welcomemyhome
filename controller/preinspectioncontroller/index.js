@@ -46,7 +46,7 @@ exports.getpreinspectionblueprint = function (request, response) {
                 });
             }
             catch (e) {
-                
+
             }
             
         }
@@ -132,7 +132,7 @@ exports.getpreinspectionmodal = function (request, response) {
         } else {
             response.json({
                 RESULT: "1",
-                INFO: info,
+                INFO: info[0],
             });
         }
     });
