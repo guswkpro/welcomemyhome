@@ -101,6 +101,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                     console.log(total, "total");
 
                     for(count=0; count<total; count++){
+                        console.log(count);
                         temp_x = response.INFO[count].pin_x;
                         temp_y = response.INFO[count].pin_y;
                         console.log(temp_x, temp_y);
