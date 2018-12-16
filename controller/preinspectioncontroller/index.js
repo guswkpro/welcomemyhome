@@ -86,7 +86,6 @@ exports.getpreinspectionpin = function (request, response) {
                         RESULT: "0"
                     });
                 } else {
-                    pindata[0].pin_date = pindata[0].pin_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                     pindata[0].encodedimage = encodedimage;
                     info = pindata[0];
                     nextCallback();
