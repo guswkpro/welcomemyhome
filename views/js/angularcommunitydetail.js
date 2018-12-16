@@ -96,7 +96,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
       }
       $http({
         method: method,
-        url: 'url',
+        url: url,
         headers: {
           'Content-Type': 'application/json'
         },
