@@ -63,7 +63,7 @@ exports.getpreinspectionpin = function (request, response) {
     var info = {};
     async.waterfall([
         function (nextCallback) {
-            console.log(req_preinspection_dix, "도면");
+            console.log(req_preinspection_idx, "도면");
             preinspectiondao.getpreinspectionpin(req_preinspection_idx, nextCallback);
         }, function (pindata, nextCallback) {
             var encodedimage = [];
