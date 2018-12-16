@@ -167,6 +167,7 @@ exports.signup = function (request, response) {
 		function (nextCallback) {
 			mkdirp(dir, nextCallback);
 		}, function (url, nextCallback) {
+			console.log(crypto.createHash('sha512').update(saltdate + req_user_pw).digest('hex'));
 			dto.user(req_user_id, crypto.createHash('sha512').update(saltdate + req_user_pw).digest('hex'), req_user_nickname, date, user_subscription, user_auth, nextCallback);
 		}, function (userdata, nextCallback) {
 			dao.signup(userdata, nextCallback);
