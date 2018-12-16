@@ -206,6 +206,29 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             });
             pin_arr[cloneCount] = pin_info;
             cloneCount++;
+            //pin 클릭시 모듈 정보 다시 띄우기
+            $(".pin-img").click(function () {
+                console.log("click event")
+                $http.get('/getpreinspectionmodal', {
+                    params: {
+                        pin_idx: $(this).attr("name")
+                    }
+                }).success(function (response) {
+                    if (response.RESULT == "1") {
+                        $scope.content = response.INFO.content;
+                        $scope.type = response.INFO.type;
+                        $scope.encoded_image_modal = response.INFO.encodedimage;
+                    } else {
+                        $scope.content = '';
+                        $scope.type = '';
+                    }
+                }).error(function () {
+                    console.log("error");
+                });
+                $(".pin-img").css({
+                    'display': 'block'
+                });
+            });
         });
         $(".close").click(function () {
             $("#dialog").css({
@@ -219,29 +242,29 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                 });
             }
         });
-        //pin 클릭시 모듈 정보 다시 띄우기
-        $(".pin-img").click(function () {
-            console.log("click event")
-            $http.get('/getpreinspectionmodal', {
-                params: {
-                    pin_idx: $(this).attr("name")
-                }
-            }).success(function (response) {
-                if (response.RESULT == "1") {
-                    $scope.content = response.INFO.content;
-                    $scope.type = response.INFO.type;
-                    $scope.encoded_image_modal = response.INFO.encodedimage;
-                } else {
-                    $scope.content='';
-                    $scope.type = '';
-                }
-            }).error(function () {
-                console.log("error");
-            });
-            $(".pin-img").css({
-                'display': 'block'
-            });
-        });
+        // //pin 클릭시 모듈 정보 다시 띄우기
+        // $(".pin-img").click(function () {
+        //     console.log("click event")
+        //     $http.get('/getpreinspectionmodal', {
+        //         params: {
+        //             pin_idx: $(this).attr("name")
+        //         }
+        //     }).success(function (response) {
+        //         if (response.RESULT == "1") {
+        //             $scope.content = response.INFO.content;
+        //             $scope.type = response.INFO.type;
+        //             $scope.encoded_image_modal = response.INFO.encodedimage;
+        //         } else {
+        //             $scope.content='';
+        //             $scope.type = '';
+        //         }
+        //     }).error(function () {
+        //         console.log("error");
+        //     });
+        //     $(".pin-img").css({
+        //         'display': 'block'
+        //     });
+        // });
     });
 
 
