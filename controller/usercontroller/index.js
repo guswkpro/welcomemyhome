@@ -122,8 +122,6 @@ exports.login = function (request, response) {
 			}
 		}, function (data, nextCallback) {
 			data[0].user_join_date = data[0].user_join_date.toFormat("YYYYMMDDHH24MISS");
-			console.log(data[0].user_pw);
-			console.log(crypto.createHash('sha512').update(data[0].user_join_date + req_user_pw).digest('hex'));
 			if (crypto.createHash('sha512').update(data[0].user_join_date + req_user_pw).digest('hex') == data[0].user_pw) {
 				var tmp = data[0].user_idx + '/' + data[0].user_auth + '/' + request.sessionID;
 				response.cookie('token', tmp, {
@@ -167,7 +165,6 @@ exports.signup = function (request, response) {
 		function (nextCallback) {
 			mkdirp(dir, nextCallback);
 		}, function (url, nextCallback) {
-			console.log(crypto.createHash('sha512').update(saltdate + req_user_pw).digest('hex'));
 			dto.user(req_user_id, crypto.createHash('sha512').update(saltdate + req_user_pw).digest('hex'), req_user_nickname, date, user_subscription, user_auth, nextCallback);
 		}, function (userdata, nextCallback) {
 			dao.signup(userdata, nextCallback);
