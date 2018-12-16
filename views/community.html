@@ -72,13 +72,15 @@
           </div>
         </div>
       </div>
+      <div style="text-align:center;">
+          <pagination on-select-page="pageChanged(page)" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm"
+            boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage" ng-click="clickpage"></pagination>
     </div>
     <hr />
-    <div ng-controller="PaginationDemoCtrl" style="text-align:center;">
+    <!-- <div ng-controller="PaginationDemoCtrl" style="text-align:center;">
       <pagination on-select-page="pageChanged(page)" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm"
         boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage" ng-click="clickpage"></pagination>
-        <button ng-click = "testbtn()">hello</button>
-    </div>
+    </div> -->
   </div>
 
   <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">

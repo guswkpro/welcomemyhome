@@ -21,9 +21,19 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('communityListCtrl', function ($scope, $http) {
+  
+  $scope.userClickCommunity = function (community_idx) {
+    document.cookie = "click_idx=" + community_idx;
+    $window.location.href = '/communitydetail';
+  };
+
+  $scope.$watch('currentPage', function(newPage){
+    $scope.watchPage = newPage;
+    
+    var offset = newPage;
   $http.get('/getcommunitylist', {
     params: {
-      offset: '0'
+      offset: offsets
     }
   }).success(function (response) {
     if (response.RESULT == 1) {
@@ -46,10 +56,18 @@ app.controller('communityListCtrl', function ($scope, $http) {
   }).error(function (error) {
     console.log(error);
   });
-  $scope.userClickCommunity = function (community_idx) {
-    document.cookie = "click_idx=" + community_idx;
-    $window.location.href = '/communitydetail';
+
+  });
+
+  $scope.pageChanged = function(page) {
+    $scope.callbackPage = page;
+    $scope.watchPage = newPage;
   };
+
+  $scope.setItemsPerPage = function (num) {
+    $scope.itemsPerPage = num;
+    $scope.currentPage = 1; //reset to first page
+  }
 });
 
 app.controller('PaginationDemoCtrl', function ($scope, $http) {
@@ -84,25 +102,6 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
     //   alert('hello');
     // }
 
-    $scope.$watch('currentPage', function(newPage){
-      $scope.watchPage = newPage;
-      //or any other code here
 
-      alert(newPage);
-    });
-
-    $scope.pageChanged = function(page) {
-      $scope.callbackPage = page;
-      $scope.watchPage = newPage;
-    };
-
-    $scope.testbtn = function() {
-      alert('helllllo');
-    }
-
-    $scope.setItemsPerPage = function (num) {
-      $scope.itemsPerPage = num;
-      $scope.currentPage = 1; //reset to first page
-    }
   })
 })
