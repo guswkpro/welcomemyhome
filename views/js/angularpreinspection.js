@@ -102,8 +102,10 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                         temp_x = response.INFO[count].pin_X;
                         temp_y = response.INFO[count].pin_Y;
                         temp_idx = response.INFO[count].pin_idx;
+                        console.log(temp_idx);
                         pin_img[count] = $('.pin-img').clone();
                         $("#my_pin").after(pin_img[count].draggable());
+                        pin_img[count].attr("name", temp_idx);
                         pin_img[count].css({
                             'position': 'absolute',
                             'z-index': '5',
@@ -138,16 +140,16 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
         // drop 이벤트
         $('.pin-img').bind('dragstop', function (event, ui) {
             var pin_info = {
-                id: null,
+                // id: null,
                 x: null,
                 y: null
             }
             pin_img[cloneCount] = $(ui.helper).clone();
             $(this).after(pin_img[cloneCount].draggable());
-            pin_img[cloneCount].attr("id", "pin" + cloneCount);
+            // pin_img[cloneCount].attr("id", "pin" + cloneCount);
             pin_info.x = pin_img[cloneCount].offset().left;
             pin_info.y = pin_img[cloneCount].offset().top;
-            pin_info.id = cloneCount;
+            // pin_info.id = cloneCount;
             console.log(pin_info, "pin_info");
             pin_img[cloneCount].css({
                 'z-index': '5'
@@ -175,7 +177,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
         $(".pin-img").click(function () {
             $http.get('/getpreinspectionmodal', {
                 params: {
-                  pin_idx : $(this).attr("id")
+                  pin_idx : $(this).attr("name")
                 }
               }).success(function (response) {
                 if (response.RESULT == "1") {
