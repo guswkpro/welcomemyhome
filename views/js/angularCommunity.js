@@ -22,9 +22,9 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 
 app.controller('communityListCtrl', function ($scope, $http) {
 
-  var getcommunitylist = function(offset){
+  var getcommunitylist = function (offset) {
 
-    offset = (offset - 1) * 5; 
+    offset = (offset - 1) * 5;
 
     $http.get('/getcommunitylist', {
       params: {
@@ -33,13 +33,12 @@ app.controller('communityListCtrl', function ($scope, $http) {
     }).success(function (response) {
 
       $scope.data = response.INFO;
-    $scope.viewby = 5;
-    $scope.totalItems = response.COUNT;
-    console.log(response.COUNT+"전체페이지갯수");
-    $scope.itemsPerPage = $scope.viewby;
-    $scope.maxSize = 5
+      $scope.viewby = 5;
+      $scope.totalItems = response.COUNT;
+      $scope.itemsPerPage = $scope.viewby;
+      $scope.maxSize = 5
       if (response.RESULT == 1) {
-  
+
         $scope.community_list = response.INFO
         for (i = 0; i < $scope.community_list.length; i++) {
           var tmp = new Date($scope.community_list[i].community_post_date);
@@ -61,20 +60,24 @@ app.controller('communityListCtrl', function ($scope, $http) {
   }
 
   getcommunitylist(1);
-  
+
   $scope.userClickCommunity = function (community_idx) {
     document.cookie = "click_idx=" + community_idx;
     $window.location.href = '/communitydetail';
   };
 
-  $scope.$watch('currentPage', function(newPage){
+  $scope.$watch('currentPage', function (newPage) {
     $scope.watchPage = newPage;
+
+    if(typeof newPage !== 'number'){
+      newPage = 1;
+    }
 
     getcommunitylist((newPage));
 
   });
 
-  $scope.pageChanged = function(page) {
+  $scope.pageChanged = function (page) {
     $scope.callbackPage = page;
     $scope.watchPage = newPage;
   };
