@@ -185,6 +185,9 @@ exports.signup = function (request, response) {
 exports.mypagepwcheck = function (request, response) {
 	var req_user_idx = request.session.user_idx;
 	var req_user_pw = request.body.pw;
+	var saltdate = new Date();
+	saltdate = saltdate.toFormat("YYYYMMDDHH24MISS");
+
 	async.waterfall([
 		function (nextCallback) {
 			dao.getuserinformation(req_user_idx, nextCallback);
@@ -194,7 +197,7 @@ exports.mypagepwcheck = function (request, response) {
 			response.json({
 				RESULT: "0"
 			});
-		} else if (result[0].user_pw == req_user_pw) {
+		} else if (result[0].user_pw == crypto.createHash('sha512').update(saltdate + req_user_pw).digest('hex')) {
 			response.json({
 				RESULT: "1"
 			});
