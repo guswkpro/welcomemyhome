@@ -54,6 +54,11 @@ app.controller('communityListCtrl', function ($scope, $http) {
 
 app.controller('PaginationDemoCtrl', function ($scope, $http) {
   var offset = 0;
+
+  $scope.selectPage = function(pageNo) {
+    alert('hello');
+  }
+
   console.log($scope.currentPage, "out of if")
   if($scope.currentPage){
     console.log($scope.currentPage, "in")
@@ -88,10 +93,6 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
       console.log(pageNo+"페이지번호 어디서 오는거지");
     };
 
-    $scope.selectPage = function(pageNo) {
-      $scope.currentPage = pageNo;
-      console.log(pageNo+"페이지번호 어디서 오는거지");
-    }
 
     $scope.setItemsPerPage = function (num) {
       $scope.itemsPerPage = num;
