@@ -75,6 +75,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     }).success(function (response) {
       if (response.RESULT == "1") {
         if (likecheck == 1){
+          console.log("여기입니당");
           $(".heart-blast").toggleClass("heart");
           likecheck = 0;
         }
