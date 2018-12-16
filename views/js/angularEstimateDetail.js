@@ -36,6 +36,20 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
       }
     });
   };
+
+  $scope.logout = function() {
+    $http.get('/logout').success(function(response) {
+      console.log(response.RESULT);
+      if (response.RESULT == "1") {
+        var msg = "로그아웃되었습니다.";
+        $window.alert(msg);
+        $window.location.href = '/';
+        $scope.showHide_logout = true;
+      }
+    }).error(function(){
+      console.log(error);
+    });
+  };
 });
 
 //detail 컨트롤러
