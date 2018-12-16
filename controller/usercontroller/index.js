@@ -108,6 +108,7 @@ exports.login = function (request, response) {
 	var req_user_pw = request.body.pw;
 	var date = new Date();
 	date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
+
 	async.waterfall([
 		function (nextCallback) {
 			dao.getuseridauth(req_user_id, nextCallback);
@@ -120,7 +121,8 @@ exports.login = function (request, response) {
 				nextCallback(undefined, data);
 			}
 		}, function (data, nextCallback) {
-			if (data[0].user_pw == req_user_pw) {
+			data[0].user_join_date = data[0].user_join_date.toFormat("YYYYMMDDHH24MISS");
+			if (crypto.createHash('sha512').update(data[0].user_join_date + req_user_pw).digest('hex') == data[0].user_pw) {
 				var tmp = data[0].user_idx + '/' + data[0].user_auth + '/' + request.sessionID;
 				response.cookie('token', tmp, {
 					maxAge: 60000 * 60 * 24
@@ -159,13 +161,11 @@ exports.signup = function (request, response) {
 	var user_subscription = 1;
 	var dir = './public/' + req_user_nickname;
 
-	console.log(crypto.createHash('sha512').update('asdf').digest('base64'));
-
 	async.waterfall([
 		function (nextCallback) {
 			mkdirp(dir, nextCallback);
 		}, function (url, nextCallback) {
-			dto.user(req_user_id, req_user_pw, req_user_nickname, date, user_subscription, user_auth, nextCallback);
+			dto.user(req_user_id, crypto.createHash('sha512').update(saltdate + req_user_pw).digest('hex'), req_user_nickname, date, user_subscription, user_auth, nextCallback);
 		}, function (userdata, nextCallback) {
 			dao.signup(userdata, nextCallback);
 		}
