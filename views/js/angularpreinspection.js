@@ -102,7 +102,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                         temp_idx = response.INFO[count].pin_idx;
                         console.log(temp_idx);
                         pin_img[count] = $('.pin-img').clone();
-                        $("#my_pin").after(pin_img[count]);
+                        $("#my_pin").after(pin_img[count].draggable());
                         pin_img[count].attr({"name": temp_idx});
                         pin_img[count].css({
                             'position': 'absolute',
@@ -190,7 +190,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                 y: null
             }
             pin_img[cloneCount] = $(ui.helper).clone();
-            $(this).after(pin_img[cloneCount]);
+            $(this).after(pin_img[cloneCount].draggable());
             // pin_img[cloneCount].attr("id", "pin" + cloneCount);
             pin_info.x = pin_img[cloneCount].offset().left;
             pin_info.y = pin_img[cloneCount].offset().top;
