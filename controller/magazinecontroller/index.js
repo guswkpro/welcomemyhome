@@ -132,6 +132,14 @@ exports.getmagazinedetail = function (request, response) {
                             magazinedata[0].likecheck = 1;
                             magazinedao.getmagazinecommentcheck(magazinedata[0].magazine_idx, req_user_idx, secondnextCallback);
                         }
+                    }, function (checkdata, secondnextCallback) {
+                        if (checkdata.length == 0) {
+                            magazinelist[0].commentcheck = 0;
+                            secondnextCallback(null);
+                        } else {
+                            magazinelist[0].commentcheck = 1;
+                            secondnextCallback(null);
+                        }
                     }
                 ], function (error) {
                     if (error) {
