@@ -78,6 +78,35 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
       });
     }
 
+    $scope.pushLike = function () {
+      $http({
+        method: 'POST',
+        url: '/addcommunitylike',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: ({
+          community_idx: click_idx
+        })
+      }).success(function (response) {
+        if (response.RESULT == "1") {
+          $(function() {
+            $(".heart").on("click", function() {
+              $(this).toggleClass("heart-blast");
+            });
+          }); 
+        } else if (response.RESULT == "0") {
+          var msg = "요청 실패";
+          $window.alert(msg);
+        };
+      }).error(function () {
+        var msg = "로그인이 필요합니다";
+        $window.alert(msg);
+        $window.location.href = '/login';
+        console.log("error");
+      });
+    }
+
     $scope.pushtolist = function () {
         $window.location.href = '/community';
     }

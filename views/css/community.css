@@ -38,3 +38,19 @@
   position: relative;
   margin:  0 auto;
 }
+
+.heart {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 870px;
+  top: 45px;
+  transform: translate(-50%, -50%);
+  background: url(../img/heart.png) no-repeat;
+  cursor: pointer;
+  
+}
+.heart-blast {
+  background-position: -2800px 0;
+  transition: background 1s steps(28);
+}
