@@ -26,7 +26,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
   app.controller('communityDetailCtrl', function ($scope, $http, $window) {
     var cookie = document.cookie.split("click_idx=");
     console.log(document.cookie + "          aaaaaaaaaaaaaa");
-    var temp_cookie = cookie[1].split("-");
+    var temp_cookie = cookie[1].split("-")[0];
     var click_idx = temp_cookie;
     let likecheck = 0;
     $http.get('/getcommunitydetail', {

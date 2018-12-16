@@ -62,7 +62,7 @@ app.controller('communityListCtrl', function ($scope, $http) {
   getcommunitylist(1);
 
   $scope.userClickCommunity = function (community_idx) {
-    document.cookie = "click_idx=" + community_idx;
+    document.cookie = "click_idx=" + community_idx + "-";
     $window.location.href = '/communitydetail';
   };
 
