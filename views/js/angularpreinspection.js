@@ -287,6 +287,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     // modal에서 데이터 제출
     $scope.pushpreinspectionData = function () {
         var images = [];
+    
         console.log(pin_arr, "check");
         var recourcive = function (index) {
             var input = document.getElementById('fileselector');
@@ -323,6 +324,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                             var msg = "사전점검을 등록하셨습니다.";
                             $window.alert(msg);
                             $window.location.href = '/preinspection';
+                            pin_arr[cloneCount].attr({"name": response.RESULT})
                         } else {
                             var msg = "알 수 없는 오류로 사전점검 등록에 실패하였습니다.";
                             $window.alert(msg);

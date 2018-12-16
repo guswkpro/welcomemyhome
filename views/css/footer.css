@@ -1,30 +1,31 @@
-
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    }
 html {
-    position: relative;
     height: 100%;
-    margin:0;
 }
 
 body {
     margin: 0;
     height: 100%;
 }
-
-.wrapper-footer {
-    min-height: 100%;
-    position: relative;
-}
     
-footer {
-    position: absolute;
-    width : 100%;
-    bottom: 0;
-    height: 170px;
+.footer {
+    position:fixed; 
+    left:0px; 
+    bottom:0px; 
+    height:60px; 
+    width:100%; 
+    background:grey; 
+    color: white;
 }
 
 #wrapper {
-    position:relative;
-    min-height:100%
+    min-height: 100%;
+position: relative;
+padding-bottom: 19px; /* footer height */
 }
 
 .footer_container {
