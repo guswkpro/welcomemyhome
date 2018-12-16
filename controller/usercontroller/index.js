@@ -176,13 +176,79 @@ exports.signup = function (request, response) {
 	});
 };
 
-exports.test = function (request, response) {
-	console.log('aaaaa');
-	console.log(request.session.user_idx);
-	console.log(request.session.user_auth);
-	console.log(request.sessionID);
-	console.log(request.session.cookie.sessionID);
-	response.json({
-		RESULT: 1
+exports.mypagepwcheck = function (request, response) {
+	var req_user_idx = request.session.user_idx;
+	var req_user_pw = request.body.pw;
+	async.waterfall([
+		function (nextCallback) {
+			dao.getuserinformation(req_user_idx, nextCallback);
+		}
+	], function (error, result) {
+		if (error) {
+			response.json({
+				RESULT: "0"
+			});
+		} else if (result[0].user_pw == req_user_pw) {
+			response.json({
+				RESULT: "1"
+			});
+		} else {
+			response.json({
+				RESULT: "2"
+			});
+		}
+	});
+};
+
+/********************
+        PUT
+********************/
+exports.editprofile = function (request, response) {
+	var req_user_idx = request.session.user_idx
+	var req_user_profile_imgae = request.body.image;
+	var dirname = "./public/" + request.session.user_nickname;
+	var newPath;
+
+	async.waterfall([
+		function (nextCallback) {
+			var bitmap = new Buffer(req_user_profile_imgae, 'base64');
+			newPath = dirname + "/" + request.session.user_nickname + "_profile.jpg";
+			fs.writeFile(newPath, bitmap, 'base64', nextCallback);
+		}, function (nextCallback) {
+			dao.editprofile(req_user_idx, newPath, nextCallback);
+		}
+	], function (error) {
+		if (error) {
+			console.log(error);
+			response.json({
+				RESULT: "0"
+			});
+		} else {
+			response.json({
+				RESULT: "1"
+			});
+		}
+	});
+};
+
+exports.editpassword = function (request, response) {
+	var req_user_idx = request.session.user_idx
+	var req_user_pw = request.body.pw;
+
+	async.waterfall([
+		function (nextCallback) {
+			dao.editpassword(req_user_idx, req_user_pw, nextCallback);
+		}
+	], function (error) {
+		if (error) {
+			console.log(error);
+			response.json({
+				RESULT: "0"
+			});
+		} else {
+			response.json({
+				RESULT: "1"
+			});
+		}
 	});
 };

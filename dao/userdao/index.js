@@ -1,4 +1,4 @@
-var client= require('../dao.js');
+var client = require('../dao.js');
 
 /********************
         GET
@@ -38,6 +38,16 @@ exports.signup = function (user, callback) {
 ********************/
 exports.edituserconnectdate = function (date, user_idx, callback) {
     client.query('UPDATE stweb.stweb_users set user_recent_date = ? where user_idx = ?', [date, user_idx], function (error) {
+        callback(error);
+    });
+};
+exports.editpassword = function (user_idx, user_pw, callback) {
+    client.query('UPDATE stweb.stweb_users set user_pw = ? where user_idx = ?', [user_pw, user_idx], function (error) {
+        callback(error);
+    });
+};
+exports.editprofile = function (user_idx, user_picture_path, callback) {
+    client.query('UPDATE stweb.stweb_users set user_picture_path = ?, user_picture_thumbnail_path = ? where user_idx = ?', [user_picture_path, user_picture_path, user_idx], function (error) {
         callback(error);
     });
 };

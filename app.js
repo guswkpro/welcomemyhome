@@ -5,7 +5,6 @@ var usercontroller = require('./controller/usercontroller')
 var magazinecontroller = require('./controller/magazinecontroller');
 var estimatecontroller = require('./controller/estimatecontroller');
 var communitycontroller = require('./controller/communitycontroller');
-var mypagecontroller = require('./controller/mypagecontroller');
 var preinspectioncontroller = require('./controller/preinspectioncontroller');
 
 var server = app.listen(3000, function () {
@@ -121,8 +120,7 @@ app.get('/getpreinspectionmodal', preinspectioncontroller.getpreinspectionmodal)
 app.post('/login', usercontroller.login);
 app.post('/signup', usercontroller.signup);
 
-app.post('/mypagepwcheck', mypagecontroller.mypagepwcheck);
-app.post('/mypagesetting', mypagecontroller.mypagesetting);
+app.post('/mypagepwcheck', usercontroller.mypagepwcheck);
 
 app.post('/addmagazinelike', magazinecontroller.addmagazinelike);
 app.post('/addmagazinecomment', magazinecontroller.addmagazinecomment);
@@ -147,6 +145,8 @@ app.delete('/deletecommunitycomment', communitycontroller.deletecommunitycomment
 
 /* ----------- PUT ------------ */
 app.put('/putcommunity', communitycontroller.putcommunity);
+app.put('/editprofile', usercontroller.editprofile);
+app.put('/editpassword', usercontroller.editpassword);
 
 /* ----------- TEST ----------- */
 app.get('/test', function (request, response) {
