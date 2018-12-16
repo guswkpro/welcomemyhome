@@ -52,31 +52,34 @@ app.controller('communityDetailCtrl', function ($scope, $http, $window) {
   });
 
   $scope.pushCommentData = function () {
-    console.log($scope.content);
-    $http({
-      method: 'POST',
-      url: '/addcommunitycomment',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: ({
-        community_idx: click_idx,
-        content: $scope.addcomment
-      })
+    let likecheck = 0;
+    $http.get('/getcommunitydetail', {
+      params: {
+        community_idx: click_idx
+      }
     }).success(function (response) {
-      if (response.RESULT == "1") {
-        var msg = "댓글이 등록됐습니다.";
-        $window.alert(msg);
-        $window.location.href = '/community';
-      } else if (response.RESULT == "0") {
-        var msg = "알 수 없는 오류로 댓글 작성에 실패하였습니다.";
-        $window.alert(msg);
-        $window.location.href = '/community';
+      if (response.RESULT == 1) {
+        $scope.communitydetail = response.INFO
+        $scope.title = response.INFO.community_title;
+        console.log(JSON.stringify(response.INFO) + "체크치크");
+        console.log(response.INFO.likecheck + "좋아요체크치크");
+        likecheck = response.INFO.likecheck;
+        if (likecheck == 1) {
+          $('.heart').toggleClass("heart-blast");
+        }
+        
+        var tmp = [];
+        for (var i = 0; i < response.INFO.encodedimage.length; i++) {
+          tmp.push(i);
+        }
+        $scope.slideidx = tmp;
+        document.cookie = "click_idx=";
+      } else {
+        console.log(response, "fault");
       }
     }).error(function () {
-      console.log("error");
+      console.log(error);
     });
-  }
 
   $scope.pushLike = function () {
     var method = null;
