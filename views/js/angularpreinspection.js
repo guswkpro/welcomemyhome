@@ -120,8 +120,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                             }).success(function (response) {
                                 if (response.RESULT == "1") {
                                     console.log(response.INFO);
-                                    $scope.content = response.INFO[0].content;
-                                    $scope.type = response.INFO.type;
+                                    $scope.content = response.INFO.pin_content;
+                                    $scope.type = response.INFO.pin_type;
                                     $scope.encoded_image_modal = response.INFO.encodedimage;
                                     console.log( response.INFO.type);
                                     console.log($scope.type);
