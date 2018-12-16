@@ -153,6 +153,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                         });
                         $("html").click(function (event) {
                             if (event.target.id === "dialog") {
+                                console.log(event.target);
                                 $("#dialog").css({
                                     'display': 'none'
                                 });
