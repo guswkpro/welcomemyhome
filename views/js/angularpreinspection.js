@@ -196,7 +196,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             });
             $("#check").val('');
             $("#content").val('');
-            $scope.encoded_image_modal = "";
+            $scope.hideimg = true;
             $("#dialog").css({
                 'display': 'block'
             });
