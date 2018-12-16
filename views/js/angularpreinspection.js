@@ -208,7 +208,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             cloneCount++;
             //pin 클릭시 모듈 정보 다시 띄우기
             $(".pin-img").click(function () {
-                $(".pin-img").css({
+                console.log("click");
+                $("#dialog").css({
                     'display': 'block'
                 });
             });
