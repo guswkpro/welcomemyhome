@@ -79,7 +79,6 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
 app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     var pin_img = new Array();
     var pin_arr = new Array();
-    var temp_x, temp_y;
     var cloneCount = 0;
 
     // 도면 이미지 받아오기
@@ -97,16 +96,12 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
               }).success(function (response) {
                 if (response.RESULT == "1") {
                     total = response.INFO.length;
-                    console.log(response.INFO);
-                    console.log(total, "total");
 
                     for(count=0; count<total; count++){
                         console.log(count);
                         temp_x = response.INFO[count].pin_X;
                         temp_y = response.INFO[count].pin_Y;
-                        console.log(response.INFO[count].pin_X);
-                        console.log(response.INFO[count].pin_Y);
-                        console.log(temp_x, temp_y);
+                        temp_idx = response.INFO[count].pin_idx;
                         pin_img[count] = $('.pin-img').clone();
                         $("#my_pin").after(pin_img[count].draggable());
                         pin_img[count].css({
@@ -115,6 +110,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                             'left' : temp_x,
                             'top' : temp_y
                         });
+                        
                     }
                 } else {
                     var msg = "핀 정보를 불러 올 수 없습니다.";
@@ -139,9 +135,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     // 핀 이동해서 찍기
     $(function () {
         // pin img 복사 이동
-        $('.pin-img').draggable({ helper: "clone", cursorAt: { top: 0, left: 15 } });
+        $('#div-pin').draggable({ helper: "clone", cursorAt: { top: 0, left: 15 } });
         // drop 이벤트
-        $('.pin-img').bind('dragstop', function (event, ui) {
+        $('#div-pin').bind('dragstop', function (event, ui) {
             var pin_info = {
                 id: null,
                 x: null,
