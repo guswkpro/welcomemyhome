@@ -9,14 +9,14 @@ html {
 
 body {
     margin: 0;
-    height: 100%;
 }
     
 .footer {
-    position:fixed; 
+    position:relative; 
     left:0px; 
     bottom:0px; 
-    height:200px; 
+    max-height: 1000px;
+    height: auto; 
     width:100%; 
     background:grey; 
     color: white;
@@ -40,6 +40,7 @@ body {
 
 .footer_contact {
    float : right;
+   height: 150px;
 }
 
 .footer_main {
