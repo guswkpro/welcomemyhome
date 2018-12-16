@@ -131,7 +131,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                                     console.log($scope.hideimg, "보이기")
                                     $("#check").val($scope.type);
                                     $("#content").val($scope.content);
-                                    $("img").attr({"width": "500", "height": "300", "id": "img-modal", "src": src}).appendTo("#append");
+                                    $("<img>").attr({"width": "500", "height": "300", "id": "img-modal", "src": src}).appendTo("#append");
                                     
                                 } else {
                                     var msg = "핀 정보를 불러 올 수 없습니다.";
