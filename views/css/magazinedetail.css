@@ -41,8 +41,8 @@
     width: 100px;
     height: 100px;
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: 96%;
+    top: 5%;
     transform: translate(-50%, -50%);
     background: url(../img/heart.png) no-repeat;
     cursor: pointer;
