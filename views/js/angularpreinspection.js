@@ -85,6 +85,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     $http.get('/getpreinspectionblueprint').success(function (response) {
         if (response.RESULT == "1") {
             $scope.image = response.INFO.encodedimage[0];
+            console.log(response.INFO.preinspection_idx , "result");
+            console.log($scope.preinspection_idx, "var");
+
              // 핀 정보 받아오기
             $http.get('/getpreinspectionpin', {
                 params: {
@@ -100,15 +103,13 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                         temp_y = response.INFO[count].pin_Y;
                         temp_idx = response.INFO[count].pin_idx;
                         pin_img[count] = $('.pin-img').clone();
-                        pin_img[count].attr("id", "pin" + cloneCount);
-                        $(".pin-img").after(pin_img[count].draggable());
+                        $("#my_pin").after(pin_img[count].draggable());
                         pin_img[count].css({
                             'position': 'absolute',
                             'z-index': '5',
                             'left' : temp_x,
                             'top' : temp_y
                         });
-                        
                     }
                 } else {
                     var msg = "핀 정보를 불러 올 수 없습니다.";
@@ -133,11 +134,11 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     // 핀 이동해서 찍기
     $(function () {
         // pin img 복사 이동
-        $('.pin-img').draggable({ helper: "clone", cursorAt: { top: 0, left: 15 }});
+        $('.pin-img').draggable({ helper: "clone", cursorAt: { top: 0, left: 15 } });
         // drop 이벤트
         $('.pin-img').bind('dragstop', function (event, ui) {
             var pin_info = {
-                // id: null,
+                id: null,
                 x: null,
                 y: null
             }
