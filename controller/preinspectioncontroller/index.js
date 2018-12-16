@@ -86,7 +86,7 @@ exports.getpreinspectionpin = function (request, response) {
                     });
                 } else {
                     pindata[0].encodedimage = encodedimage;
-                    info = pindata[0];
+                    info = pindata;
                     nextCallback();
                 }
             });

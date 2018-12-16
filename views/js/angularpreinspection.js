@@ -102,6 +102,10 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                     console.log(response.INFO);
                     console.log(total, "total");
                     console.log(temp_x, temp_y);
+
+                    for(count=0; count<total; count++){
+                        pin_img[cloneCount] = $(ui.helper).clone();
+                    }
                 } else {
                     var msg = "핀 정보를 불러 올 수 없습니다.";
                     $window.alert(msg);
