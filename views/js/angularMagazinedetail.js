@@ -31,7 +31,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     if (response.RESULT == 1) {
       $scope.magazinedetail = response.INFO
       $scope.title = response.INFO.magazine_title;
-      console.log(response.INFO+"체크치크");
+      console.log(JSON.stringify(response.INFO)+"체크치크");
       console.log(response.INFO.likecheck+"좋아요체크치크");
       var tmp = [];
       for (var i = 0; i < response.INFO.encodedimage.length; i++) {
