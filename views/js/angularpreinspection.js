@@ -197,6 +197,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             });
             $("#check").val('');
             $("#content").val('');
+            $("#img-modal").remove();
             $scope.hideimg = true;
             console.log($scope.hideimg, "숨김");
             $("#dialog").css({
