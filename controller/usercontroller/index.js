@@ -215,7 +215,7 @@ exports.editprofile = function (request, response) {
 	async.waterfall([
 		function (nextCallback) {
 			var bitmap = new Buffer(req_user_profile_imgae, 'base64');
-			newPath = dirname + "/" + request.session.user_nickname + "_profile" + dirdate + ".jpg";
+			newPath = dirname + "/" + request.session.user_nickname + "_profile_" + dirdate + ".jpg";
 			fs.writeFile(newPath, bitmap, 'base64', nextCallback);
 		}, function (nextCallback) {
 			dao.editprofile(req_user_idx, newPath, nextCallback);
