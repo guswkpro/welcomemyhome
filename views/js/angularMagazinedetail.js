@@ -36,10 +36,10 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       console.log(response.INFO.likecheck + "좋아요체크치크");
       likecheck = response.INFO.likecheck;
       if (likecheck == 1) {
-        $(function () {
-          $('.heart').toggleClass("heart-blast");
-         
-        });
+        $('.heart').toggleClass("heart-blast");
+      }
+      else if(likecheck == 0) {
+        $('.heart').toggleClass("heart-start");
       }
       
       var tmp = [];
@@ -78,11 +78,11 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     }).success(function (response) {
       if (response.RESULT == "1") {
         if (likecheck == 1){
-          $(".heart-blast").toggleClass("heart");
+          $(".heart-blast").toggleClass("heart-start");
           likecheck = 0;
         }
         else if(likecheck == 0) {
-          $(".heart").toggleClass("heart-blast");
+          $(".heart-start").toggleClass("heart-blast");
           likecheck = 1;
         }
       } else if (response.RESULT == "0") {
