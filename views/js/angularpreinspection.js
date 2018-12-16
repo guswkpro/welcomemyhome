@@ -123,6 +123,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                                     $scope.content = response.INFO.pin_content;
                                     $scope.type = response.INFO.pin_type;
                                     $scope.encoded_image_modal = response.INFO.encodedimage;
+                                    var src = "data:image/jpg;base64," + response.INFO.encodedimage
                                     console.log( response.INFO.type);
                                     console.log($scope.type);
                                     console.log($("#check"));
@@ -130,6 +131,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                                     console.log($scope.hideimg, "보이기")
                                     $("#check").val($scope.type);
                                     $("#content").val($scope.content);
+                                    $("img").attr({"width": "500", "height": "300", "id": "img-modal", "src": src})//width="500" height="300" id="img-modal" ng-src="data:image/jpg;base64,{{e}}" alt="이미지 없음"
                                 } else {
                                     var msg = "핀 정보를 불러 올 수 없습니다.";
                                     $window.alert(msg);
@@ -198,8 +200,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             $("#check").val('');
             $("#content").val('');
             $("#img-modal").remove();
-            $scope.hideimg = true;
-            console.log($scope.hideimg, "숨김");
             $("#dialog").css({
                 'display': 'block'
             });
