@@ -20,34 +20,35 @@ exports.getpreinspectionblueprint = function (request, response) {
             var count = 0;
             try {
                 preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path.split(',');
+
+                async.whilst(function () {
+                    return count < (preinspectiondata[0].preinspection_picture_path.length);
+                }, function (callback) {
+                    fs.readFile(preinspectiondata[0].preinspection_picture_path[0], function (error, data) {
+                        encodedimage.push(new Buffer(data).toString('base64'));
+                        count++;
+                        callback();
+                    });
+                }, function (error) {
+                    if (error) {
+                        console.log(error);
+                        response.json({
+                            RESULT: "0"
+                        });
+                    } else {
+                        preinspectiondata[0].preinspection_date = preinspectiondata[0].preinspection_date.toFormat('YYYY-MM-DD HH24:MI:SS');
+                        preinspectiondata[0].encodedimage = encodedimage;
+                        preinspectiondata[0].preinspection_width = preinspectiondata[0].preinspection_width;
+                        preinspectiondata[0].preinspection_height = preinspectiondata[0].preinspection_height;
+                        info = preinspectiondata[0];
+                        nextCallback();
+                    }
+                });
             }
             catch (e) {
-                preinspection_picture_path = [];
-                preinspectiondata[0].append(preinspection_picture_path);
+                
             }
-            async.whilst(function () {
-                return count < (preinspectiondata[0].preinspection_picture_path.length);
-            }, function (callback) {
-                fs.readFile(preinspectiondata[0].preinspection_picture_path[0], function (error, data) {
-                    encodedimage.push(new Buffer(data).toString('base64'));
-                    count++;
-                    callback();
-                });
-            }, function (error) {
-                if (error) {
-                    console.log(error);
-                    response.json({
-                        RESULT: "0"
-                    });
-                } else {
-                    preinspectiondata[0].preinspection_date = preinspectiondata[0].preinspection_date.toFormat('YYYY-MM-DD HH24:MI:SS');
-                    preinspectiondata[0].encodedimage = encodedimage;
-                    preinspectiondata[0].preinspection_width = preinspectiondata[0].preinspection_width;
-                    preinspectiondata[0].preinspection_height = preinspectiondata[0].preinspection_height;
-                    info = preinspectiondata[0];
-                    nextCallback();
-                }
-            });
+            
         }
     ], function (error) {
         if (error) {
