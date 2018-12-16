@@ -147,10 +147,3 @@ app.delete('/deletecommunitycomment', communitycontroller.deletecommunitycomment
 app.put('/putcommunity', communitycontroller.putcommunity);
 app.put('/editprofile', usercontroller.editprofile);
 app.put('/editpassword', usercontroller.editpassword);
-
-/* ----------- TEST ----------- */
-app.get('/test', function (request, response) {
-        response.json({
-                RESULT: "12"
-        });
-});
