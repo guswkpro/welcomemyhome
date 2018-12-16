@@ -132,7 +132,7 @@ exports.getpreinspectionmodal = function (request, response) {
         } else {
             response.json({
                 RESULT: "1",
-                INFO: info[0],
+                INFO: info,
             });
         }
     });
