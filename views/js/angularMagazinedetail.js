@@ -33,7 +33,8 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       $scope.title = response.INFO.magazine_title;
       console.log(JSON.stringify(response.INFO) + "체크치크");
       console.log(response.INFO.likecheck + "좋아요체크치크");
-      if (response.INFO.likecheck == 1) {
+    
+      if ($scope.magazinedetail.likecheck == 1) {
         $(function () {
           $('.heart').toggleClass("heart-end");
           $scope.pushLike = function () {
@@ -51,6 +52,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
                 $(function () {
                   $(".heart").on("click", function () {
                     $(this).toggleClass("heart-end");
+                    $scope.magazinedetail.likecheck = 0;
                   });
                 });
               } else if (response.RESULT == "0") {
@@ -65,7 +67,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
             })
           }
         });
-      } else if (response.INFO.likecheck == 0) {
+      } else if ($scope.magazinedetail.likecheck == 0) {
         $scope.pushLike = function () {
           $http({
             method: 'POST',
