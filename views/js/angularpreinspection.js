@@ -126,8 +126,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                                     console.log( response.INFO.type);
                                     console.log($scope.type);
                                     console.log($("#check"));
-                                    console.log($scope.hideimg, "보이기")
                                     $scope.hideimg=false;
+                                    console.log($scope.hideimg, "보이기")
                                     $("#check").val($scope.type);
                                     $("#content").val($scope.content);
                                 } else {
@@ -192,7 +192,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             pin_info.x = pin_img[cloneCount].offset().left;
             pin_info.y = pin_img[cloneCount].offset().top;
             // pin_info.id = cloneCount;
-            console.log(pin_info, "pin_info");
             pin_img[cloneCount].css({
                 'z-index': '5'
             });
@@ -204,7 +203,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                 'display': 'block'
             });
             pin_arr[cloneCount] = pin_info;
-            console.log(pin_arr, "pin_arr");
             cloneCount++;
         });
         $(".close").click(function () {

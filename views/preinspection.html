@@ -76,10 +76,10 @@
                     <input id='fileselector' type="file" placeholder="이미지를 선택하세요." accept="image/*" ng-model="image_modal" multiple />
                   </td>
                 </tr>
-                <tr ng-hide="hideimg">
+                <tr>
                   <th>사진</th>
                   <td>
-                    <div ng-repeat="e in encoded_image_modal"><img width="500" height="300" id="img-modal" ng-src="data:image/jpg;base64,{{e}}" alt="이미지 없음"><br /></div>
+                    <div ng-repeat="e in encoded_image_modal"><img width="500" height="300" id="img-modal" ng-hide="hideimg" ng-src="data:image/jpg;base64,{{e}}" alt="이미지 없음"><br /></div>
                   </td>
                 </tr>
                 <tr>
