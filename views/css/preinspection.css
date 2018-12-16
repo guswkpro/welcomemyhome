@@ -33,7 +33,6 @@ table tr{
    cursor: move; cursor: -moz-grabbing; cursor: -webkit-grabbing; cursor: grabbing;
 }
 
-
 .based-img {
     position: absolute;
     padding : 0;
@@ -43,6 +42,12 @@ table tr{
 }
 
 .pin-img {
+    z-index: 5;
+    width: 30px;
+    height: 30px;
+}
+
+.pin-div {
     z-index: 5;
     width: 30px;
     height: 30px;

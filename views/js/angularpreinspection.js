@@ -133,7 +133,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     // 핀 이동해서 찍기
     $(function () {
         // pin img 복사 이동
-        $('.pin-div').draggable({ helper: "clone", cursorAt: { top: 0, left: 15 }, zindex: "5"});
+        $('.pin-div').draggable({ helper: "clone", cursorAt: { top: 0, left: 15 }});
         // drop 이벤트
         $('.pin-div').bind('dragstop', function (event, ui) {
             var pin_info = {
