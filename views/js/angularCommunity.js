@@ -25,7 +25,7 @@ app.controller('communityListCtrl', function ($scope, $http) {
   var getcommunitylist = function(offset){
 
     alert(offset)
-    
+
     $http.get('/getcommunitylist', {
       params: {
         offset: offset
@@ -61,7 +61,7 @@ app.controller('communityListCtrl', function ($scope, $http) {
   };
 
   $scope.$watch('currentPage', function(newPage){
-    $scope.watchPage = newPage;
+    $scope.watchPage = newPage - 1;
 
     getcommunitylist(newPage);
 
@@ -74,7 +74,7 @@ app.controller('communityListCtrl', function ($scope, $http) {
 
   $scope.setItemsPerPage = function (num) {
     $scope.itemsPerPage = num;
-    $scope.currentPage = 1; //reset to first page
+    //$scope.currentPage = 1; //reset to first page
   }
 });
 
