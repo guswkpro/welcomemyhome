@@ -16,12 +16,15 @@ body {
 }
     
 footer {
-    margin-top: 10%;
     position: absolute;
     width : 100%;
-    left: 0; 
-    right: 0;
     bottom: 0;
+    height: 170px;
+}
+
+#wrapper {
+    position:relative;
+    min-height:100%
 }
 
 .footer_container {
