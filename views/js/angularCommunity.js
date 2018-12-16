@@ -79,6 +79,10 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
     // for(var i = 0; i < ){
 
     // }
+    $scope.clickpage = function(event) {
+      alert(event.target)
+      alert(event.target.value)
+    }
 
     $scope.setPage = function (pageNo) {
       $scope.currentPage = pageNo;

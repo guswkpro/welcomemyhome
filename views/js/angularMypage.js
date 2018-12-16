@@ -41,7 +41,7 @@ app.controller('passwordCheckCtrl', function ($scope, $http, $window) {
       } else if (response.RESULT == "2") {
         var msg = "비밀번호가 틀립니다.";
         $window.alert(msg);
-       // $window.location.href = '/';
+        $window.location.href = '/';
       }
     })
   }
