@@ -80,8 +80,7 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
 
     // }
     $scope.clickpage = function(event) {
-      alert(event.target)
-      alert(event.target.value)
+      alert("hello")
     }
 
     $scope.setPage = function (pageNo) {
