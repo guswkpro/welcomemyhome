@@ -88,6 +88,11 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
       console.log(pageNo+"페이지번호 어디서 오는거지");
     };
 
+    $scope.selectPage = function(pageNo) {
+      $scope.currentPage = pageNo;
+      console.log(pageNo+"페이지번호 어디서 오는거지");
+    }
+
     $scope.setItemsPerPage = function (num) {
       $scope.itemsPerPage = num;
       $scope.currentPage = 1; //reset to first page
