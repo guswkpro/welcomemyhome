@@ -23,6 +23,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
   var cookie = document.cookie.split("click_idx=");
   var temp_cookie = cookie[1].split("-");
   var click_idx = temp_cookie;
+  let likecheck = 0;
   $http.get('/getmagazinedetail', {
     params: {
       magazine_idx: click_idx
@@ -33,70 +34,14 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       $scope.title = response.INFO.magazine_title;
       console.log(JSON.stringify(response.INFO) + "체크치크");
       console.log(response.INFO.likecheck + "좋아요체크치크");
-    
-      if ($scope.magazinedetail.likecheck == 1) {
+      likecheck = response.INFO.likecheck;
+      if (likecheck == 1) {
         $(function () {
           $('.heart').toggleClass("heart-end");
-          $scope.pushLike = function () {
-            $http({
-              method: 'DELETE',
-              url: '/deletecommunitylike',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              data: ({
-                magazine_idx: click_idx
-              })
-            }).success(function (response) {
-              if (response.RESULT == "1") {
-                $(function () {
-                  $(".heart").on("click", function () {
-                    $(this).toggleClass("heart-end");
-                    $scope.magazinedetail.likecheck = 0;
-                  });
-                });
-              } else if (response.RESULT == "0") {
-                var msg = "요청 실패";
-                $window.alert(msg);
-              };
-            }).error(function () {
-              var msg = "로그인이 필요합니다";
-              $window.alert(msg);
-              $window.location.href = '/login';
-              console.log("error");
-            })
-          }
+         
         });
-      } else if ($scope.magazinedetail.likecheck == 0) {
-        $scope.pushLike = function () {
-          $http({
-            method: 'POST',
-            url: '/addmagazinelike',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            data: ({
-              magazine_idx: click_idx
-            })
-          }).success(function (response) {
-            if (response.RESULT == "1") {
-              $(function () {
-                $(".heart").on("click", function () {
-                  $(this).toggleClass("heart-blast");
-                });
-              });
-            } else if (response.RESULT == "0") {
-              var msg = "요청 실패";
-              $window.alert(msg);
-            };
-          }).error(function () {
-            var msg = "로그인이 필요합니다";
-            $window.alert(msg);
-            $window.location.href = '/login';
-            console.log("error");
-          });
-        }
       }
+      
       var tmp = [];
       for (var i = 0; i < response.INFO.encodedimage.length; i++) {
         tmp.push(i);
@@ -109,6 +54,48 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
   }).error(function () {
     console.log(error);
   });
+
+  $scope.pushLike = function () {
+    var method = null;
+    var url = null;
+    if (likecheck == 0) {
+      method = 'POST';
+      url = '/addmagazinelike';
+    }
+    else if(likecheck == 1) {
+      method = 'DELETE'
+      url = '/deletecommunitylike';
+    }
+    $http({
+      method: method,
+      url: url,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: ({
+        magazine_idx: click_idx
+      })
+    }).success(function (response) {
+      if (response.RESULT == "1") {
+        if (likecheck == 1){
+          $(".heart").toggleClass("heart-end");
+          likecheck = 0;
+        }
+        else if(likecheck == 0) {
+          $(".heart").toggleClass("heart-blast");
+          likecheck = 1;
+        }
+      } else if (response.RESULT == "0") {
+        var msg = "요청 실패";
+        $window.alert(msg);
+      };
+    }).error(function () {
+      var msg = "로그인이 필요합니다";
+      $window.alert(msg);
+      $window.location.href = '/login';
+      console.log("error");
+    })
+  }
 
   $scope.pushCommentData = function () {
     console.log($scope.content);
