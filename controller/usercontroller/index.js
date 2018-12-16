@@ -5,6 +5,7 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var mkdirp = require('mkdirp');
 var fs = require('fs');
+var crypto = require('crypto');
 require('date-utils');
 
 /********************
@@ -152,9 +153,13 @@ exports.signup = function (request, response) {
 	var req_user_nickname = request.body.nickname;
 	var date = new Date();
 	date = date.toFormat('YYYY-MM-DD HH24:MI:SS');
+	var saltdate = new Date();
+	saltdate = saltdate.toFormat("YYYYMMDDHH24MISS");
 	var user_auth = 0;
 	var user_subscription = 1;
 	var dir = './public/' + req_user_nickname;
+
+	console.log(crypto.createHash('sha512').update('asdf').digest('base64'));
 
 	async.waterfall([
 		function (nextCallback) {
