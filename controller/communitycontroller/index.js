@@ -198,7 +198,7 @@ exports.getcommunitycomment = function (request, response) {
                         communitycommentinfodetail.user_profile_image = "null";
                     } else {
                         fs.readFile(communitycommentuserdata[0].user_picture_thumbnail_path, function (error, data) {
-                            console.log(communitycommentuserdata[0].user_picture_thumbnail_path);
+                            console.log(communitycommentuserdata[0].user_picture_thumbnail_path + "ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
                             communitycommentinfodetail.user_profile_image = new Buffer(data).toString('base64');
                         });
                     }
