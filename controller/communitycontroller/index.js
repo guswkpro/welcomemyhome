@@ -143,10 +143,10 @@ exports.getcommunitydetail = function (request, response) {
                         communitydao.getcommunitylikecheck(communitydata[0].community_idx, req_user_idx, secondnextCallback);
                     }, function (checkdata, secondnextCallback) {
                         if (checkdata.length == 0) {
-                            communitydata[0].pincheck = 0;
+                            communitydata[0].likecheck = 0;
                             communitydao.getcommunitycommentcheck(communitydata[0].community_idx, req_user_idx, secondnextCallback);
                         } else {
-                            communitydata[0].pincheck = 1;
+                            communitydata[0].likecheck = 1;
                             communitydao.getcommunitycommentcheck(communitydata[0].community_idx, req_user_idx, secondnextCallback);
                         }
                     }
