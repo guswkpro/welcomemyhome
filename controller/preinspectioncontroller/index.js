@@ -74,7 +74,7 @@ exports.getpreinspectionpin = function (request, response) {
                 return count < (pindata[0].pin_picture_path.length - 1);
             }, function (nextCallback) {
                 console.log(pindata[0], "pindata[0]");
-                fs.readFile(pindata[0].pindata_picture_path[count], function (error, data) {
+                fs.readFile(pindata[0].pin_picture_path[count], function (error, data) {
                     encodedimage.push(new Buffer(data).toString('base64'));
                     count++;
                     nextCallback();
