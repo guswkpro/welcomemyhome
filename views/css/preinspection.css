@@ -47,12 +47,6 @@ table tr{
     height: 30px;
 }
 
-.pin-div {
-    z-index: 6;
-    width: 30px;
-    height: 30px;
-}
-
 .addpin-button {
     margin-left : 30px;
 }

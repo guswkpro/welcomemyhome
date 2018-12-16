@@ -99,9 +99,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                         temp_x = response.INFO[count].pin_X;
                         temp_y = response.INFO[count].pin_Y;
                         temp_idx = response.INFO[count].pin_idx;
-                        pin_img[count] = $('.pin-div').clone();
+                        pin_img[count] = $('.pin-img').clone();
                         pin_img[count].attr("id", "pin" + cloneCount);
-                        $(".pin-div").after(pin_img[count].draggable());
+                        $(".pin-img").after(pin_img[count].draggable());
                         pin_img[count].css({
                             'position': 'absolute',
                             'z-index': '5',
@@ -133,11 +133,11 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     // 핀 이동해서 찍기
     $(function () {
         // pin img 복사 이동
-        $('.pin-div').draggable({ helper: "clone", cursorAt: { top: 0, left: 15 }});
+        $('.pin-img').draggable({ helper: "clone", cursorAt: { top: 0, left: 15 }});
         // drop 이벤트
-        $('.pin-div').bind('dragstop', function (event, ui) {
+        $('.pin-img').bind('dragstop', function (event, ui) {
             var pin_info = {
-                id: null,
+                // id: null,
                 x: null,
                 y: null
             }
@@ -171,7 +171,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             }
         });
         //pin 클릭시 모듈 정보 다시 띄우기
-        $(".pin-div").click(function () {
+        $(".pin-img").click(function () {
             $http.get('/getpreinspectionmodal', {
                 params: {
                   pin_idx : $(this).attr("id")
