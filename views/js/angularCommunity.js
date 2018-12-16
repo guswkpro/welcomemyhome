@@ -70,6 +70,7 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
     //   $('#page-content').text('Page ' + page);
     //   paging(page);
     // }
+    for(var i = 0; i < )
 
     $scope.setPage = function (pageNo) {
       $scope.currentPage = pageNo;
