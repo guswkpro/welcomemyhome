@@ -185,19 +185,18 @@ exports.signup = function (request, response) {
 exports.mypagepwcheck = function (request, response) {
 	var req_user_idx = request.session.user_idx;
 	var req_user_pw = request.body.pw;
-	var saltdate = new Date();
-	saltdate = saltdate.toFormat("YYYYMMDDHH24MISS");
 
 	async.waterfall([
 		function (nextCallback) {
 			dao.getuserinformation(req_user_idx, nextCallback);
 		}
 	], function (error, result) {
+		result[0].user_join_date = result[0].user_join_date.toFormat("YYYYMMDDHH24MISS");
 		if (error) {
 			response.json({
 				RESULT: "0"
 			});
-		} else if (result[0].user_pw == crypto.createHash('sha512').update(saltdate + req_user_pw).digest('hex')) {
+		} else if (result[0].user_pw == crypto.createHash('sha512').update(result[0].user_join_date + req_user_pw).digest('hex')) {
 			response.json({
 				RESULT: "1"
 			});
