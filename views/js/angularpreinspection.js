@@ -88,6 +88,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
         if (response.RESULT == "1") {
             $scope.image = response.INFO.encodedimage[0];
             preinspection_idx = response.INFO.preinspection_idx;
+            console.log(response.INFO.preinspection_idx , "result");
+            console.log(preinspection_idx, "var");
         } else {
             var msg = "알 수 없는 에러로 preinspection 페이지를 불러 올 수 없습니다.";
             $window.alert(msg);
@@ -98,7 +100,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     });
 
     console.log(clones.getPinArray(clones.getcloneCount()));
-    console.log(preinspection_idx);
+    console.log(preinspection_idx, "var 2");
     // 핀 정보 받아오기
     $http.get('/getpreinspectionpin', {
         params: {
