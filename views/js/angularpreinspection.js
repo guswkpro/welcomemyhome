@@ -112,7 +112,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                         });
                         $(".pin-img").click(function (event) {
                             console.log("click event");
-                            console.log(event.target)
                             console.log($(this).attr("name"));
                             $http.get('/getpreinspectionmodal', {
                                 params: {
@@ -125,6 +124,10 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                                     $scope.type = response.INFO.pin_type;
                                     $scope.encoded_image_modal = response.INFO.encodedimage;
                                     var src = "data:image/jpg;base64," + response.INFO.encodedimage;
+                                    var img_modal = $('#img-modal');
+                                    if(img_modal){
+                                        img_modal.remove();
+                                    }
                                     $("#check").val($scope.type);
                                     $("#content").val($scope.content);
                                     $("<img>").attr({"width": "500", "height": "300", "id": "img-modal", "src": src}).appendTo("#append");
@@ -283,7 +286,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
 
     // modal에서 데이터 제출
     $scope.pushpreinspectionData = function () {
-
         var images = [];
         console.log(pin_arr, "check");
         var recourcive = function (index) {
