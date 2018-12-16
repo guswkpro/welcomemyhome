@@ -126,6 +126,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                                     console.log( response.INFO.type);
                                     console.log($scope.type);
                                     console.log($("#check"));
+                                    console.log($scope.hideimg, "보이기")
+                                    $scope.hideimg=false;
                                     $("#check").val($scope.type);
                                     $("#content").val($scope.content);
                                 } else {
@@ -197,6 +199,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
             $("#check").val('');
             $("#content").val('');
             $scope.hideimg = true;
+            console.log($scope.hideimg, "숨김");
             $("#dialog").css({
                 'display': 'block'
             });
