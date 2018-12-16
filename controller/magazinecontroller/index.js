@@ -134,10 +134,10 @@ exports.getmagazinedetail = function (request, response) {
                         }
                     }, function (checkdata, secondnextCallback) {
                         if (checkdata.length == 0) {
-                            magazinelist[0].commentcheck = 0;
+                            magazinedata[0].commentcheck = 0;
                             secondnextCallback(null);
                         } else {
-                            magazinelist[0].commentcheck = 1;
+                            magazinedata[0].commentcheck = 1;
                             secondnextCallback(null);
                         }
                     }
