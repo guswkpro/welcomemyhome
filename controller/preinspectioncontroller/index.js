@@ -65,6 +65,31 @@ exports.getpreinspectionpin = function (request, response) {
         function (nextCallback) {
             preinspectiondao.getpreinspectionpin(req_preinspection_idx, nextCallback);
         }, function (pindata, nextCallback) {
+            info = pindata;
+            nextCallback();
+        }
+    ], function (error) {
+        if (error) {
+            console.log(error);
+            response.json({
+                RESULT: "0"
+            });
+        } else {
+            response.json({
+                RESULT: "1",
+                INFO: info,
+            });
+        }
+    });
+}
+
+exports.getpreinspectionmodal = function (request, response) {
+    var req_pin_idx = request.param('pin_idx');
+    var info = {};
+    async.waterfall([
+        function (nextCallback) {
+            preinspectiondao.getpreinspectionpinmodal(req_pin_idx, nextCallback);
+        }, function (pindata, nextCallback) {
             var encodedimage = [];
             var count = 0;
             console.log(pindata, "pindata");
@@ -86,7 +111,7 @@ exports.getpreinspectionpin = function (request, response) {
                     });
                 } else {
                     pindata[0].encodedimage = encodedimage;
-                    info = pindata;
+                    info = pindata[0];
                     nextCallback();
                 }
             });

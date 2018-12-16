@@ -104,7 +104,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                     console.log(temp_x, temp_y);
 
                     for(count=0; count<total; count++){
-                        pin_img[cloneCount] = $(ui.helper).clone();
+                        pin_img[Count] = $('.pin-img').clone();
                     }
                 } else {
                     var msg = "핀 정보를 불러 올 수 없습니다.";
@@ -137,22 +137,22 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                 x: null,
                 y: null
             }
-            pin_img[clones.getcloneCount()] = $(ui.helper).clone();
-            $(this).after(pin_img[clones.getcloneCount()].draggable());
-            pin_img[clones.getcloneCount()].attr("id", "pin" + clones.getcloneCount());
-            pin_info.x = pin_img[clones.getcloneCount()].offset().left;
-            pin_info.y = pin_img[clones.getcloneCount()].offset().top;
-            pin_info.id = clones.getcloneCount();
+            pin_img[cloneCount] = $(ui.helper).clone();
+            $(this).after(pin_img[cloneCount].draggable());
+            // pin_img[clones.getcloneCount()].attr("id", "pin" + clones.getcloneCount());
+            pin_info.x = pin_img[cloneCount].offset().left;
+            pin_info.y = pin_img[cloneCount].offset().top;
+            // pin_info.id = clones.getcloneCount();
             console.log(pin_info, "pin_info");
-            pin_img[clones.getcloneCount()].css({
+            pin_img[cloneCount].css({
                 'z-index': '5'
             });
             $("#dialog").css({
                 'display': 'block'
             });
-            clones.pin_arr[clones.getcloneCount()] = pin_info;
+            clones.pin_arr[cloneCount] = pin_info;
             console.log(pin_arr, "pin_arr");
-            clones.Countup();
+            cloneCount++;
         });
         $(".close").click(function () {
             $("#dialog").css({

@@ -16,6 +16,12 @@ exports.getpreinspectionpin = function (preinspection_idx, callback) {
         });
 }
 
+exports.getpreinspectionmodal = function (pin_idx, callback) {
+        client.query('SELECT * FROM stweb.stweb_preinspection_pins where pin_idx = ?', [pin_idx], function (error, result) {
+                callback(error, result);
+        });
+}
+
 /********************
         POST
 ********************/
