@@ -111,7 +111,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                             'top' : temp_y
                         });
                         $(".pin-img").click(function () {
-                            console.log("click event")
+                            console.log("click event");
+                            console.log($(this).attr("name"));
                             $http.get('/getpreinspectionmodal', {
                                 params: {
                                     pin_idx: $(this).attr("name")
