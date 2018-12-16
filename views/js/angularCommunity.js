@@ -24,8 +24,6 @@ app.controller('communityListCtrl', function ($scope, $http) {
 
   var getcommunitylist = function(offset){
 
-    alert(offset)
-
     $http.get('/getcommunitylist', {
       params: {
         offset: offset
@@ -36,7 +34,6 @@ app.controller('communityListCtrl', function ($scope, $http) {
     $scope.viewby = 5;
     $scope.totalItems = response.COUNT;
     console.log(response.COUNT+"전체페이지갯수");
-    $scope.currentPage = 1;
     $scope.itemsPerPage = $scope.viewby;
     $scope.maxSize = 5
       if (response.RESULT == 1) {
@@ -82,42 +79,6 @@ app.controller('communityListCtrl', function ($scope, $http) {
 
   $scope.setItemsPerPage = function (num) {
     $scope.itemsPerPage = num;
-    //$scope.currentPage = 1; //reset to first page
+    $scope.currentPage = 1; //reset to first page
   }
 });
-
-app.controller('PaginationDemoCtrl', function ($scope, $http) {
-  var offset = 0;
-
-  console.log($scope.currentPage, "out of if")
-  if($scope.currentPage){
-    console.log($scope.currentPage, "in")
-    offset = $scope.currentPage - 1;
-  }
-  $http.get('/getcommunitylist', {
-    params: {
-      offset: offset
-    }
-  }).success(function (response) {
-    $scope.data = response.INFO;
-    $scope.viewby = 5;
-    $scope.totalItems = response.COUNT;
-    console.log(response.COUNT+"전체페이지갯수");
-    $scope.currentPage = 1;
-    $scope.itemsPerPage = $scope.viewby;
-    $scope.maxSize = 5; //Number of pager buttons to show
-
-    // $scope.onPageClick = function (event, page) {
-    //   $('#page-content').text('Page ' + page);
-    //   paging(page);
-    // }
-    // for(var i = 0; i < ){
-
-    // }
-    // $scope.selectPage = function(page) {
-    //   alert('hello');
-    // }
-
-
-  })
-})
