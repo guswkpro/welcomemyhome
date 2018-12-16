@@ -87,9 +87,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     $http.get('/getpreinspectionblueprint').success(function (response) {
         if (response.RESULT == "1") {
             $scope.image = response.INFO.encodedimage[0];
-            preinspection_idx = response.INFO.preinspection_idx;
+            $scope.preinspection_idx = response.INFO.preinspection_idx;
             console.log(response.INFO.preinspection_idx , "result");
-            console.log(preinspection_idx, "var");
+            console.log($scope.preinspection_idx, "var");
             return preinspection_idx;
         } else {
             var msg = "알 수 없는 에러로 preinspection 페이지를 불러 올 수 없습니다.";
@@ -105,7 +105,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     // 핀 정보 받아오기
     $http.get('/getpreinspectionpin', {
         params: {
-          preinspection_idx: preinspection_idx,
+          preinspection_idx: $scope.preinspection_idx,
         }
       }).success(function (response) {
         if (response.RESULT == "1") {
