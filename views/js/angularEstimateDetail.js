@@ -151,7 +151,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, hides) {
     });
   }
 
-  $scope.addAnswer() = {
+  $scope.addAnswer =  function() {
     $window.location.href = '/estimateanswer';
   }
 
