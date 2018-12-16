@@ -22,7 +22,8 @@ exports.getpreinspectionblueprint = function (request, response) {
                 preinspectiondata[0].preinspection_picture_path = preinspectiondata[0].preinspection_picture_path.split(',');
             }
             catch (e) {
-                preinspectiondata[0].preinspection_picture_path = [];
+                preinspection_picture_path = [];
+                preinspectiondata[0].push(preinspection_picture_path);
             }
             async.whilst(function () {
                 return count < (preinspectiondata[0].preinspection_picture_path.length);
