@@ -222,6 +222,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                             var src = "data:image/jpg;base64," + response.INFO.encodedimage
                             $scope.hideimg=false;
                             console.log($scope.hideimg, "보이기")
+                            if(img_modal){
+                                img_modal.remove();
+                            }
                             $("#check").val($scope.type);
                             $("#content").val($scope.content);
                             $("<img>").attr({"width": "500", "height": "300", "id": "img-modal", "src": src}).appendTo("#append");

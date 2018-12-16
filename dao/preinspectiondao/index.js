@@ -33,7 +33,7 @@ exports.addpreinspectionblueprint = function (preinspection, callback) {
 }
 
 exports.addpreinspectionmodal = function (pin, callback) {
-        client.query('INSERT INTO stweb.stweb_preinspection_pins (preinspection_idx, pin_picture_path, pin_type, pin_content, pin_X, pin_Y) VALUES (?, ?, ?, ?, ?, ?)',  [pin.preinspection_idx, pin.pin_picture_path, pin.pin_type,  pin.pin_content, Number(pin.pin_X), Number(pin.pin_Y)], function(error) {
-                callback(error);
+        client.query('INSERT INTO stweb.stweb_preinspection_pins (preinspection_idx, pin_picture_path, pin_type, pin_content, pin_X, pin_Y) VALUES (?, ?, ?, ?, ?, ?)',  [pin.preinspection_idx, pin.pin_picture_path, pin.pin_type,  pin.pin_content, Number(pin.pin_X), Number(pin.pin_Y)], function(error, result) {
+                callback(error, result);
         });
 }
