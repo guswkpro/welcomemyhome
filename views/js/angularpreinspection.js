@@ -124,12 +124,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                                     $scope.content = response.INFO.pin_content;
                                     $scope.type = response.INFO.pin_type;
                                     $scope.encoded_image_modal = response.INFO.encodedimage;
-                                    var src = "data:image/jpg;base64," + response.INFO.encodedimage
-                                    console.log( response.INFO.type);
-                                    console.log($scope.type);
-                                    console.log($("#check"));
-                                    $scope.hideimg=false;
-                                    console.log($scope.hideimg, "보이기")
+                                    var src = "data:image/jpg;base64," + response.INFO.encodedimage;
                                     $("#check").val($scope.type);
                                     $("#content").val($scope.content);
                                     $("<img>").attr({"width": "500", "height": "300", "id": "img-modal", "src": src}).appendTo("#append");
