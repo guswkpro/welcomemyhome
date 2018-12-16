@@ -102,7 +102,6 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
     $http.get('/getpreinspectionpin', {
         params: {
           preinspection_idx: preinspection_idx,
-          pin_idx : clones.getPinArray(clones.getcloneCount()).id
         }
       }).success(function (response) {
         if (response.RESULT == "1") {

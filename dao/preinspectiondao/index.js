@@ -12,6 +12,7 @@ exports.getpreinspectionblueprint = function (user_idx, callback) {
 
 exports.getpreinspectionpin = function (preinspection_idx, callback) {
         client.query('SELECT * FROM stweb.stweb_preinspection_pins where preinspection_idx = ?', [preinspection_idx], function (error, result) {
+                console.log(result, "dao");
                 callback(error, result);
         });
 }
