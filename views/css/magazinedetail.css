@@ -10,7 +10,7 @@
 	body {
 	    width:100%;
 	    height: auto;
-      margin-top:20px;
+         margin-top:20px;
 	    margin: 0;
   		padding-top: 0px;
   		padding-bottom: 40px;
@@ -38,9 +38,9 @@
 
 
 .heart {
-    width: 60px;
-    height: 60px;
-    position: relative;
+    width: 100px;
+    height: 100px;
+    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
