@@ -232,12 +232,14 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                     $scope.type = response.INFO.type;
                     $scope.encoded_image_modal = response.INFO.encodedimage;
                 } else {
-                    var msg = "핀 정보를 불러 올 수 없습니다.";
-                    $window.alert(msg);
-                    $window.location.href = '/';
+                    $scope.content='';
+                    $scope.type = '';
                 }
             }).error(function () {
                 console.log("error");
+            });
+            $(".pin-img").css({
+                'display': 'block'
             });
         });
     });
