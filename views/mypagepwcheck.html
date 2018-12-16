@@ -17,7 +17,8 @@
   <script src="js/angularMypage.js"></script>
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.15/css/mdb.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
   <link rel="stylesheet" type="text/css" href="css/mypage.css" />
@@ -33,12 +34,13 @@
         <form class="form-passwordCheck" method="POST">
           <h5 class="form-heading"></h5>
           <label for="inputPassword" class="sr-only">패스워드확인</label>
-          <input type="password" id="user_password" value="1234" class="form-control" placeholder="패스워드 입력" required autofocus
-            ng-model="pw"><br>
+          <input type="password" id="user_password" value="1234" class="form-control" placeholder="패스워드 입력" required
+            autofocus ng-model="pw"><br>
           <div>
             <br />
           </div>
-          <button id="btn-Yes" class="btn btn-sm btn-primary btn-block" type="submit" ng-click="clickPasswordCheck()">확 인</button>
+          <button id="btn-Yes" class="btn btn-sm btn-primary btn-block" type="submit" ng-click="clickPasswordCheck()">확
+            인</button>
           <div>
             <br />
           </div>
@@ -68,10 +70,10 @@
       </div>
       <div class="nav-div-form" ng-init="load()" ng-style="div_login">
         <form>
-          <a ng-show="showHide_logout" class="nav-button-login" href = 'http://13.124.196.226:3000/login'>로그인</a>
-          <a ng-show="showHide_logout" class="nav-button-signup" href = 'http://13.124.196.226:3000/login'>회원가입</a>
-          <a ng-show="showHide_login" class="nav-button-mypage" href = 'http://13.124.196.226:3000/login'>마이페이지</a>
-          <a ng-show="showHide_login" class="nav-button-logout" href = 'http://13.124.196.226:3000/login'>로그아웃</a>
+          <a ng-show="showHide_logout" class="nav-button-login" href='http://13.124.196.226:3000/login'>로그인</a>
+          <a ng-show="showHide_logout" class="nav-button-signup" href='http://13.124.196.226:3000/signup'>회원가입</a>
+          <a ng-show="showHide_login" class="nav-button-mypage" href='http://13.124.196.226:3000/mypage'>마이페이지</a>
+          <a ng-show="showHide_login" class="nav-button-logout">로그아웃</a>
         </form>
       </div>
     </nav>

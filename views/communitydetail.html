@@ -10,7 +10,8 @@
   <meta name="author" content="">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
 
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="css/nav.css" />
@@ -27,107 +28,106 @@
 
   <title>놀러와 마이홈</title>
 </head>
-  <div class="bigcard card-body vh-100" align="center" style="width:60%; border-radius:20px;" ng-controller="communityDetailCtrl">
-      <div class="card-title" style="margin-top:15px;"align="left">
-          <table style="width:100%">
-              <tr>
-                <td>
-                  <h4> {{title}} </h4>
-                </td>
-                <td class="pull-right">
-                  <div class="heart" ng-click="pushLike()"></div>
-                </td>
-              </tr>
-            </table>
-        <!-- <div class="heart"></div> -->
-      </div>
+<div class="bigcard card-body vh-100" align="center" style="width:60%; border-radius:20px;" ng-controller="communityDetailCtrl">
+  <div class="card-title" style="margin-top:15px;" align="left">
+    <table style="width:100%">
+      <tr>
+        <td>
+          <h4> {{title}} </h4>
+        </td>
+        <td class="pull-right">
+          <div class="heart" ng-click="pushLike()"></div>
+        </td>
+      </tr>
+    </table>
+    <!-- <div class="heart"></div> -->
+  </div>
 
-          <div class="card card-img">
-            <img class="d-block w-100" ng-src="data:image/jpeg;base64,{{data.encodedimage[0]}}" alt="image">
-          </div>
-          <div class="content-card" align="left">
-              <p>{{content}}</p>
-          </div>
-<hr>
-      <div class="card-userReact">
-        <form class="writeComment" method="POST" align="center">
-          <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-          <section class="content-item" id="comments">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-12">
-                  <form>
-                    <div class="newcommentbody">
-                      <h3 class="pull-left">댓글 쓰기</h3>
-                      <button type="submit" class="btn btn-normal pull-right" style="margin-left:5px" ng-click="pushtolist()">목록으로</button>
-                      <button type="submit" class="btn btn-normal pull-right" ng-click="pushCommentData()">등록</button>
-                      <table style="width:100%;">
-                        <tr>
-                          <td>
-                            <div style="margin-right: 10px;">
-                              <img class="img-responsive" ng-src="data:image/jpeg;base64,{{userimage}}" alt="" style="height: 100px; width:100px;">
-                            </div>
-                          </td>
-                          <td style="width:100%;">
-                            <div style="height: 100%;">
-                              <textarea class="form-control" ng-model="addcomment"  placeholder="Your message"
-                                style="width:100%; height:100px;"></textarea>
-                            </div>
-                          </td>
-                        </tr>
-                      </table>
-                    </div>
-                  </form>
-                  <div>
-                    <br />
-                  </div>
-                  <div class="media" ng-repeat="c in comment">
-                    <a class="pull-left" href="#"><img class="media-object" ng-src="{{c.user_profile_image}}" alt=""></a>
-                    <div class="media-body">
-                      <h4 class="media-heading" align="left">{{c.user_nickname}}</h4>
-                      <p>{{c.community_comment_content}}</p>
-                      <ul class="list-unstyled list-inline media-detail pull-left">
-                        <li><i class="fa fa-calendar"></i>{{c.community_comment_post_date}}</li>
-                      </ul>
-                    </div>
-                  </div>
+  <div class="card card-img">
+    <img class="d-block w-100" ng-src="data:image/jpeg;base64,{{data.encodedimage[0]}}" alt="image">
+  </div>
+  <div class="content-card" align="left">
+    <p>{{content}}</p>
+  </div>
+  <hr>
+  <div class="card-userReact">
+    <form class="writeComment" method="POST" align="center">
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+      <section class="content-item" id="comments">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <form>
+                <div class="newcommentbody">
+                  <h3 class="pull-left">댓글 쓰기</h3>
+                  <button type="submit" class="btn btn-normal pull-right" style="margin-left:5px" ng-click="pushtolist()">목록으로</button>
+                  <button type="submit" class="btn btn-normal pull-right" ng-click="pushCommentData()">등록</button>
+                  <table style="width:100%;">
+                    <tr>
+                      <td>
+                        <div style="margin-right: 10px;">
+                          <img class="img-responsive" ng-src="data:image/jpeg;base64,{{userimage}}" alt="" style="height: 100px; width:100px;">
+                        </div>
+                      </td>
+                      <td style="width:100%;">
+                        <div style="height: 100%;">
+                          <textarea class="form-control" ng-model="addcomment" placeholder="Your message" style="width:100%; height:100px;"></textarea>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </form>
+              <div>
+                <br />
+              </div>
+              <div class="media" ng-repeat="c in comment">
+                <a class="pull-left" href="#"><img class="media-object" ng-src="{{c.user_profile_image}}" alt=""></a>
+                <div class="media-body">
+                  <h4 class="media-heading" align="left">{{c.user_nickname}}</h4>
+                  <p>{{c.community_comment_content}}</p>
+                  <ul class="list-unstyled list-inline media-detail pull-left">
+                    <li><i class="fa fa-calendar"></i>{{c.community_comment_post_date}}</li>
+                  </ul>
                 </div>
               </div>
             </div>
-          </section>
-        </form>
-      </div>
-    </div>
+          </div>
+        </div>
+      </section>
+    </form>
+  </div>
+</div>
 
-    <nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
-      <div class="nav-logo">
-        <a class="navbar-bran" href='http://13.124.196.226:3000/'>WMH</a>
-      </div>
-      <div class="collapse navbar-collapse nav-menu">
-        <ul class="navbar-nav mr-auto nav-ul">
-          <li class="nav-item nav-li-magazine">
-            <a class="nav-a-text3" href='http://13.124.196.226:3000/magazines'>매거진</a>
-          </li>
-          <li class="nav-item nav-li">
-            <a class="nav-a-text4" href='http://13.124.196.226:3000/community'>커뮤니티</a>
-          </li>
-          <li class="nav-item nav-li">
-            <a class="nav-a-text4" href='http://13.124.196.226:3000/preinspection'>사전점검</a>
-          </li>
-          <li class="nav-item nav-li">
-            <a class="nav-a-text4" href='http://13.124.196.226:3000/estimatelist'>견적요청</a>
-          </li>
-        </ul>
-      </div>
-      <div class="nav-div-form" ng-init="load()" ng-style="div_login">
-        <form>
-          <a ng-show="showHide_logout" class="nav-button-login" href = 'http://13.124.196.226:3000/login'>로그인</a>
-          <a ng-show="showHide_logout" class="nav-button-signup" href = 'http://13.124.196.226:3000/login'>회원가입</a>
-          <a ng-show="showHide_login" class="nav-button-mypage" href = 'http://13.124.196.226:3000/login'>마이페이지</a>
-          <a ng-show="showHide_login" class="nav-button-logout" href = 'http://13.124.196.226:3000/login'>로그아웃</a>
-        </form>
-      </div>
-    </nav>
+<nav class="navbar navbar-expand-lg nav" ng-controller="logincheckCtrl">
+  <div class="nav-logo">
+    <a class="navbar-bran" href='http://13.124.196.226:3000/'>WMH</a>
+  </div>
+  <div class="collapse navbar-collapse nav-menu">
+    <ul class="navbar-nav mr-auto nav-ul">
+      <li class="nav-item nav-li-magazine">
+        <a class="nav-a-text3" href='http://13.124.196.226:3000/magazines'>매거진</a>
+      </li>
+      <li class="nav-item nav-li">
+        <a class="nav-a-text4" href='http://13.124.196.226:3000/community'>커뮤니티</a>
+      </li>
+      <li class="nav-item nav-li">
+        <a class="nav-a-text4" href='http://13.124.196.226:3000/preinspection'>사전점검</a>
+      </li>
+      <li class="nav-item nav-li">
+        <a class="nav-a-text4" href='http://13.124.196.226:3000/estimatelist'>견적요청</a>
+      </li>
+    </ul>
+  </div>
+  <div class="nav-div-form" ng-init="load()" ng-style="div_login">
+    <form>
+      <a ng-show="showHide_logout" class="nav-button-login" href='http://13.124.196.226:3000/login'>로그인</a>
+      <a ng-show="showHide_logout" class="nav-button-signup" href='http://13.124.196.226:3000/signup'>회원가입</a>
+      <a ng-show="showHide_login" class="nav-button-mypage" href='http://13.124.196.226:3000/mypage'>마이페이지</a>
+      <a ng-show="showHide_login" class="nav-button-logout">로그아웃</a>
+    </form>
+  </div>
+</nav>
 </body>
 
 </html>
