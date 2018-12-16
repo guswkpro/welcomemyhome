@@ -173,28 +173,29 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                 });
             }
         });
-        //pin 클릭시 모듈 정보 다시 띄우기
-        $(".pin-img").on('click', function () {
-            console.log("click event")
-            $http.get('/getpreinspectionmodal', {
-                params: {
-                  pin_idx : $(this).attr("name")
-                }
-              }).success(function (response) {
-                if (response.RESULT == "1") {
-                    $scope.content = response.INFO.content;
-                    $scope.type = response.INFO.type;
-                    $scope.encoded_image_modal = response.INFO.encodedimage;
-                } else {
-                    var msg = "핀 정보를 불러 올 수 없습니다.";
-                    $window.alert(msg);
-                    $window.location.href = '/';
-                }
-            }).error(function () {
-                console.log("error");
-            });
-        })
     });
+    
+    //pin 클릭시 모듈 정보 다시 띄우기
+    $(".pin-img").on('click', function () {
+        console.log("click event")
+        $http.get('/getpreinspectionmodal', {
+            params: {
+              pin_idx : $(this).attr("name")
+            }
+          }).success(function (response) {
+            if (response.RESULT == "1") {
+                $scope.content = response.INFO.content;
+                $scope.type = response.INFO.type;
+                $scope.encoded_image_modal = response.INFO.encodedimage;
+            } else {
+                var msg = "핀 정보를 불러 올 수 없습니다.";
+                $window.alert(msg);
+                $window.location.href = '/';
+            }
+        }).error(function () {
+            console.log("error");
+        });
+    })
 
     // modal에서 데이터 제출
     $scope.pushpreinspectionData = function () {
