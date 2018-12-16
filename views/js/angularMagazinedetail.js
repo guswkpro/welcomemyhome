@@ -76,11 +76,11 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       if (response.RESULT == "1") {
         if (likecheck == 1){
           console.log("여기입니당");
-          $("heart").removeClass("heart-blast");
+          $(".heart-blast").toggleClass("heart");
           likecheck = 0;
         }
         else if(likecheck == 0) {
-          $("heart").addClass("heart-blast");
+          $(".heart").toggleClass("heart-blast");
           likecheck = 1;
         }
       } else if (response.RESULT == "0") {
