@@ -121,6 +121,7 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                                     $scope.content = response.INFO.content;
                                     $scope.type = response.INFO.type;
                                     $scope.encoded_image_modal = response.INFO.encodedimage;
+                                    console.log( response.INFO.type);
                                     console.log($scope.type);
                                     console.log($("#check"));
                                     $("#check").val($scope.type);
