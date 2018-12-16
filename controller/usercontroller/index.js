@@ -122,6 +122,8 @@ exports.login = function (request, response) {
 			}
 		}, function (data, nextCallback) {
 			data[0].user_join_date = data[0].user_join_date.toFormat("YYYYMMDDHH24MISS");
+			console.log(data[0].user_pw);
+			console.log(data[0].user_join_date);
 			if (crypto.createHash('sha512').update(data[0].user_join_date + req_user_pw).digest('hex') == data[0].user_pw) {
 				var tmp = data[0].user_idx + '/' + data[0].user_auth + '/' + request.sessionID;
 				response.cookie('token', tmp, {
