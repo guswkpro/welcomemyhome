@@ -38,9 +38,6 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       if (likecheck == 1) {
         $('.heart').toggleClass("heart-blast");
       }
-      else if(likecheck == 0) {
-        $('.heart').toggleClass("heart-start");
-      }
       
       var tmp = [];
       for (var i = 0; i < response.INFO.encodedimage.length; i++) {
@@ -78,11 +75,11 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     }).success(function (response) {
       if (response.RESULT == "1") {
         if (likecheck == 1){
-          $(".heart-blast").toggleClass("heart-start");
+          $(".heart-blast").toggleClass("heart");
           likecheck = 0;
         }
         else if(likecheck == 0) {
-          $(".heart-start").toggleClass("heart-blast");
+          $(".heart").toggleClass("heart-blast");
           likecheck = 1;
         }
       } else if (response.RESULT == "0") {
