@@ -131,9 +131,9 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                             }).error(function () {
                                 console.log("error");
                             });
-                        });
-                        $("#dialog").css({
-                            'display': 'block'
+                            $("#dialog").css({
+                                'display': 'block'
+                            });
                         });
                         $(".close").click(function () {
                             $("#dialog").css({
