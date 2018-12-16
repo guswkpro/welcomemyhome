@@ -44,7 +44,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: url(img/heart.png) no-repeat;  
+    background: url(..img/heart.png) no-repeat;
     cursor: pointer;
     
   }
