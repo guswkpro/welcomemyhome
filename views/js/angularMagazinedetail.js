@@ -31,10 +31,69 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     if (response.RESULT == 1) {
       $scope.magazinedetail = response.INFO
       $scope.title = response.INFO.magazine_title;
-      console.log(JSON.stringify(response.INFO)+"체크치크");
-      console.log(response.INFO.likecheck+"좋아요체크치크");
-      if(response.INFO.likecheck==1){
-        $('.heart').toggleClass("heart-end");
+      console.log(JSON.stringify(response.INFO) + "체크치크");
+      console.log(response.INFO.likecheck + "좋아요체크치크");
+      if (response.INFO.likecheck == 1) {
+        $(function () {
+          $('.heart').toggleClass("heart-end");
+          $scope.pushLike = function () {
+            $http({
+              method: 'DELETE',
+              url: '/deletecommunitylike',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              data: ({
+                magazine_idx: click_idx
+              }).success(function (response) {
+                if (response.RESULT == "1") {
+                  $(function () {
+                    $(".heart").on("click", function () {
+                      $(this).toggleClass("heart-blast");
+                    });
+                  });
+                } else if (response.RESULT == "0") {
+                  var msg = "요청 실패";
+                  $window.alert(msg);
+                };
+              }).error(function () {
+                var msg = "로그인이 필요합니다";
+                $window.alert(msg);
+                $window.location.href = '/login';
+                console.log("error");
+              })
+            })
+          }
+        });
+      } else if (response.INFO.likecheck == 0) {
+        $scope.pushLike = function () {
+          $http({
+            method: 'POST',
+            url: '/addmagazinelike',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: ({
+              magazine_idx: click_idx
+            })
+          }).success(function (response) {
+            if (response.RESULT == "1") {
+              $(function () {
+                $(".heart").on("click", function () {
+                  $(this).toggleClass("heart-blast");
+                });
+              });
+            } else if (response.RESULT == "0") {
+              var msg = "요청 실패";
+              $window.alert(msg);
+            };
+          }).error(function () {
+            var msg = "로그인이 필요합니다";
+            $window.alert(msg);
+            $window.location.href = '/login';
+            console.log("error");
+          });
+        }
       }
       var tmp = [];
       for (var i = 0; i < response.INFO.encodedimage.length; i++) {
@@ -48,37 +107,6 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
   }).error(function () {
     console.log(error);
   });
-
-  $scope.pushLike = function () {
-
-  //  if($scope.)
-    $http({
-      method: 'POST',
-      url: '/addmagazinelike',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: ({
-        magazine_idx: click_idx
-      })
-    }).success(function (response) {
-      if (response.RESULT == "1") {
-        $(function() {
-          $(".heart").on("click", function() {
-            $(this).toggleClass("heart-blast");
-          });
-        }); 
-      } else if (response.RESULT == "0") {
-        var msg = "요청 실패";
-        $window.alert(msg);
-      };
-    }).error(function () {
-      var msg = "로그인이 필요합니다";
-      $window.alert(msg);
-      $window.location.href = '/login';
-      console.log("error");
-    });
-  }
 
   $scope.pushCommentData = function () {
     console.log($scope.content);
