@@ -125,10 +125,10 @@ exports.getmagazinedetail = function (request, response) {
                         magazinedao.getmagazinelikecheck(magazinedata[0].magazine_idx, req_user_idx, secondnextCallback);
                     }, function (checkdata, secondnextCallback) {
                         if (checkdata.length == 0) {
-                            magazinedata[0].pincheck = 0;
+                            magazinedata[0].likecheck = 0;
                             magazinedao.getmagazinecommentcheck(magazinedata[0].magazine_idx, req_user_idx, secondnextCallback);
                         } else {
-                            magazinedata[0].pincheck = 1;
+                            magazinedata[0].likecheck = 1;
                             magazinedao.getmagazinecommentcheck(magazinedata[0].magazine_idx, req_user_idx, secondnextCallback);
                         }
                     }
