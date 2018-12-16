@@ -80,9 +80,21 @@ app.controller('PaginationDemoCtrl', function ($scope, $http) {
     // for(var i = 0; i < ){
 
     // }
-    $scope.selectPage = function(page) {
-      alert('hello');
-    }
+    // $scope.selectPage = function(page) {
+    //   alert('hello');
+    // }
+
+    $scope.$watch('currentPage', function(newPage){
+      $scope.watchPage = newPage;
+      //or any other code here
+
+      alert(newPage);
+    });
+
+    $scope.pageChanged = function(page) {
+      $scope.callbackPage = page;
+      $scope.watchPage = newPage;
+    };
 
     $scope.testbtn = function() {
       alert('helllllo');
