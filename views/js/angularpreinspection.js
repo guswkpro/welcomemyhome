@@ -123,6 +123,8 @@ app.controller('preinspectionCtrl', function ($scope, $http, $window, clones) {
                                     $scope.content = response.INFO.content;
                                     $scope.type = response.INFO.type;
                                     $scope.encoded_image_modal = response.INFO.encodedimage;
+                                    $("input")[1].val($scope.type);
+                                    $("textarea")[0].val($scope.content);
                                 } else {
                                     var msg = "핀 정보를 불러 올 수 없습니다.";
                                     $window.alert(msg);
