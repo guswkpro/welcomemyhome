@@ -40,7 +40,6 @@ body {
 
 .footer_contact {
    float : right;
-   height: 150px;
 }
 
 .footer_main {
@@ -54,5 +53,5 @@ body {
 }
 
 .content {
-    margin-top:800px;
+    margin-top:1000px;
 }
