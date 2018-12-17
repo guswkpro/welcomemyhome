@@ -48,7 +48,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
      // $scope.userimage = response.INFO.user_profile_image; 댓글쓰기에서 뜨는 사진
       $scope.title = response.INFO.magazine_title;
       likecheck = response.INFO.likecheck;
-      if(user_profile_image == "null"){
+      if(response.INFO.user_profile_image == null){
         $scope.userimage = "img/user_profile_default.JPG";
       }else{
         $scope.userimage = "data:image/jpeg;base64," + response.INFO.user_profile_image;
