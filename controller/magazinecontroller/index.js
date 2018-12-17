@@ -200,6 +200,7 @@ exports.getmagazinecomment = function (request, response) {
                         }
                     }, function (data) {
                         magazinecommentinfodetail.user_profile_image = new Buffer(data).toString('base64');
+                        console.log(magazinecommentinfodetail.user_profile_image);
                         magazinecommentinfodetail.magazine_comment_user_idx = magazinecommentdata[count].user_idx;
                         magazinecommentinfodetail.magazine_comment_idx = magazinecommentdata[count].comment_idx;
                         magazinecommentinfodetail.magazine_comment_content = magazinecommentdata[count].comment_content;
