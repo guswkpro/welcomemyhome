@@ -190,7 +190,6 @@ exports.getmagazinecomment = function (request, response) {
                             magazinecommentinfodetail.user_profile_image = "null";
                             magazinecommentinfodetail.magazine_comment_user_idx = magazinecommentdata[count].user_idx;
                             magazinecommentinfodetail.magazine_comment_idx = magazinecommentdata[count].comment_idx;
-                            magazinecommentinfodetail.test = "ASDFASDFSADF";
                             magazinecommentinfodetail.magazine_comment_content = magazinecommentdata[count].comment_content;
                             magazinecommentinfodetail.magazine_comment_post_date = magazinecommentdata[count].comment_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                             info.push(magazinecommentinfodetail);
@@ -203,7 +202,6 @@ exports.getmagazinecomment = function (request, response) {
                         magazinecommentinfodetail.user_profile_image = new Buffer(data).toString('base64');
                         magazinecommentinfodetail.magazine_comment_user_idx = magazinecommentdata[count].user_idx;
                         magazinecommentinfodetail.magazine_comment_idx = magazinecommentdata[count].comment_idx;
-                        magazinecommentinfodetail.test = "ASDFASDFSADF";
                         magazinecommentinfodetail.magazine_comment_content = magazinecommentdata[count].comment_content;
                         magazinecommentinfodetail.magazine_comment_post_date = magazinecommentdata[count].comment_post_date.toFormat('YYYY-MM-DD HH24:MI:SS');
                         info.push(magazinecommentinfodetail);
@@ -216,7 +214,6 @@ exports.getmagazinecomment = function (request, response) {
             });
         }
     ], function (error, result) {
-        console.log(info);
         if (error) {
             console.log(error);
             response.json({
