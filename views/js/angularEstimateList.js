@@ -319,11 +319,11 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
     console.log(answer_idx, "answer_idx");
     if(estimate_idx){
       document.cookie = "click_idx=" + estimate_idx + "-";
-      $window.location.href = '/estimatedetail';
+      // $window.location.href = '/estimatedetail';
     }
     else if(answer_idx) {
       document.cookie = "click_idx=" + answer_idx + "-";
-      $window.location.href = '/estimateanswerdetail';
+      // $window.location.href = '/estimateanswerdetail';
     }
   };
 });
