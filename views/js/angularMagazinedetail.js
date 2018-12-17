@@ -150,7 +150,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       console.log(JSON.stringify(response.INFO) + "겟매거진코멘트인포");
       console.log(JSON.stringify(response.INFO.user_profile_image) + "유저이미지");
       if (response.INFO.user_profile_image == "null") {
-        $scope.userimg = "img/user_profile_default.JPG"
+        $scope.userimg = "img/user_profile_default.JPG";
       }
       else {
         for(var i = 0 ; i < response.length; i++){
