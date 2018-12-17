@@ -41,70 +41,31 @@ app.controller('logincheckCtrl', function($scope, $http, $window) {
 
 
 
-// var getcommunitylist = function (offset) {
-
-//   offset = (offset - 1) * 5;
-
-//   $http.get('/getcommunitylist', {
+// app.controller('estimateListCtrl', function ($scope, $http) {
+//   $http.get('/getestimatelist', {
 //     params: {
-//       offset: offset
+//       offset: '0'
 //     }
 //   }).success(function (response) {
-
 //     $scope.data = response.INFO;
+//     console.log($scope.data.COUNT);
 //     $scope.viewby = 5;
 //     $scope.totalItems = response.COUNT;
+//     $scope.currentPage = 1;
 //     $scope.itemsPerPage = $scope.viewby;
-//     $scope.maxSize = 5
-//     if (response.RESULT == 1) {
+//     $scope.maxSize = 5; //Number of pager buttons to show
 
-//       $scope.community_list = response.INFO
-//       for (i = 0; i < $scope.community_list.length; i++) {
-//         var tmp = new Date($scope.community_list[i].community_post_date);
-//         var month = tmp.getMonth() + 1;
-//         var day = tmp.getDate();
-//         $scope.community_list[i].community_post_date = month + "-" + day;
-//       }
-//       for (i = 0; i < $scope.community_list.length; i++) {
-//         var string = $scope.community_list[i].community_content;
-//         var str = string.substr(0, 20);
-//         $scope.community_list[i].community_content = str + "...";
-//       }
-//     } else {
-//       console.log(response, "fault");
+//     $scope.setPage = function (pageNo) {
+//       $scope.currentPage = pageNo;
+//     };
+
+
+//     $scope.setItemsPerPage = function (num) {
+//       $scope.itemsPerPage = num;
+//       $scope.currentPage = 1; //reset to first page
 //     }
-//   }).error(function (error) {
-//     console.log(error);
-//   });
-// }
-
-// getcommunitylist(1);
-
-// $scope.userClickCommunity = function (community_idx) {
-//   document.cookie = "click_idx=" + community_idx + "-";
-//   $window.location.href = '/communitydetail';
-// };
-
-// $scope.$watch('currentPage', function (newPage) {
-//   $scope.watchPage = newPage;
-
-//   if(typeof newPage !== 'number'){
-//     newPage = 1;
-//   }
-
-//   getcommunitylist((newPage));
-
-// });
-
-// $scope.pageChanged = function (page) {
-//   $scope.callbackPage = page;
-//   $scope.watchPage = newPage;
-// };
-
-// $scope.setItemsPerPage = function (num) {
-//   $scope.itemsPerPage = num;
-//   $scope.currentPage = 1; //reset to first page
-// }
+//   })
+// })
 
 //Estimate list 출력
 app.controller('estimateListCtrl', function ($scope, $http, $window) {
@@ -314,16 +275,8 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   };
 
   // 사용자가 자기 게시글 클릭
-  $scope.userClickEstimate = function (estimate_idx, answer_idx) {
-    console.log(estimate_idx, "estimate_idx");
-    console.log(answer_idx, "answer_idx");
-    if(estimate_idx){
-      document.cookie = "click_idx=" + estimate_idx + "-";
-      // $window.location.href = '/estimatedetail';
-    }
-    else if(answer_idx) {
-      document.cookie = "click_idx=" + answer_idx + "-";
-      // $window.location.href = '/estimateanswerdetail';
-    }
+  $scope.userClickEstimate = function (estimate_idx) {
+    document.cookie = "click_idx=" + estimate_idx + "-";
+    $window.location.href = '/estimatedetail';
   };
 });

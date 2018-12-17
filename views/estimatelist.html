@@ -49,7 +49,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="d in data" data3="{{d.estimate_idx}}" data2="{{d.answer_idx}}" ng-click="userClickEstimate(d.estimate_idx, d.answer_idx)">
+        <tr ng-repeat="d in data" data="{{d.estimate_idx}}" ng-click="userClickEstimate(d.estimate_idx)">
           <td ng-hide="hideEstimate">{{d.estimate_idx}}</td>
           <td ng-hide="hideAnswer">{{d.answer_idx}}</td>
           <td ng-hide="hideEstimate">{{d.estimate_title}}</td>
