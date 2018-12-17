@@ -17,8 +17,8 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
       }
     });
   };
-  $scope.logout = function() {
-    $http.get('/logout').success(function(response) {
+  $scope.logout = function () {
+    $http.get('/logout').success(function (response) {
       console.log(response.RESULT);
       if (response.RESULT == "1") {
         var msg = "로그아웃되었습니다.";
@@ -26,7 +26,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
         $window.location.href = '/';
         $scope.showHide_logout = true;
       }
-    }).error(function(){
+    }).error(function () {
       console.log(error);
     });
   };
@@ -51,7 +51,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       if (likecheck == 1) {
         $('.heart').toggleClass("heart-blast");
       }
-      
+
       var tmp = [];
       for (var i = 0; i < response.INFO.encodedimage.length; i++) {
         tmp.push(i);
@@ -72,7 +72,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       method = 'POST';
       url = '/addmagazinelike';
     }
-    else if(likecheck == 1) {
+    else if (likecheck == 1) {
       method = 'DELETE'
       url = '/deletemagazinelike';
     }
@@ -87,12 +87,12 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       })
     }).success(function (response) {
       if (response.RESULT == "1") {
-        if (likecheck == 1){
+        if (likecheck == 1) {
           console.log("여기입니당");
           $(".heart").removeClass("heart-blast")
           likecheck = 0;
         }
-        else if(likecheck == 0) {
+        else if (likecheck == 0) {
           $(".heart").toggleClass("heart-blast");
           likecheck = 1;
         }
@@ -140,19 +140,15 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       magazine_idx: click_idx
     }
   }).success(function (response) {
-    console.log(response.RESULT + "resultresult");
     if (response.RESULT == 1) {
       $scope.comment = response.INFO;
-      console.log(response + "000000000000000");
       if (response.INFO.user_profile_image == null) {
+        console.log("바보멍청이");
         $scope.userimg = "img/user_profile_default.JPG"
-        console.log($scope.userimg + "aaaaaaaaaa");
       }
       else {
         $scope.userimg = "data:image/jpeg;base64," + response.INFO.user_profile_image;
-        console.log(userimg + "bbbbbbbbbb");
       }
-      console.log(response.INFO);
     } else {
       console.log(response, "fault");
     }
