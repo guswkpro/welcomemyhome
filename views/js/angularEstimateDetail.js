@@ -84,6 +84,10 @@ app.controller('estimateDetailCtrl', function ($scope, $http, $window, hides) {
   }).error(function () {
     console.log("error");
   });
+  
+  $scope.addAnswer =  function() {
+    $window.location.href = '/estimateanswer';
+  }
 
 });
 
@@ -163,10 +167,6 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, hides) {
         $window.location.href = '/';
       }
     });
-  }
-
-  $scope.addAnswer =  function() {
-    $window.location.href = '/estimateanswer';
   }
 
   // 사용자가 답변 클릭
