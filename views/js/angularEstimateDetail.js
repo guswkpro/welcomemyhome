@@ -104,6 +104,7 @@ app.controller('estimateListCtrl', function ($scope, $http, $window, hides) {
   $scope.hideList = hides.getFlag();
   console.log($scope.hideList);
 
+  console.log(click_idx);
   // Answer 정보 받아옴
   $http.get('/getestimateanswerlist', {
     params: {
