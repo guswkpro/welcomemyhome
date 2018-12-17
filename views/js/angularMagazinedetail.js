@@ -148,16 +148,15 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     if (response.RESULT == 1) {
       $scope.comment = response.INFO;
       console.log(response.INFO + "겟매거진코멘트인포");
-      if (response.INFO.user_profile_image == "null") {
+      console.log(response.INFO.user_profile_image + "유저이미지");
+      if (response.INFO.user_profile_image == null) {
         $scope.userimg = "img/user_profile_default.JPG"
       }
       else {
-        
         for(var i = 0 ; i < response.length; i++){
           console.log(response.length + "11111111111111");
           $scope.userimg = "data:image/jpeg;base64," + response.INFO[i].user_profile_image;
         }
-       
       }
     } else {
       console.log(response, "fault");
