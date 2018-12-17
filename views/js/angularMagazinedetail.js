@@ -142,11 +142,12 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
   }).success(function (response) {
     if (response.RESULT == 1) {
       $scope.comment = response.INFO;
-      if (response.INFO.user_profile_image == null) {
+      if (response.INFO.user_profile_image == "null") {
         console.log("바보멍청이");
         $scope.userimg = "img/user_profile_default.JPG"
       }
       else {
+        console.log("바보멍청이2");
         $scope.userimg = "data:image/jpeg;base64," + response.INFO.user_profile_image;
       }
     } else {
