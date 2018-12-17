@@ -178,7 +178,7 @@ app.controller('userCtrl', function ($scope, $http, $window) {
   // }
 
   $scope.cancelSetting = function () {
-    var msg = "변경을 취소합니다.";
+    var msg = "변경을 마칩니다.";
     $window.alert(msg);
     $window.location.href = '/';
   };
