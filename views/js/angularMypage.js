@@ -69,7 +69,7 @@ app.controller('userCtrl', function ($scope, $http, $window) {
       var str = fr.result.split(',')[1];
       var image = str;
       $http({
-        method: 'POST',
+        method: 'PUT',
         url: '/editprofile',
         headers: {
           'Content-Type': 'application/json'
@@ -95,7 +95,7 @@ app.controller('userCtrl', function ($scope, $http, $window) {
 
   $scope.pushDataPassword = function () {
     $http({
-      method: 'POST',
+      method: 'PUT',
       url: '/editpassword',
       headers: {
         'Content-Type': 'application/json'
