@@ -85,11 +85,14 @@
               <div class="media" ng-repeat="c in comment">
                 <a class="pull-left" href="#"><img class="media-object" ng-src="{{c.user_profile_image}}" alt=""></a>
                 <div class="media-body">
-                  
-                  <h4 class="media-heading" align="left">{{c.user_nickname}}</h4>
-                  <ul class="list-unstyled list-inline media-detail pull-right">
-                    <li><i class="fa fa-calendar"></i>{{c.community_comment_post_date}}</li>
-                  </ul>
+                  <table>
+                    <tr>
+                      <td><h4 class="media-heading" align="left">{{c.user_nickname}}</h4></td>
+                      <td> <ul class="list-unstyled list-inline media-detail pull-right">
+                          <li><i class="fa fa-calendar"></i>{{c.community_comment_post_date}}</li>
+                        </ul></td>
+                    </tr>
+                  </table>
                   <p class="pull-left">{{c.community_comment_content}}</p>
                 </div>
               </div>
