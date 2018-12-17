@@ -5,7 +5,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
     $http.get('/logincheck').success(function (response) {
       if (response.RESULT == "1") {
         $scope.div_login = {
-          "width": "12%"
+          "width": "13%"
         };
         $scope.showHide_login = true;
       } else if (response.RESULT == "0") {
