@@ -45,8 +45,6 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     if (response.RESULT == 1) {
       $scope.magazinedetail = response.INFO
       $scope.title = response.INFO.magazine_title;
-      console.log(JSON.stringify(response.INFO) + "체크치크");
-      console.log(response.INFO.likecheck + "좋아요체크치크");
       likecheck = response.INFO.likecheck;
       if (likecheck == 1) {
         $('.heart').toggleClass("heart-blast");
@@ -143,11 +141,10 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     if (response.RESULT == 1) {
       $scope.comment = response.INFO;
       if (response.INFO.user_profile_image == "null") {
-        console.log("바보멍청이");
         $scope.userimg = "img/user_profile_default.JPG"
       }
       else {
-        console.log("바보멍청이2");
+        console.log(response.INFO.user_profile_image + "바보");
         $scope.userimg = "data:image/jpeg;base64," + response.INFO.user_profile_image;
       }
     } else {
