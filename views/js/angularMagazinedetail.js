@@ -43,9 +43,16 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
     }
   }).success(function (response) {
     if (response.RESULT == 1) {
-      $scope.magazinedetail = response.INFO
+      $scope.magazinedetail = response.INFO;
+      console.log(scope.magazinedetail+"메거진디테일")
+      $scope.userimga = response.INFO.user_profile_image; //댓글쓰기에서 뜨는 사진
       $scope.title = response.INFO.magazine_title;
       likecheck = response.INFO.likecheck;
+      if(user_profile_image == "null"){
+        $scope.userimga = "img/user_profile_default.JPG";
+      }else{
+        $scope.userimga = "data:image/jpeg;base64," + response.INFO.user_profile_image;
+      }
       if (likecheck == 1) {
         $('.heart').toggleClass("heart-blast");
       }
