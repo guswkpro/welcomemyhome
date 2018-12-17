@@ -146,7 +146,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       }
       else {
         console.log(response.INFO.user_profile_image + "바보");
-        $scope.userimg = "data:image/jpeg;base64," + response.INFO.user_profile_image;
+        $scope.userimg = "data:image/jpeg;base64," + response.INFO[0].user_profile_image;
       }
     } else {
       console.log(response, "fault");
