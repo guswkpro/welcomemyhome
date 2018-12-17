@@ -314,8 +314,16 @@ app.controller('estimateListCtrl', function ($scope, $http, $window) {
   };
 
   // 사용자가 자기 게시글 클릭
-  $scope.userClickEstimate = function (estimate_idx) {
-    document.cookie = "click_idx=" + estimate_idx + "-";
-    $window.location.href = '/estimatedetail';
+  $scope.userClickEstimate = function (estimate_idx, answer_idx) {
+    console.log(estimate_idx, "estimate_idx");
+    console.log(answer_idx, "answer_idx");
+    if(estimate_idx){
+      document.cookie = "click_idx=" + estimate_idx + "-";
+      $window.location.href = '/estimatedetail';
+    }
+    else if(answer_idx) {
+      document.cookie = "click_idx=" + answer_idx + "-";
+      $window.location.href = '/estimateanswerdetail';
+    }
   };
 });
