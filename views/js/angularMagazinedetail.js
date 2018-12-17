@@ -49,9 +49,9 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       $scope.title = response.INFO.magazine_title;
       likecheck = response.INFO.likecheck;
       if(user_profile_image == "null"){
-        $scope.userimga = "img/user_profile_default.JPG";
+        $scope.userimage = "img/user_profile_default.JPG";
       }else{
-        $scope.userimga = "data:image/jpeg;base64," + response.INFO.user_profile_image;
+        $scope.userimage = "data:image/jpeg;base64," + response.INFO.user_profile_image;
       }
       if (likecheck == 1) {
         $('.heart').toggleClass("heart-blast");
