@@ -47,11 +47,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
      // $scope.userimage = response.INFO.user_profile_image; 댓글쓰기에서 뜨는 사진
       $scope.title = response.INFO.magazine_title;
       likecheck = response.INFO.likecheck;
-      if(response.INFO.user_profile_image == null){
-        $scope.userimage = "img/user_profile_default.JPG";
-      }else{
-        $scope.userimage = "data:image/jpeg;base64," + response.INFO.user_profile_image;
-      }
+      
       if (likecheck == 1) {
         $('.heart').toggleClass("heart-blast");
       }
@@ -146,8 +142,13 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
   }).success(function (response) {
     if (response.RESULT == 1) {
       $scope.comment = response.INFO;
-      console.log(response.INFO + "겟매거진코멘트인포");
-      console.log(response.INFO.user_profile_image + "유저이미지");
+      // if(response.INFO.user_profile_image == null){
+      //   $scope.userimage = "img/user_profile_default.JPG";
+      // }else{
+      //   $scope.userimage = "data:image/jpeg;base64," + response.INFO.user_profile_image;
+      // }
+      console.log(JSON.stringify(response.INFO) + "겟매거진코멘트인포");
+      console.log(JSON.stringify(response.INFO.user_profile_image) + "유저이미지");
       if (response.INFO.user_profile_image == "null") {
         $scope.userimg = "img/user_profile_default.JPG"
       }
