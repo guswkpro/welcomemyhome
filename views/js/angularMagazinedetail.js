@@ -44,7 +44,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
   }).success(function (response) {
     if (response.RESULT == 1) {
       $scope.magazinedetail = response.INFO;
-      console.log(scope.magazinedetail+"메거진디테일")
+      console.log($scope.magazinedetail+"메거진디테일");
       $scope.userimga = response.INFO.user_profile_image; //댓글쓰기에서 뜨는 사진
       $scope.title = response.INFO.magazine_title;
       likecheck = response.INFO.likecheck;
