@@ -124,7 +124,7 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       if (response.RESULT == "1") {
         var msg = "댓글이 등록됐습니다.";
         $window.alert(msg);
-        $window.location.href = '/magazinedetail.';
+        $window.location.href = '/magazinedetail';
       } else if (response.RESULT == "0") {
         var msg = "알 수 없는 오류로 댓글 작성에 실패하였습니다.";
         $window.alert(msg);
@@ -147,8 +147,8 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       // }else{
       //   $scope.userimage = "data:image/jpeg;base64," + response.INFO.user_profile_image;
       // }
-      console.log(JSON.stringify(response.INFO) + "겟매거진코멘트인포");
-      console.log(JSON.stringify(response.INFO.user_profile_image) + "유저이미지");
+      // console.log(JSON.stringify(response.INFO) + "겟매거진코멘트인포");
+      // console.log(JSON.stringify(response.INFO.user_profile_image) + "유저이미지");
       if (response.INFO.user_profile_image == "null") {
         $scope.userimg = "img/user_profile_default.JPG";
       }
