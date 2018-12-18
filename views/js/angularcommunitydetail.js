@@ -86,7 +86,7 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
         if (response.RESULT == "1") {
           var msg = "댓글이 등록됐습니다.";
           $window.alert(msg);
-          $window.location.href = '/community';
+          $window.location.href = '/communitydetail';
         } else if(response.RESULT == "0"){
           var msg = "알 수 없는 오류로 댓글 작성에 실패하였습니다.";
           $window.alert(msg);
@@ -96,7 +96,6 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
         console.log("error");
       });
     }
-
     $scope.pushLike = function () {
       var method = null;
       var url = null;
@@ -120,7 +119,6 @@ app.controller('logincheckCtrl', function ($scope, $http, $window) {
       }).success(function (response) {
         if (response.RESULT == "1") {
           if (likecheck == 1){
-            console.log("여기입니당");
             $(".heart").removeClass("heart-blast")
             likecheck = 0;
           }
