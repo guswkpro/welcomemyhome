@@ -57,7 +57,6 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
         tmp.push(i);
       }
       $scope.slideidx = tmp;
-      document.cookie = "click_idx=";
     } else {
       console.log(response, "fault");
     }
@@ -124,11 +123,11 @@ app.controller('magazinedetailcard', function ($scope, $http, $window) {
       if (response.RESULT == "1") {
         var msg = "댓글이 등록됐습니다.";
         $window.alert(msg);
-        $window.location.reload(true);
+        $window.location.href = '/magazinedetail'
       } else if (response.RESULT == "0") {
         var msg = "알 수 없는 오류로 댓글 작성에 실패하였습니다.";
         $window.alert(msg);
-        $window.location.href = '/magazines'
+        $window.location.href = '/magazinedetail'
       }
     }).error(function () {
       console.log("error");
