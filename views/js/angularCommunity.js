@@ -76,7 +76,7 @@ app.controller('communityListCtrl', function ($scope, $http) {
 
   $scope.userClickCommunity = function (community_idx) {
     document.cookie = "click_idx=" + community_idx + "-";
-    $window.location.href = '/communitydetail';
+    $window.location.href = '/community';
   };
 
   $scope.$watch('currentPage', function (newPage) {
