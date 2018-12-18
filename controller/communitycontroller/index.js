@@ -111,6 +111,7 @@ exports.getcommunitydetail = function (request, response) {
         }, function (nextCallback) {
             communitydao.getcommunitydetail(req_community_idx, nextCallback);
         }, function (communitydata, nextCallback) {
+            console.log(communitydata);
             userdao.getuserinformation(communitydata[0].user_idx, function (error, communityuserdata) {
                 communitydata[0].user_nickname = communityuserdata[0].user_nickname;
                 nextCallback(error, communitydata);
