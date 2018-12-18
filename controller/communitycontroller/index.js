@@ -103,7 +103,6 @@ exports.getcommunitylist = function (request, response) {
 exports.getcommunitydetail = function (request, response) {
     var req_user_idx = request.session.user_idx;
     var req_community_idx = request.param('community_idx');
-    console.log(req_community_idx + "-----------" + req_user_idx);
     var info = {};
     async.waterfall([
         function (nextCallback) {
@@ -111,7 +110,6 @@ exports.getcommunitydetail = function (request, response) {
         }, function (nextCallback) {
             communitydao.getcommunitydetail(req_community_idx, nextCallback);
         }, function (communitydata, nextCallback) {
-            console.log(communitydata);
             userdao.getuserinformation(communitydata[0].user_idx, function (error, communityuserdata) {
                 communitydata[0].user_nickname = communityuserdata[0].user_nickname;
                 nextCallback(error, communitydata);
