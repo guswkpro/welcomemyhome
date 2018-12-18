@@ -81,6 +81,7 @@ app.controller('userCtrl', function ($scope, $http, $window) {
         if (response.RESULT == "1") {
           var msg = "회원정보수정에 성공하셨습니다.";
           $window.alert(msg);
+          $window.location.href = '/'
         } else if (response.RESULT == "0") {
           var msg = "알 수 없는 오류로 변경에 실패하였습니다.";
           $window.alert(msg);
@@ -105,6 +106,7 @@ app.controller('userCtrl', function ($scope, $http, $window) {
       if (response.RESULT == "1") {
         var msg = "회원정보수정에 성공하셨습니다.";
         $window.alert(msg);
+        
       } else if (response.RESULT == "0") {
         var msg = "알 수 없는 오류로 변경에 실패하였습니다.";
         $window.alert(msg);
